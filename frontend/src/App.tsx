@@ -1,13 +1,11 @@
-import React from "react";
-import "./App.css";
-import OntologyTable from "./OntologyTable";
+import React from 'react';
+import './App.css';
+import OntologyTable from './OntologyTable';
 
-const App = () => {
-  return (
-    <div className="App">
-      <OntologyTable />
-    </div>
-  );
-};
+const App = () => (
+  <div className="App">
+    <OntologyTable />
+  </div>
+);
 
 export default App;
