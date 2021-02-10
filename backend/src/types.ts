@@ -1,12 +1,11 @@
-export type Node = {
+export type OntologyEntity = {
   id: string;
   name: string;
 };
 
-export type Edge = {
-  id: string;
-  name: string;
-};
+export interface Node extends OntologyEntity {}
+
+export interface Edge extends OntologyEntity {}
 
 export type Ontology = {
   Subject: Node | null;
