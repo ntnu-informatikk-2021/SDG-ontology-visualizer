@@ -7,7 +7,7 @@ const initialNode = {
 };
 
 const getData = async (className: string) => {
-  const url = `http://localhost:3001/class/%3A${className}`;
+  const url = `http://localhost:3001/api/ontologies/%3A${className}`;
   const bar = await fetch(url).then((foo) => foo.json());
   return bar;
 };
