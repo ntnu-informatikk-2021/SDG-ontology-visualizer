@@ -11,8 +11,10 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 const init = async (): Promise<void> => {
+  // eslint-disable-next-line no-console
   console.log('Initializing server...');
   await databaseLogin();
+  // eslint-disable-next-line no-console
   console.log(`Example app listening at http://localhost:${config.PORT}`);
 };
 
