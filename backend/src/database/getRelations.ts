@@ -1,12 +1,6 @@
-import { EnapsoGraphDBClient } from '@innotrade/enapso-graphdb-client';
-import { Edge, Node, Ontology, Record } from 'types';
-import config from './config';
-
-const graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
-  baseURL: config.GRAPHDB_BASE_URL,
-  repository: config.GRAPHDB_REPOSITORY,
-  prefixes: config.DEFAULT_PREFIXES,
-});
+import DB from './index';
+import { Ontology, Node, Edge, Record } from '../types';
+import getRelations from './queries/getRelations';
 
 const getName = (id: string): string => {
   const regex = /^[^_]*#/;
@@ -54,32 +48,9 @@ const removeDuplicates = (ontologies: Array<Ontology>, queriedName: string): Arr
   });
 };
 
-export const login = (): void => {
-  graphDBEndpoint
-    .login(config.GRAPHDB_USERNAME, config.GRAPHDB_PASSWORD)
-    .then((result: any) => {
-      console.log(result);
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
-};
-
-export const getRelations = async (className: string): Promise<Array<Ontology>> => {
-  const query = `
-        PREFIX : <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
-        SELECT *
-        WHERE {
-            {
-                ${className} ?Predicate ?Object
-            }
-            UNION
-            {
-                ?Subject ?Predicate ${className}
-            }
-        } `;
-
-  const response = await graphDBEndpoint.query(query, { transform: 'toJSON' });
+export default async (className: string): Promise<Array<Ontology>> => {
+  const query = getRelations(className);
+  const response = await DB.query(query, { transform: 'toJSON' });
   const foo = response.records.map(mapRecordToObject).filter(isRelevantOntology);
   return removeDuplicates(foo, className);
 };

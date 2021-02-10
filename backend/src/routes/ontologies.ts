@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getRelations } from '../database';
+import getRelations from '../database/getRelations';
 
 const router = Router();
 
