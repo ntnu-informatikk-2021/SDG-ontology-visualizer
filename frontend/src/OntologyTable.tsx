@@ -47,8 +47,6 @@ const OntologyTable: React.FC = () => {
   const clickNode = async (node: Node) => {
     setSelectedNode(node);
     const newOntologies = await getData(node.name);
-    console.log('new ontologies:');
-    console.log(newOntologies);
     setOntologies(newOntologies);
   };
 
@@ -56,9 +54,6 @@ const OntologyTable: React.FC = () => {
     clickNode(initialNode);
   }, []);
 
-  if (ontologies && ontologies.length > 0) {
-    console.log(renderOntology(selectedNode, ontologies[0], clickNode));
-  }
   return (
     <table>
       <thead>
