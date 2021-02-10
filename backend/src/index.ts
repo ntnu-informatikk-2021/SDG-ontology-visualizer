@@ -1,10 +1,10 @@
 import { login, getRelations } from './database';
 import express from 'express';
 import cors from 'cors';
+import config from './config';
 
 const app = express();
 app.use(cors());
-const port = 3001;
 
 app.get('/class/:className', async (req, res) => {
   try {
@@ -19,7 +19,7 @@ app.get('/class/:className', async (req, res) => {
 const init = async (): Promise<void> => {
   console.log('Initializing server...');
   await login();
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${config.PORT}`);
 };
 
-app.listen(port, init);
+app.listen(config.PORT, init);

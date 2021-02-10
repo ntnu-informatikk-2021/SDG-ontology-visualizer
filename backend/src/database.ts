@@ -1,28 +1,11 @@
 import { EnapsoGraphDBClient } from '@innotrade/enapso-graphdb-client';
 import { Edge, Node, Ontology, Record } from 'types';
-
-const GRAPHDB_BASE_URL = 'http://localhost:7200',
-  GRAPHDB_REPOSITORY = 'wineTest',
-  GRAPHDB_USERNAME = 'testuser',
-  GRAPHDB_PASSWORD = 'testpass',
-  GRAPHDB_CONTEXT_TEST = 'http://ont.enapso.com/repo';
-
-const DEFAULT_PREFIXES = [
-  EnapsoGraphDBClient.PREFIX_OWL,
-  EnapsoGraphDBClient.PREFIX_RDF,
-  EnapsoGraphDBClient.PREFIX_RDFS,
-  EnapsoGraphDBClient.PREFIX_XSD,
-  EnapsoGraphDBClient.PREFIX_PROTONS,
-  {
-    prefix: 'Testing',
-    iri: 'http://ont.enapso.com/Node1#',
-  },
-];
+import config from './config';
 
 const graphDBEndpoint = new EnapsoGraphDBClient.Endpoint({
-  baseURL: GRAPHDB_BASE_URL,
-  repository: GRAPHDB_REPOSITORY,
-  prefixes: DEFAULT_PREFIXES,
+  baseURL: config.GRAPHDB_BASE_URL,
+  repository: config.GRAPHDB_REPOSITORY,
+  prefixes: config.DEFAULT_PREFIXES,
 });
 
 const getName = (id: string): string => {
@@ -73,7 +56,7 @@ const removeDuplicates = (ontologies: Array<Ontology>, queriedName: string): Arr
 
 export const login = (): void => {
   graphDBEndpoint
-    .login(GRAPHDB_USERNAME, GRAPHDB_PASSWORD)
+    .login(config.GRAPHDB_USERNAME, config.GRAPHDB_PASSWORD)
     .then((result: any) => {
       console.log(result);
     })
