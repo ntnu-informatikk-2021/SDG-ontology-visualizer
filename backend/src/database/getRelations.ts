@@ -31,7 +31,7 @@ const mapRecordToObject = (record: Record): Ontology => {
   };
 };
 
-const removeDuplicates = (ontologies: Array<Ontology>, queriedName: string): Array<Ontology> => {
+const removeDuplicates = (ontologies: Array<Ontology>): Array<Ontology> => {
   const usedNames: Array<string> = [];
   return ontologies.filter((ont) => {
     if (ont.Subject) {
@@ -52,5 +52,5 @@ export default async (className: string): Promise<Array<Ontology>> => {
   const query = getRelations(className);
   const response = await DB.query(query, { transform: 'toJSON' });
   const ontologies = response.records.map(mapRecordToObject).filter(isRelevantOntology);
-  return removeDuplicates(ontologies, className);
+  return removeDuplicates(ontologies);
 };
