@@ -8,7 +8,6 @@ const getRelationsFromClass = async (req, res) => {
     const data = await getRelations(req.params.className);
     res.json(data);
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.log(e);
     res.json({ error: e.message });
   }

@@ -22,7 +22,6 @@ const removeDuplicates = (ontologies: Array<Ontology>): Array<Ontology> => {
       if (usedNames.includes(ont.Object.name)) return false;
       usedNames.push(ont.Object.name);
     } else {
-      // eslint-disable-next-line no-console
       console.log('this shouldnt happen...');
       return false;
     }

@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb-typescript'],
+  extends: ['airbnb-typescript', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -13,6 +13,9 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   ignorePatterns: ['.eslintrc.js'],
-  plugins: ['@typescript-eslint'],
-  rules: {},
+  plugins: ['@typescript-eslint', 'prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'no-console': 'off',
+  },
 };
