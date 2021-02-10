@@ -10,11 +10,11 @@ jobs:
         cd frontend
         yarn add eslint -g 
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
-        npx eslint --ext .jsx,.js,.ts,.tsx src/
+        npx eslint --ext .ts,.tsx src/
         cd ../backend
         yarn
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
-        npx eslint --ext .jsx,.js,.ts,.tsx src/
+        npx eslint --ext .ts,.tsx src/
         cd ..
     - name: Run tests
       run: |
