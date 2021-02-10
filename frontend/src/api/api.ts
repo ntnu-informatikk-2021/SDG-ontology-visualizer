@@ -32,7 +32,7 @@ export default {
     window
       .fetch(`${API_BASE}/${path}`, { method: 'GET', headers: { ...defaultHeaders, ...headers } })
       .then(responseHandler),
-  POST: (path: string, body: RequestInit['body'], headers?: object) =>
+  POST: (path: string, body: object, headers?: object) =>
     window
       .fetch(`${API_BASE}/${path}`, {
         method: 'POST',
@@ -40,7 +40,7 @@ export default {
         body: JSON.stringify(body),
       })
       .then(responseHandler),
-  PUT: (path: string, body: RequestInit['body'], headers?: object) =>
+  PUT: (path: string, body: object, headers?: object) =>
     window
       .fetch(`${API_BASE}/${path}`, {
         method: 'PUT',
@@ -48,7 +48,7 @@ export default {
         body: JSON.stringify(body),
       })
       .then(responseHandler),
-  DELETE: (path: string, body: RequestInit['body'], headers?: object) =>
+  DELETE: (path: string, body: object, headers?: object) =>
     window
       .fetch(`${API_BASE}/${path}`, {
         method: 'DELETE',
