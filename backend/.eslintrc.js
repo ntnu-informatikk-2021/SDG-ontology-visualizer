@@ -3,6 +3,7 @@ module.exports = {
     browser: false,
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: ['airbnb-typescript', 'prettier'],
   parser: '@typescript-eslint/parser',
