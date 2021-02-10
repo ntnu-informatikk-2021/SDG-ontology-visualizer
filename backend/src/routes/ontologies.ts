@@ -9,7 +9,8 @@ const getRelationsFromClass = async (req, res) => {
     res.json(data);
   } catch (e) {
     console.log(e);
-    res.json({ error: e.message });
+    res.status(500);
+    res.json({ message: e.message });
   }
 };
 
