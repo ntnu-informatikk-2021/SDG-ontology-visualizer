@@ -9,7 +9,7 @@ jobs:
       run: | 
         yarn
         cd frontend
-        yarn add -g eslint
+        yarn add eslint -g 
         yarn add eslint-plugin-react --save-dev
         yarn add eslint-config-airbnb-typescript --save-dev
         cd ../backend
