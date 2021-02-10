@@ -9,14 +9,16 @@ jobs:
       run: | 
         yarn
         cd frontend
-        npx eslint . --ext .js,.jsx,.ts,.tsx
+        yarn build
         cd ..
         cd backend
         yarn
-        npx eslint . --ext .js,.jsx,.ts,.tsx
+        yarn build
+        cd ..
     - name: Run tests
       run: |
         cd frontend
         yarn test
         cd ../backend
         yarn test
+      # npx eslint . --ext .js,.jsx,.ts,.tsx
