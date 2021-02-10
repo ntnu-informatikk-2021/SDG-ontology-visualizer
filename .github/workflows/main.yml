@@ -5,14 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
     - name: Run ESLint
       run: | 
+        yarn
         cd frontend
         npx eslint . --ext .js,.jsx,.ts,.tsx
+        cd ..
         cd backend
         yarn
         npx eslint . --ext .js,.jsx,.ts,.tsx
     - name: Run tests
-      run: yarn test
+      run: |
+        cd frontend
+        yarn test
+        cd ../backend
+        yarn test
