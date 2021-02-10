@@ -10,10 +10,12 @@ jobs:
         yarn
         cd frontend
         yarn add -g eslint
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev
+        yarn add eslint-plugin-react --save-dev
+        yarn add eslint-config-airbnb-typescript --save-dev
         cd ../backend
         yarn
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev
+        yarn add eslint-plugin-react --save-dev
+        yarn add eslint-config-airbnb-typescript --save-dev
         cd ..
     - name: Run tests
       run: |
