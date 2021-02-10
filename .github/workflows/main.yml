@@ -9,11 +9,11 @@ jobs:
       run: | 
         yarn
         cd frontend
-        yarn build
-        cd ..
-        cd backend
+        yarn add -g eslint
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev
+        cd ../backend
         yarn
-        yarn build
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev
         cd ..
     - name: Run tests
       run: |
