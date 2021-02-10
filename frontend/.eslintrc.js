@@ -1,6 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   plugins: ['@typescript-eslint'],
+  ignorePatterns: ['.eslintrc.js'],
   parserOptions: {
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
@@ -8,6 +9,7 @@ module.exports = {
       jsx: true, // Allows for the parsing of JSX
     },
     project: ['tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
   settings: {
     react: {
