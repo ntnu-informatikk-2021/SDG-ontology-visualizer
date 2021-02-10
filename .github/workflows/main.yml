@@ -8,6 +8,11 @@ jobs:
     - name: Install modules
       run: yarn
     - name: Run ESLint
-      run: npx eslint . --ext .js,.jsx,.ts,.tsx
+      run: | 
+        cd frontend
+        npx eslint . --ext .js,.jsx,.ts,.tsx
+        cd backend
+        yarn
+        npx eslint . --ext .js,.jsx,.ts,.tsx
     - name: Run tests
       run: yarn test
