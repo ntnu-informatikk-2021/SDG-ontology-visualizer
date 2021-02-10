@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Node, Ontology } from './types';
 
-const initialNode = {
+const initialNode: Node = {
   name: 'FormanChardonnay',
   id: 'http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay',
 };
