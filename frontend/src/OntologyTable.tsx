@@ -20,7 +20,9 @@ const renderOntology = (
   <tr>
     <td>
       {relatedOntology.Subject ? (
-        <a onClick={() => onClick(relatedOntology.Subject)}>{relatedOntology.Subject.name}</a>
+        <a onClick={() => onClick(relatedOntology.Subject!)} aria-hidden="true">
+          {relatedOntology.Subject.name}
+        </a>
       ) : (
         <span>{selectedNode.name}</span>
       )}
@@ -30,7 +32,7 @@ const renderOntology = (
     </td>
     <td>
       {relatedOntology.Object ? (
-        <a onClick={() => onClick(relatedOntology.Object)}>{relatedOntology.Object.name}</a>
+        <a onClick={() => onClick(relatedOntology.Object!)}>{relatedOntology.Object.name}</a>
       ) : (
         <span>{selectedNode.name}</span>
       )}

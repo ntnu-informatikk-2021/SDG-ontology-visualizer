@@ -8,7 +8,7 @@ export type Edge = {
   name: string;
 };
 export type Ontology = {
-  Subject: Node;
-  Object: Node;
+  Subject: Node | null;
+  Object: Node | null;
   Predicate: Edge;
 };
