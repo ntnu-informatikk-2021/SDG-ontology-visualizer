@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getRelations } from './api/ontologies';
-import { Node, Ontology } from './types';
+import { getRelations } from '../api/ontologies';
+import { Node, Ontology } from '../types';
 
 const initialNode: Node = {
   name: 'FormanChardonnay',

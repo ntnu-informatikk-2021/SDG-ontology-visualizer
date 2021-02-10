@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import OntologyTable from './OntologyTable';
+import OntologyTable from './components/OntologyTable';
 
 const App = () => (
   <div className="App">
