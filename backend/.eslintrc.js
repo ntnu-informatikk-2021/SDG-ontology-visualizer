@@ -10,7 +10,9 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
     project: ['tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
+  ignorePatterns: ['.eslintrc.js'],
   plugins: ['@typescript-eslint'],
   rules: {},
 };
