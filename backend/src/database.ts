@@ -100,31 +100,3 @@ export const getRelations = async (className: string): Promise<Array<Ontology>> 
   const foo = response.records.map(mapRecordToObject).filter(isRelevantOntology);
   return removeDuplicates(foo, className);
 };
-
-export const readAllClasses = async () => {
-  const query = `
-        select ?class
-        where {
-            ?class a owl:Class .
-        }`;
-
-  return await graphDBEndpoint.query(query, { transform: 'toJSON' });
-};
-
-export const insertClass = () => {
-  const query = `
-        insert data {
-            graph <${GRAPHDB_CONTEXT_TEST}> {
-                Testing:Hello rdf:type owl:Class
-            }
-        }`;
-
-  graphDBEndpoint
-    .update(query)
-    .then((result: any) => {
-      console.log('inserted a class :\n' + JSON.stringify(result, null, 2));
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
-};
