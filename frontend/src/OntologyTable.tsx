@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { getRelations } from './api/ontologies';
 import { Node, Ontology } from './types';
 
 const initialNode: Node = {
   name: 'FormanChardonnay',
   id: 'http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay',
-};
-
-const getData = async (className: string) => {
-  const url = `http://localhost:3001/api/ontologies/%3A${className}`;
-  const bar = await fetch(url).then((foo) => foo.json());
-  return bar;
 };
 
 const renderOntology = (
@@ -46,7 +41,7 @@ const OntologyTable: React.FC = () => {
 
   const clickNode = async (node: Node) => {
     setSelectedNode(node);
-    const newOntologies = await getData(node.name);
+    const newOntologies = await getRelations(node.name);
     setOntologies(newOntologies);
   };
 
