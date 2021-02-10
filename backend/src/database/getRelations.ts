@@ -1,18 +1,7 @@
 import DB from './index';
-import { Ontology, Node, Edge, Record, OntologyEntity } from '../types';
+import { Ontology } from '../types';
 import getRelations from './queries/getRelations';
-
-const parseIRI = (id: string): string => {
-  const regex = /^[^_]*#/;
-  return id.replace(regex, '');
-};
-
-const mapIdToOntologyEntity = (id: string): OntologyEntity => {
-  return {
-    name: parseIRI(id),
-    id,
-  };
-};
+import { mapRecordToOntology } from '../common/database';
 
 const isRelevantOntology = (ontology: Ontology): boolean => {
   if (!ontology || !ontology.Predicate || !(ontology.Subject || ontology.Object)) return false;
@@ -21,14 +10,6 @@ const isRelevantOntology = (ontology: Ontology): boolean => {
   if (!ontologyEntity || ontologyEntity.id.includes('node')) return false;
   if (ontology.Predicate.id.includes('hasWineDescriptor')) return false;
   return true;
-};
-
-const mapRecordToObject = (record: Record): Ontology => {
-  return {
-    Subject: record.Subject ? mapIdToOntologyEntity(record.Subject) : null,
-    Object: record.Object ? mapIdToOntologyEntity(record.Object) : null,
-    Predicate: mapIdToOntologyEntity(record.Predicate),
-  };
 };
 
 const removeDuplicates = (ontologies: Array<Ontology>): Array<Ontology> => {
@@ -51,6 +32,6 @@ const removeDuplicates = (ontologies: Array<Ontology>): Array<Ontology> => {
 export default async (className: string): Promise<Array<Ontology>> => {
   const query = getRelations(className);
   const response = await DB.query(query, { transform: 'toJSON' });
-  const ontologies = response.records.map(mapRecordToObject).filter(isRelevantOntology);
+  const ontologies = response.records.map(mapRecordToOntology).filter(isRelevantOntology);
   return removeDuplicates(ontologies);
 };
