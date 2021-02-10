@@ -5,17 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run ESLint
-      run: | 
-        yarn
+    - name: Build
+      run: |
         cd frontend
-        yarn add eslint -g 
-        yarn add eslint-plugin-react --save-dev
-        yarn add eslint-config-airbnb-typescript --save-dev
+        yarn
+        yarn build
         cd ../backend
         yarn
-        yarn add eslint-plugin-react --save-dev
-        yarn add eslint-config-airbnb-typescript --save-dev
+        yarn build
+    - name: Run ESLint
+      run: | 
+        cd frontend
+        yarn add eslint -g 
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
+        cd ../backend
+        yarn
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
         cd ..
     - name: Run tests
       run: |
@@ -23,4 +28,3 @@ jobs:
         yarn test
         cd ../backend
         yarn test
-      # npx eslint . --ext .js,.jsx,.ts,.tsx
