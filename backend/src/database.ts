@@ -1,4 +1,3 @@
-// const { EnapsoGraphDBClient } = require("@innotrade/enapso-graphdb-client");
 import { EnapsoGraphDBClient } from '@innotrade/enapso-graphdb-client';
 import { Edge, Node, Ontology, Record } from 'types';
 
