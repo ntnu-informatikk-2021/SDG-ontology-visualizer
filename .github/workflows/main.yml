@@ -13,7 +13,7 @@ jobs:
       with: 
         working-directory: frontend 
       
-    - name: Add ESlint frontend
+    - name: Lint frontend
       run: | 
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
         yarn lint
@@ -28,7 +28,7 @@ jobs:
       with: 
         working-directory: backend 
         
-    - name: Add ESlint backend
+    - name: Lint backend
       run: |
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
         yarn lint
