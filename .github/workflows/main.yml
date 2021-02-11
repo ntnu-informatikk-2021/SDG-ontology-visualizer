@@ -12,6 +12,7 @@ jobs:
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
         npx eslint --ext .ts,.tsx src/
         cd ../backend
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
         npx eslint --ext .ts,.tsx src/
         cd ..
     - name: Run tests
