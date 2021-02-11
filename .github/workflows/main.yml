@@ -30,6 +30,7 @@ jobs:
         
     - name: Lint backend
       run: |
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
         yarn lint
       working-directory: backend
     
