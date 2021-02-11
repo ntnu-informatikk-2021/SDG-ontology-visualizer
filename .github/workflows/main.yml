@@ -10,9 +10,7 @@ jobs:
       run: yarn add eslint -g
     
     - uses: c-hive/gha-yarn-cache@v1
-      with: 
-        working-directory: frontend 
-      
+
     - name: Lint frontend
       run: | 
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
@@ -25,8 +23,6 @@ jobs:
       working-directory: frontend
       
     - uses: c-hive/gha-yarn-cache@v1
-      with: 
-        working-directory: backend 
         
     - name: Lint backend
       run: |
