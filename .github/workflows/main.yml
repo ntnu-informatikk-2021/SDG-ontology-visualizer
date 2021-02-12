@@ -1,23 +1,37 @@
 name: CI
-on: push
+on: 
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run ESLint
+      
+    - name: Install ESlint globally
+      run: yarn add eslint -g
+    
+    - uses: c-hive/gha-yarn-cache@v1
+
+    - name: Lint frontend
       run: | 
-        cd frontend
-        yarn add eslint -g
         yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
-        npx eslint --ext .ts,.tsx src/
-        cd ../backend
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
-        npx eslint --ext .ts,.tsx src/
-        cd ..
-    - name: Run tests
+        yarn lint
+      working-directory: frontend
+    
+    - name: Test frontend
       run: |
-        cd frontend
         yarn test
-        cd ../backend
+      working-directory: frontend
+        
+    - name: Lint backend
+      run: |
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
+        yarn lint
+      working-directory: backend
+    
+    - name: Test backend
+      run: | 
         yarn test
+      working-directory: backend
