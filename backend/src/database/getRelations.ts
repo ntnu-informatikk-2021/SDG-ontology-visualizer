@@ -1,5 +1,5 @@
 import DB from './index';
-import { Ontology } from '../types';
+import { Ontology } from '../types/types';
 import getRelations from './queries/getRelations';
 import { mapRecordToOntology } from '../common/database';
 
