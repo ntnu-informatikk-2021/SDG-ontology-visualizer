@@ -1,4 +1,4 @@
-import { OntologyEntity, Record, Ontology } from '../types';
+import { OntologyEntity, Record, Ontology } from '../types/types';
 
 export const parseIRI = (id: string): string => {
   const regex = /^[^_]*#/;

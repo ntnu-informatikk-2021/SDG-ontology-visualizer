@@ -14,9 +14,10 @@
     "esModuleInterop": true,
     /* Advanced Options */
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": [ "./src/types", "./node_modules/@types"]
   },
   "lib": ["es2015"],
   "include": ["src/**/*", "decs.d.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "typings"]
 }
