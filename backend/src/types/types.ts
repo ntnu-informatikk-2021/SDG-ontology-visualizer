@@ -13,7 +13,7 @@ export interface Edge extends OntologyEntity {}
 export type Ontology = {
   Subject: Node | null;
   Object: Node | null;
-  Predicate: Edge;
+  Predicate: Edge | null;
 };
 
 export type Record = {

@@ -5,7 +5,7 @@ const router = Router();
 
 const getRelationsFromClass = async (req, res) => {
   try {
-    const data = await getRelations(req.params.className);
+    const data = await getRelations(req.params.classId);
     res.json(data);
   } catch (e) {
     console.log(e);
@@ -14,6 +14,6 @@ const getRelationsFromClass = async (req, res) => {
   }
 };
 
-router.get('/:className', getRelationsFromClass);
+router.get('/relations/:classId', getRelationsFromClass);
 
 export default router;
