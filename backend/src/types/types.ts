@@ -1,4 +1,7 @@
+import { Prefix } from '@innotrade/enapso-graphdb-client';
+
 export type OntologyEntity = {
+  prefix: Prefix;
   id: string;
   name: string;
 };
