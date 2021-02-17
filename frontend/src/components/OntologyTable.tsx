@@ -3,6 +3,10 @@ import { getRelations } from '../api/ontologies';
 import { Node, Ontology } from '../types';
 
 const initialNode: Node = {
+  prefix: {
+    prefix: 'wine',
+    iri: 'http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#',
+  },
   name: 'FormanChardonnay',
   id: 'http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay',
 };
