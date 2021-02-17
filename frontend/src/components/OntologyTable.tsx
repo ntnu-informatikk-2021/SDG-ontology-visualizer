@@ -41,7 +41,7 @@ const OntologyTable: React.FC = () => {
 
   const clickNode = async (node: Node) => {
     setSelectedNode(node);
-    const newOntologies = await getRelations(node.name);
+    const newOntologies = await getRelations(node.id);
     setOntologies(newOntologies);
   };
 
