@@ -2,7 +2,9 @@ import { OntologyEntity, Record, Ontology } from '../types/types';
 
 export const parseIRI = (id: string): string => {
   const regex = /^[^_]*#/;
-  return id.replace(regex, '');
+  const name = id.replace(regex, '');
+  if (!name || name === id) return '';
+  return name;
 };
 
 export const mapIdToOntologyEntity = (id: string): OntologyEntity => ({
