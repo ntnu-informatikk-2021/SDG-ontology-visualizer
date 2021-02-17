@@ -1,3 +1,4 @@
+import { Prefix } from '@innotrade/enapso-graphdb-client';
 import { OntologyEntity, Record, Ontology } from '../types/types';
 
 export const parseIRI = (id: string): string => {
@@ -17,3 +18,8 @@ export const mapRecordToOntology = (record: Record): Ontology => ({
   Object: record.Object ? mapIdToOntologyEntity(record.Object) : null,
   Predicate: mapIdToOntologyEntity(record.Predicate),
 });
+
+export const parsePrefixesToQuery = (...prefixes: Prefix[]): string => {
+  const strings = prefixes.map((p) => `PREFIX ${p.prefix}: <${p.iri}>`);
+  return strings.join('\n');
+};
