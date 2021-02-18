@@ -13,26 +13,8 @@
   }
 }
 
-a {
-  margin-right: 32px;
-  color: blue;
-}
-
 a:hover {
   cursor: pointer;
-}
-
-span {
-  margin-right: 32px;
-}
-
-table,
-th {
-  border: 1px solid black;
-}
-
-th {
-  background-color: #eee;
 }
 
 .App-header {
