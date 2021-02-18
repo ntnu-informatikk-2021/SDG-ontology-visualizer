@@ -1,3 +1,4 @@
+import { Box, Container, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { getRelations } from '../api/ontologies';
 import { Node, Ontology } from '../types';
@@ -16,8 +17,8 @@ const renderOntology = (
   relatedOntology: Ontology,
   onClick: (node: Node) => void,
 ) => (
-  <tr>
-    <td>
+  <Tr>
+    <Td>
       {relatedOntology.Subject ? (
         <a onClick={() => onClick(relatedOntology.Subject!)} aria-hidden="true">
           {relatedOntology.Subject.name}
@@ -25,18 +26,18 @@ const renderOntology = (
       ) : (
         <span>{selectedNode.name}</span>
       )}
-    </td>
-    <td>
+    </Td>
+    <Td>
       <span>{relatedOntology.Predicate.name}</span>
-    </td>
-    <td>
+    </Td>
+    <Td>
       {relatedOntology.Object ? (
         <a onClick={() => onClick(relatedOntology.Object!)}>{relatedOntology.Object.name}</a>
       ) : (
         <span>{selectedNode.name}</span>
       )}
-    </td>
-  </tr>
+    </Td>
+  </Tr>
 );
 
 const OntologyTable: React.FC = () => {
@@ -54,16 +55,30 @@ const OntologyTable: React.FC = () => {
   }, []);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>Predicate</th>
-          <th>Object</th>
-        </tr>
-      </thead>
-      {ontologies && ontologies.map((ont) => renderOntology(selectedNode, ont, clickNode))}
-    </table>
+    <Container paddingTop={20} centerContent>
+      <Box
+        borderWidth="1g"
+        borderRadius={5}
+        p={0}
+        w="150%"
+        overflow="hidden"
+        border="2px"
+        borderColor="linkedin.400"
+      >
+        <Table variant="striped" colorScheme="linkedin" margin={1}>
+          <Thead>
+            <Tr>
+              <Th>Subject</Th>
+              <Th>Predicate</Th>
+              <Th>Object</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {ontologies && ontologies.map((ont) => renderOntology(selectedNode, ont, clickNode))}
+          </Tbody>
+        </Table>
+      </Box>
+    </Container>
   );
 };
 
