@@ -1,4 +1,7 @@
+import { Prefix } from '@innotrade/enapso-graphdb-client';
+
 export type OntologyEntity = {
+  prefix: Prefix;
   id: string;
   name: string;
 };
@@ -10,7 +13,7 @@ export interface Edge extends OntologyEntity {}
 export type Ontology = {
   Subject: Node | null;
   Object: Node | null;
-  Predicate: Edge;
+  Predicate: Edge | null;
 };
 
 export type Record = {

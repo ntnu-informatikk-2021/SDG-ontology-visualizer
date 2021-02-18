@@ -29,8 +29,8 @@ const removeDuplicates = (ontologies: Array<Ontology>): Array<Ontology> => {
   });
 };
 
-export default async (className: string): Promise<Array<Ontology>> => {
-  const query = getRelations(className);
+export default async (classId: string): Promise<Array<Ontology>> => {
+  const query = getRelations(classId);
   const response = await DB.query(query, { transform: 'toJSON' });
   const ontologies = response.records.map(mapRecordToOntology).filter(isRelevantOntology);
   return removeDuplicates(ontologies);
