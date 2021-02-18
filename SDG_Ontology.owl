@@ -3380,20 +3380,20 @@ English: (A city class, created for possible future development in discovering c
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He">
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet">
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mennske"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -5335,34 +5335,6 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mennske -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mennske">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_helse_for_alle"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <SDG:description xml:lang="norwigan">Den sosiale bunnlinjen handler om bedriften sin påvirkning på mennesker, internt i bedriften og eksternt som for kunder, lokalsamfunn og lengre ut i bedriftens verdikjede.</SDG:description>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sosialt</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Method -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Method">
@@ -5789,7 +5761,7 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
@@ -5830,7 +5802,7 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator"/>
@@ -6984,6 +6956,34 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_helse_for_alle"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <SDG:description xml:lang="norwigan">Den sosiale bunnlinjen handler om bedriften sin påvirkning på mennesker, internt i bedriften og eksternt som for kunder, lokalsamfunn og lengre ut i bedriftens verdikjede.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sosialt</rdfs:label>
     </owl:Class>
     
 
@@ -8764,6 +8764,29 @@ English: (For inital development, expansion of this class along with possible co
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/2/0/7/1/831702-60-nor-NO/M%C3%A5l%201%20RGB.png"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">1</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Bærekraftsmål 1 har som mål å utrydde ekstrem fattigdom og halvere andel mennesker som lever i relativ fattigdom. Andel mennesker som lever i ekstrem fattigdom har gått drastisk ned siden 1990, men utviklingen vi ser i verden i dag går i feil retning: Fattige blir fattigere og rike blir rikere, og dette ser vi også i Norge.</SDG:description>
+        <SDG:hasExactSynonym rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Bærekraftsmål 1</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utrydde fattigdom</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_sult -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_sult">
@@ -10039,7 +10062,7 @@ English: (For inital development, expansion of this class along with possible co
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
@@ -10054,29 +10077,6 @@ English: (For inital development, expansion of this class along with possible co
         </rdfs:subClassOf>
         <SDG:description xml:lang="norwegian">Den økonomiske bunnlinjen representerer den økoomiske framgangen i samfunnet.</SDG:description>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Økonomi</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mennske"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/2/0/7/1/831702-60-nor-NO/M%C3%A5l%201%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">1</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Bærekraftsmål 1 har som mål å utrydde ekstrem fattigdom og halvere andel mennesker som lever i relativ fattigdom. Andel mennesker som lever i ekstrem fattigdom har gått drastisk ned siden 1990, men utviklingen vi ser i verden i dag går i feil retning: Fattige blir fattigere og rike blir rikere, og dette ser vi også i Norge.</SDG:description>
-        <SDG:hasExactSynonym rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utrydde fattigdom</rdfs:label>
     </owl:Class>
     
 
@@ -10677,17 +10677,6 @@ English: (For inital development, expansion of this class along with possible co
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#AirQualityMeasurment -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#AirQualityMeasurment">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#MockAirQuality"/>
-        <SDG:dato rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"></SDG:dato>
-        <SDG:plassering>Lade</SDG:plassering>
-        <rdfs:label>Luftmåling</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Aktualitet -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Aktualitet">
@@ -10699,26 +10688,13 @@ god skikk at statistikkalenderen er annonsert på forhånd.</SDG:beskrivelse>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2020_halvere_talet_på_dødsfall_og_skadar_i_verda_som_skriv_seg_frå_trafikkulykker -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftmåling -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2020_halvere_talet_på_dødsfall_og_skadar_i_verda_som_skriv_seg_frå_trafikkulykker">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Innan 2020 halvere talet på dødsfall og skadar i verda som skriv seg frå trafikkulykker</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_redusere_mødredøyinga_i_verda_til_under_70_per_100_000_levandefødde -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_redusere_mødredøyinga_i_verda_til_under_70_per_100_000_levandefødde">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.1</SDG:UN_SDG_Target_ID>
-        <SDG:description>Innan 2030 redusere mødredøyinga i verda til under 70 per 100 000 levandefødde</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.1</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftmåling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#MockAirQuality"/>
+        <SDG:dato rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"></SDG:dato>
+        <SDG:plassering>Lade</SDG:plassering>
+        <rdfs:label>Luftmåling</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10761,18 +10737,6 @@ hverandre.</SDG:beskrivelse>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Styrkje_gjennomføringa_av_rammekonvensjonen_frå_Verdshelseorganisasjonen_om_førebygging_av_tobakksskadar_i_alle_land -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Styrkje_gjennomføringa_av_rammekonvensjonen_frå_Verdshelseorganisasjonen_om_førebygging_av_tobakksskadar_i_alle_land">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID>3.a</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Styrkje gjennomføringa av rammekonvensjonen frå Verdshelseorganisasjonen om førebygging av tobakksskadar i alle land</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label>3.a</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Tilgjengelighet_og_klarhet -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Tilgjengelighet_og_klarhet">
@@ -10784,142 +10748,118 @@ Statistikken er lett tilgjengelig, med tilstrekkelig metadata og veiledning.</SD
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
+        <SDG:UN_SDG_Target_ID>1.a</SDG:UN_SDG_Target_ID>
+        <SDG:description>Sikre ei vesentleg mobilisering av ressursar frå mange ulike kjelder, mellom anna gjennom styrkt utviklingssamarbeid, for å gje utviklingslanda, særleg dei minst utvikla landa, tilstrekkelege og føreseielege middel til å gjennomføre program og politikk for å utrydde alle former for fattigdom</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
+        <rdfs:label>1.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
+        <SDG:UN_SDG_Target_ID>1.b</SDG:UN_SDG_Target_ID>
+        <SDG:description>Opprette gode politiske rammeverk på nasjonalt, regionalt og internasjonalt nivå basert på utviklingsstrategiar som gagnar dei fattige og tek omsyn til kjønnsperspektivet, med sikte på å auke investeringar i tiltak som motverkar fattigdom</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
+        <rdfs:label>1.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
         <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.1</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse>Innan 2030 utrydde all ekstrem fattigdom</SDG:beskrivelse>
+        <SDG:description>Innan 2030 utrydde all ekstrem fattigdom</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.1</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_byggje_opp_motstandskrafta_til_fattige_og_personar_i_utsette_situasjonar,_slik_at_dei_blir_mindre_utsette_og_sårbare_for_klimarelaterte_ekstremhendingar_og_andre_økonomiske,_sosiale_og_miljømessige_påkjenningar_og_katastrofar -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.2 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_byggje_opp_motstandskrafta_til_fattige_og_personar_i_utsette_situasjonar,_slik_at_dei_blir_mindre_utsette_og_sårbare_for_klimarelaterte_ekstremhendingar_og_andre_økonomiske,_sosiale_og_miljømessige_påkjenningar_og_katastrofar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse>Innan 2030 byggje opp motstandskrafta til fattige og personar i utsette situasjonar, slik at dei blir mindre utsette og sårbare for klimarelaterte ekstremhendingar og andre økonomiske, sosiale og miljømessige påkjenningar og katastrofar</SDG:beskrivelse>
-        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_få_slutt_på_dødsfall_som_kan_forhindrast_blant_nyfødde_og_barn_under_fem_år,_med_eit_felles_mål_for_alle_land_om_å_redusere_døyinga_blant_nyfødde_til_høgst_12_per_1000_levandefødde_og_til_høgst_25_per_1000_levandefødde_blant_barn_under_fem_år -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_få_slutt_på_dødsfall_som_kan_forhindrast_blant_nyfødde_og_barn_under_fem_år,_med_eit_felles_mål_for_alle_land_om_å_redusere_døyinga_blant_nyfødde_til_høgst_12_per_1000_levandefødde_og_til_høgst_25_per_1000_levandefødde_blant_barn_under_fem_år">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</SDG:UN_SDG_Target_ID>
-        <SDG:description>Innan 2030 få slutt på dødsfall som kan forhindrast blant nyfødde og barn under fem år, med eit felles mål for alle land om å redusere døyinga blant nyfødde til høgst 12 per 1000 levandefødde og til høgst 25 per 1000 levandefødde blant barn under fem år</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_minst_halvere_prosentdelen_av_menn,_kvinner_og_barn_i_alle_aldrar_som_lever_ifattigdom,_i_samsvar_med_nasjonale_definisjonar -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_minst_halvere_prosentdelen_av_menn,_kvinner_og_barn_i_alle_aldrar_som_lever_ifattigdom,_i_samsvar_med_nasjonale_definisjonar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
         <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse>Innan 2030 minst halvere prosentdelen av menn, kvinner og barn i alle aldrar som lever ifattigdom, i samsvar med nasjonale definisjonar</SDG:beskrivelse>
+        <SDG:description>Innan 2030 minst halvere prosentdelen av menn, kvinner og barn i alle aldrar som lever ifattigdom, i samsvar med nasjonale definisjonar</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_redusere_prematur_døying_av_ikkje-smittsame_sjukdommar_med_ein_tredel_gjennom_førebygging_og_behandling,_og_fremje_mental_helse_og_livskvalitet -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.3 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_redusere_prematur_døying_av_ikkje-smittsame_sjukdommar_med_ein_tredel_gjennom_førebygging_og_behandling,_og_fremje_mental_helse_og_livskvalitet">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Innan 2030 redusere prematur døying av ikkje-smittsame sjukdommar med ein tredel gjennom førebygging og behandling, og fremje mental helse og livskvalitet</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 4</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_redusere_talet_på_dødsfall_og_sjukdomstilfelle_på_grunn_av_farlege_kjemikaliar_og_forureina_luft,_vatn_og_jord_vesentleg -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_redusere_talet_på_dødsfall_og_sjukdomstilfelle_på_grunn_av_farlege_kjemikaliar_og_forureina_luft,_vatn_og_jord_vesentleg">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.9</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Innan 2030 redusere talet på dødsfall og sjukdomstilfelle på grunn av farlege kjemikaliar og forureina luft, vatn og jord vesentleg</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.9</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_sikre_allmenn_tilgang_til_tenester_som_er_knytte_til_seksuell_og_reproduktiv_helse,_inkludert_familieplanlegging_og_tilhøyrande_informasjon_og_opplæring,_og_sikre_at_reproduktiv_helse_blir_innarbeidd_i_nasjonale_strategiar_og_program -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_sikre_allmenn_tilgang_til_tenester_som_er_knytte_til_seksuell_og_reproduktiv_helse,_inkludert_familieplanlegging_og_tilhøyrande_informasjon_og_opplæring,_og_sikre_at_reproduktiv_helse_blir_innarbeidd_i_nasjonale_strategiar_og_program">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.7</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Innan 2030 sikre allmenn tilgang til tenester som er knytte til seksuell og reproduktiv helse, inkludert familieplanlegging og tilhøyrande informasjon og opplæring, og sikre at reproduktiv helse blir innarbeidd i nasjonale strategiar og program</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.7</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_sikre_at_alle_menn_og_kvinner,_særleg_fattige_og_sårbare,_har_lik_rett_til_økonomiske_ressursar_og_tilgang_til_grunnleggjande_tenester,_til_å_eige_og_kontrollere_jord_og_andre_former_for_eigedom,_og_til_arv,_naturressursar,_ny_teknologi_og_finansielle_tenester,_inkludert_mikrofinansiering -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_sikre_at_alle_menn_og_kvinner,_særleg_fattige_og_sårbare,_har_lik_rett_til_økonomiske_ressursar_og_tilgang_til_grunnleggjande_tenester,_til_å_eige_og_kontrollere_jord_og_andre_former_for_eigedom,_og_til_arv,_naturressursar,_ny_teknologi_og_finansielle_tenester,_inkludert_mikrofinansiering">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse>Innan 2030 sikre at alle menn og kvinner, særleg fattige og sårbare, har lik rett til økonomiske ressursar og tilgang til grunnleggjande tenester, til å eige og kontrollere jord og andre former for eigedom, og til arv, naturressursar, ny teknologi og finansielle tenester, inkludert mikrofinansiering</SDG:beskrivelse>
-        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_stanse_epidemiane_av_aids,_tuberkulose,_malaria_og_neglisjerte_tropiske_sjukdommar,_og_motverke_hepatitt,_vassborne_sjukdommar_og_andre_smittsame_sjukdommar -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innan_2030_stanse_epidemiane_av_aids,_tuberkulose,_malaria_og_neglisjerte_tropiske_sjukdommar,_og_motverke_hepatitt,_vassborne_sjukdommar_og_andre_smittsame_sjukdommar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Innan 2030 stanse epidemiane av aids, tuberkulose, malaria og neglisjerte tropiske sjukdommar, og motverke hepatitt, vassborne sjukdommar og andre smittsame sjukdommar</SDG:description>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innføre_nasjonalt_tilpassa_sosiale_velferdsordningar_og_tiltak_for_alle,_inkludert_minstestandardar,_og_innan_2030_oppnå_ei_vesentleg_dekning_av_fattige_og_sårbare -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Innføre_nasjonalt_tilpassa_sosiale_velferdsordningar_og_tiltak_for_alle,_inkludert_minstestandardar,_og_innan_2030_oppnå_ei_vesentleg_dekning_av_fattige_og_sårbare">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
         <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.3</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innføre nasjonalt tilpassa sosiale velferdsordningar og tiltak for alle, inkludert minstestandardar, og innan 2030 oppnå ei vesentleg dekning av fattige og sårbare</SDG:beskrivelse>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innføre nasjonalt tilpassa sosiale velferdsordningar og tiltak for alle, inkludert minstestandardar, og innan 2030 oppnå ei vesentleg dekning av fattige og sårbare</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.3</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Oppnå_allmenn_dekning_av_helsetenester,_inkludert_ordningar_som_vernar_mot_økonomiske_konsekvensar,_og_allmenn_tilgang_til_grunnleggjande_og_gode_helsetenester_og_trygge,_verksame_og_nødvendige_medisinar_og_vaksinar_av_god_kvalitet_og_til_ein_overkomeleg_pris -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.4 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Oppnå_allmenn_dekning_av_helsetenester,_inkludert_ordningar_som_vernar_mot_økonomiske_konsekvensar,_og_allmenn_tilgang_til_grunnleggjande_og_gode_helsetenester_og_trygge,_verksame_og_nødvendige_medisinar_og_vaksinar_av_god_kvalitet_og_til_ein_overkomeleg_pris">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse xml:lang="norwegian">Oppnå allmenn dekning av helsetenester, inkludert ordningar som vernar mot økonomiske konsekvensar, og allmenn tilgang til grunnleggjande og gode helsetenester og trygge, verksame og nødvendige medisinar og vaksinar av god kvalitet og til ein overkomeleg pris</SDG:beskrivelse>
-        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</SDG:UN_SDG_Target_ID>
+        <SDG:description>Innan 2030 sikre at alle menn og kvinner, særleg fattige og sårbare, har lik rett til økonomiske ressursar og tilgang til grunnleggjande tenester, til å eige og kontrollere jord og andre former for eigedom, og til arv, naturressursar, ny teknologi og finansielle tenester, inkludert mikrofinansiering</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Oppnå_ein_vesentleg_auke_i_finansieringa_av_helsetenester_og_rekruttering,_utvikling_og_opplæring_av_helsepersonell_i_utviklingsland,_særleg_i_dei_minst_utvikla_landa_og_små_utviklingsøystatar,_og_arbeide_for_at_slikt_personell_blir_verande_i_landa -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.5 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Oppnå_ein_vesentleg_auke_i_finansieringa_av_helsetenester_og_rekruttering,_utvikling_og_opplæring_av_helsepersonell_i_utviklingsland,_særleg_i_dei_minst_utvikla_landa_og_små_utviklingsøystatar,_og_arbeide_for_at_slikt_personell_blir_verande_i_landa">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</SDG:UN_SDG_Target_ID>
+        <SDG:description>Innan 2030 byggje opp motstandskrafta til fattige og personar i utsette situasjonar, slik at dei blir mindre utsette og sårbare for klimarelaterte ekstremhendingar og andre økonomiske, sosiale og miljømessige påkjenningar og katastrofar</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID>3.a</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Styrkje gjennomføringa av rammekonvensjonen frå Verdshelseorganisasjonen om førebygging av tobakksskadar i alle land</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label>3.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID>3.b</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Støtte forsking på – og utvikling av – vaksinar og medisinar mot smittsame og ikkje-smittsame sjukdommar som primært rammar utviklingsland, sørgje for tilgang til nødvendige medisinar og vaksinar til ein overkomeleg pris, i samsvar med Doha-erklæringa om TRIPS-avtalen og folkehelse, som stadfestar at utviklingslanda har rett til fullt ut å nytte føresegnene om høvet til å verne om folkehelsa og særleg sørgje for tilgang til medisinar til alle, i avtalen om handelsrelaterte aspekt ved immaterielle rettar</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label>3.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
         <SDG:UN_SDG_Target_ID>3.c</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Oppnå ein vesentleg auke i finansieringa av helsetenester og rekruttering, utvikling og opplæring av helsepersonell i utviklingsland, særleg i dei minst utvikla landa og små utviklingsøystatar, og arbeide for at slikt personell blir verande i landa</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
@@ -10928,34 +10868,58 @@ Statistikken er lett tilgjengelig, med tilstrekkelig metadata og veiledning.</SD
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Opprette_gode_politiske_rammeverk_på_nasjonalt,_regionalt_og_internasjonalt_nivå_basert_på_utviklingsstrategiar_som_gagnar_dei_fattige_og_tek_omsyn_til_kjønnsperspektivet,_med_sikte_på_å_auke_investeringar_i_tiltak_som_motverkar_fattigdom -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.1 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Opprette_gode_politiske_rammeverk_på_nasjonalt,_regionalt_og_internasjonalt_nivå_basert_på_utviklingsstrategiar_som_gagnar_dei_fattige_og_tek_omsyn_til_kjønnsperspektivet,_med_sikte_på_å_auke_investeringar_i_tiltak_som_motverkar_fattigdom">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
-        <SDG:UN_SDG_Target_ID>1.b</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse>Opprette gode politiske rammeverk på nasjonalt, regionalt og internasjonalt nivå basert på utviklingsstrategiar som gagnar dei fattige og tek omsyn til kjønnsperspektivet, med sikte på å auke investeringar i tiltak som motverkar fattigdom</SDG:beskrivelse>
-        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label>1.b</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.1</SDG:UN_SDG_Target_ID>
+        <SDG:description>Innan 2030 redusere mødredøyinga i verda til under 70 per 100 000 levandefødde</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.1</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sikre_ei_vesentleg_mobilisering_av_ressursar_frå_mange_ulike_kjelder,_mellom_anna_gjennom_styrkt_utviklingssamarbeid,_for_å_gje_utviklingslanda,_særleg_dei_minst_utvikla_landa,_tilstrekkelege_og_føreseielege_middel_til_å_gjennomføre_program_og_politikk_for_å_utrydde_alle_former_for_fattigdom -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.2 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sikre_ei_vesentleg_mobilisering_av_ressursar_frå_mange_ulike_kjelder,_mellom_anna_gjennom_styrkt_utviklingssamarbeid,_for_å_gje_utviklingslanda,_særleg_dei_minst_utvikla_landa,_tilstrekkelege_og_føreseielege_middel_til_å_gjennomføre_program_og_politikk_for_å_utrydde_alle_former_for_fattigdom">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1._Utrydde_Fattigdom"/>
-        <SDG:UN_SDG_Target_ID>1.a</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse>Sikre ei vesentleg mobilisering av ressursar frå mange ulike kjelder, mellom anna gjennom styrkt utviklingssamarbeid, for å gje utviklingslanda, særleg dei minst utvikla landa, tilstrekkelege og føreseielege middel til å gjennomføre program og politikk for å utrydde alle former for fattigdom</SDG:beskrivelse>
-        <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label>1.a</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</SDG:UN_SDG_Target_ID>
+        <SDG:description>Innan 2030 få slutt på dødsfall som kan forhindrast blant nyfødde og barn under fem år, med eit felles mål for alle land om å redusere døyinga blant nyfødde til høgst 12 per 1000 levandefødde og til høgst 25 per 1000 levandefødde blant barn under fem år</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Styrkje_førebygging_og_behandling_av_rusmiddelmisbruk,_mellom_anna_misbruk_av_narkotiske_stoff_og_skadeleg_bruk_av_alkohol -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.3 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Styrkje_førebygging_og_behandling_av_rusmiddelmisbruk,_mellom_anna_misbruk_av_narkotiske_stoff_og_skadeleg_bruk_av_alkohol">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Innan 2030 stanse epidemiane av aids, tuberkulose, malaria og neglisjerte tropiske sjukdommar, og motverke hepatitt, vassborne sjukdommar og andre smittsame sjukdommar</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Innan 2030 redusere prematur døying av ikkje-smittsame sjukdommar med ein tredel gjennom førebygging og behandling, og fremje mental helse og livskvalitet</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 4</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
         <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Styrkje førebygging og behandling av rusmiddelmisbruk, mellom anna misbruk av narkotiske stoff og skadeleg bruk av alkohol</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
@@ -10964,14 +10928,50 @@ Statistikken er lett tilgjengelig, med tilstrekkelig metadata og veiledning.</SD
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Støtte_forsking_på_–_og_utvikling_av_–_vaksinar_og_medisinar_mot_smittsame_og_ikkje-smittsame_sjukdommar_som_primært_rammar_utviklingsland,_sørgje_for_tilgang_til_nødvendige_medisinar_og_vaksinar_til_ein_overkomeleg_pris,_i_samsvar_med_Doha-erklæringa_om_TRIPS-avtalen_og_folkehelse,_som_stadfestar_at_utviklingslanda_har_rett_til_fullt_ut_å_nytte_føresegnene_om_høvet_til_å_verne_om_folkehelsa_og_særleg_sørgje_for_tilgang_til_medisinar_til_alle,_i_avtalen_om_handelsrelaterte_aspekt_ved_immaterielle_rettar -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.6 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Støtte_forsking_på_–_og_utvikling_av_–_vaksinar_og_medisinar_mot_smittsame_og_ikkje-smittsame_sjukdommar_som_primært_rammar_utviklingsland,_sørgje_for_tilgang_til_nødvendige_medisinar_og_vaksinar_til_ein_overkomeleg_pris,_i_samsvar_med_Doha-erklæringa_om_TRIPS-avtalen_og_folkehelse,_som_stadfestar_at_utviklingslanda_har_rett_til_fullt_ut_å_nytte_føresegnene_om_høvet_til_å_verne_om_folkehelsa_og_særleg_sørgje_for_tilgang_til_medisinar_til_alle,_i_avtalen_om_handelsrelaterte_aspekt_ved_immaterielle_rettar">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_He"/>
-        <SDG:UN_SDG_Target_ID>3.b</SDG:UN_SDG_Target_ID>
-        <SDG:description xml:lang="norwegian">Støtte forsking på – og utvikling av – vaksinar og medisinar mot smittsame og ikkje-smittsame sjukdommar som primært rammar utviklingsland, sørgje for tilgang til nødvendige medisinar og vaksinar til ein overkomeleg pris, i samsvar med Doha-erklæringa om TRIPS-avtalen og folkehelse, som stadfestar at utviklingslanda har rett til fullt ut å nytte føresegnene om høvet til å verne om folkehelsa og særleg sørgje for tilgang til medisinar til alle, i avtalen om handelsrelaterte aspekt ved immaterielle rettar</SDG:description>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Innan 2020 halvere talet på dødsfall og skadar i verda som skriv seg frå trafikkulykker</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label>3.b</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.7</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Innan 2030 sikre allmenn tilgang til tenester som er knytte til seksuell og reproduktiv helse, inkludert familieplanlegging og tilhøyrande informasjon og opplæring, og sikre at reproduktiv helse blir innarbeidd i nasjonale strategiar og program</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</SDG:UN_SDG_Target_ID>
+        <SDG:beskrivelse xml:lang="norwegian">Oppnå allmenn dekning av helsetenester, inkludert ordningar som vernar mot økonomiske konsekvensar, og allmenn tilgang til grunnleggjande og gode helsetenester og trygge, verksame og nødvendige medisinar og vaksinar av god kvalitet og til ein overkomeleg pris</SDG:beskrivelse>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.9</SDG:UN_SDG_Target_ID>
+        <SDG:description xml:lang="norwegian">Innan 2030 redusere talet på dødsfall og sjukdomstilfelle på grunn av farlege kjemikaliar og forureina luft, vatn og jord vesentleg</SDG:description>
+        <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.9</rdfs:label>
     </owl:NamedIndividual>
     
 
