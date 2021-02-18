@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Box, ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import OntologyTable from './components/OntologyTable';
 
 const App = () => (
   <ChakraProvider>
-    <Box h="100vh">
-      <div className="App">
-        <OntologyTable />
-      </div>
-    </Box>
+    <div className="App">
+      <OntologyTable />
+    </div>
   </ChakraProvider>
 );
 
