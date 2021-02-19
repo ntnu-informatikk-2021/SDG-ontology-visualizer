@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-cycle
+import store from '../state/store';
+
 const API_BASE = 'http://localhost:3001/api';
 
 export class ApiError extends Error {
@@ -15,7 +18,9 @@ export class ApiError extends Error {
 const responseHandler = async (res: Response): Promise<any> => {
   if (!res.ok) {
     const body = await res.json();
-    throw new ApiError(res, body);
+    const error = new ApiError(res, body);
+    store.dispatch({ type: 'SET_ERROR', payload: error });
+    throw error;
   }
 
   const json = await res.json();

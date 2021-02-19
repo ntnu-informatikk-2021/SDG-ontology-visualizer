@@ -1,8 +1,6 @@
 import { Box, Container, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import { getRelations } from '../api/ontologies';
-import apiErrorState from '../state/apiErrorState';
 import { Node, Ontology } from '../types';
 
 const initialNode: Node = {
@@ -45,16 +43,14 @@ const renderOntology = (
 const OntologyTable: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState(initialNode);
   const [ontologies, setOntologies] = useState([]);
-  const [, setApiError] = useRecoilState(apiErrorState);
-
   const clickNode = async (node: Node) => {
     setSelectedNode(node);
-    const newOntologies = await getRelations(node.id);
 
-    if (newOntologies.length === 0) {
-      setApiError(true);
-    } else {
+    try {
+      const newOntologies = await getRelations(node.id);
       setOntologies(newOntologies);
+    } catch (e) {
+      console.log(e);
     }
   };
 

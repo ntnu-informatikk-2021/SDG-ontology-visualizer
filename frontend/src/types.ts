@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-cycle
+import { ApiError } from './api/api';
+
 export type Node = {
   id: string;
   name: string;
@@ -18,4 +21,11 @@ export type Ontology = {
 export type Prefix = {
   prefix: string;
   iri: string;
+};
+
+export type ErrorState = null | ApiError;
+
+export type ErrorStateAction = {
+  type: string;
+  payload: ErrorState;
 };

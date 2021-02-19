@@ -8,31 +8,34 @@ import {
   ModalContent,
   Button,
 } from '@chakra-ui/react';
-import React from 'react';
-import { useRecoilState } from 'recoil';
-import apiErrorState from '../state/apiErrorState';
+import React, { useState } from 'react';
+import store from '../state/store';
 
 const ErrorModal = () => {
-  const [apiError, setApiError] = useRecoilState(apiErrorState);
+  const [open, setOpen] = useState(false);
+
+  store.subscribe(() => {
+    setOpen(store.getState().apiError !== null);
+  });
+
+  const closeModal = () => store.dispatch({ type: 'SET_ERROR', payload: null });
 
   return (
-    <>
-      <Modal isOpen={apiError === true} onClose={() => setApiError(false)}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Error!</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <p>Something went wrong. Please try again later or contact an administrator.</p>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={() => setApiError(false)}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
+    <Modal isOpen={open} onClose={closeModal}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>Error!</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <p>{store.getState().apiError?.body.message}</p>
+        </ModalBody>
+        <ModalFooter>
+          <Button colorScheme="blue" mr={3} onClick={closeModal}>
+            Close
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   );
 };
 
