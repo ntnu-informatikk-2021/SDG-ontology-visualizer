@@ -4,7 +4,10 @@ const defaultState: ErrorState = {
   apiError: null,
 };
 
-const reducer = (state: ErrorState = defaultState, action: ErrorStateAction): ErrorState => {
+const apiErrorReducer = (
+  state: ErrorState = defaultState,
+  action: ErrorStateAction,
+): ErrorState => {
   switch (action.type) {
     case SET_ERROR:
       return {
@@ -28,4 +31,4 @@ export const setError = (error: ApiError): ErrorStateAction => ({
 
 export const clearError = (): ErrorStateAction => ({ type: 'CLEAR_ERROR' });
 
-export default reducer;
+export default apiErrorReducer;

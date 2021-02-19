@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import reducer from './reducers/apiErrorReducer';
+import apiErrorReducer from './reducers/apiErrorReducer';
 
-const store = createStore(reducer);
+const store = createStore(apiErrorReducer);
 
 export default store;
