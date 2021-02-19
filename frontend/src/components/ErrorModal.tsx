@@ -8,16 +8,18 @@ import {
   ModalContent,
   Button,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { clearError } from '../state/reducers/apiErrorReducer';
-import store from '../state/store';
+import { ErrorState } from '../types';
 
 const ErrorModal = () => {
   const [open, setOpen] = useState(false);
+  const apiError = useSelector((state: ErrorState) => state.apiError);
 
-  store.subscribe(() => {
-    setOpen(store.getState().apiError !== null);
-  });
+  useEffect(() => {
+    setOpen(apiError != null && apiError.message != null && apiError.message.length > 0);
+  }, [apiError]);
 
   return (
     <Modal isOpen={open} onClose={clearError}>
@@ -25,9 +27,7 @@ const ErrorModal = () => {
       <ModalContent>
         <ModalHeader>Error!</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
-          <p>{store.getState().apiError?.body.message}</p>
-        </ModalBody>
+        <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={clearError}>
             Close
