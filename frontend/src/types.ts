@@ -1,7 +1,3 @@
-/* eslint-disable import/no-cycle */
-import { ApiError } from './api/api';
-import { CLEAR_ERROR, SET_ERROR } from './state/reducers/apiErrorReducer';
-
 export type Node = {
   id: string;
   name: string;
@@ -24,6 +20,18 @@ export type Prefix = {
   iri: string;
 };
 
+export class ApiError extends Error {
+  status: string;
+  body: any;
+
+  constructor(res: any, body: any) {
+    super(body.message || res.statusText);
+    this.status = res.status;
+    this.name = 'ApiError';
+    this.body = body;
+  }
+}
+
 export type ErrorState = {
   apiError: ApiError | null;
 };
@@ -38,3 +46,6 @@ export type ClearErrorStateAction = {
 };
 
 export type ErrorStateAction = SetErrorStateAction | ClearErrorStateAction;
+
+export const SET_ERROR = 'SET_ERROR';
+export const CLEAR_ERROR = 'CLEAR_ERROR';
