@@ -1,5 +1,6 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { ApiError } from './api/api';
+import { CLEAR_ERROR, SET_ERROR } from './state/reducers/apiErrorReducer';
 
 export type Node = {
   id: string;
@@ -23,9 +24,17 @@ export type Prefix = {
   iri: string;
 };
 
-export type ErrorState = null | ApiError;
-
-export type ErrorStateAction = {
-  type: string;
-  payload: ErrorState;
+export type ErrorState = {
+  apiError: ApiError | null;
 };
+
+export type SetErrorStateAction = {
+  type: typeof SET_ERROR;
+  payload: ApiError;
+};
+
+export type ClearErrorStateAction = {
+  type: typeof CLEAR_ERROR;
+};
+
+export type ErrorStateAction = SetErrorStateAction | ClearErrorStateAction;

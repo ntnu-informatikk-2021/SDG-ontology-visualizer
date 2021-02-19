@@ -9,6 +9,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { clearError } from '../state/reducers/apiErrorReducer';
 import store from '../state/store';
 
 const ErrorModal = () => {
@@ -18,10 +19,8 @@ const ErrorModal = () => {
     setOpen(store.getState().apiError !== null);
   });
 
-  const closeModal = () => store.dispatch({ type: 'SET_ERROR', payload: null });
-
   return (
-    <Modal isOpen={open} onClose={closeModal}>
+    <Modal isOpen={open} onClose={clearError}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Error!</ModalHeader>
@@ -30,7 +29,7 @@ const ErrorModal = () => {
           <p>{store.getState().apiError?.body.message}</p>
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={closeModal}>
+          <Button colorScheme="blue" mr={3} onClick={clearError}>
             Close
           </Button>
         </ModalFooter>
