@@ -1,7 +1,7 @@
 import { Box, Container, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { getRelations } from '../api/ontologies';
-import { Node, Ontology } from '../types';
+import { Node, Ontology } from '../types/ontologyTypes';
 
 const initialNode: Node = {
   prefix: {

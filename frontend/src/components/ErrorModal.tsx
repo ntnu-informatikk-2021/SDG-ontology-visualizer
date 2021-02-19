@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearError } from '../state/reducers/apiErrorReducer';
-import { ErrorState } from '../types';
+import { ErrorState } from '../types/apiTypes';
 
 const ErrorModal = () => {
   const [open, setOpen] = useState(false);

@@ -1,4 +1,10 @@
-import { ApiError, CLEAR_ERROR, ErrorState, ErrorStateAction, SET_ERROR } from '../../types';
+import {
+  ApiError,
+  CLEAR_ERROR,
+  ErrorState,
+  ErrorStateAction,
+  SET_ERROR,
+} from '../../types/apiTypes';
 
 const defaultState: ErrorState = {
   apiError: null,
