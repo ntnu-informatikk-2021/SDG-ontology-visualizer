@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { ErrorState, ErrorStateAction } from '../types';
+import { ErrorState, ErrorStateAction } from '../../types';
 
 const defaultState = {
   apiError: <ErrorState>null,
