@@ -43,11 +43,15 @@ const renderOntology = (
 const OntologyTable: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState(initialNode);
   const [ontologies, setOntologies] = useState([]);
-
   const clickNode = async (node: Node) => {
     setSelectedNode(node);
-    const newOntologies = await getRelations(node.id);
-    setOntologies(newOntologies);
+
+    try {
+      const newOntologies = await getRelations(node.id);
+      setOntologies(newOntologies);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
