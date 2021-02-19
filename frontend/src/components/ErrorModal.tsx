@@ -25,11 +25,11 @@ const ErrorModal = () => {
     <Modal isOpen={open} onClose={clearError}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Error!</ModalHeader>
+        <ModalHeader>API Error</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={clearError}>
+          <Button colorScheme="red" mr={3} onClick={clearError}>
             Close
           </Button>
         </ModalFooter>
