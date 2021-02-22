@@ -102,6 +102,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erAvhengigAv -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erAvhengigAv">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erGjortForBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erGjortForBy">
@@ -128,8 +137,8 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
     </owl:ObjectProperty>
     
 
@@ -137,17 +146,10 @@
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
     </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harSammenhengMed -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harSammenhengMed"/>
     
 
 
@@ -5760,16 +5762,8 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erAvhengigAv"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_helse_for_alle"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harTradeOffTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -5811,7 +5805,6 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
     </owl:Class>
     
 
@@ -6968,16 +6961,12 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erAvhengigAv"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_helse_for_alle"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_Fattigdom"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erAvhengigAv"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utrydde_sult"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -10061,16 +10050,8 @@ English: (For inital development, expansion of this class along with possible co
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erAvhengigAv"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_helse_for_alle"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harTradeOffTil"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -10691,7 +10672,17 @@ god skikk at statistikkalenderen er annonsert på forhånd.</SDG:beskrivelse>
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftmåling -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftmåling">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#MockAirQuality"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#MockAirQuality"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#God_Helse_og_livskvalitet"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
         <SDG:dato rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"></SDG:dato>
         <SDG:plassering>Lade</SDG:plassering>
         <rdfs:label>Luftmåling</rdfs:label>
