@@ -43,9 +43,15 @@
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#beskrivelse -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#airQualityIndex -->
 
-    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#beskrivelse"/>
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#airQualityIndex"/>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#coordinates -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#coordinates"/>
     
 
 
@@ -67,9 +73,15 @@
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#plassering -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#location -->
 
-    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#plassering"/>
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#location"/>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#year -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#year"/>
     
 
 
@@ -191,7 +203,6 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
-        <SDG:beskrivelse rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En relasjon som representerer negative bidrag.</SDG:beskrivelse>
     </owl:ObjectProperty>
     
 
@@ -4764,7 +4775,6 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kvalitet"/>
-        <SDG:beskrivelse rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">I tilfelle indikatoren kan vurderes mht. gjeldende kriterier. Det legges til grunn standarden for offisiell statistikk i ESS2, der kvaliteten måles i henhold til tilknyttede instancer</SDG:beskrivelse>
         <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Klasse 1</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_2"/>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_3"/>
@@ -4776,10 +4786,6 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_2">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kvalitet"/>
-        <SDG:beskrivelse rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">I tilfelle indikatoren ikke tilhører klasse 1 eller 3, befinner den seg i en av tre følgende tilstander med mulig tillegg i parentes: 
-1. Under utvikling (forventet tid til ferdig utvikling)
-2. Under planlegging av utvikling (forventet tid til utvikling igangsettes)
-3. Uklart (forventet tid til nærmere avklaring)</SDG:beskrivelse>
         <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Klasse 2</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_3"/>
@@ -4791,9 +4797,6 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_3">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kvalitet"/>
-        <SDG:beskrivelse>I de tilfeller der indikatoren ansees umulig å lage, pga. en eller flere mangler
-mht:
-Data, Metode, Målbart begrep</SDG:beskrivelse>
         <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Klasse 3</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_2"/>
@@ -5262,6 +5265,14 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Measure -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Measure">
@@ -5687,12 +5698,6 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#MockAirQuality -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#MockAirQuality"/>
-    
-
-
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mål -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mål">
@@ -6039,7 +6044,6 @@ Data, Metode, Målbart begrep</SDG:beskrivelse>
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mål"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/full_content/0/5/4/3/833450-19-nor-NO/Alle%20SDG%20farger%20%20Uten%20FN-logo.png"/>
-        <SDG:beskrivelse rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">FNs bærekraftsmål er verdens felles arbeidsplan for å utrydde fattigdom, bekjempe ulikhet og stoppe klimaendringene innen 2030. Se på målene under for informasjon om ansvar og status for de enkelte målene i Norge og internasjonalt.</SDG:beskrivelse>
         <SDG:hasExactSynonym rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Bærekraftsmålene</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">SDG</rdfs:label>
     </owl:Class>
@@ -10388,8 +10392,6 @@ English: (For inital development, expansion of this class along with possible co
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Aktualitet">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
-        <SDG:beskrivelse>Statistikken skal offentliggjøres betimelig og punktlig. Det er
-god skikk at statistikkalenderen er annonsert på forhånd.</SDG:beskrivelse>
         <rdfs:label>Aktualitet</rdfs:label>
     </owl:NamedIndividual>
     
@@ -10642,12 +10644,81 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftmåling -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftmåling">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
+        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L1"/>
+        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L2"/>
+        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L3"/>
+        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L4"/>
+        <SDG:bleGjortForBy rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#P1"/>
+        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
+        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet"/>
+        <SDG:airQualityIndex>Tall mellom 1 - 10</SDG:airQualityIndex>
+        <SDG:description>Dette er en standarisert luftkvalitetsmåling</SDG:description>
+        <SDG:location>Plassering</SDG:location>
+        <SDG:year>Årstall</SDG:year>
+        <rdfs:label>Standarisert luftkvalitets måling</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
+        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
+        <SDG:airQualityIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</SDG:airQualityIndex>
         <SDG:dato rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"></SDG:dato>
-        <SDG:plassering>Lade</SDG:plassering>
-        <rdfs:label>Luftmåling</rdfs:label>
+        <SDG:description>Dette er en MOCK luftkvalitets måling</SDG:description>
+        <SDG:location>Gløshaugen, Trondheim</SDG:location>
+        <SDG:year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2020</SDG:year>
+        <rdfs:label>Luftkvalitets måling ved Gløshaugen</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
+        <SDG:airQualityIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</SDG:airQualityIndex>
+        <SDG:description>Dette er en MOCK luftkvalitets måling</SDG:description>
+        <SDG:location>Lade, Trondheim</SDG:location>
+        <SDG:year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2021</SDG:year>
+        <rdfs:label>Luftkvalitet måling ved Lade</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
+        <SDG:bleGjortForBy rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#P1"/>
+        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
+        <SDG:airQualityIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</SDG:airQualityIndex>
+        <SDG:description>Dette er en MOCK luftkvalitets måling</SDG:description>
+        <SDG:location>Lade, Trondheim</SDG:location>
+        <SDG:year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2020</SDG:year>
+        <rdfs:label>Luftkvalitet måling ved Lade</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
+        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
+        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet"/>
+        <SDG:airQualityIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</SDG:airQualityIndex>
+        <SDG:coordinates>63.418133 , 10.401801</SDG:coordinates>
+        <SDG:description>Dette er en MOCK luftkvalitetsmåling</SDG:description>
+        <SDG:location>Gløshaugen, Trondheim</SDG:location>
+        <SDG:year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2021</SDG:year>
+        <rdfs:label>Luftkvalitets måling ved Gløshaugen</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10666,9 +10737,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
-        <SDG:beskrivelse>Statistikken skal fange opp virkeligheten. Kildedata vurderes
-regelmessig. Usikkerheten i statistikken måles i henhold til gjeldende
-standard.</SDG:beskrivelse>
         <rdfs:label>Nøyaktighet</rdfs:label>
     </owl:NamedIndividual>
     
@@ -10687,9 +10755,6 @@ standard.</SDG:beskrivelse>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Relevans">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
-        <SDG:beskrivelse>Statistikken skal svare til brukernes behov. Mekanismer for
-brukerkonsultasjon skal være på plass for å overvåke dette, slik at
-statistikken forbedres kontinuerlig.</SDG:beskrivelse>
         <rdfs:label>Relevans</rdfs:label>
     </owl:NamedIndividual>
     
@@ -10699,11 +10764,6 @@ statistikken forbedres kontinuerlig.</SDG:beskrivelse>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sammenheng_og_sammenlignbarhet">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
-        <SDG:beskrivelse>Relaterte statistikker gir et
-sammenhengende virkelighetsbilde, deres underliggende data kan
-kombineres. Statistikker med ulik hyppighet er konsistente over tid.
-Statistikker om ulike regioner eller land er sammenlignbare med
-hverandre.</SDG:beskrivelse>
         <rdfs:label>Sammenheng og sammenlignbarhet</rdfs:label>
     </owl:NamedIndividual>
     
@@ -10723,8 +10783,6 @@ hverandre.</SDG:beskrivelse>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Tilgjengelighet_og_klarhet">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Klasse_1"/>
-        <SDG:beskrivelse>Statistikken presenteres klart og forståelig.
-Statistikken er lett tilgjengelig, med tilstrekkelig metadata og veiledning.</SDG:beskrivelse>
         <rdfs:label>Tilgjengelighet og klarhet</rdfs:label>
     </owl:NamedIndividual>
     
@@ -11054,7 +11112,6 @@ Statistikken er lett tilgjengelig, med tilstrekkelig metadata og veiledning.</SD
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
         <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</SDG:UN_SDG_Target_ID>
-        <SDG:beskrivelse xml:lang="norwegian">Oppnå allmenn dekning av helsetenester, inkludert ordningar som vernar mot økonomiske konsekvensar, og allmenn tilgang til grunnleggjande og gode helsetenester og trygge, verksame og nødvendige medisinar og vaksinar av god kvalitet og til ein overkomeleg pris</SDG:beskrivelse>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</rdfs:label>
     </owl:NamedIndividual>
