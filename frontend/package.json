@@ -15,6 +15,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.16",
+    "d3": "^6.5.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-react": "^1.1.7",
     "eslint-config-react-app": "^6.0.0",
@@ -58,6 +59,7 @@
     ]
   },
   "devDependencies": {
+    "@types/d3": "^6.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
     "eslint": "^7.19.0",
