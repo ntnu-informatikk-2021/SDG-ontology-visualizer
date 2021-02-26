@@ -1,5 +1,12 @@
 import React, { useRef, useEffect } from 'react';
-import { forceCenter, forceManyBody, forceSimulation, select } from 'd3';
+import {
+  forceCenter,
+  forceLink,
+  forceManyBody,
+  forceSimulation,
+  select,
+  SimulationNodeDatum,
+} from 'd3';
 import { GraphNode, Node, Ontology } from '../types';
 import { getRelations } from '../api/ontologies';
 
@@ -14,23 +21,47 @@ const initialNode: Node = {
 
 const Graph: React.FC = () => {
   const svgref = useRef(null);
-  // const data = [
-  //   { id: 1, x: 100, y: 100 },
-  //   { id: 2, x: 200, y: 150 },
-  // ];
-  // const links = [{ source: data[0], target: data[1] }];
 
   const loadInitialData = async () => {
     const svg = select(svgref.current);
-    const relations: Ontology[] = await getRelations(initialNode.id);
+    let relations: Ontology[] = await getRelations(initialNode.id);
+    relations = relations.map((ont) => ({
+      Subject: ont.Subject || initialNode,
+      Object: ont.Object || initialNode,
+      Predicate: ont.Predicate,
+    }));
     const svgData: GraphNode[] = relations.map((ontology) => ontology.Object!);
+    svgData.push(initialNode as GraphNode);
+    console.log(svgData);
     console.log(relations);
 
-    const simulation = forceSimulation(svgData)
+    const links = relations.map((ont) => ({ source: ont.Subject!.id, target: ont.Object!.id }));
+    console.log(links);
+
+    forceSimulation(svgData)
       .force('charge', forceManyBody())
       .force('center', forceCenter(500 / 2, 500 / 2))
+      .force(
+        'link',
+        forceLink()
+          .id((node: SimulationNodeDatum) => (node as GraphNode).id)
+          .links(links)
+          .distance(100)
+          .strength(2),
+      )
       .on('tick', () => {
-        console.log(simulation.alpha());
+        svg
+          .selectAll('.link')
+          .data(links)
+          .join('line')
+          .attr('class', 'link')
+          .attr('fill', 'none')
+          .attr('stroke', 'red')
+          .attr('stroke-width', 4)
+          .attr('x1', (link: any) => link.source.x)
+          .attr('y1', (link: any) => link.source.y)
+          .attr('x2', (link: any) => link.target.x)
+          .attr('y2', (link: any) => link.target.y);
 
         svg
           .selectAll('.node')
@@ -42,19 +73,6 @@ const Graph: React.FC = () => {
           .attr('cx', (node) => node.x!)
           .attr('cy', (node) => node.y!);
       });
-    // svg
-    //   .selectAll('.link')
-    //   .data(links)
-    //   .join('line')
-    //   .attr('class', 'link')
-    //   .attr('fill', 'none')
-    //   .attr('stroke', 'red')
-    //   .attr('stroke-width', 4)
-    //   .attr('x1', (link: any) => link.source.x)
-    //   .attr('y1', (link: any) => link.source.y)
-    //   .attr('x2', (link: any) => link.target.x)
-    //   .attr('y2', (link: any) => link.target.y);
-    // simulation();
   };
 
   useEffect(() => {
