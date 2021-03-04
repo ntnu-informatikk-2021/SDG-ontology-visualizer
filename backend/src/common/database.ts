@@ -53,3 +53,6 @@ export const addEntityToNullFields = (ontology: Ontology, entity: OntologyEntity
   Predicate: ontology.Predicate,
   Object: ontology.Object || entity,
 });
+
+export const isNotLoopOntology = (ontology: Ontology): boolean =>
+  ontology.Subject !== ontology.Object;

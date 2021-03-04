@@ -3,6 +3,7 @@ import { ApiError, Ontology } from '../types/types';
 import getRelations from './queries/getRelations';
 import {
   addEntityToNullFields,
+  isNotLoopOntology,
   mapIdToOntologyEntity,
   mapRecordToOntology,
 } from '../common/database';
@@ -26,6 +27,7 @@ export default async (classId: string): Promise<Array<Ontology>> => {
   const ontologies = response.records
     .map(mapRecordToOntology)
     .map((ont) => addEntityToNullFields(ont, ontologyEntity))
-    .filter(isRelevantOntology);
+    .filter(isRelevantOntology)
+    .filter(isNotLoopOntology);
   return ontologies;
 };
