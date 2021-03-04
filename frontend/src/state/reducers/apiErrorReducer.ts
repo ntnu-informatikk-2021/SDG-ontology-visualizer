@@ -1,13 +1,7 @@
-import {
-  ApiError,
-  CLEAR_ERROR,
-  ErrorState,
-  ErrorStateAction,
-  SET_ERROR,
-} from '../../types/apiTypes';
+import { CLEAR_ERROR, ErrorState, ErrorStateAction, SET_ERROR } from '../../types/errorTypes';
 
 const defaultState: ErrorState = {
-  apiError: null,
+  error: null,
 };
 
 const apiErrorReducer = (
@@ -18,19 +12,19 @@ const apiErrorReducer = (
     case SET_ERROR:
       return {
         ...state,
-        apiError: action.payload,
+        error: action.payload,
       };
     case CLEAR_ERROR:
       return {
         ...state,
-        apiError: null,
+        error: null,
       };
     default:
       return state;
   }
 };
 
-export const setError = (error: ApiError): ErrorStateAction => ({
+export const setError = (error: Error): ErrorStateAction => ({
   type: 'SET_ERROR',
   payload: error,
 });

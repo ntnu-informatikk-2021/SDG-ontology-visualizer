@@ -11,12 +11,12 @@ export class ApiError extends Error {
 }
 
 export type ErrorState = {
-  apiError: ApiError | null;
+  error: Error | null;
 };
 
 export type SetErrorStateAction = {
   type: typeof SET_ERROR;
-  payload: ApiError;
+  payload: Error;
 };
 
 export type ClearErrorStateAction = {
