@@ -47,3 +47,9 @@ export const parsePrefixesToQuery = (...prefixes: Prefix[]): string => {
   const strings = prefixes.map((p) => `PREFIX ${p.prefix}: <${p.iri}>`);
   return strings.join('\n');
 };
+
+export const addEntityToNullFields = (ontology: Ontology, entity: OntologyEntity): Ontology => ({
+  Subject: ontology.Subject || entity,
+  Predicate: ontology.Predicate,
+  Object: ontology.Object || entity,
+});
