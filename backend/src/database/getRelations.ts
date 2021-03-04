@@ -12,26 +12,8 @@ const isRelevantOntology = (ontology: Ontology): boolean => {
   return true;
 };
 
-const removeDuplicates = (ontologies: Array<Ontology>): Array<Ontology> => {
-  const usedNames: Array<string> = [];
-  return ontologies.filter((ont) => {
-    if (ont.Subject) {
-      if (usedNames.includes(ont.Subject.name)) return false;
-      usedNames.push(ont.Subject.name);
-    } else if (ont.Object) {
-      if (usedNames.includes(ont.Object.name)) return false;
-      usedNames.push(ont.Object.name);
-    } else {
-      console.log('this shouldnt happen...');
-      return false;
-    }
-    return true;
-  });
-};
-
 export default async (classId: string): Promise<Array<Ontology>> => {
   const query = getRelations(classId);
   const response = await DB.query(query, { transform: 'toJSON' });
-  const ontologies = response.records.map(mapRecordToOntology).filter(isRelevantOntology);
-  return removeDuplicates(ontologies);
+  return response.records.map(mapRecordToOntology).filter(isRelevantOntology);
 };
