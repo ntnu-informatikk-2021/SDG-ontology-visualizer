@@ -11,6 +11,8 @@ const isGraphDBError = (e: object) => {
 
 const resolveGraphDBErrorMessage = (err: GraphDBError) => {
   if (err.statusCode === 400) return 'Invalid database query';
+  if (err.statusCode === 401)
+    return 'Incorrect username or password in database login. Check your environment variables';
   if (err.statusCode === 404)
     return 'Could not find database repository. Check your environment variables';
   return err.message;
