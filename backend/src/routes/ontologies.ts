@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import getSubclasses from '../database/getSubclasses';
 import getRelations from '../database/getRelations';
+import { ApiError } from '../types/types';
 
 const router = Router();
 
@@ -9,8 +10,9 @@ const getRelationsFromClass = async (req, res) => {
     const data = await getRelations(req.params.classId);
     res.json(data);
   } catch (e) {
+    const status = e instanceof ApiError ? e.statusCode : 500;
     console.log(e);
-    res.status(500);
+    res.status(status);
     res.json({ message: e.message });
   }
 };
@@ -20,8 +22,9 @@ const getSubclassesFromClass = async (req, res) => {
     const data = await getSubclasses(req.params.classId);
     res.json(data);
   } catch (e) {
+    const status = e instanceof ApiError ? e.statusCode : 500;
     console.log(e);
-    res.status(500);
+    res.status(status);
     res.json({ message: e.message });
   }
 };
