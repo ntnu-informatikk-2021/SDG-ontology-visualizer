@@ -62,4 +62,10 @@ declare module '@innotrade/enapso-graphdb-client' {
   }
 
   export const EnapsoGraphDBClient: EnapsoGraphDBClientType;
+
+  export type GraphDBError = {
+    statusCode: number;
+    message: string;
+    success: boolean;
+  };
 }
