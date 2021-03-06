@@ -1,21 +1,22 @@
 import React from 'react';
-import './App.css';
-import { ChakraProvider } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 import OntologyTable from './components/OntologyTable';
 import ErrorModal from './components/ErrorModal';
 import store from './state/store';
 import Graph from './components/Graph';
+import Navbar from './components/Navbar';
+import './App.css';
+import Footer from './components/Footer';
 
 const App = () => (
   <Provider store={store}>
-    <ChakraProvider>
-      <div className="App">
-        <Graph />
-        <OntologyTable />
-        <ErrorModal />
-      </div>
-    </ChakraProvider>
+    <div className="App">
+      <Navbar />
+      <Graph />
+      <OntologyTable />
+      <ErrorModal />
+      <Footer />
+    </div>
   </Provider>
 );
 
