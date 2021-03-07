@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
 
 const data = {
   label: 'Bærekraftsmål navn',
@@ -8,8 +8,8 @@ const data = {
 };
 
 const option = {
-  option1: 'Se detaljer',
-  option2: 'Se graf',
+  option1: '',
+  option2: '',
 };
 
 const DetailView: React.FC = () => {
@@ -23,14 +23,30 @@ const DetailView: React.FC = () => {
       <div>
         <p style={{ display: 'inline' }}>Har bidrag til</p>
         {data2.isSDGoff.map((relation) => (
-          <Button
-            onClick={() => console.log('test')}
-            colorScheme="blue"
-            key={relation}
-            style={{ margin: 5 }}
-          >
-            {relation}
-          </Button>
+          <Menu>
+            {({ isOpen }) => (
+              <>
+                <MenuButton
+                  key={relation}
+                  colorScheme="blue"
+                  style={{ margin: 5 }}
+                  isActive={isOpen}
+                  as={Button}
+                >
+                  {relation}
+                  {isOpen ? '' : ''}
+                </MenuButton>
+                <MenuList>
+                  <MenuItem style={{ color: 'red' }} onClick={() => alert('Går til detaljer')}>
+                    Se detaljer
+                  </MenuItem>
+                  <MenuItem style={{ color: 'red' }} onClick={() => alert('Går til graf')}>
+                    Se graf
+                  </MenuItem>
+                </MenuList>
+              </>
+            )}
+          </Menu>
         ))}
       </div>
     </Box>
