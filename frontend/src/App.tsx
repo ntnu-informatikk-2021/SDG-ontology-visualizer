@@ -7,12 +7,14 @@ import Graph from './components/Graph';
 import Navbar from './components/Navbar';
 import './App.css';
 import Footer from './components/Footer';
+import DetailView from './components/DetailView';
 
 const App = () => (
   <Provider store={store}>
     <div className="App">
       <Navbar />
       <Graph />
+      <DetailView />
       <OntologyTable />
       <ErrorModal />
       <Footer />
