@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
+import { getAnnontations } from '../api/ontologies';
+import { Annontations, Node } from '../types/ontologyTypes';
 
-const data = {
+const data2 = {
   label: 'Bærekraftsmål navn',
   description: 'beskrivelse',
   isSDGoff: ['subGoal1', 'subGoal2', 'subGoal3'],
@@ -11,15 +13,25 @@ const option = {
   option1: '',
   option2: '',
 };
-
-const DetailView: React.FC = () => {
-  const data2 = data;
+type Props = {
+  node: Node;
+};
+const DetailView: React.FC<Props> = (props) => {
+  const [annotations, setAnnotations] = useState<Annontations>({ label: '', description: '' });
+  const loadAnnontations = async () => {
+    const data = await getAnnontations(props.node.id);
+    setAnnotations(data);
+  };
   console.log(option);
+
+  useEffect(() => {
+    loadAnnontations();
+  }, []);
 
   return (
     <Box bg="tomato" w="100%" p={4} color="white">
-      <div>{data2.label}</div>
-      <div>{data2.description}</div>
+      <div>{annotations.label}</div>
+      <div>{annotations.description}</div>
       <div>
         <p style={{ display: 'inline' }}>Har bidrag til</p>
         {data2.isSDGoff.map((relation) => (

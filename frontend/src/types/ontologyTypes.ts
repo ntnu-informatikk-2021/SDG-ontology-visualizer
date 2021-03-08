@@ -6,6 +6,11 @@ export type Node = {
   prefix: Prefix;
 };
 
+export type Annontations = {
+  label: string;
+  description: string;
+};
+
 export interface GraphNode extends Node, SimulationNodeDatum {}
 
 export type Edge = {

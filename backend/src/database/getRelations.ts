@@ -28,6 +28,6 @@ export default async (classId: string): Promise<Array<Ontology>> => {
     .map(mapRecordToOntology)
     .map((ont) => addEntityToNullFields(ont, ontologyEntity))
     .filter(isRelevantOntology)
-    .filter(isNotLoopOntology);
+   // .filter(isNotLoopOntology);
   return ontologies;
 };
