@@ -8,13 +8,19 @@ export const parseNameFromClassId = (id: string): string => {
   return name;
 };
 
-export const parsePrefixFromClassId = (id: string): Prefix | null => {
+export const parsePrefixFromClassId = (id: string | number): Prefix | null => {
+  let foo = '';
+  if (typeof id === 'number') {
+    foo = id.toString();
+  } else {
+    foo = id;
+  }
   const prefixRegex = /(?<=\/)([^/]*)(?=#)/;
-  const prefixMatches = id.match(prefixRegex);
+  const prefixMatches = foo.match(prefixRegex);
   if (!prefixMatches || !prefixMatches[0]) return null;
 
   const iriRegex = /^[^_]*#/;
-  const iriMatches = id.match(iriRegex);
+  const iriMatches = foo.match(iriRegex);
   if (!iriMatches || !iriMatches[0]) return null;
 
   return {

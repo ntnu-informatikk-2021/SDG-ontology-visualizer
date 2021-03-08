@@ -24,6 +24,7 @@ export default async (classId: string): Promise<Array<Ontology>> => {
   }
   const query = getRelations(classId);
   const response = await DB.query(query, { transform: 'toJSON' });
+  console.log(response);
   const ontologies = response.records
     .map(mapRecordToOntology)
     .map((ont) => addEntityToNullFields(ont, ontologyEntity))

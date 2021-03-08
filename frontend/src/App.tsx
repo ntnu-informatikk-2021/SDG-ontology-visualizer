@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
-import OntologyTable from './components/OntologyTable';
 import ErrorModal from './components/ErrorModal';
 import store from './state/store';
 import Graph from './components/Graph';
@@ -12,7 +11,7 @@ const App = () => (
     <ChakraProvider>
       <div className="App">
         <Graph />
-        <OntologyTable />
+        {/* <OntologyTable /> */}
         <ErrorModal />
       </div>
     </ChakraProvider>

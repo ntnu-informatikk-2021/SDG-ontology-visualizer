@@ -6,3 +6,20 @@ export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => ({
   source: ontology.Subject.id,
   target: ontology.Object.id,
 });
+
+interface SomethingWithId {
+  id: string;
+}
+export const removeDuplicates = <T extends SomethingWithId>(
+  node: T,
+  index: number,
+  self: T[],
+): boolean => index === self.findIndex((n) => node.id === n.id);
+
+export const makePredicateUnique = (ontology: Ontology): Ontology => ({
+  ...ontology,
+  Predicate: {
+    ...ontology.Predicate,
+    id: ontology.Predicate.id + ontology.Subject.id + ontology.Object.id,
+  },
+});
