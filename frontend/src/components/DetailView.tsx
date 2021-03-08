@@ -9,20 +9,17 @@ const data2 = {
   isSDGoff: ['subGoal1', 'subGoal2', 'subGoal3'],
 };
 
-const option = {
-  option1: '',
-  option2: '',
-};
 type Props = {
   node: Node;
 };
-const DetailView: React.FC<Props> = (props) => {
+
+const DetailView: React.FC<Props> = ({ node }) => {
   const [annotations, setAnnotations] = useState<Annontations>({ label: '', description: '' });
+
   const loadAnnontations = async () => {
-    const data = await getAnnontations(props.node.id);
+    const data = await getAnnontations(node.id);
     setAnnotations(data);
   };
-  console.log(option);
 
   useEffect(() => {
     loadAnnontations();

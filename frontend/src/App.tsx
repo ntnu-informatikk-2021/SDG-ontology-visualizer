@@ -18,6 +18,7 @@ const initialNode: Node = {
   name: 'Miljø',
   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø',
 };
+
 const App = () => (
   <Provider store={store}>
     <div className="App">
