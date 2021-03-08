@@ -46,10 +46,13 @@ const DetailView: React.FC<Props> = ({ node }) => {
                   {isOpen ? '' : ''}
                 </MenuButton>
                 <MenuList>
-                  <MenuItem style={{ color: 'red' }} onClick={() => alert('Går til detaljer')}>
+                  <MenuItem
+                    style={{ color: 'red' }}
+                    onClick={() => console.log('Går til detaljer')}
+                  >
                     Se detaljer
                   </MenuItem>
-                  <MenuItem style={{ color: 'red' }} onClick={() => alert('Går til graf')}>
+                  <MenuItem style={{ color: 'red' }} onClick={() => console.log('Går til graf')}>
                     Se graf
                   </MenuItem>
                 </MenuList>

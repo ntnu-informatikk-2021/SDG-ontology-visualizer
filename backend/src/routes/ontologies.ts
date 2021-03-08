@@ -42,7 +42,6 @@ const getAnnontationsFromClass = async (req, res) => {
   }
 };
 
-
 router.get('/relations/:classId', getRelationsFromClass);
 router.get('/subclasses/:classId', getSubclassesFromClass);
 router.get('/annontations/:classId', getAnnontationsFromClass);
