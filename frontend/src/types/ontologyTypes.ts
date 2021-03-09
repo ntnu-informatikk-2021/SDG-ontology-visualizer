@@ -7,8 +7,9 @@ export type Node = {
 };
 
 export type Annontations = {
-  label: string;
-  description: string;
+  label: String;
+  description: String;
+  relation: String;
 };
 
 export interface GraphNode extends Node, SimulationNodeDatum {}
