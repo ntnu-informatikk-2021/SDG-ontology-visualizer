@@ -35,11 +35,9 @@ export const createForceSimulation = (
       forceLink()
         .id((node: SimulationNodeDatum) => (node as GraphNode).id)
         .links(links)
-        .distance((link) => {
-          const foo = Math.min(links.filter((l) => l.source === link.target).length * 10 + 30, 400);
-          // console.log(foo);
-          return foo;
-        })
+        .distance((link) =>
+          Math.min(links.filter((l) => l.source === link.target).length * 10 + 30, 400),
+        )
         .strength(1),
     )
     .alpha(1);
@@ -50,9 +48,9 @@ export const resetSimulation = (
   links: GraphEdge[],
 ) => {
   simulation.nodes(nodes);
-  const foo = simulation.force<ForceLink<GraphNode, GraphEdge>>('link');
-  if (!foo) return;
-  foo.links(links);
+  const linkForce = simulation.force<ForceLink<GraphNode, GraphEdge>>('link');
+  if (!linkForce) return;
+  linkForce.links(links);
   simulation.force('collide');
   simulation.alpha(1).restart();
 };

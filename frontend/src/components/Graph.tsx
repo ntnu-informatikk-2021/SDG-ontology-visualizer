@@ -18,11 +18,11 @@ import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '.
 
 const initialNode: Node = {
   prefix: {
-    prefix: 'SDG',
-    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
+    prefix: 'wine',
+    iri: 'http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#',
   },
-  name: 'B4',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4',
+  name: 'FormanChardonnay',
+  id: 'http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay',
 };
 
 const Graph: React.FC = () => {
@@ -46,7 +46,6 @@ const Graph: React.FC = () => {
 
     setNodes(newNodes);
 
-    // insert 1 frame timeout
     const newLinks = ontologies.map(mapOntologyToGraphEdge);
     setLinks(newLinks);
   };
@@ -65,12 +64,9 @@ const Graph: React.FC = () => {
       )
       .filter(removeDuplicates);
 
-    console.log(newNodes);
-    console.log(links);
     const newLinks = links
       .concat(ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge))
       .filter(removeDuplicates);
-    console.log(newLinks);
 
     setNodes(newNodes);
     setLinks(newLinks);
