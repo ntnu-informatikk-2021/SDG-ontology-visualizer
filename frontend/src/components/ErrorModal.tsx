@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearError } from '../state/reducers/apiErrorReducer';
-import { ErrorState } from '../types/errorTypes';
+import { ApiError, ErrorState } from '../types/errorTypes';
 
 const ErrorModal = () => {
   const [open, setOpen] = useState(false);
@@ -24,11 +24,13 @@ const ErrorModal = () => {
     setOpen(apiError != null && apiError.message != null && apiError.message.length > 0);
   }, [apiError]);
 
+  const errorHeader = apiError instanceof ApiError ? `API Error ${apiError.status}` : 'Error';
+
   return (
     <Modal isOpen={open} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>API Error</ModalHeader>
+        <ModalHeader>{errorHeader}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
         <ModalFooter>
