@@ -15,8 +15,8 @@ const initialNode: Node = {
     prefix: 'SDG',
     iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
   },
-  name: 'Miljø',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø',
+  name: 'B11',
+  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11',
 };
 
 const App = () => (

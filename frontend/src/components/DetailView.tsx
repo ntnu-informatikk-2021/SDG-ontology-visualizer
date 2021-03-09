@@ -14,7 +14,11 @@ type Props = {
 };
 
 const DetailView: React.FC<Props> = ({ node }) => {
-  const [annotations, setAnnotations] = useState<Annontations>({ label: '', description: '' });
+  const [annotations, setAnnotations] = useState<Annontations>({
+    label: '',
+    description: '',
+    relation: '',
+  });
 
   const loadAnnontations = async () => {
     const data = await getAnnontations(node.id);
@@ -23,10 +27,11 @@ const DetailView: React.FC<Props> = ({ node }) => {
 
   useEffect(() => {
     loadAnnontations();
+    console.log(annotations);
   }, []);
 
   return (
-    <Box bg="tomato" w="100%" p={4} color="white">
+    <Box bg="tomato" w="100%" p={6} color="white">
       <div>{annotations.label}</div>
       <div>{annotations.description}</div>
       <div>
@@ -42,7 +47,7 @@ const DetailView: React.FC<Props> = ({ node }) => {
                   isActive={isOpen}
                   as={Button}
                 >
-                  {relation}
+                  {annotations.relation}
                   {isOpen ? '' : ''}
                 </MenuButton>
                 <MenuList>
