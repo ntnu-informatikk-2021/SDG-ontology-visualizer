@@ -31,12 +31,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#UN_SDG_Target_ID -->
-
-    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#UN_SDG_Target_ID"/>
-    
-
-
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#abbriviation -->
 
     <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#abbriviation"/>
@@ -10404,7 +10398,6 @@ English: (For inital development, expansion of this class along with possible co
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <SDG:harTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/2/0/7/1/831702-60-nor-NO/M%C3%A5l%201%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</SDG:UN_SDG_Target_ID>
         <SDG:description>Bærekraftsmål 1 har som mål å utrydde ekstrem fattigdom og halvere andel mennesker som lever i relativ fattigdom. Andel mennesker som lever i ekstrem fattigdom har gått drastisk ned siden 1990, men utviklingen vi ser i verden i dag går i feil retning: Fattige blir fattigere og rike blir rikere, og dette ser vi også i Norge.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
         <rdfs:label>Utrydde fattigdom</rdfs:label>
@@ -10418,7 +10411,6 @@ English: (For inital development, expansion of this class along with possible co
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/5/5/8/1/831855-30-nor-NO/M%C3%A5l%2010%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</SDG:UN_SDG_Target_ID>
         <SDG:description>Redusere ulikhet i og mellom land. For å redusere ulikhet i og mellom land må det finnes en rettferdig fordeling av et lands ressurser. De fattigste og de marginalisert gruppene må gis muligheter og tjenester slik at de kan skape seg bedre levekår. Viktige tiltak er lik tilgang til skole, helsehjelp og gode skattesystemer.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 10</SDG:hasExactSynonym>
         <rdfs:label>Mindre ulikhet</rdfs:label>
@@ -10433,7 +10425,6 @@ English: (For inital development, expansion of this class along with possible co
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/2/7/8/1/831872-28-nor-NO/M%C3%A5l%2011%20RGB@4x.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</SDG:UN_SDG_Target_ID>
         <SDG:description>Gjøre byer og lokalsamfunn inkluderende, trygge, robuste og bærekraftige. Fremtidens byer - Urbanisering skaper store muligheter og utfordringer. På sitt beste sørger byer for at mennesker kan leve gode liv og utvikle seg både økonomisk og sosialt. På den andre siden vokser mange byer fortere enn tilbudet av arbeidsplasser og boliger. Dette fører til utviklingen av slumområder med dårlige boforhold og manglende tjenester. I fremtiden må vi bygge byene slik at de kan gi tilgang til grunnleggende tjenester som energi, boliger og transport for innbyggerne. Vi må få på plass god nok avfallshåndtering, redusere forurensning og bruke ressursene på en bærekraftig måte.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 11</SDG:hasExactSynonym>
         <rdfs:label>Bærekraftige byer og lokalsamfunn</rdfs:label>
@@ -10448,7 +10439,6 @@ English: (For inital development, expansion of this class along with possible co
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/9/8/8/1/831889-22-nor-NO/M%C3%A5l%2012%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</SDG:UN_SDG_Target_ID>
         <SDG:description>Sikre bærekraftig forbruks- og produksjonsmønstre. Bærekraftig livsstil - For å sikre gode levekår for nåværende og fremtidige generasjoner må også hver enkelt forbruker endre livsstil. Det innebærer å minske ressursbruken, miljøødeleggelsen og klimautslippene som et samfunn og som enkeltperson. På sikt vil dette føre til økonomisk vekst, begrense klimaendringer og øke livskvaliteten til mennesker på jorda.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 12</SDG:hasExactSynonym>
         <rdfs:label>Ansvarlig forbruk og produksjon</rdfs:label>
@@ -10463,7 +10453,6 @@ English: (For inital development, expansion of this class along with possible co
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/6/0/9/1/831906-31-nor-NO/Alle%20ikoner%20RGB_Norsk_V04_Side_18.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</SDG:UN_SDG_Target_ID>
         <SDG:description>Handle umiddelbart for å bekjempe klimaendringene og konsekvensene av dem. Klimaendringer er et globalt spørsmål og kjenner ingen landegrenser. Det er viktig å begrense økningen av gjennomsnittstemperaturen til 1,5 °C dersom verden ønsker å slippe katastrofale konsekvenser i fremtiden. Vi må finne globale løsninger på en rekke områder. I tillegg til å kutte i utslipp og fange og lagre CO2, må det satses mer på fornybar energi, nye industrielle systemer og endring i infrastruktur. I tillegg må vi investere i å verne, tilpasse oss og begrense skadeomfanget.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 13</SDG:hasExactSynonym>
         <rdfs:label>Stoppe klimaendringene</rdfs:label>
@@ -10477,7 +10466,6 @@ English: (For inital development, expansion of this class along with possible co
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/3/2/9/1/831923-30-nor-NO/Alle%20ikoner%20RGB_Nynorsk_V04_Side_19.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</SDG:UN_SDG_Target_ID>
         <SDG:description>Bevare og bruke havet og de marine ressursene på en måte som fremmer bærekraftig utvikling. Ettersom milliarder av mennesker og dyr er avhengig av havet må det gjøres mye mer for å beskytte havet. Bærekraftig bruk av havene i fremtiden må innebære stans av overfiske, hindring av forsøpling og forgifting, og beskyttelse av sårbare dyr og korallrev.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 14</SDG:hasExactSynonym>
         <rdfs:label>Livet i havet</rdfs:label>
@@ -10491,7 +10479,6 @@ English: (For inital development, expansion of this class along with possible co
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/0/4/9/1/831940-22-nor-NO/Alle%20ikoner%20RGB_Nynorsk_V04_Side_20.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</SDG:UN_SDG_Target_ID>
         <SDG:description>Beskytte, gjenopprette og fremme bærekraftig bruk av økosystemer, sikre bærekraftig skogforvaltning, bekjempe ørkenspredning, stanse og reversere landforringelse samt stanse tap av artsmangfold. Selv om en rekke land har satt i gang tiltak for å sørge for en mer rettferdig bruk av naturressursene sine, er ikke disse tiltakene store nok. Alvorlighetsgraden av situasjonen jordkloden befinner seg i krever øyeblikkelig handling, for å stanse tapet av biologisk mangfold og beskytte livsviktige økosystemer.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 15</SDG:hasExactSynonym>
         <rdfs:label>Livet på land</rdfs:label>
@@ -10505,7 +10492,6 @@ English: (For inital development, expansion of this class along with possible co
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/7/5/9/1/831957-27-nor-NO/M%C3%A5l%2016%20RGB@2x.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</SDG:UN_SDG_Target_ID>
         <SDG:description>Fremme fredelige og inkluderende samfunn for å sikre bærekraftig utvikling, sørge for tilgang til rettsvern for alle, og bygge velfungerende, ansvarlige og inkluderende institusjoner på alle nivåer. Under konflikter mister mange tilgang til offentlige tjenester. I tillegg er det vanskelig å drive sterke statlige institusjoner under en konflikt. Når for eksempel rettsvesenet i et land fungerer dårlig, går det ut over menneskers rettssikkerhet.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 16</SDG:hasExactSynonym>
         <rdfs:label>Fred, rettferdighet og velfungerende institusjoner</rdfs:label>
@@ -10518,7 +10504,6 @@ English: (For inital development, expansion of this class along with possible co
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/4/7/9/1/831974-29-nor-NO/M%C3%A5l%2017%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</SDG:UN_SDG_Target_ID>
         <SDG:description>Styrke virkemidlene som trengs for å gjennomføre arbeidet, og fornye globale partnerskap for bærekraftig utvikling. For å lykkes med bærekraftsmålene trengs det nye og sterke partnerskap. Myndigheter, næringslivet og sivilsamfunnet må samarbeide for å oppnå bærekraftig utvikling. Bærekraftsmålene skal fungere som en felles, global retning og prioritert innsats de neste 15 årene. Erfaring fra Tusenårsmålene viser at denne typen målrettet innsats virker.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 17</SDG:hasExactSynonym>
         <rdfs:label>Samarbeid for å nå målene</rdfs:label>
@@ -10532,7 +10517,6 @@ English: (For inital development, expansion of this class along with possible co
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/9/1/7/1/831719-77-nor-NO/m%C3%A5l%202-%20bokm%C3%A5l.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</SDG:UN_SDG_Target_ID>
         <SDG:description>Utrydde sult, oppnå matsikkerhet og bedre ernæring, og fremme bærekraftig landbruk. Målet handler om at ingen skal sulte, og at alle mennesker skal ha tilgang på næringsrik og bærekraftig mat hele året.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 2</SDG:hasExactSynonym>
         <rdfs:label>Utrydde sult</rdfs:label>
@@ -10547,7 +10531,6 @@ English: (For inital development, expansion of this class along with possible co
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/6/3/7/1/831736-44-nor-NO/M%C3%A5l%203%20RGB@4x.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</SDG:UN_SDG_Target_ID>
         <SDG:description>God helse er en grunnleggende forutsetning for menneskers mulighet til å nå sitt fulle potensial og for å bidra til utvikling i samfunnet. Hvordan helsen vår er, påvirkes av miljø, økonomi og sosiale forhold og mål 3 inkluderer mennesker i alle aldre og ivaretar alle dimensjonene</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God helse og livskvalitet</rdfs:label>
@@ -10561,7 +10544,6 @@ English: (For inital development, expansion of this class along with possible co
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon>https://www.fn.no/var/globalis/storage/images/_aliases/medium/3/5/7/1/831753-34-nor-NO/M%C3%A5l%204%20RGB.png</schema:icon>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</SDG:UN_SDG_Target_ID>
         <SDG:description>Sikre inkluderende, rettferdig og god utdanning og fremme muligheter for livslang læring for alle
 Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i dag på skole enn for bare få tiår siden. Før koronapandemien, gikk ni av ti barn på skolen. Til tross for dette, kan fremdeles over 750 millioner mennesker i verden fortsatt ikke lese eller skrive, hvorav to tredjedeler er kvinner. Inkluderende opplæring av god kvalitet for alle, er en  av de viktigste byggesteinene for velstand, helse og likeverd i alle samfunn.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 4</SDG:hasExactSynonym>
@@ -10576,7 +10558,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/0/7/7/1/831770-32-nor-NO/M%C3%A5l%205%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</SDG:UN_SDG_Target_ID>
         <SDG:description>Oppnå likestilling og styrke jenters og kvinners stilling i samfunnet. Likestilling handler om en rettferdig fordeling av makt, innflytelse og ressurser. Å leve et fritt liv uten vold og diskriminering er en grunnleggende menneskerettighet og er avgjørende for utvikling av menneskene og for samfunnet. Det er bevist mange ganger at politisk, økonomisk og sosial likestilling mellom kjønnene bidrar til en positiv utvikling på alle plan. Likestilling og kvinners rettigheter er et gjennomgående tema i bærekraftsmålene, og det er helt essensielt for å kunne nå alle FNs bærekraftsmål innen 2030.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 5</SDG:hasExactSynonym>
         <rdfs:label>Likestilling mellom kjønn</rdfs:label>
@@ -10591,7 +10572,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/7/8/7/1/831787-30-nor-NO/M%C3%A5l%206%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</SDG:UN_SDG_Target_ID>
         <SDG:description>Sikre bærekraftig vannforvaltning og tilgang til vann og gode sanitærforhold for alle. Det finnes nok ferskvann i verden, men økonomi og manglende infrastruktur står i veien for at alle skal få tilgang. I tillegg fører befolkningsvekst og klimaendringer til at vannmangelen øker flere steder. Derfor er det viktig at vi beskytter de drikkevannskildene vi har, og at vi investerer i nye vann- og sanitæranlegg i regionene der disse mangler.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 6</SDG:hasExactSynonym>
         <rdfs:label>Rent vann og gode sanitærforhold</rdfs:label>
@@ -10605,7 +10585,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <schema:icon>https://www.fn.no/var/globalis/storage/images/_aliases/small/9/8/8/9/989889-1-nor-NO/GOAL_7_TARGET_7.2_0.png</schema:icon>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</SDG:UN_SDG_Target_ID>
         <SDG:description>Sikre tilgang til pålitelig, bærekraftig og moderne energi til en overkommelig pris for alle. Bærekraftsmål 7 handler om at alle mennesker skal ha tilgang til energi. Energien skal være pålitelig, bærekraftig, moderne, og ikke altfor dyr. Arbeidet med dette målet utarter seg ulikt forskjellige steder i verden.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 7</SDG:hasExactSynonym>
         <rdfs:label>Ren energi til alle</rdfs:label>
@@ -10620,7 +10599,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/1/2/8/1/831821-23-nor-NO/M%C3%A5l%208%20RGB.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</SDG:UN_SDG_Target_ID>
         <SDG:description>Fremme varig, inkluderende og bærekraftig økonomisk vekst, full sysselsetting og anstendig arbeid for alle. Mer anstendig arbeid- Omtrent halvparten av verdens befolkning tjener så dårlig at ikke de kan leve av lønnen sin. Å skape arbeidsplasser av god kvalitet er en stor utfordring for alle land fram mot 2030.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 8</SDG:hasExactSynonym>
         <rdfs:label>Anstendig arbeid og økonomisk vekst</rdfs:label>
@@ -10636,7 +10614,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <SDG:harBidragTilTrippelBunnlinje rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/8/3/8/1/831838-32-nor-NO/M%C3%A5l%209%20RGB@4x.png"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</SDG:UN_SDG_Target_ID>
         <SDG:description>Bygge solid infrastruktur og fremme inkluderende og bærekraftig industrialisering og innovasjon. Hvorfor infrastruktur? Investeringer i infrastruktur som transport, vanningssystemer, energi og informasjonsteknologi er avgjørende for å skape en bærekraftig utvikling. Infrastruktur er den underliggende strukturen som må være på plass for at et samfunn skal fungere.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 9</SDG:hasExactSynonym>
         <rdfs:label>Industri, innovasjon og infrastruktur</rdfs:label>
@@ -10809,7 +10786,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.a">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID>1.a</SDG:UN_SDG_Target_ID>
         <SDG:description>Sikre ei vesentleg mobilisering av ressursar frå mange ulike kjelder, mellom anna gjennom styrkt utviklingssamarbeid, for å gje utviklingslanda, særleg dei minst utvikla landa, tilstrekkelege og føreseielege middel til å gjennomføre program og politikk for å utrydde alle former for fattigdom</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
         <rdfs:label>1.a</rdfs:label>
@@ -10822,7 +10798,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.b">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID>1.b</SDG:UN_SDG_Target_ID>
         <SDG:description>Opprette gode politiske rammeverk på nasjonalt, regionalt og internasjonalt nivå basert på utviklingsstrategiar som gagnar dei fattige og tek omsyn til kjønnsperspektivet, med sikte på å auke investeringar i tiltak som motverkar fattigdom</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
         <rdfs:label>1.b</rdfs:label>
@@ -10835,10 +10810,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.1</SDG:UN_SDG_Target_ID>
         <SDG:description>Innan 2030 utrydde all ekstrem fattigdom</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.1</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.1</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10848,10 +10822,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.2">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2</SDG:UN_SDG_Target_ID>
         <SDG:description>Innan 2030 minst halvere prosentdelen av menn, kvinner og barn i alle aldrar som lever ifattigdom, i samsvar med nasjonale definisjonar</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.2</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10861,10 +10834,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.3">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.3</SDG:UN_SDG_Target_ID>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innføre nasjonalt tilpassa sosiale velferdsordningar og tiltak for alle, inkludert minstestandardar, og innan 2030 oppnå ei vesentleg dekning av fattige og sårbare</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.3</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.3</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10874,10 +10846,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.4">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</SDG:UN_SDG_Target_ID>
         <SDG:description>Innan 2030 sikre at alle menn og kvinner, særleg fattige og sårbare, har lik rett til økonomiske ressursar og tilgang til grunnleggjande tenester, til å eige og kontrollere jord og andre former for eigedom, og til arv, naturressursar, ny teknologi og finansielle tenester, inkludert mikrofinansiering</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.4</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10887,10 +10858,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#1.5">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</SDG:UN_SDG_Target_ID>
         <SDG:description>Innan 2030 byggje opp motstandskrafta til fattige og personar i utsette situasjonar, slik at dei blir mindre utsette og sårbare for klimarelaterte ekstremhendingar og andre økonomiske, sosiale og miljømessige påkjenningar og katastrofar</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 1</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.5</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -10981,7 +10951,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.a">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID>3.a</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Styrkje gjennomføringa av rammekonvensjonen frå Verdshelseorganisasjonen om førebygging av tobakksskadar i alle land</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label>3.a</rdfs:label>
@@ -10994,7 +10963,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.b">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID>3.b</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Støtte forsking på – og utvikling av – vaksinar og medisinar mot smittsame og ikkje-smittsame sjukdommar som primært rammar utviklingsland, sørgje for tilgang til nødvendige medisinar og vaksinar til ein overkomeleg pris, i samsvar med Doha-erklæringa om TRIPS-avtalen og folkehelse, som stadfestar at utviklingslanda har rett til fullt ut å nytte føresegnene om høvet til å verne om folkehelsa og særleg sørgje for tilgang til medisinar til alle, i avtalen om handelsrelaterte aspekt ved immaterielle rettar</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label>3.b</rdfs:label>
@@ -11007,7 +10975,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.c">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID>3.c</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Oppnå ein vesentleg auke i finansieringa av helsetenester og rekruttering, utvikling og opplæring av helsepersonell i utviklingsland, særleg i dei minst utvikla landa og små utviklingsøystatar, og arbeide for at slikt personell blir verande i landa</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label>3.c</rdfs:label>
@@ -11020,7 +10987,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.1</SDG:UN_SDG_Target_ID>
         <SDG:description>Innan 2030 redusere mødredøyinga i verda til under 70 per 100 000 levandefødde</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.1</rdfs:label>
@@ -11033,10 +10999,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.2">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</SDG:UN_SDG_Target_ID>
         <SDG:description>Innan 2030 få slutt på dødsfall som kan forhindrast blant nyfødde og barn under fem år, med eit felles mål for alle land om å redusere døyinga blant nyfødde til høgst 12 per 1000 levandefødde og til høgst 25 per 1000 levandefødde blant barn under fem år</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.2</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.2</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11046,10 +11011,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.3">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Innan 2030 stanse epidemiane av aids, tuberkulose, malaria og neglisjerte tropiske sjukdommar, og motverke hepatitt, vassborne sjukdommar og andre smittsame sjukdommar</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.3</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11059,10 +11023,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.4">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Innan 2030 redusere prematur døying av ikkje-smittsame sjukdommar med ein tredel gjennom førebygging og behandling, og fremje mental helse og livskvalitet</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 4</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.4</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11072,10 +11035,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.5">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Styrkje førebygging og behandling av rusmiddelmisbruk, mellom anna misbruk av narkotiske stoff og skadeleg bruk av alkohol</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.5</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11085,10 +11047,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.6">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Innan 2020 halvere talet på dødsfall og skadar i verda som skriv seg frå trafikkulykker</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.6</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.6</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11098,10 +11059,9 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.7">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.7</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Innan 2030 sikre allmenn tilgang til tenester som er knytte til seksuell og reproduktiv helse, inkludert familieplanlegging og tilhøyrande informasjon og opplæring, og sikre at reproduktiv helse blir innarbeidd i nasjonale strategiar og program</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.7</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.7</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11111,9 +11071,8 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.8">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</SDG:UN_SDG_Target_ID>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.8</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.8</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11123,7 +11082,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#3.9">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:UN_SDG_Target_ID rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.9</SDG:UN_SDG_Target_ID>
         <SDG:description xml:lang="norwegian">Innan 2030 redusere talet på dødsfall og sjukdomstilfelle på grunn av farlege kjemikaliar og forureina luft, vatn og jord vesentleg</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 3</SDG:hasExactSynonym>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.9</rdfs:label>
