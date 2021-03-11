@@ -4,7 +4,6 @@ import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 import { getRelations } from '../api/ontologies';
 import {
   createForceSimulation,
-  drawEdgeLabels,
   drawLinks,
   drawNodeLabels,
   drawNodes,
@@ -51,10 +50,7 @@ const Graph: React.FC = () => {
   };
 
   const loadMoreData = async (node: GraphNode) => {
-    console.log('loading more data');
     const ontologies: Ontology[] = await getRelations(node.id);
-
-    console.log(ontologies);
 
     const newNodes: GraphNode[] = nodes
       .concat(
@@ -74,18 +70,15 @@ const Graph: React.FC = () => {
 
   const drawGraph = () => {
     if (!nodes || !links || nodes.length === 0 || links.length === 0) return;
-    console.log('draw graph');
-    console.log(links);
 
     const svg = select(svgref.current);
 
     drawLinks(svg, links, '.link', 'none', '#a03', 1);
     drawNodes(svg, nodes, '.node', 10, '#22a', '#22e', loadMoreData);
     drawNodeLabels(svg, nodes, '.nodeLabel');
-    drawEdgeLabels(svg, links, '.edgeLabel');
+    // drawEdgeLabels(svg, links, '.edgeLabel');
 
     if (forceSim) {
-      console.log('force sim already exists');
       forceSim.on('tick', () => {
         updateLinkPositions(svg, links, '.link');
         updateNodePositions(svg, nodes, '.node');

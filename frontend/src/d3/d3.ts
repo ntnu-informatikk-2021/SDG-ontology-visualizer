@@ -141,7 +141,8 @@ export const drawNodeLabels = (
     .data(nodes)
     .join('text')
     .attr('class', labelClassName.substring(1)) // remove . from class name
-    .text((node) => node.name.substring(0, 8)) // temporary to prevent clutter
+    // .text((node) => node.name.substring(0, 8)) // temporary to prevent clutter
+    .text((node) => node.name)
     .attr('text-anchor', 'middle')
     .attr('pointer-events', 'none')
     .attr('fill', '#aaa');
