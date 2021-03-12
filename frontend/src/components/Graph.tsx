@@ -33,7 +33,6 @@ const Graph: React.FC = () => {
   );
 
   const loadInitialData = async () => {
-    console.log('loading initial data');
     const ontologies: Ontology[] = await getRelations(initialNode.id);
 
     const newNodes: GraphNode[] = ontologies
@@ -78,6 +77,7 @@ const Graph: React.FC = () => {
     drawNodeLabels(svg, nodes, '.nodeLabel');
     // drawEdgeLabels(svg, links, '.edgeLabel');
 
+    // TODO: Simplify this
     if (forceSim) {
       forceSim.on('tick', () => {
         updateLinkPositions(svg, links, '.link');
