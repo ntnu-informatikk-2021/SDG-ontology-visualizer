@@ -1,4 +1,4 @@
-import { GraphEdge, Ontology } from '../types/ontologyTypes';
+import { GraphEdge, Ontology, UniqueObject } from '../types/ontologyTypes';
 
 // eslint-disable-next-line import/prefer-default-export
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => ({
@@ -7,10 +7,7 @@ export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => ({
   target: ontology.Object.id,
 });
 
-interface SomethingWithId {
-  id: string;
-}
-export const removeDuplicates = <T extends SomethingWithId>(
+export const removeDuplicates = <T extends UniqueObject>(
   node: T,
   index: number,
   self: T[],
