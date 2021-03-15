@@ -18,7 +18,9 @@ export type Ontology = {
 
 export type Record = {
   Subject: string | null;
+  SubjectLabel: string | null;
   Object: string | null;
+  ObjectLabel: string | null;
   Predicate: string;
 };
 
