@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 import ErrorModal from './components/ErrorModal';
