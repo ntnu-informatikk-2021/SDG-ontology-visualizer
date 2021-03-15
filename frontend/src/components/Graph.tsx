@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, Simulation } from 'd3';
+import styles from '../css/Graph.module.css';
 import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 import { getRelations } from '../api/ontologies';
 import {
@@ -107,16 +108,7 @@ const Graph: React.FC = () => {
 
   return (
     <div>
-      <svg
-        style={{
-          margin: '0 auto',
-          marginTop: '10vh',
-          overflow: 'visible',
-          height: 500,
-          width: 500,
-        }}
-        ref={svgref}
-      />
+      <svg className={styles.graph} ref={svgref} />
     </div>
   );
 };
