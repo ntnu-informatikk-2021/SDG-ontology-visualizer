@@ -11,7 +11,6 @@ const App = () => (
     <ChakraProvider>
       <div className="App">
         <Graph />
-        {/* <OntologyTable /> */}
         <ErrorModal />
       </div>
     </ChakraProvider>
