@@ -34,11 +34,21 @@ export const mapIdToOntologyEntity = (id: string): OntologyEntity | null => {
   };
 };
 
-export const mapRecordToOntology = (record: Record): Ontology => ({
-  Subject: record.Subject ? mapIdToOntologyEntity(record.Subject) : null,
-  Object: record.Object ? mapIdToOntologyEntity(record.Object) : null,
-  Predicate: mapIdToOntologyEntity(record.Predicate),
-});
+export const mapRecordToOntology = (record: Record): Ontology => {
+  let subject = record.Subject ? mapIdToOntologyEntity(record.Subject) : null;
+  if (subject && record.SubjectLabel) {
+    subject = { ...subject, name: record.SubjectLabel };
+  }
+  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
+  if (object && record.ObjectLabel) {
+    object = { ...object, name: record.ObjectLabel };
+  }
+  return {
+    Subject: subject,
+    Object: object,
+    Predicate: mapIdToOntologyEntity(record.Predicate),
+  };
+};
 
 export const parseOntologyEntityToQuery = (entity: OntologyEntity): string =>
   `${entity.prefix.prefix}:${entity.name}`;

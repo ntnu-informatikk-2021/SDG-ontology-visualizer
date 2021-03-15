@@ -1,24 +1,25 @@
 import { SimulationNodeDatum } from 'd3';
 
-export type Node = {
+export interface UniqueObject {
   id: string;
+}
+
+export interface Node extends UniqueObject {
   name: string;
   prefix: Prefix;
-};
-
-export type Annontations = {
-  label: String;
-  description: String;
-  relation: String;
-};
+}
 
 export interface GraphNode extends Node, SimulationNodeDatum {}
 
-export type Edge = {
-  id: string;
+export interface Edge extends UniqueObject {
   name: string;
   prefix: Prefix;
-};
+}
+
+export interface GraphEdge extends Edge {
+  source: string;
+  target: string;
+}
 
 export interface GraphEdge extends Edge {
   source: string;
