@@ -1,4 +1,7 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { ChakraProvider } from '@chakra-ui/react';
+import store from './state/store';
 import ErrorModal from './components/ErrorModal';
 import Graph from './components/Graph';
 import Navbar from './components/Navbar';
@@ -18,14 +21,18 @@ const initialNode: Node = {
 };
 
 const App = () => (
-  <div className="App">
-    <Navbar />
-    <Graph />
-    <DetailView node={initialNode} />
-    <OntologyTable />
-    <ErrorModal />
-    <Footer />
-  </div>
+  <ChakraProvider>
+    <Provider store={store}>
+      <div className="App">
+        <Navbar />
+        <Graph />
+        <DetailView node={initialNode} />
+        <OntologyTable />
+        <ErrorModal />
+        <Footer />
+      </div>
+    </Provider>
+  </ChakraProvider>
 );
 
 export default App;
