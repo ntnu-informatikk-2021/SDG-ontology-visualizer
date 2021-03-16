@@ -29,9 +29,7 @@ const Graph: React.FC = () => {
   const svgref = useRef<SVGSVGElement>(null);
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<GraphEdge[]>([]);
-  const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>(
-    (undefined as unknown) as Simulation<GraphNode, GraphEdge>,
-  );
+  const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
 
   const loadInitialData = async () => {
     const ontologies: Ontology[] = await getRelations(initialNode.id);
