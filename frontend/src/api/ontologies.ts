@@ -6,3 +6,10 @@ export const getRelations = (classId: string): Promise<any> =>
 
 export const getAnnotations = (classId: string): Promise<Annotations> =>
   api.GET(`ontologies/Annotations/${encodeURIComponent(classId)}`);
+
+export const getSubclasses = (classId: string): Promise<any> =>
+  api.GET(`ontologies/subclasses/${encodeURIComponent(classId)}`);
+
+export const getDescription = (classId: string): Promise<any> =>
+  api.GET(`ontologies/description/${encodeURIComponent(classId)}`);
+
