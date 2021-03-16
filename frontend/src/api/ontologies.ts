@@ -4,5 +4,8 @@ import api from './api';
 export const getRelations = (classId: string): Promise<any> =>
   api.GET(`ontologies/relations/${encodeURIComponent(classId)}`);
 
+export const getSubclasses = (classId: string): Promise<any> =>
+  api.GET(`ontologies/subclasses/${encodeURIComponent(classId)}`);
+
 export const getDescription = (classId: string): Promise<any> =>
   api.GET(`ontologies/description/${encodeURIComponent(classId)}`);
