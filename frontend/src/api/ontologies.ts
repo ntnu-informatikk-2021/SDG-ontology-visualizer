@@ -12,4 +12,3 @@ export const getSubclasses = (classId: string): Promise<any> =>
 
 export const getDescription = (classId: string): Promise<any> =>
   api.GET(`ontologies/description/${encodeURIComponent(classId)}`);
-
