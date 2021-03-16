@@ -13,14 +13,14 @@ type DetailViewProps = {
   node: Node;
 };
 
-const DetailView: React.FC<DetailViewProps> = (props: DetailViewProps) => {
+const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
     description: '',
   });
 
   const loadAnnotations = async () => {
-    const data = await getAnnotations(props.node.id);
+    const data = await getAnnotations(node.id);
     setAnnotations(data);
   };
 
