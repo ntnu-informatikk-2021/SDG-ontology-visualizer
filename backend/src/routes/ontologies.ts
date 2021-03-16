@@ -3,6 +3,7 @@ import getDescription from '../database/getDescription';
 import getSubclasses from '../database/getSubclasses';
 import getRelations from '../database/getRelations';
 import getAnnotations from '../database/getAnnotations';
+import getSustainabilityGoals from '../database/getSustainabilityGoals';
 import onError from './middleware/onError';
 
 const router = Router();
@@ -42,7 +43,15 @@ const getDescriptionFromClass = async (req, res) => {
     onError(e, req, res);
   }
 };
-
+const getSustainabilityGoalsFromOntology = async (req, res) => {
+  try {
+    const data = await getSustainabilityGoals(req.params.classId);
+    res.json(data);
+  } catch (e) {
+    onError(e, req, res);
+  }
+};
+router.get('/sustainabilityGoals/:classId', getSustainabilityGoalsFromOntology);
 router.get('/relations/:classId', getRelationsFromClass);
 router.get('/subclasses/:classId', getSubclassesFromClass);
 router.get('/annotations/:classId', getAnnotationsFromClass);
