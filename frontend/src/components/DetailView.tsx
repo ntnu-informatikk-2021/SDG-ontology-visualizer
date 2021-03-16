@@ -3,7 +3,11 @@ import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/re
 import { getAnnotations } from '../api/ontologies';
 import { Annotation, Node } from '../types/ontologyTypes';
 
-const data2 = {
+/**
+ * This is mock data and should be changed to use actual data.
+ */
+
+const mockData = {
   label: 'Bærekraftsmål navn',
   description: 'beskrivelse',
   isSDGoff: ['subGoal1', 'subGoal2', 'subGoal3'],
@@ -34,7 +38,7 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
       <div>{annotations.description}</div>
       <div>
         <p style={{ display: 'inline' }}>Har bidrag til</p>
-        {data2.isSDGoff.map((relation) => (
+        {mockData.isSDGoff.map((relation) => (
           <Menu>
             {({ isOpen }) => (
               <>
@@ -51,11 +55,14 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
                 <MenuList>
                   <MenuItem
                     style={{ color: 'red' }}
-                    onClick={() => console.log('Går til detaljer')}
+                    onClick={() => console.log('Navigating to details')}
                   >
                     Se detaljer
                   </MenuItem>
-                  <MenuItem style={{ color: 'red' }} onClick={() => console.log('Går til graf')}>
+                  <MenuItem
+                    style={{ color: 'red' }}
+                    onClick={() => console.log('Navigating to graph')}
+                  >
                     Se graf
                   </MenuItem>
                 </MenuList>
