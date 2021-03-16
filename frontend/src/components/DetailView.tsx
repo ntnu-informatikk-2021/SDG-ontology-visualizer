@@ -9,18 +9,18 @@ const data2 = {
   isSDGoff: ['subGoal1', 'subGoal2', 'subGoal3'],
 };
 
-type Props = {
+type DetailViewProps = {
   node: Node;
 };
 
-const DetailView: React.FC<Props> = ({ node }) => {
+const DetailView: React.FC<DetailViewProps> = (props: DetailViewProps) => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
     description: '',
   });
 
   const loadAnnotations = async () => {
-    const data = await getAnnotations(node.id);
+    const data = await getAnnotations(props.node.id);
     setAnnotations(data);
   };
 
