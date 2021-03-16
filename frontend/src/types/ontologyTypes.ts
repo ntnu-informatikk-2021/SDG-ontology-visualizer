@@ -1,5 +1,10 @@
 import { SimulationNodeDatum } from 'd3';
 
+export type Annotation = {
+  label: string;
+  description: string;
+};
+
 export interface UniqueObject {
   id: string;
 }

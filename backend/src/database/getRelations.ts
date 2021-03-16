@@ -29,5 +29,6 @@ export default async (classId: string): Promise<Array<Ontology>> => {
     .map((ont) => addEntityToNullFields(ont, ontologyEntity))
     .filter(isRelevantOntology)
     .filter(isNotLoopOntology);
+
   return ontologies;
 };
