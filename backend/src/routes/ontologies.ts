@@ -3,7 +3,6 @@ import getDescription from '../database/getDescription';
 import getSubclasses from '../database/getSubclasses';
 import getRelations from '../database/getRelations';
 import getAnnotations from '../database/getAnnotations';
-import { ApiError } from '../types/types';
 import onError from './middleware/onError';
 
 const router = Router();
@@ -31,10 +30,7 @@ const getAnnotationsFromClass = async (req, res) => {
     const data = await getAnnotations(req.params.classId);
     res.json(data);
   } catch (e) {
-    const status = e instanceof ApiError ? e.statusCode : 500;
-    console.log(e);
-    res.status(status);
-    res.json({ message: e.message });
+    onError(e, req, res);
   }
 };
 
