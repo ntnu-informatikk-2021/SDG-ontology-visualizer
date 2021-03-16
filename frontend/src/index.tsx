@@ -9,11 +9,11 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ChakraProvider>
+    <ChakraProvider>
+      <Provider store={store}>
         <App />
-      </ChakraProvider>
-    </Provider>
+      </Provider>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
