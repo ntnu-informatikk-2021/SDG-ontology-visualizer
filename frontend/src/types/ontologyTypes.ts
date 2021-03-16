@@ -27,11 +27,6 @@ export interface GraphEdge extends Edge {
   target: string;
 }
 
-export interface GraphEdge extends Edge {
-  source: string;
-  target: string;
-}
-
 export type Ontology = {
   Subject: Node;
   Object: Node;
