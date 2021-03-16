@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
-import { getAnnontations } from '../api/ontologies';
-import { Annontations, Node } from '../types/ontologyTypes';
+import { getAnnotations } from '../api/ontologies';
+import { Annotations, Node } from '../types/ontologyTypes';
 
 const data2 = {
   label: 'Bærekraftsmål navn',
@@ -14,19 +14,19 @@ type Props = {
 };
 
 const DetailView: React.FC<Props> = ({ node }) => {
-  const [annotations, setAnnotations] = useState<Annontations>({
+  const [annotations, setAnnotations] = useState<Annotations>({
     label: '',
     description: '',
     relation: '',
   });
 
-  const loadAnnontations = async () => {
-    const data = await getAnnontations(node.id);
+  const loadAnnotations = async () => {
+    const data = await getAnnotations(node.id);
     setAnnotations(data);
   };
 
   useEffect(() => {
-    loadAnnontations();
+    loadAnnotations();
     console.log(annotations);
   }, []);
 
