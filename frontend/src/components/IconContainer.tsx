@@ -1,44 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, Container } from '@chakra-ui/react';
-import { getSustainabilityGoals } from '../api/ontologies';
-import {  Node, SustainabilityGoal } from '../types/ontologyTypes';
+import { SustainabilityGoal } from '../types/ontologyTypes';
 
-// type IconContainerProps = {
-//   sustainabilityNode: Node;
-// };
+type IconContainerProps = {
+  sustainabilityNode: SustainabilityGoal;
+};
 
-const IconContainer = () => {
-    const [sustainabilityGoals, setSustainabilityGoals] = useState<SustainabilityGoal>({
-        instancesOf: '',
-        label: '',
-        icon: '',
-      });
-    
-      const loadSustainabilityGoals = async () => {
-        const data = await getSustainabilityGoals(node.id);
-        setSustainabilityGoals(data);
-      };
-    
-      useEffect(() => {
-        loadSustainabilityGoals();
-      }, []);
-
-       const [sustainabilityGoals, setSustainabilityGoals] = useState<SustainabilityGoal>({
-        instancesOf: '',
-        label: '',
-        icon: '',
-      });
-    
-      const loadSustainabilityGoals = async () => {
-        const data = await getSustainabilityGoals(imageid.id);
-        setSustainabilityGoals(data);
-      };
-    
-      useEffect(() => {
-        loadSustainabilityGoals();
-      }, []);
-  
-      return(
+const IconContainer: React.FC<IconContainerProps> = ({
+  sustainabilityNode,
+}: IconContainerProps) => (
   <Container paddingTop={20} centerContent>
     <Box
       borderWidth="1g"
@@ -49,10 +19,10 @@ const IconContainer = () => {
       border="2px"
       borderColor="linkedin.400"
     >
-      <p>{sustainabilityGoals.label}</p>
-      <img src={sustainabilityGoals{imageid}.icon} alt="fn.no" />
+      <p>{sustainabilityNode.label}</p>
+      <img src={sustainabilityNode.icon} alt="fn.no" />
     </Box>
   </Container>
-      )};
+);
 
-      export default IconContainer;
+export default IconContainer;

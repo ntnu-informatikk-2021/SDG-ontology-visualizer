@@ -29,7 +29,7 @@ const App = () => (
         <Graph />
         <DetailView node={initialNode} />
         <OntologyTable />
-        <Frontpage node={testNode} />
+        <Frontpage />
         <ErrorModal />
         <Footer />
       </div>
