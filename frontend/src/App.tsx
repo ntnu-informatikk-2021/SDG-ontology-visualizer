@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import DetailView from './components/DetailView';
 import { Node } from './types/ontologyTypes';
 import OntologyTable from './components/OntologyTable';
-import TestView from './components/TestView';
+import Frontpage from './components/Frontpage';
 import './css/App.css';
 
 const initialNode: Node = {
@@ -21,15 +21,6 @@ const initialNode: Node = {
   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4',
 };
 
-const testNode: Node = {
-  prefix: {
-    prefix: 'SDG',
-    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
-  },
-  name: 'SDG',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG',
-};
-
 const App = () => (
   <ChakraProvider>
     <Provider store={store}>
@@ -38,7 +29,7 @@ const App = () => (
         <Graph />
         <DetailView node={initialNode} />
         <OntologyTable />
-        <TestView node={testNode} />
+        <Frontpage node={testNode} />
         <ErrorModal />
         <Footer />
       </div>
