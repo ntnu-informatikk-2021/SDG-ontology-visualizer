@@ -5,6 +5,12 @@ export type Annotation = {
   description: string;
 };
 
+export type SustainabilityGoal = {
+  instancesOf: string;
+  label: string;
+  icon: string;
+};
+
 export interface UniqueObject {
   id: string;
 }
