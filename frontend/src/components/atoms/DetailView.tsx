@@ -29,8 +29,11 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
     setAnnotations(data);
   };
 
+  const loadSDGContributions = () => {};
+
   useEffect(() => {
     loadAnnotations();
+    loadSDGContributions();
   }, [node]);
 
   return (

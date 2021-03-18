@@ -1,5 +1,5 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
-import { OntologyEntity, Record, Ontology } from '../types/types';
+import { Node, OntologyEntity, Record, Ontology } from '../types/types';
 
 export const parseNameFromClassId = (id: string): string => {
   const regex = /^[^_]*#/;
@@ -48,6 +48,14 @@ export const mapRecordToOntology = (record: Record): Ontology => {
     Object: object,
     Predicate: mapIdToOntologyEntity(record.Predicate),
   };
+};
+
+export const mapRecordToObject = (record: Record): Node | null => {
+  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
+  if (object && record.ObjectLabel) {
+    object = { ...object, name: record.ObjectLabel };
+  }
+  return object;
 };
 
 export const parseOntologyEntityToQuery = (entity: OntologyEntity): string =>
