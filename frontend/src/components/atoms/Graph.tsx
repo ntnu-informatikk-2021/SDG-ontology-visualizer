@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { select, Simulation } from 'd3';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../css/Graph.module.css';
-import { GraphEdge, GraphNode } from '../../types/ontologyTypes';
+import { GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
 import { getRelations } from '../../api/ontologies';
 import {
   createForceSimulation,
@@ -26,51 +26,53 @@ const Graph: React.FC = () => {
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<GraphEdge[]>([]);
   const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
-  const initialNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
 
-  const loadInitialData = async () => {
-    if (!initialNode || hasInitialized) return;
-    setHasInitialized(true);
+  const updateNodes = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
+    let newNodes = ontologies.map((ontology) =>
+      ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject,
+    );
 
-    const ontologies = await getRelations(initialNode.id);
-    if (ontologies.length === 0) {
-      setHasInitialized(false);
-      return;
+    if (hasInitialized) {
+      newNodes = nodes.concat(newNodes);
+    } else {
+      newNodes.push(clickedNode as GraphNode);
     }
-
-    const newNodes: GraphNode[] = ontologies
-      .map((ontology) =>
-        ontology.Subject.id === initialNode.id ? ontology.Object : ontology.Subject,
-      )
-      .filter(removeDuplicates);
-    newNodes.push(initialNode as GraphNode);
+    newNodes = newNodes.filter(removeDuplicates);
 
     setNodes(newNodes);
+  };
 
-    const newLinks = ontologies.map(mapOntologyToGraphEdge);
+  const updateLinks = (ontologies: Array<Ontology>) => {
+    let newLinks = ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge);
+    if (hasInitialized) {
+      newLinks = links.concat(newLinks);
+    }
+    newLinks = newLinks.filter(removeDuplicates);
+
     setLinks(newLinks);
   };
 
-  const loadMoreData = async (node: GraphNode) => {
-    const ontologies = await getRelations(node.id);
-    if (ontologies.length === 0) return;
+  const loadData = async () => {
+    if (!selectedNode) return;
+    if (!hasInitialized) {
+      setHasInitialized(true);
+    }
 
-    const newNodes: GraphNode[] = nodes
-      .concat(
-        ontologies.map((ontology) =>
-          ontology.Subject.id === node.id ? ontology.Object : ontology.Subject,
-        ),
-      )
-      .filter(removeDuplicates);
+    const ontologies = await getRelations(selectedNode.id);
+    if (ontologies.length === 0) {
+      if (!hasInitialized) {
+        setHasInitialized(false);
+      }
+      return;
+    }
 
-    const newLinks = links
-      .concat(ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge))
-      .filter(removeDuplicates);
+    updateNodes(ontologies, selectedNode);
+    updateLinks(ontologies);
+  };
 
-    setNodes(newNodes);
-    setLinks(newLinks);
-
+  const onClickNode = (node: GraphNode) => {
     dispatch(selectNode(node));
   };
 
@@ -80,7 +82,7 @@ const Graph: React.FC = () => {
     const svg = select(svgref.current);
 
     drawLinks(svg, links, '.link', 'none', '#a03', 1);
-    drawNodes(svg, nodes, '.node', 10, '#22a', '#22e', loadMoreData);
+    drawNodes(svg, nodes, '.node', 10, '#22a', '#22e', onClickNode);
     drawNodeLabels(svg, nodes, '.nodeLabel');
     drawEdgeLabels(svg, links, '.edgeLabel');
 
@@ -105,8 +107,8 @@ const Graph: React.FC = () => {
   };
 
   useEffect(() => {
-    loadInitialData();
-  }, [initialNode]);
+    loadData();
+  }, [selectedNode]);
 
   useEffect(() => {
     drawGraph();
