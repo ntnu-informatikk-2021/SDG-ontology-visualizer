@@ -18,7 +18,6 @@ function OntologyPage() {
     const newNode = mapPrefixNameToNode(prefix, name);
     setcurrentNode(newNode);
   }, [prefix, name]);
-  console.log(currentNode);
 
   return (
     <div>

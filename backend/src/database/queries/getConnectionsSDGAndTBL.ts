@@ -2,8 +2,8 @@ import {
   mapIdToOntologyEntity,
   parseOntologyEntityToQuery,
   parsePrefixesToQuery,
-} from 'common/database';
-import { PREFIXES } from 'database';
+} from '../../common/database';
+import { PREFIXES } from '../index';
 
 export default (nodeId: string): string => {
   const node = mapIdToOntologyEntity(nodeId);
@@ -16,12 +16,14 @@ export default (nodeId: string): string => {
     ${prefixString}
     SELECT *
     WHERE {
+      {
         ${fullNodeName} SDG:harBidragTilBærekraftsmål ?Object .
         OPTIONAL {?Object rdfs:label ?ObjectLabel}
-    }
-    UNION
-    {
+      }
+      UNION
+      {
         ${fullNodeName} SDG:harBidragTilTrippelBunnlinje ?Object.
         OPTIONAL {?Object rdfs:label ?ObjectLabel}
+      }
     }`;
 };

@@ -1,4 +1,4 @@
-import { Annotation, SustainabilityGoal } from '../types/ontologyTypes';
+import { Annotation, SustainabilityGoal, Node } from '../types/ontologyTypes';
 import api from './api';
 
 export const getRelations = (classId: string): Promise<any> =>
@@ -15,3 +15,6 @@ export const getDescription = (classId: string): Promise<any> =>
 
 export const getSustainabilityGoals = (classId: string): Promise<SustainabilityGoal[]> =>
   api.GET(`ontologies/sustainabilityGoals/${encodeURIComponent(classId)}`);
+
+export const getSDGAndTBLContributions = (classId: string): Promise<Array<Node>> =>
+  api.GET(`ontologies/contributions/${encodeURIComponent(classId)}`);

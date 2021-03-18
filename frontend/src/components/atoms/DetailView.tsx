@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
-import { getAnnotations } from '../../api/ontologies';
+import { getAnnotations, getSDGAndTBLContributions } from '../../api/ontologies';
 import { Annotation, Node } from '../../types/ontologyTypes';
-
-/**
- * This is mock data and should be changed to use actual data.
- */
-
-const mockData = {
-  label: 'Bærekraftsmål navn',
-  description: 'beskrivelse',
-  isSDGoff: ['subGoal1', 'subGoal2', 'subGoal3'],
-};
 
 type DetailViewProps = {
   node?: Node;
@@ -22,6 +12,7 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
     label: '',
     description: '',
   });
+  const [contributions, setContributions] = useState<Array<Node>>();
 
   const loadAnnotations = async () => {
     if (!node) return;
@@ -29,7 +20,11 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
     setAnnotations(data);
   };
 
-  const loadSDGContributions = () => {};
+  const loadSDGContributions = async () => {
+    if (!node) return;
+    const data = await getSDGAndTBLContributions(node.id);
+    setContributions(data);
+  };
 
   useEffect(() => {
     loadAnnotations();
@@ -42,38 +37,39 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
       <div>{annotations.description}</div>
       <div>
         <p style={{ display: 'inline' }}>Har bidrag til</p>
-        {mockData.isSDGoff.map((relation) => (
-          <Menu>
-            {({ isOpen }) => (
-              <>
-                <MenuButton
-                  key={relation}
-                  colorScheme="blue"
-                  style={{ margin: 5 }}
-                  isActive={isOpen}
-                  as={Button}
-                >
-                  {relation}
-                  {isOpen ? '' : ''}
-                </MenuButton>
-                <MenuList>
-                  <MenuItem
-                    style={{ color: 'red' }}
-                    onClick={() => console.log('Navigating to details')}
+        {contributions &&
+          contributions.map((contribution) => (
+            <Menu>
+              {({ isOpen }) => (
+                <>
+                  <MenuButton
+                    key={contribution.id}
+                    colorScheme="blue"
+                    style={{ margin: 5 }}
+                    isActive={isOpen}
+                    as={Button}
                   >
-                    Se detaljer
-                  </MenuItem>
-                  <MenuItem
-                    style={{ color: 'red' }}
-                    onClick={() => console.log('Navigating to graph')}
-                  >
-                    Se graf
-                  </MenuItem>
-                </MenuList>
-              </>
-            )}
-          </Menu>
-        ))}
+                    {contribution.name}
+                    {isOpen ? '' : ''}
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem
+                      style={{ color: 'red' }}
+                      onClick={() => console.log('Navigating to details')}
+                    >
+                      Se detaljer
+                    </MenuItem>
+                    <MenuItem
+                      style={{ color: 'red' }}
+                      onClick={() => console.log('Navigating to graph')}
+                    >
+                      Se graf
+                    </MenuItem>
+                  </MenuList>
+                </>
+              )}
+            </Menu>
+          ))}
       </div>
     </Box>
   );

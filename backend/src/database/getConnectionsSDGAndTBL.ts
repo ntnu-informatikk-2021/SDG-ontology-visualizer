@@ -1,5 +1,5 @@
-import { mapRecordToObject } from 'common/database';
-import { ApiError } from 'types/types';
+import { ApiError } from '../types/types';
+import { mapRecordToObject } from '../common/database';
 import DB from './index';
 import getConnectionsSDGAndTBL from './queries/getConnectionsSDGAndTBL';
 
