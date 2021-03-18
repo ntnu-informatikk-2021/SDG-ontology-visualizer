@@ -19,6 +19,7 @@ import {
 import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../../common/d3';
 import { RootState } from '../../state/store';
 import { selectNode } from '../../state/reducers/ontologyReducer';
+import { setError } from '../../state/reducers/apiErrorReducer';
 
 const Graph: React.FC = () => {
   const [hasInitialized, setHasInitialized] = useState<boolean>(false);
@@ -55,7 +56,10 @@ const Graph: React.FC = () => {
   };
 
   const loadData = async () => {
-    if (!selectedNode) return;
+    if (!selectedNode) {
+      dispatch(setError(new Error('No nodes selected in Graph')));
+      return;
+    }
     if (!hasInitialized) {
       setHasInitialized(true);
     }

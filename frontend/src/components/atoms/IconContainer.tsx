@@ -4,10 +4,12 @@ import { SustainabilityGoal } from '../../types/ontologyTypes';
 
 type IconContainerProps = {
   sustainabilityNode: SustainabilityGoal;
+  onClick: (sdg: SustainabilityGoal) => void;
 };
 
 const IconContainer: React.FC<IconContainerProps> = ({
   sustainabilityNode,
+  onClick,
 }: IconContainerProps) => (
   <Container paddingTop={20} centerContent>
     <Box
@@ -18,6 +20,7 @@ const IconContainer: React.FC<IconContainerProps> = ({
       overflow="hidden"
       border="2px"
       borderColor="linkedin.400"
+      onClick={() => onClick(sustainabilityNode)}
     >
       <p>{sustainabilityNode.label}</p>
       <img src={sustainabilityNode.icon} alt="fn.no" />
