@@ -40,3 +40,11 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
+.content {
+  min-height: calc(100vh - 5vh);
+}
+
+.footer {
+  height: 15vh;
+}

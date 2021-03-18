@@ -17,13 +17,15 @@ const App = () => (
       <div className="App">
         <Navbar />
         <ErrorModal />
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Frontpage} />
-            <Route path="/ontology" exact component={OntologyPage} />
-            <Route path="/about" exact component={About} />
-          </Switch>
-        </Router>
+        <div className="content">
+          <Router>
+            <Switch>
+              <Route path="/" exact component={Frontpage} />
+              <Route path="/ontology" exact component={OntologyPage} />
+              <Route path="/about" exact component={About} />
+            </Switch>
+          </Router>
+        </div>
         <Footer />
       </div>
     </Provider>
