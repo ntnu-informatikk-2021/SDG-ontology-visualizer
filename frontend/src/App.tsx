@@ -15,8 +15,8 @@ const App: React.FC = () => (
   <ChakraProvider>
     <Provider store={store}>
       <div className="App">
-        <ErrorModal />
         <Router>
+          <ErrorModal />
           <Navbar />
           <div className="content">
             <Switch>
