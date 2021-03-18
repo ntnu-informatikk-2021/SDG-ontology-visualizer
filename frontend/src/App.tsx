@@ -1,36 +1,29 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import store from './state/store';
 import ErrorModal from './components/ErrorModal';
-import Graph from './components/Graph';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import DetailView from './components/DetailView';
-import { Node } from './types/ontologyTypes';
-import OntologyTable from './components/OntologyTable';
-import Frontpage from './components/Frontpage';
+import Frontpage from './pages/Frontpage';
 import './css/App.css';
-
-const initialNode: Node = {
-  prefix: {
-    prefix: 'SDG',
-    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
-  },
-  name: 'B4',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4',
-};
+import About from './pages/About';
+import OntologyPage from './pages/OntologyPage';
 
 const App = () => (
   <ChakraProvider>
     <Provider store={store}>
       <div className="App">
         <Navbar />
-        <Graph />
-        <DetailView node={initialNode} />
-        <OntologyTable />
-        <Frontpage />
         <ErrorModal />
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Frontpage} />
+            <Route path="/ontology" exact component={OntologyPage} />
+            <Route path="/about" exact component={About} />
+          </Switch>
+        </Router>
         <Footer />
       </div>
     </Provider>

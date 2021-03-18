@@ -24,5 +24,6 @@ export default (classId: string): string => {
            ?c rdfs:subClassOf + ${fullClassName}  .
            FILTER (?c != ${fullClassName} )  
       }
-    } `;
+    } ORDER BY ( xsd:string ( STRBEFORE ( STR ( ?instancesOf ), "B" ) ) )
+    ( xsd:long ( STRAFTER ( STR ( ?instancesOf ), "B" ) ) )`;
 };

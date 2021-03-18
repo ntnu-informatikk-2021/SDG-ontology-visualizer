@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Center, SimpleGrid } from '@chakra-ui/react';
-import IconContainer from './IconContainer';
+import IconContainer from '../components/IconContainer';
 import { getSustainabilityGoals } from '../api/ontologies';
 import { Node, SustainabilityGoal } from '../types/ontologyTypes';
 
