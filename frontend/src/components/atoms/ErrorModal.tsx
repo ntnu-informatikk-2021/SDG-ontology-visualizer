@@ -11,11 +11,12 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearError } from '../../state/reducers/apiErrorReducer';
-import { ApiError, ErrorState } from '../../types/redux/errorTypes';
+import { RootState } from '../../state/store';
+import { ApiError } from '../../types/redux/errorTypes';
 
-const ErrorModal = () => {
+const ErrorModal: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const apiError = useSelector((state: ErrorState) => state.error);
+  const apiError = useSelector((state: RootState) => state.apiError.error);
   const dispatch = useDispatch();
 
   const onClose = () => dispatch(clearError());
