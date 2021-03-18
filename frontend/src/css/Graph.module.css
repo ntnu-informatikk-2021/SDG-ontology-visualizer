@@ -1,7 +1,6 @@
 .graph {
   margin: 0 auto;
-  margin-top: 10vh;
   overflow: visible;
-  height: 500px;
+  height: 800px;
   width: 500px;
 }
