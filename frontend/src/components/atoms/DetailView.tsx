@@ -14,7 +14,7 @@ const mockData = {
 };
 
 type DetailViewProps = {
-  node: Node;
+  node?: Node;
 };
 
 const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
@@ -24,13 +24,14 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
   });
 
   const loadAnnotations = async () => {
+    if (!node) return;
     const data = await getAnnotations(node.id);
     setAnnotations(data);
   };
 
   useEffect(() => {
     loadAnnotations();
-  }, []);
+  }, [node]);
 
   return (
     <Box bg="tomato" w="100%" p={6} color="white">
@@ -75,4 +76,5 @@ const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
   );
 };
 
+DetailView.defaultProps = { node: undefined };
 export default DetailView;

@@ -1,6 +1,8 @@
 import { Center, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getSustainabilityGoals } from '../../api/ontologies';
+import { parseNameFromClassId, parsePrefixFromClassId } from '../../common/node';
 import { Node, SustainabilityGoal } from '../../types/ontologyTypes';
 import IconContainer from '../atoms/IconContainer';
 
@@ -20,6 +22,7 @@ const SustainabilityGoalsList: React.FC = () => {
   const loadSustainabilityGoals = async () => {
     const data: SustainabilityGoal[] = await getSustainabilityGoals(sustainabilityNode.id);
     setSustainabilityGoals(data);
+    console.log(data);
   };
 
   useEffect(() => {
@@ -30,9 +33,16 @@ const SustainabilityGoalsList: React.FC = () => {
     <Center>
       <SimpleGrid columns={2} spacing={10}>
         {sustainabilityGoals &&
-          sustainabilityGoals.map((sustainabilityGoal) => (
-            <IconContainer sustainabilityNode={sustainabilityGoal} />
-          ))}
+          sustainabilityGoals.map((sustainabilityGoal) => {
+            const prefix = parsePrefixFromClassId(sustainabilityGoal.instancesOf);
+            const name = parseNameFromClassId(sustainabilityGoal.instancesOf);
+            if (!prefix || !name) return <></>;
+            return (
+              <Link to={`/ontology/${prefix.prefix}/${name}`}>
+                <IconContainer sustainabilityNode={sustainabilityGoal} />
+              </Link>
+            );
+          })}
       </SimpleGrid>
     </Center>
   );

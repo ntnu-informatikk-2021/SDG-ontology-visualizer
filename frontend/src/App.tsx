@@ -16,17 +16,17 @@ const App: React.FC = () => (
     <Provider store={store}>
       <div className="App">
         <ErrorModal />
-        <div className="content">
+        <Router>
           <Navbar />
-          <Router>
+          <div className="content">
             <Switch>
               <Route path="/" exact component={Frontpage} />
-              <Route path="/ontology" exact component={OntologyPage} />
+              <Route path="/ontology/:prefix/:name" exact component={OntologyPage} />
               <Route path="/about" exact component={About} />
             </Switch>
-          </Router>
-        </div>
-        <Footer />
+          </div>
+          <Footer />
+        </Router>
       </div>
     </Provider>
   </ChakraProvider>

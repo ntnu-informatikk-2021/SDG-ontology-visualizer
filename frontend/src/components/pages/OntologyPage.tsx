@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Graph from '../atoms/Graph';
 import { Node } from '../../types/ontologyTypes';
 import DetailView from '../atoms/DetailView';
+import { mapPrefixNameToNode } from '../../common/node';
 
-const initialNode: Node = {
-  prefix: {
-    prefix: 'SDG',
-    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
-  },
-  name: 'B4',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4',
-};
+interface ParamTypes {
+  prefix?: string;
+  name?: string;
+}
+
 function OntologyPage() {
+  const { prefix, name } = useParams<ParamTypes>();
+  const [currentNode, setcurrentNode] = useState<Node>();
+  useEffect(() => {
+    if (!prefix || !name) return;
+    const newNode = mapPrefixNameToNode(prefix, name);
+    setcurrentNode(newNode);
+  }, [prefix, name]);
+  console.log(currentNode);
+
   return (
     <div>
-      <Graph />
-      <DetailView node={initialNode} />
+      <Graph initialNode={currentNode} />
+      <DetailView node={currentNode} />
     </div>
   );
 }
-
 export default OntologyPage;

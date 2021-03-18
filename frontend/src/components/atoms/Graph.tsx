@@ -16,22 +16,27 @@ import {
 } from '../../d3/d3';
 import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../../common/d3';
 
-const initialNode: Node = {
-  prefix: {
-    prefix: 'SDG',
-    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
-  },
-  name: 'Miljø',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø',
+// const initialNode: Node = {
+//   prefix: {
+//     prefix: 'SDG',
+//     iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
+//   },
+//   name: 'Miljø',
+//   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø',
+// };
+
+type GraphProps = {
+  initialNode?: Node;
 };
 
-const Graph: React.FC = () => {
+const Graph: React.FC<GraphProps> = ({ initialNode }: GraphProps) => {
   const svgref = useRef<SVGSVGElement>(null);
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<GraphEdge[]>([]);
   const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
 
   const loadInitialData = async () => {
+    if (!initialNode) return;
     const ontologies: Ontology[] = await getRelations(initialNode.id);
 
     const newNodes: GraphNode[] = ontologies
@@ -98,7 +103,7 @@ const Graph: React.FC = () => {
 
   useEffect(() => {
     loadInitialData();
-  }, []);
+  }, [initialNode]);
 
   useEffect(() => {
     drawGraph();
@@ -110,5 +115,5 @@ const Graph: React.FC = () => {
     </div>
   );
 };
-
+Graph.defaultProps = { initialNode: undefined };
 export default Graph;
