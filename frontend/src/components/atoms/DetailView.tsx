@@ -1,17 +1,19 @@
+import { Box, Button, Container, Heading, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { Box, Menu, MenuButton, Button, MenuList, MenuItem, Heading } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAnnotations, getSDGAndTBLContributions } from '../../api/ontologies';
-import { Annotation, Node } from '../../types/ontologyTypes';
+import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
+import { Annotation, Node } from '../../types/ontologyTypes';
 
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
     description: '',
   });
-  const [contributions, setContributions] = useState<Array<Node>>();
+  const [contributions, setContributions] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const dispatch = useDispatch();
 
   const loadAnnotations = async () => {
     if (!selectedNode) return;
@@ -25,6 +27,10 @@ const DetailView: React.FC = () => {
     setContributions(data);
   };
 
+  const onClickContribution = (node: Node) => {
+    dispatch(selectNode(node));
+  };
+
   useEffect(() => {
     loadAnnotations();
     loadSDGContributions();
@@ -32,48 +38,25 @@ const DetailView: React.FC = () => {
 
   return (
     <Box bg="tomato" w="100%" p={6} color="white">
-      <Heading as="h2" size="2xl" fontWeight="hairline">
-        {annotations.label.toUpperCase()}
-      </Heading>
-      <Heading as="h3" size="md">
-        {annotations.description}
-      </Heading>
-      <div>
-        <p style={{ display: 'inline' }}>Har bidrag til</p>
-        {contributions &&
-          contributions.map((contribution) => (
-            <Menu>
-              {({ isOpen }) => (
-                <>
-                  <MenuButton
-                    key={contribution.id}
-                    colorScheme="blue"
-                    style={{ margin: 5 }}
-                    isActive={isOpen}
-                    as={Button}
-                  >
-                    {contribution.name}
-                    {isOpen ? '' : ''}
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem
-                      style={{ color: 'red' }}
-                      onClick={() => console.log('Navigating to details')}
-                    >
-                      Se detaljer
-                    </MenuItem>
-                    <MenuItem
-                      style={{ color: 'red' }}
-                      onClick={() => console.log('Navigating to graph')}
-                    >
-                      Se graf
-                    </MenuItem>
-                  </MenuList>
-                </>
-              )}
-            </Menu>
-          ))}
-      </div>
+      <Container w="60%" maxW="1000px">
+        <Heading as="h2" size="2xl" fontWeight="hairline">
+          {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
+        </Heading>
+        <Heading as="h3" size="md" my="4">
+          {annotations.description}
+        </Heading>
+        <Text>{contributions.length ? 'Har bidrag til' : 'Har ingen bidrag'}</Text>
+        {contributions.map((contribution) => (
+          <Button
+            onClick={() => onClickContribution(contribution)}
+            colorScheme="blue"
+            style={{ margin: 5 }}
+            key={contribution.id}
+          >
+            {contribution.name}
+          </Button>
+        ))}
+      </Container>
     </Box>
   );
 };
