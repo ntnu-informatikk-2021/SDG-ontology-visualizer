@@ -6,7 +6,12 @@ const API_BASE = 'http://localhost:3001/api';
 
 const responseHandler = async (res: Response): Promise<any> => {
   if (!res.ok) {
-    const body = await res.json();
+    let body;
+    try {
+      body = await res.json();
+    } catch (e) {
+      body = 'Could not parse json';
+    }
     const err = new ApiError(res, body);
     store.dispatch(setError(err));
     throw err;

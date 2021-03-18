@@ -34,16 +34,13 @@ const renderOntology = (
 
 const OntologyTable: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState(initialNode);
-  const [ontologies, setOntologies] = useState([]);
+  const [ontologies, setOntologies] = useState<Array<Ontology>>([]);
+
   const clickNode = async (node: Node) => {
     setSelectedNode(node);
-
-    try {
-      const newOntologies = await getRelations(node.id);
-      setOntologies(newOntologies);
-    } catch (e) {
-      console.log(e);
-    }
+    const newOntologies = await getRelations(node.id);
+    if (newOntologies.length === 0) return;
+    setOntologies(newOntologies);
   };
 
   useEffect(() => {

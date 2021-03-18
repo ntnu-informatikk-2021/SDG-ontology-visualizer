@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, Simulation } from 'd3';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../css/Graph.module.css';
-import { GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
+import { GraphEdge, GraphNode } from '../../types/ontologyTypes';
 import { getRelations } from '../../api/ontologies';
 import {
   createForceSimulation,
@@ -18,17 +18,26 @@ import {
 } from '../../d3/d3';
 import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../../common/d3';
 import { RootState } from '../../state/store';
+import { selectNode } from '../../state/reducers/ontologyReducer';
 
 const Graph: React.FC = () => {
+  const [hasInitialized, setHasInitialized] = useState<boolean>(false);
   const svgref = useRef<SVGSVGElement>(null);
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<GraphEdge[]>([]);
   const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
   const initialNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const dispatch = useDispatch();
 
   const loadInitialData = async () => {
-    if (!initialNode) return;
-    const ontologies: Ontology[] = await getRelations(initialNode.id);
+    if (!initialNode || hasInitialized) return;
+    setHasInitialized(true);
+
+    const ontologies = await getRelations(initialNode.id);
+    if (ontologies.length === 0) {
+      setHasInitialized(false);
+      return;
+    }
 
     const newNodes: GraphNode[] = ontologies
       .map((ontology) =>
@@ -44,7 +53,8 @@ const Graph: React.FC = () => {
   };
 
   const loadMoreData = async (node: GraphNode) => {
-    const ontologies: Ontology[] = await getRelations(node.id);
+    const ontologies = await getRelations(node.id);
+    if (ontologies.length === 0) return;
 
     const newNodes: GraphNode[] = nodes
       .concat(
@@ -60,6 +70,8 @@ const Graph: React.FC = () => {
 
     setNodes(newNodes);
     setLinks(newLinks);
+
+    dispatch(selectNode(node));
   };
 
   const drawGraph = () => {

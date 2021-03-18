@@ -20,9 +20,8 @@ const SustainabilityGoalsList: React.FC = () => {
   const [sustainabilityGoals, setSustainabilityGoals] = useState<SustainabilityGoal[]>();
 
   const loadSustainabilityGoals = async () => {
-    const data: SustainabilityGoal[] = await getSustainabilityGoals(sustainabilityNode.id);
+    const data = await getSustainabilityGoals(sustainabilityNode.id);
     setSustainabilityGoals(data);
-    console.log(data);
   };
 
   useEffect(() => {

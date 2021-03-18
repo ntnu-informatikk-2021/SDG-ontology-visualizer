@@ -1,20 +1,60 @@
-import { Annotation, SustainabilityGoal, Node } from '../types/ontologyTypes';
+import { Annotation, SustainabilityGoal, Node, Ontology } from '../types/ontologyTypes';
 import api from './api';
 
-export const getRelations = (classId: string): Promise<any> =>
-  api.GET(`ontologies/relations/${encodeURIComponent(classId)}`);
+export const getRelations = async (nodeId: string): Promise<Array<Ontology>> => {
+  try {
+    const data: Array<Ontology> = await api.GET(
+      `ontologies/relations/${encodeURIComponent(nodeId)}`,
+    );
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
 
-export const getAnnotations = (classId: string): Promise<Annotation> =>
-  api.GET(`ontologies/annotations/${encodeURIComponent(classId)}`);
+export const getAnnotations = async (nodeId: string): Promise<Annotation> => {
+  try {
+    const data: Promise<Annotation> = await api.GET(
+      `ontologies/annotations/${encodeURIComponent(nodeId)}`,
+    );
+    return await data;
+  } catch (e) {
+    console.log(e);
+    return { label: '', description: '' };
+  }
+};
 
-export const getSubclasses = (classId: string): Promise<any> =>
-  api.GET(`ontologies/subclasses/${encodeURIComponent(classId)}`);
+export const getSubclasses = async (nodeId: string): Promise<Array<Node>> => {
+  try {
+    const data: Array<Node> = await api.GET(`ontologies/subclasses/${encodeURIComponent(nodeId)}`);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
 
-export const getDescription = (classId: string): Promise<any> =>
-  api.GET(`ontologies/description/${encodeURIComponent(classId)}`);
+export const getSustainabilityGoals = async (
+  nodeId: string,
+): Promise<Array<SustainabilityGoal>> => {
+  try {
+    const data = await api.GET(`ontologies/sustainabilityGoals/${encodeURIComponent(nodeId)}`);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
 
-export const getSustainabilityGoals = (classId: string): Promise<SustainabilityGoal[]> =>
-  api.GET(`ontologies/sustainabilityGoals/${encodeURIComponent(classId)}`);
-
-export const getSDGAndTBLContributions = (classId: string): Promise<Array<Node>> =>
-  api.GET(`ontologies/contributions/${encodeURIComponent(classId)}`);
+export const getSDGAndTBLContributions = async (nodeId: string): Promise<Array<Node>> => {
+  try {
+    const data: Array<Node> = await api.GET(
+      `ontologies/contributions/${encodeURIComponent(nodeId)}`,
+    );
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
