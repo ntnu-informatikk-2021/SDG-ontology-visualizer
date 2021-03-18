@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
+import { Box, Menu, MenuButton, Button, MenuList, MenuItem, Heading } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { getAnnotations, getSDGAndTBLContributions } from '../../api/ontologies';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -32,8 +32,12 @@ const DetailView: React.FC = () => {
 
   return (
     <Box bg="tomato" w="100%" p={6} color="white">
-      <div>{annotations.label}</div>
-      <div>{annotations.description}</div>
+      <Heading as="h2" size="2xl" fontWeight="hairline">
+        {annotations.label.toUpperCase()}
+      </Heading>
+      <Heading as="h3" size="md">
+        {annotations.description}
+      </Heading>
       <div>
         <p style={{ display: 'inline' }}>Har bidrag til</p>
         {contributions &&
