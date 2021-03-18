@@ -15,9 +15,9 @@ const App = () => (
   <ChakraProvider>
     <Provider store={store}>
       <div className="App">
-        <Navbar />
         <ErrorModal />
         <div className="content">
+          <Navbar />
           <Router>
             <Switch>
               <Route path="/" exact component={Frontpage} />

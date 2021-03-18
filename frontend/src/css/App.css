@@ -42,7 +42,7 @@ a:hover {
 }
 
 .content {
-  min-height: calc(100vh - 5vh);
+  min-height: 100vh;
 }
 
 .footer {
