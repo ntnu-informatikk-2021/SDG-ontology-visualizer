@@ -1,6 +1,6 @@
 import { setError } from '../state/reducers/apiErrorReducer';
 import store from '../state/store';
-import { ApiError } from '../types/errorTypes';
+import { ApiError } from '../types/redux/errorTypes';
 
 const API_BASE = 'http://localhost:3001/api';
 

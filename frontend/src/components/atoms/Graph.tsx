@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, Simulation } from 'd3';
+import { useSelector } from 'react-redux';
 import styles from '../../css/Graph.module.css';
-import { GraphEdge, GraphNode, Node, Ontology } from '../../types/ontologyTypes';
+import { GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
 import { getRelations } from '../../api/ontologies';
 import {
   createForceSimulation,
@@ -16,25 +17,14 @@ import {
   updateNodePositions,
 } from '../../d3/d3';
 import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../../common/d3';
+import { RootState } from '../../state/store';
 
-// const initialNode: Node = {
-//   prefix: {
-//     prefix: 'SDG',
-//     iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
-//   },
-//   name: 'Miljø',
-//   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø',
-// };
-
-type GraphProps = {
-  initialNode?: Node;
-};
-
-const Graph: React.FC<GraphProps> = ({ initialNode }: GraphProps) => {
+const Graph: React.FC = () => {
   const svgref = useRef<SVGSVGElement>(null);
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<GraphEdge[]>([]);
   const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
+  const initialNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
   const loadInitialData = async () => {
     if (!initialNode) return;

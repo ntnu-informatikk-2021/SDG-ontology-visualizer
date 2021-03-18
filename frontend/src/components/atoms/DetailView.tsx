@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 import { getAnnotations, getSDGAndTBLContributions } from '../../api/ontologies';
 import { Annotation, Node } from '../../types/ontologyTypes';
+import { RootState } from '../../state/store';
 
-type DetailViewProps = {
-  node?: Node;
-};
-
-const DetailView: React.FC<DetailViewProps> = ({ node }: DetailViewProps) => {
+const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
     description: '',
   });
   const [contributions, setContributions] = useState<Array<Node>>();
+  const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
   const loadAnnotations = async () => {
-    if (!node) return;
-    const data = await getAnnotations(node.id);
+    if (!selectedNode) return;
+    const data = await getAnnotations(selectedNode.id);
     setAnnotations(data);
   };
 
   const loadSDGContributions = async () => {
-    if (!node) return;
-    const data = await getSDGAndTBLContributions(node.id);
+    if (!selectedNode) return;
+    const data = await getSDGAndTBLContributions(selectedNode.id);
     setContributions(data);
   };
 
   useEffect(() => {
     loadAnnotations();
     loadSDGContributions();
-  }, [node]);
+  }, [selectedNode]);
 
   return (
     <Box bg="tomato" w="100%" p={6} color="white">

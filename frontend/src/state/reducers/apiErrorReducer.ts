@@ -1,4 +1,4 @@
-import { CLEAR_ERROR, ErrorState, ErrorStateAction, SET_ERROR } from '../../types/errorTypes';
+import { CLEAR_ERROR, ErrorState, ErrorStateAction, SET_ERROR } from '../../types/redux/errorTypes';
 
 const defaultState: ErrorState = {
   error: null,

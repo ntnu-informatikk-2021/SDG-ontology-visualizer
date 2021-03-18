@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Graph from '../atoms/Graph';
-import { Node } from '../../types/ontologyTypes';
 import DetailView from '../atoms/DetailView';
 import { mapPrefixNameToNode } from '../../common/node';
+import { selectNode } from '../../state/reducers/ontologyReducer';
 
 interface ParamTypes {
   prefix?: string;
   name?: string;
 }
 
-function OntologyPage() {
+const OntologyPage: React.FC = () => {
   const { prefix, name } = useParams<ParamTypes>();
-  const [currentNode, setcurrentNode] = useState<Node>();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (!prefix || !name) return;
     const newNode = mapPrefixNameToNode(prefix, name);
-    setcurrentNode(newNode);
+    dispatch(selectNode(newNode));
   }, [prefix, name]);
 
   return (
     <div>
-      <Graph initialNode={currentNode} />
-      <DetailView node={currentNode} />
+      <Graph />
+      <DetailView />
     </div>
   );
-}
+};
 export default OntologyPage;
