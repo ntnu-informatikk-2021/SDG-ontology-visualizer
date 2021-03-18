@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { Center, SimpleGrid } from '@chakra-ui/react';
-import IconContainer from '../components/IconContainer';
-import { getSustainabilityGoals } from '../api/ontologies';
-import { Node, SustainabilityGoal } from '../types/ontologyTypes';
+import React, { useEffect, useState } from 'react';
+import { getSustainabilityGoals } from '../../api/ontologies';
+import { Node, SustainabilityGoal } from '../../types/ontologyTypes';
+import IconContainer from '../atoms/IconContainer';
 
 // Initial node displayed on the frontpage
 const sustainabilityNode: Node = {
@@ -14,14 +14,8 @@ const sustainabilityNode: Node = {
   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG',
 };
 
-const Frontpage = () => {
-  const [sustainabilityGoals, setSustainabilityGoals] = useState<SustainabilityGoal[]>([
-    {
-      instancesOf: '',
-      label: '',
-      icon: '',
-    },
-  ]);
+const SustainabilityGoalsList: React.FC = () => {
+  const [sustainabilityGoals, setSustainabilityGoals] = useState<SustainabilityGoal[]>();
 
   const loadSustainabilityGoals = async () => {
     const data: SustainabilityGoal[] = await getSustainabilityGoals(sustainabilityNode.id);
@@ -35,12 +29,12 @@ const Frontpage = () => {
   return (
     <Center>
       <SimpleGrid columns={2} spacing={10}>
-        {sustainabilityGoals.map((sustainabilityGoal) => (
-          <IconContainer sustainabilityNode={sustainabilityGoal} />
-        ))}
+        {sustainabilityGoals &&
+          sustainabilityGoals.map((sustainabilityGoal) => (
+            <IconContainer sustainabilityNode={sustainabilityGoal} />
+          ))}
       </SimpleGrid>
     </Center>
   );
 };
-
-export default Frontpage;
+export default SustainabilityGoalsList;

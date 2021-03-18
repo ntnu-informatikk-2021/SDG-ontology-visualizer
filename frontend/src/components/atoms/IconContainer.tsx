@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container } from '@chakra-ui/react';
-import { SustainabilityGoal } from '../types/ontologyTypes';
+import { SustainabilityGoal } from '../../types/ontologyTypes';
 
 type IconContainerProps = {
   sustainabilityNode: SustainabilityGoal;

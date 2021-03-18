@@ -1,7 +1,7 @@
 import React from 'react';
-import Graph from '../components/Graph';
-import { Node } from '../types/ontologyTypes';
-import DetailView from '../components/DetailView';
+import Graph from '../atoms/Graph';
+import { Node } from '../../types/ontologyTypes';
+import DetailView from '../atoms/DetailView';
 
 const initialNode: Node = {
   prefix: {

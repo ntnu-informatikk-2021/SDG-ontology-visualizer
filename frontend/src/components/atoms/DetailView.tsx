@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Menu, MenuButton, Button, MenuList, MenuItem } from '@chakra-ui/react';
-import { getAnnotations } from '../api/ontologies';
-import { Annotation, Node } from '../types/ontologyTypes';
+import { getAnnotations } from '../../api/ontologies';
+import { Annotation, Node } from '../../types/ontologyTypes';
 
 /**
  * This is mock data and should be changed to use actual data.

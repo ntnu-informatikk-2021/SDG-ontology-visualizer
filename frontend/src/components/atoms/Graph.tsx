@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, Simulation } from 'd3';
-import styles from '../css/Graph.module.css';
-import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
-import { getRelations } from '../api/ontologies';
+import styles from '../../css/Graph.module.css';
+import { GraphEdge, GraphNode, Node, Ontology } from '../../types/ontologyTypes';
+import { getRelations } from '../../api/ontologies';
 import {
   createForceSimulation,
   drawLinks,
@@ -13,8 +13,8 @@ import {
   updateLabelPositions,
   updateLinkPositions,
   updateNodePositions,
-} from '../d3/d3';
-import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../common/d3';
+} from '../../d3/d3';
+import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../../common/d3';
 
 const initialNode: Node = {
   prefix: {

@@ -10,8 +10,8 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearError } from '../state/reducers/apiErrorReducer';
-import { ApiError, ErrorState } from '../types/errorTypes';
+import { clearError } from '../../state/reducers/apiErrorReducer';
+import { ApiError, ErrorState } from '../../types/errorTypes';
 
 const ErrorModal = () => {
   const [open, setOpen] = useState(false);
