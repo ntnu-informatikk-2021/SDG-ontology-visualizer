@@ -58,7 +58,6 @@ const regexSearch = async (req, res) => {
   try {
     const searchTerm = req.query.search;
     const limitResults = req.query.limit;
-    console.log(searchTerm, limitResults);
     const data = await getClassesByString(searchTerm, limitResults);
     res.json(data);
   } catch (e) {
