@@ -82,3 +82,5 @@ export const addEntityToNullFields = (ontology: Ontology, entity: OntologyEntity
 
 export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;
+
+export const isNotNull = <T>(obj: T): boolean => obj !== null && obj !== undefined;

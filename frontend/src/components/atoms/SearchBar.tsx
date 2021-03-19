@@ -7,7 +7,11 @@ import useDebounce from '../../hooks/useDebounce';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { Node } from '../../types/ontologyTypes';
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  limit?: number;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 200);
   const [results, setResults] = useState<Array<Node>>();
@@ -18,7 +22,7 @@ const SearchBar: React.FC = () => {
       setResults([]);
       return;
     }
-    const newRes = await search(debouncedSearchQuery, 20);
+    const newRes = await search(debouncedSearchQuery, limit);
     setResults(newRes);
   };
 
@@ -42,11 +46,10 @@ const SearchBar: React.FC = () => {
         <Menu>
           {results &&
             results.map((res, index) => (
-              <Link to="/ontology">
+              <Link key={res.id} to="/ontology">
                 <MenuItem
                   bgColor={index % 2 ? 'blue.100' : 'blue.200'}
                   onClick={() => onClickNode(res)}
-                  key={res.id}
                 >
                   {res.name}
                 </MenuItem>
@@ -56,6 +59,10 @@ const SearchBar: React.FC = () => {
       </Container>
     </Container>
   );
+};
+
+SearchBar.defaultProps = {
+  limit: undefined,
 };
 
 export default SearchBar;
