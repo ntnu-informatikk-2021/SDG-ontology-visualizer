@@ -1,21 +1,24 @@
+import { ArrowLeftIcon, CloseIcon } from '@chakra-ui/icons';
 import {
+  Button,
   Modal,
   ModalBody,
-  ModalOverlay,
-  ModalHeader,
   ModalCloseButton,
-  ModalFooter,
   ModalContent,
-  Button,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearError } from '../state/reducers/apiErrorReducer';
-import { ApiError, ErrorState } from '../types/errorTypes';
+import { Link } from 'react-router-dom';
+import { clearError } from '../../state/reducers/apiErrorReducer';
+import { RootState } from '../../state/store';
+import { ApiError } from '../../types/redux/errorTypes';
 
-const ErrorModal = () => {
+const ErrorModal: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const apiError = useSelector((state: ErrorState) => state.error);
+  const apiError = useSelector((state: RootState) => state.apiError.error);
   const dispatch = useDispatch();
 
   const onClose = () => dispatch(clearError());
@@ -34,7 +37,14 @@ const ErrorModal = () => {
         <ModalCloseButton />
         <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
         <ModalFooter>
+          <Link to="/">
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <ArrowLeftIcon mr="2" />
+              Back to Home Page
+            </Button>
+          </Link>
           <Button colorScheme="red" mr={3} onClick={onClose}>
+            <CloseIcon mr="2" />
             Close
           </Button>
         </ModalFooter>
