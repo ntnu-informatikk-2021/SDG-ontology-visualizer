@@ -1,11 +1,15 @@
 import { Container, Input, Menu, MenuItem } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { search } from '../../api/ontologies';
+import { selectNode } from '../../state/reducers/ontologyReducer';
 import { Node } from '../../types/ontologyTypes';
 
 const SearchBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState<Array<Node>>();
+  const dispatch = useDispatch();
 
   const loadResults = async (query: string) => {
     if (!query || query.length === 0) {
@@ -22,6 +26,10 @@ const SearchBar: React.FC = () => {
     loadResults(newSearchQuery);
   };
 
+  const onClickNode = (node: Node) => {
+    dispatch(selectNode(node));
+  };
+
   return (
     <Container centerContent w="30%" maxW="400px">
       <Input value={searchQuery} onChange={onChange} variant="flushed" placeholder="Basic usage" />
@@ -29,13 +37,15 @@ const SearchBar: React.FC = () => {
         <Menu>
           {results &&
             results.map((res, index) => (
-              <MenuItem
-                bgColor={index % 2 ? 'blue.100' : 'blue.200'}
-                onClick={() => console.log(res.name)}
-                key={res.id}
-              >
-                {res.name}
-              </MenuItem>
+              <Link to="/ontology">
+                <MenuItem
+                  bgColor={index % 2 ? 'blue.100' : 'blue.200'}
+                  onClick={() => onClickNode(res)}
+                  key={res.id}
+                >
+                  {res.name}
+                </MenuItem>
+              </Link>
             ))}
         </Menu>
       </Container>
