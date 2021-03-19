@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Button, Flex, Spacer, Heading } from '@chakra-ui/react';
 import { InfoIcon } from '@chakra-ui/icons';
-import { Link, BrowserRouter as Router, withRouter } from 'react-router-dom';
+import { Box, Button, Flex, Heading, Spacer } from '@chakra-ui/react';
+import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 const Navbar = () => (
   <Flex bgGradient="linear(to-r, green.200, pink.500)" w="100%" p={4} color="white">
@@ -23,4 +23,4 @@ const Navbar = () => (
   </Flex>
 );
 
-export default withRouter(Navbar);
+export default Navbar;
