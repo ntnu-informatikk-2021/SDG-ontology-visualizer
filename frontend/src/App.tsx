@@ -10,6 +10,7 @@ import Frontpage from './components/pages/Frontpage';
 import './css/App.css';
 import About from './components/pages/About';
 import OntologyPage from './components/pages/OntologyPage';
+import NotFoundPage from './components/pages/NotFound';
 
 const App: React.FC = () => (
   <ChakraProvider>
@@ -23,6 +24,7 @@ const App: React.FC = () => (
               <Route path="/" exact component={Frontpage} />
               <Route path="/ontology" exact component={OntologyPage} />
               <Route path="/about" exact component={About} />
+              <Route component={NotFoundPage} />
             </Switch>
           </div>
           <Footer />
