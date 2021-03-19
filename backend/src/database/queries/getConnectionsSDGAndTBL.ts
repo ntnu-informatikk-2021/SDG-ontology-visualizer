@@ -17,12 +17,7 @@ export default (nodeId: string): string => {
     SELECT *
     WHERE {
       {
-        ${fullNodeName} SDG:harBidragTilBærekraftsmål ?Object .
-        OPTIONAL {?Object rdfs:label ?ObjectLabel}
-      }
-      UNION
-      {
-        ${fullNodeName} SDG:harBidragTilTrippelBunnlinje ?Object.
+        ${fullNodeName} SDG:harBidragTil ?Object .
         OPTIONAL {?Object rdfs:label ?ObjectLabel}
       }
     }`;
