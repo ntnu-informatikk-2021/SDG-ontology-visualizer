@@ -13,8 +13,6 @@ const NotFound: React.FC = () => (
       flexDirection="column"
       alignContent="center"
       justifyContent="space-between"
-      bg="red.200"
-      borderRadius="3xl"
       backgroundImage="url('https://media.istockphoto.com/vectors/error-page-or-file-not-found-icon-vector-id924949200?b=1&k=6&m=924949200&s=612x612&w=0&h=eonpW4ymWtCIKLt8k85EhAZ32kiJ-v_LmTEkUcPmg7Q=')"
       backgroundSize="cover"
       backgroundPosition="center"
