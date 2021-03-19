@@ -6,25 +6,15 @@ import { getSustainabilityGoals } from '../../api/ontologies';
 import { mapIdToNode } from '../../common/node';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
-import { Node, SustainabilityGoal } from '../../types/ontologyTypes';
+import { SustainabilityGoal } from '../../types/ontologyTypes';
 import IconContainer from '../atoms/IconContainer';
-
-// Initial node displayed on the frontpage
-const sustainabilityNode: Node = {
-  prefix: {
-    prefix: 'SDG',
-    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',
-  },
-  name: 'SDG',
-  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG',
-};
 
 const SustainabilityGoalsList: React.FC = () => {
   const [sustainabilityGoals, setSustainabilityGoals] = useState<Array<SustainabilityGoal>>();
   const dispatch = useDispatch();
 
   const loadSustainabilityGoals = async () => {
-    const data = await getSustainabilityGoals(sustainabilityNode.id);
+    const data = await getSustainabilityGoals();
     setSustainabilityGoals(data);
   };
 

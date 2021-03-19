@@ -37,7 +37,7 @@ const getAnnotationsFromClass = async (req, res) => {
 
 const getSustainabilityGoalsFromOntology = async (req, res) => {
   try {
-    const data = await getSustainabilityGoals(req.params.classId);
+    const data = await getSustainabilityGoals();
     res.json(data);
   } catch (e) {
     onError(e, req, res);
@@ -56,7 +56,7 @@ const getSDGTBLConnections = async (req, res) => {
 router.get('/relations/:classId', getRelationsFromClass);
 router.get('/subclasses/:classId', getSubclassesFromClass);
 router.get('/annotations/:classId', getAnnotationsFromClass);
-router.get('/sustainabilityGoals/:classId', getSustainabilityGoalsFromOntology);
+router.get('/sustainabilityGoals', getSustainabilityGoalsFromOntology);
 router.get('/contributions/:classId', getSDGTBLConnections);
 
 export default router;

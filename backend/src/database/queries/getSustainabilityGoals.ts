@@ -1,28 +1,20 @@
-import {
-  mapIdToOntologyEntity,
-  parseOntologyEntityToQuery,
-  parsePrefixesToQuery,
-} from '../../common/database';
+import { parsePrefixesToQuery } from '../../common/database';
 import { PREFIXES } from '../index';
 
-export default (classId: string): string => {
-  const node = mapIdToOntologyEntity(classId);
-  if (!node) return '';
-  const fullClassName = parseOntologyEntityToQuery(node);
-  const prefixString = parsePrefixesToQuery(node.prefix, PREFIXES.RDFS);
+export default (): string => {
+  const prefixString = parsePrefixesToQuery(PREFIXES.SDG, PREFIXES.SCHEMA, PREFIXES.RDFS);
 
   return `
       ${prefixString}
-      PREFIX schema: <http://schema.org/>
       SELECT ?instancesOf ?label ?icon
       WHERE { 
-        ?instancesOf  rdf:type  ${fullClassName}.
+        ?instancesOf  rdf:type SDG:SDG.
         ?instancesOf  rdfs:label  ?label.
         ?instancesOf  schema:icon  ?icon.
           FILTER NOT EXISTS { 
            ?instancesOf rdf:type ?c . 
-           ?c rdfs:subClassOf + ${fullClassName}  .
-           FILTER (?c != ${fullClassName} )  
+           ?c rdfs:subClassOf + SDG:SDG.
+           FILTER (?c != SDG:SDG )  
       }
     } ORDER BY ( xsd:string ( STRBEFORE ( STR ( ?instancesOf ), "B" ) ) )
     ( xsd:long ( STRAFTER ( STR ( ?instancesOf ), "B" ) ) )`;

@@ -6,7 +6,6 @@ import { GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
 import { getRelations } from '../../api/ontologies';
 import {
   createForceSimulation,
-  drawEdgeLabels,
   drawLinks,
   drawNodeLabels,
   drawNodes,
@@ -88,7 +87,7 @@ const Graph: React.FC = () => {
     drawLinks(svg, links, '.link', 'none', '#a03', 1);
     drawNodes(svg, nodes, '.node', 10, '#22a', '#22e', onClickNode);
     drawNodeLabels(svg, nodes, '.nodeLabel');
-    drawEdgeLabels(svg, links, '.edgeLabel');
+    // drawEdgeLabels(svg, links, '.edgeLabel');
 
     // TODO: Simplify this
     if (forceSim) {
