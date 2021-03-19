@@ -11,16 +11,6 @@ export type SustainabilityGoal = {
   icon: string;
 };
 
-export type SustainabilityGoals = {
-  sustainabilityGoalList: [
-    {
-      instancesOf: string;
-      label: string;
-      icon: string;
-    },
-  ];
-};
-
 export interface UniqueObject {
   id: string;
 }
