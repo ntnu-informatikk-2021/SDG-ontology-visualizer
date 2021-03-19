@@ -36,7 +36,7 @@ const SustainabilityGoalsList: React.FC = () => {
       <SimpleGrid columns={2} spacing={10}>
         {sustainabilityGoals &&
           sustainabilityGoals.map((sdg) => (
-            <Link to="/ontology">
+            <Link key={sdg.instancesOf} to="/ontology">
               <IconContainer onClick={onClickSDG} sustainabilityNode={sdg} />
             </Link>
           ))}
