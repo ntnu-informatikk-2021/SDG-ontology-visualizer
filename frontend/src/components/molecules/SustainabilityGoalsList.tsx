@@ -20,7 +20,7 @@ const sustainabilityNode: Node = {
 };
 
 const SustainabilityGoalsList: React.FC = () => {
-  const [sustainabilityGoals, setSustainabilityGoals] = useState<SustainabilityGoal[]>();
+  const [sustainabilityGoals, setSustainabilityGoals] = useState<Array<SustainabilityGoal>>();
   const dispatch = useDispatch();
 
   const loadSustainabilityGoals = async () => {
