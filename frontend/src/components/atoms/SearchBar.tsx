@@ -32,7 +32,7 @@ const SearchBar: React.FC = () => {
 
   return (
     <Container centerContent w="30%" maxW="400px">
-      <Input value={searchQuery} onChange={onChange} variant="flushed" placeholder="Basic usage" />
+      <Input value={searchQuery} onChange={onChange} variant="flushed" placeholder="Search..." />
       <Container px="0" maxH="64" overflowY="scroll" overflowX="hidden">
         <Menu>
           {results &&
