@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -6,10 +6,12 @@ import {
   getContributions,
   getTradeOff,
   getDevelopmentArea,
+  getSubGoals,
 } from '../../api/ontologies';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { Annotation, Node } from '../../types/ontologyTypes';
+import { Annotation, Node, SubGoal } from '../../types/ontologyTypes';
+import SubGoalContainer from './SubGoalContainer';
 
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
@@ -17,6 +19,13 @@ const DetailView: React.FC = () => {
     description: '',
   });
   const [contributions, setContributions] = useState<Array<Node>>([]);
+  const [subGoals, setSubGoals] = useState<Array<SubGoal>>([
+    {
+      id: '',
+      label: '',
+      description: '',
+    },
+  ]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
@@ -26,6 +35,12 @@ const DetailView: React.FC = () => {
     if (!selectedNode) return;
     const data = await getAnnotations(selectedNode.id);
     setAnnotations(data);
+  };
+
+  const loadSubGoal = async () => {
+    if (!selectedNode) return;
+    const data = await getSubGoals(selectedNode.id);
+    setSubGoals(data);
   };
 
   const loadContributions = async () => {
@@ -55,6 +70,7 @@ const DetailView: React.FC = () => {
     loadContributions();
     loadTradeOff();
     loadDevelopmentArea();
+    loadSubGoal();
   }, [selectedNode]);
 
   return (
@@ -66,7 +82,11 @@ const DetailView: React.FC = () => {
         <Heading as="h3" size="md" my="4">
           {annotations.description}
         </Heading>
-        <Text>{contributions.length ? 'Har bidrag til' : 'Har ingen bidrag'}</Text>
+        <Text>
+          {contributions.length
+            ? 'Har positiv virkning til'
+            : 'Har ingen etablerte positive påvirkninger enda'}
+        </Text>
         {contributions.map((contribution) => (
           <Button
             onClick={() => onClickConnections(contribution)}
@@ -77,7 +97,11 @@ const DetailView: React.FC = () => {
             {contribution.name}
           </Button>
         ))}
-        <Text>{tradeOffs.length ? 'Har Tradeoff til' : 'Har ingen Tradeoff'}</Text>
+        <Text>
+          {tradeOffs.length
+            ? 'Har negativ virkning til'
+            : 'Har ingen etablerte negative påvirkninger enda'}
+        </Text>
         {tradeOffs.map((tradeoff) => (
           <Button
             onClick={() => onClickConnections(tradeoff)}
@@ -101,6 +125,19 @@ const DetailView: React.FC = () => {
             {developmentArea.name}
           </Button>
         ))}
+        {subGoals.length ? (
+          <Box>
+            {/* Todo: put ${selectedNode?.name} */}
+            <Heading as="h2" size="2xl" fontWeight="hairline">
+              DELMÅL:
+            </Heading>
+            <SimpleGrid columns={2}>
+              {subGoals.map((subGoal) => (
+                <SubGoalContainer subGoalNode={subGoal} />
+              ))}
+            </SimpleGrid>
+          </Box>
+        ) : null}
       </Container>
     </Box>
   );
