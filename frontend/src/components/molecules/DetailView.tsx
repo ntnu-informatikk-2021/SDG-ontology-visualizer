@@ -11,7 +11,7 @@ import {
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node, SubGoal } from '../../types/ontologyTypes';
-import SubGoalContainer from './SubGoalContainer';
+import SubGoalContainer from '../atoms/SubGoalContainer';
 
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
