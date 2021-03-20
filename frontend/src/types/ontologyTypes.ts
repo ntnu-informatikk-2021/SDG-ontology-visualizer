@@ -11,6 +11,12 @@ export type SustainabilityGoal = {
   icon: string;
 };
 
+export type SubGoal = {
+  id: string;
+  label: string;
+  description: string;
+};
+
 export interface UniqueObject {
   id: string;
 }

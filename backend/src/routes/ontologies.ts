@@ -6,6 +6,7 @@ import getSustainabilityGoals from '../database/getSustainabilityGoals';
 import getContributions from '../database/getContributions';
 import getTradeOff from '../database/getTradeOffTil';
 import getDevelopmentArea from '../database/getDevelopmentArea';
+import getSubGoals from '../database/getSubGoals';
 import onError from './middleware/onError';
 
 const router = Router();
@@ -73,6 +74,15 @@ const getDevelopmentAreaToNodes = async (req, res) => {
   }
 };
 
+const getSubGoalsfromSDG = async (req, res) => {
+  try {
+    const data = await getSubGoals(req.params.classId);
+    res.json(data);
+  } catch (e) {
+    onError(e, req, res);
+  }
+};
+
 router.get('/relations/:classId', getRelationsFromClass);
 router.get('/subclasses/:classId', getSubclassesFromClass);
 router.get('/annotations/:classId', getAnnotationsFromClass);
@@ -80,5 +90,6 @@ router.get('/sustainabilityGoals', getSustainabilityGoalsFromOntology);
 router.get('/contributions/:classId', getContributionsToNodes);
 router.get('/tradeoff/:classId', getTradeOffToNodes);
 router.get('/developmentarea/:classId', getDevelopmentAreaToNodes);
+router.get('/subgoals/:classId', getSubGoalsfromSDG);
 
 export default router;
