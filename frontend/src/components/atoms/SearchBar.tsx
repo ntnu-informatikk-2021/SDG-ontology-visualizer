@@ -1,7 +1,7 @@
 import { Container, Input, Menu, MenuItem } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { search } from '../../api/ontologies';
 import useDebounce from '../../hooks/useDebounce';
 import { selectNode } from '../../state/reducers/ontologyReducer';
@@ -16,6 +16,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const debouncedSearchQuery = useDebounce(searchQuery, 200);
   const [results, setResults] = useState<Array<Node>>();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const loadResults = async (query: string) => {
     if (!query || query.length === 0) {
@@ -40,20 +41,28 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   }, [debouncedSearchQuery]);
 
   return (
-    <Container centerContent w="30%" maxW="400px">
-      <Input value={searchQuery} onChange={onChange} variant="flushed" placeholder="Search..." />
+    <Container w="30%" maxW="400px">
+      <Input
+        value={searchQuery}
+        onChange={onChange}
+        variant="outline"
+        colorScheme="cyan"
+        placeholder="Søk..."
+      />
       <Container px="0" maxH="64" overflowY="scroll" overflowX="hidden">
         <Menu>
           {results &&
             results.map((res, index) => (
-              <Link key={res.id} to="/ontology">
-                <MenuItem
-                  bgColor={index % 2 ? 'blue.100' : 'blue.200'}
-                  onClick={() => onClickNode(res)}
-                >
-                  {res.name}
-                </MenuItem>
-              </Link>
+              <MenuItem
+                key={res.id}
+                bgColor={index % 2 ? 'blue.100' : 'blue.200'}
+                onClick={() => {
+                  onClickNode(res);
+                  history.push('/ontology');
+                }}
+              >
+                {res.name}
+              </MenuItem>
             ))}
         </Menu>
       </Container>

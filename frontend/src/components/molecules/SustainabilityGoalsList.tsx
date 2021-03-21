@@ -1,7 +1,7 @@
-import { Center, SimpleGrid } from '@chakra-ui/react';
+import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getSustainabilityGoals } from '../../api/ontologies';
 import { mapIdToNode } from '../../common/node';
 import { setError } from '../../state/reducers/apiErrorReducer';
@@ -12,6 +12,7 @@ import IconContainer from '../atoms/IconContainer';
 const SustainabilityGoalsList: React.FC = () => {
   const [sustainabilityGoals, setSustainabilityGoals] = useState<Array<SustainabilityGoal>>();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const loadSustainabilityGoals = async () => {
     const data = await getSustainabilityGoals();
@@ -32,16 +33,24 @@ const SustainabilityGoalsList: React.FC = () => {
   };
 
   return (
-    <Center>
-      <SimpleGrid columns={2} spacing={10}>
+    <Stack align="center" spacing="20">
+      <Heading bgGradient="linear(to-l, red.600, orange.600, green.500, blue.600)" bgClip="text">
+        Bærekraftsmålene
+      </Heading>
+      <SimpleGrid columns={3} spacing={10}>
         {sustainabilityGoals &&
           sustainabilityGoals.map((sdg) => (
-            <Link key={sdg.instancesOf} to="/ontology">
-              <IconContainer onClick={onClickSDG} sustainabilityNode={sdg} />
-            </Link>
+            <IconContainer
+              key={sdg.instancesOf}
+              onClick={() => {
+                onClickSDG(sdg);
+                history.push('/ontology');
+              }}
+              sustainabilityNode={sdg}
+            />
           ))}
       </SimpleGrid>
-    </Center>
+    </Stack>
   );
 };
 export default SustainabilityGoalsList;
