@@ -1,7 +1,12 @@
 import { Box, Button, Container, Heading, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAnnotations, getSDGAndTBLContributions } from '../../api/ontologies';
+import {
+  getAnnotations,
+  getContributions,
+  getTradeOff,
+  getDevelopmentArea,
+} from '../../api/ontologies';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -12,6 +17,8 @@ const DetailView: React.FC = () => {
     description: '',
   });
   const [contributions, setContributions] = useState<Array<Node>>([]);
+  const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
+  const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
 
@@ -21,19 +28,33 @@ const DetailView: React.FC = () => {
     setAnnotations(data);
   };
 
-  const loadSDGContributions = async () => {
+  const loadContributions = async () => {
     if (!selectedNode) return;
-    const data = await getSDGAndTBLContributions(selectedNode.id);
+    const data = await getContributions(selectedNode.id);
     setContributions(data);
   };
 
-  const onClickContribution = (node: Node) => {
+  const loadTradeOff = async () => {
+    if (!selectedNode) return;
+    const data = await getTradeOff(selectedNode.id);
+    setTradeOffs(data);
+  };
+
+  const loadDevelopmentArea = async () => {
+    if (!selectedNode) return;
+    const data = await getDevelopmentArea(selectedNode.id);
+    setDevelopmentAreas(data);
+  };
+
+  const onClickConnections = (node: Node) => {
     dispatch(selectNode(node));
   };
 
   useEffect(() => {
     loadAnnotations();
-    loadSDGContributions();
+    loadContributions();
+    loadTradeOff();
+    loadDevelopmentArea();
   }, [selectedNode]);
 
   return (
@@ -48,12 +69,36 @@ const DetailView: React.FC = () => {
         <Text>{contributions.length ? 'Har bidrag til' : 'Har ingen bidrag'}</Text>
         {contributions.map((contribution) => (
           <Button
-            onClick={() => onClickContribution(contribution)}
+            onClick={() => onClickConnections(contribution)}
             colorScheme="blue"
             style={{ margin: 5 }}
             key={contribution.id}
           >
             {contribution.name}
+          </Button>
+        ))}
+        <Text>{tradeOffs.length ? 'Har Tradeoff til' : 'Har ingen Tradeoff'}</Text>
+        {tradeOffs.map((tradeoff) => (
+          <Button
+            onClick={() => onClickConnections(tradeoff)}
+            colorScheme="blue"
+            style={{ margin: 5 }}
+            key={tradeoff.id}
+          >
+            {tradeoff.name}
+          </Button>
+        ))}
+        <Text>
+          {developmentAreas.length ? 'Har utviklingsområde til' : 'Har ingen utviklingsområder'}
+        </Text>
+        {developmentAreas.map((developmentArea) => (
+          <Button
+            onClick={() => onClickConnections(developmentArea)}
+            colorScheme="blue"
+            style={{ margin: 5 }}
+            key={developmentArea.id}
+          >
+            {developmentArea.name}
           </Button>
         ))}
       </Container>

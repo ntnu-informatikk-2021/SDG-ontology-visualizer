@@ -45,7 +45,7 @@ export const getSustainabilityGoals = async (): Promise<Array<SustainabilityGoal
   }
 };
 
-export const getSDGAndTBLContributions = async (nodeId: string): Promise<Array<Node>> => {
+export const getContributions = async (nodeId: string): Promise<Array<Node>> => {
   try {
     const data: Array<Node> = await api.GET(
       `ontologies/contributions/${encodeURIComponent(nodeId)}`,
@@ -64,6 +64,28 @@ export const search = async (searchTerm: string, limit?: number): Promise<Array<
   }
   try {
     const data: Array<Node> = await api.GET(url);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
+export const getTradeOff = async (nodeId: string): Promise<Array<Node>> => {
+  try {
+    const data: Array<Node> = await api.GET(`ontologies/tradeoff/${encodeURIComponent(nodeId)}`);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
+export const getDevelopmentArea = async (nodeId: string): Promise<Array<Node>> => {
+  try {
+    const data: Array<Node> = await api.GET(
+      `ontologies/developmentarea/${encodeURIComponent(nodeId)}`,
+    );
     return data;
   } catch (e) {
     console.log(e);
