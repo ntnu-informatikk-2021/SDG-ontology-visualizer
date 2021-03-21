@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Box, ChakraProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider, Flex } from '@chakra-ui/react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import store from './state/store';
 import ErrorModal from './components/atoms/ErrorModal';
@@ -14,11 +14,11 @@ import NotFoundPage from './components/pages/NotFound';
 const App: React.FC = () => (
   <ChakraProvider>
     <Provider store={store}>
-      <Box m={0} minHeight="100vh">
+      <Flex m={0} minHeight="100vh" direction="column">
         <Router>
           <ErrorModal />
           <Navbar />
-          <Box>
+          <Box flex="1">
             <Switch>
               <Route path="/" exact component={Frontpage} />
               <Route path="/ontology" exact component={OntologyPage} />
@@ -28,7 +28,7 @@ const App: React.FC = () => (
           </Box>
           <Footer />
         </Router>
-      </Box>
+      </Flex>
     </Provider>
   </ChakraProvider>
 );
