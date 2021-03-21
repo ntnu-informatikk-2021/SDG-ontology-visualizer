@@ -3,6 +3,7 @@ import getSubclasses from '../database/getSubclasses';
 import getRelations from '../database/getRelations';
 import getAnnotations from '../database/getAnnotations';
 import getSustainabilityGoals from '../database/getSustainabilityGoals';
+import getClassesByString from '../database/getClassesByString';
 import getContributions from '../database/getContributions';
 import getTradeOff from '../database/getTradeOffTil';
 import getDevelopmentArea from '../database/getDevelopmentArea';
@@ -73,10 +74,22 @@ const getDevelopmentAreaToNodes = async (req, res) => {
   }
 };
 
+const regexSearch = async (req, res) => {
+  try {
+    const searchTerm = req.query.search;
+    const limitResults = req.query.limit;
+    const data = await getClassesByString(searchTerm, limitResults);
+    res.json(data);
+  } catch (e) {
+    onError(e, req, res);
+  }
+};
+
 router.get('/relations/:classId', getRelationsFromClass);
 router.get('/subclasses/:classId', getSubclassesFromClass);
 router.get('/annotations/:classId', getAnnotationsFromClass);
 router.get('/sustainabilityGoals', getSustainabilityGoalsFromOntology);
+router.get('/search', regexSearch);
 router.get('/contributions/:classId', getContributionsToNodes);
 router.get('/tradeoff/:classId', getTradeOffToNodes);
 router.get('/developmentarea/:classId', getDevelopmentAreaToNodes);
