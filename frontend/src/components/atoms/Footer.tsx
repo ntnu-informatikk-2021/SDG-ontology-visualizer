@@ -8,6 +8,7 @@ const Footer = () => (
     w="100%"
     p={4}
     color="white"
+    h="15vh"
   >
     <p>Footer content</p>
   </Flex>
