@@ -5,9 +5,10 @@ export type OntologyEntity = {
   id: string;
   name: string;
 };
-
+export interface SubGoal extends Node {
+  description: string;
+}
 export interface Node extends OntologyEntity {}
-
 export interface Edge extends OntologyEntity {}
 
 export type Ontology = {

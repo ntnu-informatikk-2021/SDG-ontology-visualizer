@@ -11,11 +11,10 @@ export type SustainabilityGoal = {
   icon: string;
 };
 
-export type SubGoal = {
-  Subject: string;
-  Subjectlabel: string;
+export interface SubGoal extends Node {
+  SubjectLabel: string;
   description: string;
-};
+}
 
 export interface UniqueObject {
   id: string;

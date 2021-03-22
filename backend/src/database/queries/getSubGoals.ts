@@ -14,10 +14,11 @@ export default (nodeId: string): string => {
 
   return `
       ${prefixString}
-      SELECT ?Subject ?Subjectlabel ?description
+      SELECT ?Subject ?SubjectLabel ?description
       WHERE { 
         ?Subject SDG:harBærekraftsmål ${fullNodeName}.
-        optional{?Subject rdfs:label ?Subjectlabel}.
+        optional{?Subject rdfs:label ?SubjectLabel}.
         optional{?Subject SDG:description ?description}
-}`;
+}ORDER BY ( xsd:string ( STRBEFORE ( STR ( ?SubjectLabel ), "" ) ) )
+( xsd:long ( STRAFTER ( STR ( ?SubjectLabel ), "" ) ) )`;
 };
