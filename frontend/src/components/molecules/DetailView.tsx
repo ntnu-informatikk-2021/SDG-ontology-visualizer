@@ -19,13 +19,7 @@ const DetailView: React.FC = () => {
     description: '',
   });
   const [contributions, setContributions] = useState<Array<Node>>([]);
-  const [subGoals, setSubGoals] = useState<Array<SubGoal>>([
-    {
-      id: '',
-      label: '',
-      description: '',
-    },
-  ]);
+  const [subGoals, setSubGoals] = useState<Array<SubGoal>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);

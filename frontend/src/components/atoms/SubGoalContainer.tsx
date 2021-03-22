@@ -12,7 +12,7 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
   <Container>
     <Box>
       <Heading as="h3" size="md" my="4">
-        {subGoalNode.label}
+        {subGoalNode.Subjectlabel}
       </Heading>
       <p>{subGoalNode.description}</p>
     </Box>

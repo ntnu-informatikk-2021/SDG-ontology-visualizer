@@ -81,7 +81,7 @@ export const getDevelopmentArea = async (nodeId: string): Promise<Array<Node>> =
 
 export const getSubGoals = async (nodeId: string): Promise<Array<SubGoal>> => {
   try {
-    const data = await api.GET(`ontologies/subgoals/${encodeURIComponent(nodeId)}`);
+    const data: Array<SubGoal> = await api.GET(`ontologies/subgoals/${encodeURIComponent(nodeId)}`);
     return data;
   } catch (e) {
     console.log(e);

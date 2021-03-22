@@ -12,8 +12,8 @@ export type SustainabilityGoal = {
 };
 
 export type SubGoal = {
-  id: string;
-  label: string;
+  Subject: string;
+  Subjectlabel: string;
   description: string;
 };
 

@@ -14,10 +14,10 @@ export default (nodeId: string): string => {
 
   return `
       ${prefixString}
-      SELECT ?instancesOf
+      SELECT ?Subject ?Subjectlabel ?description
       WHERE { 
-        ?instancesOf SDG:harBærekraftsmål ${fullNodeName}.
-        optional{?instancesOf rdfs:label ?label}.
-        optional{?instancesOf SDG:description ?description}
+        ?Subject SDG:harBærekraftsmål ${fullNodeName}.
+        optional{?Subject rdfs:label ?Subjectlabel}.
+        optional{?Subject SDG:description ?description}
 }`;
 };
