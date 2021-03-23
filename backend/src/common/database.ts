@@ -58,6 +58,14 @@ export const mapRecordToObject = (record: Record): Node | null => {
   return object;
 };
 
+export const mapRecordToSubject = (record: Record): Node | null => {
+  let subject = record.Subject ? mapIdToOntologyEntity(record.Subject) : null;
+  if (subject && record.SubjectLabel) {
+    subject = { ...subject, name: record.SubjectLabel };
+  }
+  return subject;
+};
+
 export const parseOntologyEntityToQuery = (entity: OntologyEntity): string =>
   `${entity.prefix.prefix}:${entity.name}`;
 
@@ -74,3 +82,5 @@ export const addEntityToNullFields = (ontology: Ontology, entity: OntologyEntity
 
 export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;
+
+export const isNotNull = <T>(obj: T): boolean => obj !== null && obj !== undefined;

@@ -57,6 +57,20 @@ export const getContributions = async (nodeId: string): Promise<Array<Node>> => 
   }
 };
 
+export const search = async (searchTerm: string, limit?: number): Promise<Array<Node>> => {
+  let url = `ontologies/search?search=${encodeURIComponent(searchTerm)}`;
+  if (limit) {
+    url += `&limit=${limit}`;
+  }
+  try {
+    const data: Array<Node> = await api.GET(url);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
 export const getTradeOff = async (nodeId: string): Promise<Array<Node>> => {
   try {
     const data: Array<Node> = await api.GET(`ontologies/tradeoff/${encodeURIComponent(nodeId)}`);
