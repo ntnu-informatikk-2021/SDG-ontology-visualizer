@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from '@chakra-ui/react';
+import { Box, Container, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import { SubGoal } from '../../types/ontologyTypes';
 
@@ -14,7 +14,7 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
       <Heading as="h3" size="md" my="4">
         {subGoalNode.SubjectLabel}
       </Heading>
-      <p>{subGoalNode.description}</p>
+      <Text>{subGoalNode.description}</Text>
     </Box>
   </Container>
 );
