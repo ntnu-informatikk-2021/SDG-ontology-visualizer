@@ -10,7 +10,7 @@ import {
 } from '../../api/ontologies';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { Annotation, Node, SubGoal } from '../../types/ontologyTypes';
+import { Annotation, Node, Correlation, SubGoal } from '../../types/ontologyTypes';
 import SubGoalContainer from '../atoms/SubGoalContainer';
 
 const DetailView: React.FC = () => {
@@ -18,7 +18,7 @@ const DetailView: React.FC = () => {
     label: '',
     description: '',
   });
-  const [contributions, setContributions] = useState<Array<Node>>([]);
+  const [contributions, setContributions] = useState<Array<Correlation>>([]);
   const [subGoals, setSubGoals] = useState<Array<SubGoal>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
@@ -41,6 +41,7 @@ const DetailView: React.FC = () => {
     if (!selectedNode) return;
     const data = await getContributions(selectedNode.id);
     setContributions(data);
+    console.log(data);
   };
 
   const loadTradeOff = async () => {
@@ -83,12 +84,12 @@ const DetailView: React.FC = () => {
         </Text>
         {contributions.map((contribution) => (
           <Button
-            onClick={() => onClickConnections(contribution)}
+            onClick={() => onClickConnections(contribution.Object)}
             colorScheme="blue"
             style={{ margin: 5 }}
-            key={contribution.id}
+            key={contribution.Object.id}
           >
-            {contribution.name}
+            {contribution.Object.name}
           </Button>
         ))}
         <Text>

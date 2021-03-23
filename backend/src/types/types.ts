@@ -8,6 +8,13 @@ export type OntologyEntity = {
 export interface SubGoal extends Node {
   description: string;
 }
+export type Correlation = {
+  Object: Node | null;
+  harHøyKorrelasjon: string | null;
+  harModeratKorrelasjon: string | null;
+  harLavKorrelasjon: string | null;
+};
+
 export interface Node extends OntologyEntity {}
 export interface Edge extends OntologyEntity {}
 
@@ -23,6 +30,9 @@ export type Record = {
   Object: string | null;
   ObjectLabel: string | null;
   Predicate: string;
+  HarHøyKorrelasjon: string | null;
+  HarModeratKorrelasjon: string | null;
+  HarLavKorrelasjon: string | null;
 };
 
 export class ApiError extends Error {

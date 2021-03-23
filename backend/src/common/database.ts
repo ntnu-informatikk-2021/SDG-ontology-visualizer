@@ -1,5 +1,5 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
-import { Node, OntologyEntity, Record, Ontology } from '../types/types';
+import { Node, OntologyEntity, Record, Ontology, Correlation } from '../types/types';
 
 export const parseNameFromClassId = (id: string): string => {
   const regex = /^[^_]*#/;
@@ -56,6 +56,31 @@ export const mapRecordToObject = (record: Record): Node | null => {
     object = { ...object, name: record.ObjectLabel };
   }
   return object;
+};
+
+export const mapCorrelationToObject = (record: Record): Correlation | null => {
+  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
+  if (object && record.ObjectLabel) {
+    object = { ...object, name: record.ObjectLabel };
+  }
+  let harHøyKorrelasjon;
+  if (record.HarHøyKorrelasjon != null) {
+    harHøyKorrelasjon = record.HarHøyKorrelasjon;
+  }
+  let harModeratKorrelasjon;
+  if (record.HarModeratKorrelasjon != null) {
+    harModeratKorrelasjon = record.HarModeratKorrelasjon;
+  }
+  let harLavKorrelasjon;
+  if (record.HarLavKorrelasjon != null) {
+    harLavKorrelasjon = record.HarLavKorrelasjon;
+  }
+  return {
+    Object: object,
+    harHøyKorrelasjon: harHøyKorrelasjon,
+    harModeratKorrelasjon: harModeratKorrelasjon,
+    harLavKorrelasjon: harLavKorrelasjon,
+  };
 };
 
 export const mapRecordToSubject = (record: Record): Node | null => {
