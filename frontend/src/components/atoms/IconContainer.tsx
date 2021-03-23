@@ -8,7 +8,6 @@ type IconContainerProps = {
   onClick: (sdg: SustainabilityGoal) => void;
 };
 
-// Makes framer motion compatible with Typescript
 const IconContainer: React.FC<IconContainerProps> = ({
   sustainabilityNode,
   onClick,
