@@ -1,6 +1,6 @@
 import React from 'react';
 import Graph from '../atoms/Graph';
-import DetailView from '../atoms/DetailView';
+import DetailView from '../molecules/DetailView';
 
 const OntologyPage: React.FC = () => (
   <>

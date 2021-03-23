@@ -1,4 +1,4 @@
-import { Annotation, SustainabilityGoal, Node, Ontology } from '../types/ontologyTypes';
+import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal } from '../types/ontologyTypes';
 import api from './api';
 
 export const getRelations = async (nodeId: string): Promise<Array<Ontology>> => {
@@ -86,6 +86,16 @@ export const getDevelopmentArea = async (nodeId: string): Promise<Array<Node>> =
     const data: Array<Node> = await api.GET(
       `ontologies/developmentarea/${encodeURIComponent(nodeId)}`,
     );
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
+export const getSubGoals = async (nodeId: string): Promise<Array<SubGoal>> => {
+  try {
+    const data: Array<SubGoal> = await api.GET(`ontologies/subgoals/${encodeURIComponent(nodeId)}`);
     return data;
   } catch (e) {
     console.log(e);
