@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import { Container, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import { SubGoal } from '../../types/ontologyTypes';
 
@@ -9,13 +9,11 @@ type SubGoalContainerProps = {
 const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
   subGoalNode,
 }: SubGoalContainerProps) => (
-  <Container>
-    <Box>
-      <Heading as="h3" size="md" my="4">
-        {subGoalNode.SubjectLabel}
-      </Heading>
-      <Text>{subGoalNode.description}</Text>
-    </Box>
+  <Container bg="cyan.400" color="white" borderRadius="md" boxShadow="lg">
+    <Heading as="h3" size="md" my="4">
+      {subGoalNode.SubjectLabel}
+    </Heading>
+    <Text>{subGoalNode.description}</Text>
   </Container>
 );
 
