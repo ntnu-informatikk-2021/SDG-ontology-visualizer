@@ -1,7 +1,7 @@
+import { Image } from '@chakra-ui/react';
 import React from 'react';
-import { chakra, HTMLChakraProps, Image } from '@chakra-ui/react';
-import { motion, HTMLMotionProps } from 'framer-motion';
 import { SustainabilityGoal } from '../../types/ontologyTypes';
+import { MotionBox } from '../../types/react/componentTypes';
 
 type IconContainerProps = {
   sustainabilityNode: SustainabilityGoal;
@@ -9,11 +9,6 @@ type IconContainerProps = {
 };
 
 // Makes framer motion compatible with Typescript
-type Merge<P, T> = Omit<P, keyof T> & T;
-type MotionBoxProps = Merge<HTMLChakraProps<'div'>, HTMLMotionProps<'div'>>;
-
-export const MotionBox: React.FC<MotionBoxProps> = motion(chakra.div);
-
 const IconContainer: React.FC<IconContainerProps> = ({
   sustainabilityNode,
   onClick,
