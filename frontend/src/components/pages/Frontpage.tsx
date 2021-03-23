@@ -17,7 +17,7 @@ const Frontpage: React.FC = () => (
         <Heading size="xl" color="white">
           Bærekraftsmålene
         </Heading>
-        <SearchBar />
+        <SearchBar limit={5} />
       </Stack>
 
       <Image src="SDG.png" alt="SDG" w="250px" />

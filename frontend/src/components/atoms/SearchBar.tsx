@@ -1,5 +1,15 @@
 import { SearchIcon } from '@chakra-ui/icons';
-import { Input, Menu, MenuItem, Box, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import {
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Link,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Stack,
+} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -42,35 +52,42 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   }, [debouncedSearchQuery]);
 
   return (
-    <Box>
-      <InputGroup>
-        <InputLeftElement pointerEvents="none">
-          <SearchIcon color="gray.400" />
-        </InputLeftElement>
-        <Input
-          value={searchQuery}
-          onChange={onChange}
-          variant="outline"
-          bg="white"
-          placeholder="Søk..."
-        />
-      </InputGroup>
-      <Menu>
-        {results &&
-          results.map((res, index) => (
-            <MenuItem
-              key={res.id}
-              bgColor={index % 2 ? 'blue.100' : 'blue.200'}
-              onClick={() => {
-                onClickNode(res);
-                history.push('/ontology');
-              }}
-            >
-              {res.name}
-            </MenuItem>
-          ))}
-      </Menu>
-    </Box>
+    <Flex justify="center" align="center">
+      <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
+        <PopoverTrigger>
+          <InputGroup>
+            <InputLeftElement pointerEvents="none">
+              <SearchIcon color="gray.400" />
+            </InputLeftElement>
+            <Input
+              value={searchQuery}
+              onChange={onChange}
+              variant="outline"
+              bg="white"
+              placeholder="Søk..."
+            />
+          </InputGroup>
+        </PopoverTrigger>
+        <PopoverContent border="none">
+          <Stack w="100%">
+            {results &&
+              results.map((res) => (
+                <Link
+                  padding={2}
+                  _hover={{ backgroundColor: 'purple.800', color: 'white' }}
+                  key={res.id}
+                  onClick={() => {
+                    onClickNode(res);
+                    history.push('/ontology');
+                  }}
+                >
+                  {res.name}
+                </Link>
+              ))}
+          </Stack>
+        </PopoverContent>
+      </Popover>
+    </Flex>
   );
 };
 
