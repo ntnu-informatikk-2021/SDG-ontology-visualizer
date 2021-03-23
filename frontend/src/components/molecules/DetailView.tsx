@@ -21,35 +21,16 @@ const DetailView: React.FC = () => {
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
-  const loadAnnotations = async () => {
+  const loadData = async () => {
     if (!selectedNode) return;
-    const data = await getAnnotations(selectedNode.id);
-    setAnnotations(data);
-  };
-
-  const loadContributions = async () => {
-    if (!selectedNode) return;
-    const data = await getContributions(selectedNode.id);
-    setContributions(data);
-  };
-
-  const loadTradeOff = async () => {
-    if (!selectedNode) return;
-    const data = await getTradeOff(selectedNode.id);
-    setTradeOffs(data);
-  };
-
-  const loadDevelopmentArea = async () => {
-    if (!selectedNode) return;
-    const data = await getDevelopmentArea(selectedNode.id);
-    setDevelopmentAreas(data);
+    setAnnotations(await getAnnotations(selectedNode.id));
+    setContributions(await getContributions(selectedNode.id));
+    setTradeOffs(await getTradeOff(selectedNode.id));
+    setDevelopmentAreas(await getDevelopmentArea(selectedNode.id));
   };
 
   useEffect(() => {
-    loadAnnotations();
-    loadContributions();
-    loadTradeOff();
-    loadDevelopmentArea();
+    loadData();
   }, [selectedNode]);
 
   return (
