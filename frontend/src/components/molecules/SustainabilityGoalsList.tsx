@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
+import { SimpleGrid, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -34,9 +34,6 @@ const SustainabilityGoalsList: React.FC = () => {
 
   return (
     <Stack align="center" spacing="20">
-      <Heading bgGradient="linear(to-l, red.600, orange.600, green.500, blue.600)" bgClip="text">
-        Bærekraftsmålene
-      </Heading>
       <SimpleGrid columns={3} spacing={10}>
         {sustainabilityGoals &&
           sustainabilityGoals.map((sdg) => (

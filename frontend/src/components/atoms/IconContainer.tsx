@@ -28,6 +28,7 @@ const IconContainer: React.FC<IconContainerProps> = ({
   >
     <Image
       src={sustainabilityNode.icon}
+      borderRadius="lg"
       overflow="hidden"
       alt={sustainabilityNode.label}
       boxSize="300"

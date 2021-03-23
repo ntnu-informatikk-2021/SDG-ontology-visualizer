@@ -7,9 +7,9 @@ const Navbar = () => {
   const history = useHistory();
 
   return (
-    <Flex bg="cyan.600" w="100%" p={4} color="white" mb="20">
+    <Flex w="100%" align="center" h="70px" px="8">
       <Box>
-        <Link fontWeight="bold" fontSize="1.5em" as={RouteLink} to="/">
+        <Link fontWeight="bold" color="cyan.600" fontSize="1.5em" as={RouteLink} to="/">
           Trondheim kommune SDG-Ontologi
         </Link>
       </Box>
@@ -17,8 +17,7 @@ const Navbar = () => {
       <Button
         size="lg"
         leftIcon={<InfoIcon />}
-        colorScheme="whiteAlpha"
-        color="white"
+        colorScheme="cyan"
         variant="link"
         onClick={() => {
           history.push('/about');

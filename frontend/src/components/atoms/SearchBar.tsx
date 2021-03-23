@@ -1,4 +1,5 @@
-import { Container, Input, Menu, MenuItem } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
+import { Input, Menu, MenuItem, Box, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -41,32 +42,35 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   }, [debouncedSearchQuery]);
 
   return (
-    <Container w="30%" maxW="400px">
-      <Input
-        value={searchQuery}
-        onChange={onChange}
-        variant="outline"
-        colorScheme="cyan"
-        placeholder="Søk..."
-      />
-      <Container px="0" maxH="64" overflowY="scroll" overflowX="hidden">
-        <Menu>
-          {results &&
-            results.map((res, index) => (
-              <MenuItem
-                key={res.id}
-                bgColor={index % 2 ? 'blue.100' : 'blue.200'}
-                onClick={() => {
-                  onClickNode(res);
-                  history.push('/ontology');
-                }}
-              >
-                {res.name}
-              </MenuItem>
-            ))}
-        </Menu>
-      </Container>
-    </Container>
+    <Box>
+      <InputGroup>
+        <InputLeftElement pointerEvents="none">
+          <SearchIcon color="gray.400" />
+        </InputLeftElement>
+        <Input
+          value={searchQuery}
+          onChange={onChange}
+          variant="outline"
+          bg="white"
+          placeholder="Søk..."
+        />
+      </InputGroup>
+      <Menu>
+        {results &&
+          results.map((res, index) => (
+            <MenuItem
+              key={res.id}
+              bgColor={index % 2 ? 'blue.100' : 'blue.200'}
+              onClick={() => {
+                onClickNode(res);
+                history.push('/ontology');
+              }}
+            >
+              {res.name}
+            </MenuItem>
+          ))}
+      </Menu>
+    </Box>
   );
 };
 
