@@ -1,22 +1,32 @@
 import { InfoIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Spacer } from '@chakra-ui/react';
+import { Box, Button, Flex, Spacer, Link } from '@chakra-ui/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouteLink, useHistory } from 'react-router-dom';
 
-const Navbar = () => (
-  <Flex bgGradient="linear(to-r, green.200, pink.500)" w="100%" p={4} color="white">
-    <Box>
-      <Link to="/">
-        <Heading>Trondheim SDG Ontology club</Heading>
-      </Link>
-    </Box>
-    <Spacer />
-    <Link to="/about">
-      <Button leftIcon={<InfoIcon />} colorScheme="teal" variant="solid">
-        About
+const Navbar = () => {
+  const history = useHistory();
+
+  return (
+    <Flex w="100%" align="center" h="70px" px="8">
+      <Box>
+        <Link fontWeight="bold" color="cyan.600" fontSize="1.5em" as={RouteLink} to="/">
+          Trondheim kommune SDG-Ontologi
+        </Link>
+      </Box>
+      <Spacer />
+      <Button
+        size="lg"
+        leftIcon={<InfoIcon />}
+        colorScheme="cyan"
+        variant="link"
+        onClick={() => {
+          history.push('/about');
+        }}
+      >
+        Om
       </Button>
-    </Link>
-  </Flex>
-);
+    </Flex>
+  );
+};
 
 export default Navbar;

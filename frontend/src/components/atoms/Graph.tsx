@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { select, Simulation } from 'd3';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../../css/Graph.module.css';
+import { Center } from '@chakra-ui/react';
 import { GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
 import { getRelations } from '../../api/ontologies';
 import {
@@ -118,9 +118,9 @@ const Graph: React.FC = () => {
   }, [nodes, links]);
 
   return (
-    <div>
-      <svg className={styles.graph} ref={svgref} />
-    </div>
+    <Center mx="auto" my="0">
+      <svg height="800px" width="500px" overflow="visible" ref={svgref} />
+    </Center>
   );
 };
 Graph.defaultProps = { initialNode: undefined };
