@@ -11527,11 +11527,145 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gjennomføre prinsippet om særbehandling og differensiert behandling av utviklingsland, særlig de minst utviklede landene, i samsvar med avtaler inngått med Verdens handelsorganisasjon</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stimulere til offentlig utviklingsbistand og kapitalflyt, blant annet direkte utenlandske investeringer, til statene der behovet er størst, særlig de minst utviklede landene, afrikanske land, små utviklingsøystater og kystløse utviklingsland, i samsvar med landenes egne planer og programmer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 redusere transaksjonsgebyrene til under 3 prosent ved pengeoverføringer fra migranter til hjemlandet og avskaffe overføringsordninger med gebyrer som overstiger 5 prosent</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.c</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå en gradvis og varig inntektsøkning for de fattigste 40 prosentene av befolkningen som er raskere enn økningen for det nasjonale gjennomsnittet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre myndiggjøring og fremme sosial, økonomisk og politisk inkludering av alle, uavhengig av alder, kjønn, funksjonsevne, rase, etnisitet, nasjonal opprinnelse, religion eller økonomisk eller annen status</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikre like muligheter og redusere forskjeller i levekår, blant annet ved å avskaffe diskriminerende lover, politikk og praksis og ved å fremme lovgivning, politikk og tiltak som er egnet til å nå dette målet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vedta politikk, særlig når det gjelder skatter og avgifter, lønn og sosialomsorg, med sikte på å oppnå en gradvis utjevning av forskjeller</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bedre reguleringen av og tilsynet med globale finansmarkeder og finansinstitusjoner, og styrke gjennomføringen av regelverket</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikre at utviklingslandene blir bedre representert og får større grad av medbestemmelse i beslutningsprosessene i globale finansinstitusjoner, slik at institusjonene fungerer bedre og blir mer pålitelige, ansvarlige og legitime</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#10.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Legge til rette for migrasjon og mobilitet i ordnede, trygge, regulerte og ansvarlige former, blant annet ved å føre en planmessig og godt forvaltet migrasjonspolitikk</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Støtte positive økonomiske, sosiale og miljømessige forbindelser mellom byområder, omland og spredtbygde områder ved  å styrke nasjonale og regionale planer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 oppnå en betydelig økning i antall byer og lokalsamfunn som vedtar en integrert politikk og gjennomfører planer med  sikte  på inkludering, bedre ressursbruk, begrensning av og tilpasning til klimaendringer samt evne til å stå imot og håndtere katastrofer, og dessuten utvikle og iverksette et helhetlig system for risikostyring og katastrofehåndtering på alle nivå, i tråd med Sendai-rammeverket for katastrofeberedskap for 2015–2030</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bistå de minst utviklede landene med å oppføre bærekraftige og solide bygg ved bruk av lokale materialer, blant annet   gjennom  økonomisk og faglig bistand</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11541,6 +11675,107 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at alle har tilgang til tilfredsstillende og trygge boliger og grunnleggende tjenester til en overkommelig pris, og bedre forholdene i slumområder</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sørge for at alle har tilgang til trygge, tilgjengelige og bærekraftige transportsystemer til en overkommelig pris og bedre sikkerheten på veiene, særlig ved å legge til rette for kollektivtransport og med særlig vekt på behovene til personer i utsatte situasjoner, kvinner, barn, personer med nedsatt funksjonsevne og eldre</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 styrke inkluderende og bærekraftig urbanisering og muligheten for en deltakende, integrert og bærekraftig samfunnsplanlegging og forvaltning i alle land</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke innsatsen for å verne og sikre verdens kultur- og naturarv</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå en betydelig reduksjon i antall dødsfall og antall personer som rammes av katastrofer, inkludert vannrelaterte katastrofer, og i betydelig grad minske de direkte økonomiske tapene i verdens samlede bruttonasjonalprodukt som følge av slike katastrofer, med vekt på å beskytte fattige og personer i utsatte situasjoner</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 redusere byenes og lokalsamfunnenes negative påvirkning på miljøet (målt per innbygger), med særlig vekt på luftkvalitet og avfallshåndtering i offentlig eller privat regi</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#11.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sørge for at alle, særlig kvinner og barn, eldre og personer med nedsatt funksjonsevne, har tilgang til trygge, inkluderende og tilgjengelige grøntområder og offentlige rom</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Støtte utviklingslandene i å styrke deres vitenskapelige og tekniske kapasitet til å innføre mer bærekraftige forbruks- og produksjonsmønstre</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utvikle og innføre metoder for å måle effekten av bærekraftig reiseliv som skaper arbeidsplasser og fremmer lokal kultur og lokale produkter</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Redusere ineffektive subsidier til fossilt brensel ved å fjerne markedsvridninger som oppmuntrer til overforbruk, i samsvar med nasjonale forhold, blant annet ved å legge om skatter og avgifter og avvikle skadelige subsidier der de finnes, slik at konsekvensene for miljøet avdekkes, og samtidig fullt ut ta hensyn til utviklingslandenes særlige behov og situasjon og begrense eventuelle negative konsekvenser for deres utvikling mest mulig og på en måte som beskytter de fattige og de berørte lokalsamfunnene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11550,6 +11785,107 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gjennomføre det tiårige handlingsprogrammet for bærekraftig forbruk og produksjon ved at alle land deltar, men slik at de utviklede landene går foran, samtidig som det tas hensyn til utviklingslandenes utviklingsnivå og muligheter</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå bærekraftig forvaltning og effektiv bruk av naturressurser</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 halvere matsvinn per innbygger på verdensbasis, både i detaljhandelen og blant forbrukere, og redusere svinn i produksjons- og forsyningskjeden, inkludert svinn etter innhøsting</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 oppnå en mer miljøvennlig forvaltning av kjemikalier og alle former for avfall gjennom hele livssyklusen, i samsvar med internasjonalt vedtatte rammeverk, og betydelig redusere utslipp av kjemikalier og avfall til luft, vann og jord for mest mulig å begrense skadevirkningene for folkehelsen og for miljøet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 redusere avfallsmengden betydelig gjennom forebygging, reduksjon, materialgjenvinning og ombruk</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stimulere selskaper, særlig store og flernasjonale selskaper, til å ta i bruk bærekraftige metoder og integrere informasjon om egen  bærekraft i sine rapporteringsrutiner</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme bærekraftige ordninger for offentlige anskaffelser, i samsvar med de enkelte landenes politikk og prioriteringer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#12.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at alle mennesker i hele verden har relevant informasjon om og forståelse av bærekraftig utvikling og et levesett som er i harmoni med naturen</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12.8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gjennomføre forpliktelsene de utviklede landene som er part i FNs rammekonvensjon om klimaendringer, har påtatt seg, for å  nå;  målet om i fellesskap å skaffe 100 milliarder dollar årlig innen 2020 fra alle kilder for å dekke utviklingslandenes behov for å innføre hensiktsmessige klimatiltak og gjennomføre dem på en åpen måte, og fullt ut operasjonalisere Det grønne klimafondet ved at fondet snarest mulig tilføres kapital</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme mekanismer for å styrke evnen til effektiv klimarelatert planlegging og forvaltning i de minst utviklede landene og små  utviklingsøystater, blant annet med vekt på kvinner, ungdom og lokale og marginaliserte samfunn</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13.b</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11559,6 +11895,63 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke evnen til å stå imot og tilpasse seg klimarelaterte farer og naturkatastrofer i alle land.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innarbeide tiltak mot klimaendringer i politikk, strategier og planlegging på nasjonalt nivå</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#13.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke enkeltpersoners og institusjoners evne til å motvirke, tilpasse seg og redusere konsekvensene av klimaendringer og deres evne til tidlig varsling, samt styrke kunnskapen og bevisstgjøringen om dette.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke vitenskapelig kunnskap, bygge opp forskningskapasitet og overføre marin teknologi – og samtidig ta hensyn til kriterier og retningslinjer fra Den mellomstatlige oseanografiske kommisjon for overføring av marin teknologi – med sikte på å bedre tilstanden i havet og øke det marine artsmangfoldets bidrag til utviklingen i utviklingslandene, særlig i små utviklingsøystater og de minst utviklede landene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gi fiskere som driver småskala fiske, tilgang til marine ressurser og markeder</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke bevaring og bærekraftig bruk av havene og de marine ressursene ved å implementere folkeretten slik den er reflektert i FNs havrettskonvensjon, som utgjør rettsgrunnlaget for bevaring og bærekraftig bruk av havene og de marine ressursene, slik det framgår av punkt 158 i FN-rapporten «The Future We Want»</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11568,6 +11961,107 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2025 forhindre og i betydelig grad redusere alle former for havforurensning, særlig fra landbasert virksomhet, inkludert marin forsøpling og utslipp av næringssalter</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 forvalte og beskytte økosystemene i havet og langs kysten på en bærekraftig måte for å unngå betydelig skadevirkninger, blant annet ved å styrke økosystemenes motstandsevne og ved å iverksette tiltak for å gjenoppbygge dem, slik at havene kan bli sunne og produktive</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Begrense mest mulig og sørge for håndtering av konsekvensene av havforsuring, blant annet gjennom styrket vitenskapelig samarbeid på alle nivåer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 innføre effektive tiltak for å regulere uttaket av fiskebestandene, få slutt på overfiske og ulovlig, urapportert og uregulert fiske og ødeleggende fiskemetoder, og iverksette vitenskapelig baserte forvaltningsplaner for å gjenoppbygge fiskebestandene på kortest mulig tid, i det minste til de nivåene som kan gi høyest mulig bærekraftig avkastning ut fra bestandenes biologiske særtrekk</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 bevare minst 10 prosent av kyst- og havområdene, i samsvar med nasjonal rett og folkeretten og på grunnlag av den beste vitenskapelige kunnskapen som er tilgjengelig</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 forby visse former for fiskerisubsidier som bidrar til overkapasitet og overfiske, avskaffe subsidier som bidrar til ulovlig, urapportert og uregulert fiske, og dessuten unngå å innføre nye tilsvarende subsidier, samtidig som man erkjenner at en hensiktsmessig og effektiv særskilt og differensiert behandling av utviklingslandene og de minst utviklede landene bør være en integrert del av Verdens handelsorganisasjons forhandlinger om fiskerisubsidier(*)(*) Samtidig som det tas hensyn til de pågående forhandlingene i Verdens handelsorganisasjon, Doha-runden og erklæringen fra ministermøtet i Hongkong.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#14.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at de økonomiske fordelene ved bærekraftig bruk av havets ressurser, blant annet gjennom bærekraftig forvaltning av fiskeri, akvakultur og turistnæring, i større grad kommer små utviklingsøystater og de minst utviklede landene til gode</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobilisere en betydelig økning i finansielle ressurser fra alle kilder for å bevare og utnytte biologisk mangfold og økosystemer   på en bærekraftig måte</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobilisere betydelige ressurser fra alle kilder og på alle nivåer for å finansiere en bærekraftig skogforvaltning, og sørge for virkemidler som er egnet til å fremme slik forvaltning i utviklingslandene, blant annet virkemidler for bevaring og nyplanting av skog</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke den globale støtten til tiltak for å bekjempe krypskyting og ulovlig handel med vernede arter, blant annet ved å styrke lokalsamfunnenes evne til å benytte de muligheter som finnes for å opprettholde et bærekraftig livsgrunnlag</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11577,6 +12071,118 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 bevare og gjenopprette bærekraftig bruk av ferskvannsbaserte økosystemer og tjenester som benytter seg av disse økosystemene, på land og i innlandsområder, særlig skoger, våtmarker, fjell og tørre områder, i samsvar med forpliktelser i internasjonale avtaler</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 fremme innføringen av en bærekraftig forvaltning av all slags skog, stanse avskoging, gjenopprette forringede skoger, og i betydelig grad øke gjenreising og nyplanting av skog på globalt nivå</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 bekjempe ørkenspredning, restaurere forringet land og matjord, inkludert landområder som er rammet av ørkenspredning,   tørke og flom, og arbeide for en verden uten landforringelse.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 bevare økosystemer i fjellområder, inkludert det biologiske mangfoldet der, slik at de skal bli bedre i stand til å bidra til en bærekraftig utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iverksette umiddelbare og omfattende tiltak for å redusere ødeleggelsen av habitater, stanse tap av biologisk mangfold og innen 2020 verne truede arter og forhindre at de dør ut</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme en rettferdig og likeverdig deling av godene knyttet til bruk av genressurser, og fremme formålstjenlig tilgang til slike ressurser i  tråd med internasjonal enighet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iverksette umiddelbare tiltak for å stanse krypskyting og ulovlig handel med vernede plante- og dyrearter, og håndtere både tilbuds- og etterspørselssiden ved handelen med ulovlige produkter fra viltlevende dyr</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nnen 2020 innføre tiltak for å unngå innføring og spredning av fremmede arter for å redusere fremmede arters påvirkning på land- og vannbaserte økosystemer i betydelig grad, og dessuten kontrollere eller utrydde prioriterte fremmede arter</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#15.9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 integrere verdien av økosystemer og biologisk mangfold i nasjonale og lokale planleggingsprosesser, i strategier for fattigdomsbekjempelse og i regnskap</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">15.9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke relevante nasjonale institusjoner, blant annet gjennom internasjonalt samarbeid, med sikte på å bygge kapasitet på alle nivåer, særlig i utviklingsland, for å forebygge vold og bekjempe terrorisme og kriminalitet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme og håndheve ikke-diskriminerende lover og politikk for bærekraftig utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.b</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11586,6 +12192,107 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Betydelig redusere alle former for vold og dødelighet knyttet til vold i hele verden</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikre allmenn tilgang til informasjon og beskytte grunnleggende friheter, i samsvar med nasjonal lovgivning og internasjonale avtaler</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.10</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stanse overgrep, utnytting, menneskehandel og alle former for vold og tortur mot barn</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme rettsstaten nasjonalt og internasjonalt, og sikre likhet for loven, rettsikkerhet og rettsvern for alle</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå en betydelig reduksjon av ulovlige finans- og våpenstrømmer, gjøre det enklere å spore opp og returnere stjålne eiendeler og bekjempe alle former for organisert kriminalitet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Betydelig redusere korrupsjon og bestikkelser i alle former</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utvikle effektive, ansvarlige og åpne institusjoner på alle nivåer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikre lydhøre, inkluderende, deltakelsesbaserte og representative beslutningsprosesser på alle nivåer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utvide og styrke utviklingslandenes deltakelse i institusjoner for global styring</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#16.9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre juridisk identitet for alle, blant annet gjennom fødselsregistrering</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">16.9</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11595,6 +12302,239 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke og mobilisere nasjonale ressurser, blant annet gjennom internasjonal støtte til utviklingsland, med sikte på å bedre landenes evne til å kreve inn skatter og andre avgifter</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.1) Finans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme et allment, regelbasert, åpent, ikke-diskriminerende og likeverdig multilateralt handelssystem underlagt Verdens handelsorganisasjon, blant annet ved å sluttføre forhandlingene under organisasjonens Doha-runde</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.10) Handel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke utviklingslandenes eksport betydelig, særlig med sikte på å doble de minst utviklede landenes andel av verdens eksport innen 2020</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.11) Handel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen gitte tidsrammer gi alle de minst utviklede landene varig avgiftsfri og kvotefri markedsadgang, i samsvar med beslutninger i Verdens handelsorganisasjon, blant annet ved å sikre at preferanseopprinnelsesregler for importvarer fra de minst utviklede landene er klare og enkle, slik at de bidrar til å lette markedsadgangen</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.12) Handel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke stabiliteten i verdens makroøkonomi, blant annet gjennom politisk samordning og samstemthet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.13) Systemiske spørsmål - Politisk og institusjonell samstemthet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oppnå en mer samstemt og helhetlig politikk for bærekraftig utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.14) Systemiske spørsmål - Politisk og institusjonell samstemthet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Respektere hvert lands politiske handlingsrom og lederskap med hensyn til å etablere og gjennomføre egen politikk for fattigdomsbekjempelse og bærekraftig utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.15) Systemiske spørsmål - Politisk og institusjonell samstemthet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.16">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke det globale partnerskapet for bærekraftig utvikling og understøtte det med partnerskap mellom flere interessenter som kan mobilisere og dele kunnskap, ekspertise, teknologi og finansielle ressurser, for å bidra til at alle land, særlig utviklingslandene, oppnår bærekraftsmålene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.16) Systemiske spørsmål - Partnerskap mellom flere interessenter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.17 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.17">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stimulere til og fremme velfungerende partnerskap i det offentlige, mellom det offentlige og det private og i det sivile samfunn som bygger på partnerskapenes erfaringer og ressursstrategier</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.17) Systemiske spørsmål - Partnerskap mellom flere interessenter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.18 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.18">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 øke støtten til kapasitetsbygging i utviklingsland, også i de minst utviklede landene og små utviklingsøystater, for i betydelig grad å bedre tilgangen til pålitelige og aktuelle data av høy kvalitet fordelt etter inntekt, kjønn, alder, rase, etnisitet, migrasjonsstatus, funksjonsevne, geografisk plassering og andre nasjonalt relevante kjennetegn</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.18) Systemiske spørsmål- Data, overvåkning og ansvarlighet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.19 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.19">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 bygge videre på eksisterende initativer for å utvikle målemetoder for bærekraftig utvikling som supplerer bruttonasjonalprodukt, og støtte kapasitetsbygging på statistikkområdet i utviklingsland</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.19) Systemiske spørsmål- Data, overvåkning og ansvarlighet</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Påse at de utviklede landene fullt ut gjennomfører sine offisielle bistandsforpliktelser (ODA) overfor utviklingslandene, blant annet forpliktelsen som mange av dem har påtatt seg til å gi 0,7 prosent av ODA/BNI i bistand til utviklingsland og 0,15–0,20 prosent av ODA/BNI til de minst utviklede landene; ODA-ytere oppfordres til å vurdere å gi minst 0,20 prosent av ODA/BNI i bistand til de minst utviklede landene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.2) Finans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobilisere ytterligere finansielle ressurser til utviklingslandene fra flere kilder</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.3) Finans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bistå utviklingslandene med å oppnå langsiktige og bærekraftige gjeldsvilkår gjennom en samordnet politikk for å fremme gjeldsfinansiering, gjeldslette eller omstrukturering av gjeld, og behandle de fattigste og mest gjeldstyngede landenes utenlandsgjeld på en måte som reduserer gjeldsrelatert nød</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.4) Finans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vedta og gjennomføre investeringsfremmende ordninger for de minst utviklede landene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.5) Finans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bedre tilgangen til og styrke nord–sør-samarbeidet, sør–sør-samarbeidet og det triangulære samarbeidet regionalt og internasjonalt om vitenskap, teknologi og innovasjon, og forbedre kunnskapsdelingen på gjensidig avtalte vilkår, blant annet gjennom å samordne eksisterende ordninger bedre, særlig på FN-nivå, og gjennom en global mekanisme for tilgjengeliggjøring av teknologi</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.6) Teknologi</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme utvikling, overføring, spredning og formidling av miljøvennlig teknologi til utviklingsland på fordelaktige vilkår, blant annet på ikke-markedsmessige vilkår eller på vilkår som på andre måter er gunstigere enn det andre land får, etter gjensidige avtaler</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.7) Teknologi</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Igangsette teknologibanken og ordningen for kapasitetsbygging innenfor vitenskap, teknologi og innovasjon for de minst utviklede landene innen 2017,  og  øke bruken av muliggjørende teknologi, særlig informasjons- og kommunikasjonsteknologi</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.8) Teknologi</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#17.9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke den internasjonale støtten til å gjennomføre en effektiv og målrettet kapasitetsbygging i utviklingsland og  dermed støtte nasjonale planer for gjennomføring av alle bærekraftsmålene, blant annet gjennom nord–sør-samarbeid, sør–sør-samarbeid og trepartssamarbeid</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17.9) Kapasitetsbygging</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blant annet gjennom bedre internasjonalt samarbeid øke investeringene i infrastruktur på landsbygda, i forskning og veiledningstjenester innenfor landbruket, i teknologiutvikling og i genbanker for planter og husdyr, med sikte på å forbedre produksjonskapasiteten i landbruket i utviklingsland, særlig i de minst utviklede landene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Korrigere og hindre handelsrestriksjoner og vridninger på verdens landbruksmarkeder, blant annet gjennom en parallell avvikling av alle former for eksportsubsidier på landbruksvarer og alle eksporttiltak med tilsvarende effekt, i samsvar med mandatet for Doha-runden</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vedta tiltak for å sikre at råvare- og derivatmarkedene for matvarer er velfungerende og legge til rette for rask tilgang til markedsinformasjon, blant annet om matreserver, for å begrense ekstreme svingninger i matvareprisene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11604,6 +12544,52 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 utrydde sult og sikre alle mennesker, særlig fattige og personer i utsatte situasjoner, inkludert spedbarn, tilgang til nok, trygg og sunn mat hele året</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 utrydde alle former for feilernæring, og innen 2025 nå de internasjonalt avtalte målene som omhandler veksthemming og avmagring hos barn under fem år, og ivareta ernæringsbehovene til unge jenter, gravide, ammende kvinner og eldre personer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 doble produktiviteten og inntektene til småskala matprodusenter, særlig kvinner, urfolk, familiebruk, husdyrnomader og fiskere, blant annet gjennom sikker og lik tilgang til jord, andre produksjonsressurser og innsatsmidler, kunnskap, finansielle tjenester, markeder og muligheter for verdiøkning og for sysselsetting utenfor landbruket</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at det finnes bærekraftige systemer for matproduksjon, og innføre robuste metoder som gir økt produktivitet og produksjon, som bidrar til å opprettholde økosystemene, som styrker evnen til tilpasning til klimaendringer, ekstremvær, tørke, oversvømmelse og andre katastrofer, og som gradvis bedrer arealenes og jordas kvalitet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#2.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 opprettholde det genetiske mangfoldet av frø, kulturplanter, husdyr og beslektede ville arter, blant annet gjennom veldrevne og rikholdige frø- og plantesamlinger nasjonalt, regionalt og internasjonalt, og fremme tilgang til og en rettferdig og likeverdig fordeling av de goder som følger av bruk av genressurser og tilhørende tradisjonell kunnskap, i tråd med internasjonal enighet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.5</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11751,11 +12737,145 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Etablere og oppgradere utdanningstilbud som er barnevennlige, og som ivaretar hensynet til kjønnsforskjeller og til personer med nedsatt funksjonsevne og sikrer trygge, ikke-voldelige, inkluderende og effektive læringsmiljø for alle</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 oppnå en vesentlig økning globalt i antall stipender som er tilgjengelige for studenter fra utviklingsland, særlig de minst utviklede landene, små utviklingsøystater og afrikanske land, for å gi dem tilgang til høyere utdanning, blant annet yrkesfaglig opplæring og programmer for informasjons- og kommunikasjonsteknologi, teknikk, ingeniørfag og vitenskap, både i andre utviklingsland og i utviklede land</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå en vesentlig økning i antall kvalifiserte lærere, blant annet gjennom internasjonalt samarbeid om lærerutdanning i utviklingsland, særlig i de minst utviklede landene og i små utviklingsøystater</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.c</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at alle jenter og gutter fullfører gratis og likeverdig grunnskole og videregående opplæring av høy kvalitet som kan gi dem et relevant og reelt læringsutbytte</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre alle jenter og gutter mulighet for god tidlig utvikling og omsorg og tilgang til førskole, slik at de er forberedt på å begynne i grunnskolen</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre kvinner og menn lik tilgang til god teknisk og yrkesfaglig opplæring og høyere utdanning, inkludert universitetsutdanning, til en overkommelig pris</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå en betydelig økning i antall unge og voksne som har kompetanse, blant annet i tekniske fag og yrkesfag, som er relevant for sysselsetting, anstendig arbeid og entreprenørskap</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 avskaffe kjønnsforskjeller i utdanning og opplæring og sikre lik tilgang til alle nivåer innenfor utdanning og yrkesfaglig opplæring for sårbare grupper, inkludert personer med nedsatt funksjonsevne, urfolk og barn i utsatte situasjoner</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at all ungdom og en betydelig andel voksne, både kvinner og menn, lærer å lese, skrive og regne</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#4.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre at alle elever og studenter tilegner seg den kompetansen som er nødvendig for å fremme bærekraftig utvikling, blant annet gjennom utdanning i bærekraftig utvikling og livsstil, menneskerettigheter, likestilling, fremme av freds- og ikkevoldskultur, globalt borgerskap og verdsetting av kulturelt mangfold og kulturens bidrag til bærekraftig utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iverksette reformer for å gi kvinner lik rett til økonomiske ressurser, mulighet til å eie og kontrollere jord og andre former for eiendom samt tilgang til finansielle tjenester, arv og naturressurser, i samsvar med nasjonal lovgivning</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke bruken av muliggjørende teknologi, særlig informasjons- og kommunikasjonsteknologi, for å styrke kvinners stilling i samfunnet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vedta og styrke god politikk og vedta gjennomførbar lovgivning for å fremme likestilling og styrke jenters og kvinners stilling på alle nivåer i samfunnet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11765,6 +12885,85 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Få slutt på alle former for diskriminering av jenter og kvinner i hele verden</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avskaffe alle former for vold mot alle jenter og kvinner både i offentlig og privat sfære, inkludert menneskehandel, seksuell utnytting og andre former for utnytting</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avskaffe all skadelig praksis, som barneekteskap, tidlige ekteskap og tvangsekteskap, og kjønnslemlestelse</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anerkjenne og verdsette ubetalt omsorgs- og husholdsarbeid gjennom offentlige tjenester, infrastruktur og sosialpolitikk, og fremme delt ansvar i husholdet og familien, alt etter hva som passer i det enkelte land</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikre kvinner fullstendig og reell deltakelse og like muligheter til ledende stillinger på alle nivåer der beslutninger tas, i det politiske, det økonomiske og det offentlige liv</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#5.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sikre tilgang til god seksuell og reproduktiv helse og reproduktive rettigheter for alle, i samsvar med handlingsprogrammet fra den internasjonale konferansen om befolkning og utvikling, handlingsplanen fra Beijing og sluttdokumentene fra deres respektive tilsynskonferanser</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 utvide det internasjonale samarbeidet og støtten til å bygge opp kapasitet i utviklingsland innenfor virksomhet og programmer knyttet til vann- og sanitærforhold, blant annet teknologi for vannoppsamling, avsalting, effektiv bruk av vannressurser, behandling av avløpsvann, gjenvinning og ombruk</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Støtte og styrke lokalsamfunnenes medvirkning for å bedre forvaltningen av vann- og sanitærforhold</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.b</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11774,6 +12973,85 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sørge for likeverdig tilgang til trygt drikkevann til en overkommelig pris for alle</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sørge for tilgang til tilstrekkelige og likeverdige sanitær-, hygiene- og toalettforhold for alle, med særlig vekt på behovene til jenter og kvinner og personer i utsatte situasjoner</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sørge for bedre vannkvalitet ved å redusere forurensning, avskaffe avfallsdumping og mest mulig begrense utslipp av farlige kjemikalier og materialer, halvere andelen ubehandlet spillvann og i vesentlig grad øke gjenvinning og trygg ombruk på verdensbasis</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 betydelig bedre utnyttelsen av vann i alle sektorer og sikre bærekraftig uttak av og tilgang til ferskvann for å avhjelpe vannmangel og i vesentlig grad redusere antall personer som rammes av vannmangel</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 innføre en integrert forvaltning av vannressurser på alle nivåer, blant annet gjennom samarbeid over landegrensene der det er aktuelt</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 verne og gjenopprette vannrelaterte økosystemer, inkludert fjell, skoger, våtmarker, elver, vannførende bergarter og innsjøslasher</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 styrke det internasjonale samarbeidet for å lette tilgangen til forskning og teknologi på området ren energi, inkludert fornybar energi, energieffektivisering og avansert og renere teknologi for fossilt brensel, og fremme investeringer i energiinfrastruktur og teknologi for ren energi</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 bygge ut infrastruktur og oppgradere teknologi for å tilby moderne og bærekraftige energitjenester til alle innbyggere i utviklingsland, særlig i de minst utviklede landene, små utviklingsøystater og kystløse utviklingsland, i samsvar med landenes respektive støtteprogram</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.b</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11783,6 +13061,52 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 sikre allmenn tilgang til pålitelige og moderne energitjenester til en overkommelig pris</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 øke andelen fornybar energi i verdens samlede energiforbruk betydelig</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#7.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 få forbedringen av energieffektivitet på verdensbasis til å gå dobbelt så fort</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke støtten til handelsrettet bistand («Aid for Trade») til utviklingsland, særlig til de minst utviklede landene, blant annet gjennom det styrkede, integrerte rammeverket for handelsrelatert faglig bistand til de minst utviklede landene (EIF)</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 utvikle og iverksette en global strategi for sysselsetting av ungdom og innføre «The Global Jobs Pact» utviklet i Den internasjonale arbeidsorganisasjonen (ILO)</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.b</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11792,6 +13116,140 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Opprettholde en økonomisk vekst per innbygger som er i samsvar med forholdene i de respektive landene, og spesielt en vekst i bruttonasjonalproduktet på minst 7 prosent per år i de minst utviklede landene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke nasjonale finansinstitusjoners evne til å utvide tilgangen til og stimulere til bruk av bank- og forsikringstjenester og finansielle tjenester for alle</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.10</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke den økonomiske produktiviteten gjennom diversifisering, teknologisk fremgang og innovasjon, blant annet med vekt på lønnsomme og arbeidsintensive sektorer</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme en utviklingsrettet politikk som støtter produktive aktiviteter, opprettelse av anstendige arbeidsplasser, entreprenørskap, kreativitet og innovasjon, og stimulere til formalisering av og vekst i antallet svært små, små og mellomstore bedrifter, blant annet ved å gi dem tilgang til finansielle tjenester</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Til og med 2030 gradvis å bedre utnyttelsen av globale ressurser innenfor forbruk og produksjon, og arbeide for å oppheve koblingen mellom ;  økonomisk vekst og miljøødeleggelser, i samsvar med det tiårige handlingsprogrammet for bærekraftig forbruk og produksjon, der de utviklede landene går foran.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppnå full og produktiv sysselsetting og anstendig arbeid for alle kvinner og menn, inkludert ungdom og personer med nedsatt funksjonsevne, og oppnå lik lønn for likt arbeid</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2020 betydelig redusere andelen unge som verken er i arbeid, under utdanning eller opplæring</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iverksette umiddelbare og effektive tiltak for å avskaffe tvangsarbeid, få slutt på moderne slaveri og menneskehandel og sikre at de verste formene for barnearbeid – inkludert rekruttering og bruk av barnesoldater – forbys og avskaffes, og innen 2025 avskaffe alle former for barnearbeid</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beskytte arbeiderrettigheter og fremme et trygt og sikkert arbeidsmiljø for alle arbeidstakere, inkludert arbeidsinnvandrere og særlig kvinnelige innvandrere, og arbeidstakere i et usikkert arbeidsforhold</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#8.9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 utarbeide og iverksette politikk for å fremme en bærekraftig turistnæring som skaper arbeidsplasser og fremmer lokal kultur og lokale produkter</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8.9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.a">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Legge til rette for bærekraftig utvikling av infrastrukturen i utviklingsland ved å øke den finansielle, teknologiske og faglige bistanden til afrikanske land, de minst utviklede landene, kystløse utviklingsland og små utviklingsøystater</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.a</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.b">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Støtte nasjonal utvikling av teknologi, forskning og innovasjon i utviklingsland, blant annet ved å sikre politiske rammevilkår som fremmer mangfold i næringslivet og gir handelsvarer en merverdi</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.b</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke tilgangen til informasjons- og kommunikasjonsteknologi betydelig og arbeide for at de minst utviklede landene får allmenn og rimelig tilgang til internett innen 2020</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.c</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11801,6 +13259,52 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utvikle påliteleg, berekraftig og solid infrastruktur av høg kvalitet, inkludert regional og grensekryssande infrastruktur, for å støtte økonomisk utvikling og livskvalitet med vekt på overkomeleg pris og likeverdig tilgang for alle</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fremme inkluderende og bærekraftig industrialisering og næringsutvikling, og innen 2030 øke industriens andel av sysselsetting og bruttonasjonalprodukt betydelig, i tråd med forholdene i de respektive landene, og doble industriens andel av sysselsetting og bruttonasjonalprodukt i de minst utviklede landene</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Øke tilgangen til finansielle tjenester, inkludert rimelig kreditt, for små industribedrifter og andre bedrifter, særlig i utviklingsland, og styrke disse bedriftenes posisjon og integrere dem i verdikjeder og markeder</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 oppgradere infrastruktur og omstille næringslivet til å bli mer bærekraftig, med mer effektiv bruk av ressurser og mer utstrakt bruk av rene og miljøvennlige teknologiformer og industriprosesser, der alle land gjør en innsats etter egen evne og kapasitet</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#9.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke vitenskapelig forskning og oppgradere teknologien i næringslivssektorene i alle land, særlig i utviklingsland,  blant annet ved &amp;ndash;innen 2030 – å stimulere til innovasjon, betydelig øke antallet ansatte (per million innbyggere) innenfor forsknings- og utviklingsvirksomhet og betydelig øke bevilgningene til offentlig og privat forskning og utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.5</rdfs:label>
     </owl:NamedIndividual>
     
 
