@@ -1,5 +1,5 @@
-import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { getSubGoals } from '../../api/ontologies';
 import { RootState } from '../../state/store';
@@ -21,13 +21,13 @@ const SubGoalsGrid = () => {
   }, [selectedNode]);
 
   return (
-    <Stack align="center">
+    <Stack align="center" w="100%">
       <Heading as="h2" size="2xl" fontWeight="hairline">
         DELMÅL:
       </Heading>
-      <SimpleGrid columns={2} spacing={10}>
+      <SimpleGrid autoColumns="max-content" spacing={10} minChildWidth="400px">
         {subGoals.map((subGoal) => (
-          <SubGoalContainer subGoalNode={subGoal} />
+          <SubGoalContainer key={subGoal.id} subGoalNode={subGoal} />
         ))}
       </SimpleGrid>
     </Stack>
