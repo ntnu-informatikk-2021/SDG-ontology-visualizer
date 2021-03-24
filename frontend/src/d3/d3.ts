@@ -1,63 +1,82 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  drag,
+  ForceCenter,
   forceCenter,
   forceCollide,
   forceLink,
   ForceLink,
   forceManyBody,
   forceSimulation,
-  forceX,
-  forceY,
   select,
   Selection,
   Simulation,
   SimulationNodeDatum,
+  SimulationLinkDatum,
 } from 'd3';
-import { GraphEdge, GraphNode } from '../types/ontologyTypes';
+import { D3Edge, GraphEdge, GraphNode } from '../types/ontologyTypes';
 
 export const createForceSimulation = (
   nodes: GraphNode[],
-  links: GraphEdge[],
+  links: Array<D3Edge | GraphEdge>,
 ): Simulation<GraphNode, GraphEdge> =>
   forceSimulation(nodes)
-    .force('charge', forceManyBody().strength(-999))
-    .force('center', forceCenter(500 / 2, 500 / 2))
-    .force('collide', forceCollide().radius(5)) // set radius dynamically
+    .force('banan', forceManyBody().strength(-100)) // strength between all nodes
+    .force('center', forceCenter(500 / 2, 500 / 2)) // strength towards center of SVG
+    .force('collide', forceCollide().radius(20)) // prevent collision
     .force(
-      'x',
-      forceX((node) => node.x!),
-    )
-    .force(
-      'y',
-      forceY((node) => node.y!),
-    )
-    .force(
+      // force between two connected nodes
       'link',
       forceLink()
         .id((node: SimulationNodeDatum) => (node as GraphNode).id)
         .links(links)
-        .distance((link) =>
-          Math.min(links.filter((l) => l.source === link.target).length * 10 + 30, 400),
-        )
-        .strength(1),
+        /*
+          {
+            id: string,
+            source: object,
+            target: object,
+          }
+          {
+            id: string,
+            source: string,
+            target: string,
+          }
+        */
+        .distance(100),
+
+      // .distance((link) =>
+      //   Math.min(links.filter((l) => l.source === link.target).length * 10 + 30, 400),
+      // )
+      // .strength(1),
     )
-    .alpha(1);
+    .alphaTarget(0.03)
+    .alphaDecay(0.01)
+    .alpha(0.5)
+    .velocityDecay(0.75);
 
 export const resetSimulation = (
   simulation: Simulation<GraphNode, GraphEdge>,
   nodes: GraphNode[],
-  links: GraphEdge[],
+  links: Array<D3Edge | GraphEdge>,
 ) => {
+  // console.log(nodes.map((node) => node.x));
   simulation.nodes(nodes);
-  const linkForce = simulation.force<ForceLink<GraphNode, GraphEdge>>('link');
-  if (!linkForce) return;
-  linkForce.links(links);
-  simulation.force('collide');
-  simulation.alpha(1).restart();
+  const centerForce = simulation.force<ForceCenter<GraphNode>>('center');
+  if (centerForce) {
+    centerForce.strength(0);
+  }
+  const linkForce = simulation.force<ForceLink<GraphNode, GraphEdge | D3Edge>>('link');
+  if (linkForce) {
+    linkForce.links(links);
+  }
+  simulation.alpha(simulation.alpha() + 0.5);
+  // simulation.force('collide');
+  // simulation.alpha(1).restart();
 };
 
 export const drawLinks = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
-  links: GraphEdge[],
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
+  links: Array<D3Edge | GraphEdge>,
   linkClassName: string,
   fillColor: string,
   strokeColor: string,
@@ -74,14 +93,13 @@ export const drawLinks = (
 };
 
 export const updateLinkPositions = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
-  links: GraphEdge[],
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
+  links: Array<D3Edge | GraphEdge>,
   linkClassName: string,
 ) => {
   svg
     .selectAll(linkClassName)
     .data(links)
-    .join('line')
     .attr('x1', (link: any) => link.source.x)
     .attr('y1', (link: any) => link.source.y)
     .attr('x2', (link: any) => link.target.x)
@@ -89,50 +107,104 @@ export const updateLinkPositions = (
 };
 
 export const drawNodes = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
+  linkSvg: Selection<SVGGElement | null, unknown, null, undefined>,
+  nodeSvg: Selection<SVGGElement | null, unknown, null, undefined>,
   nodes: GraphNode[],
   nodeClassName: string,
   radius: number,
   fillColor: string,
   highlightColor: string,
   onClick: (node: GraphNode) => void,
+  links: Array<GraphEdge | D3Edge>,
+  simulation?: Simulation<GraphNode, GraphEdge>,
 ) => {
-  svg
+  nodeSvg
     .selectAll(nodeClassName)
     .data(nodes)
     .join((enter) => enter.append('circle').attr('cx', 100).attr('cy', 100))
     .attr('class', nodeClassName.substring(1)) // remove . from class name
     .attr('r', radius)
-    .attr('fill', fillColor)
+    .attr('fill', (node) => (node.isLocked ? '#7f0dd1' : fillColor))
     // eslint-disable-next-line func-names
-    .on('mouseover', function () {
-      select(this)
-        .attr('fill', highlightColor)
-        .transition('500')
-        .attr('r', radius * 2);
+    .on('mouseover', function (event, node) {
+      const thisNode = select(this);
+      if (!node.isLocked) {
+        thisNode.attr('fill', highlightColor);
+      }
+      thisNode.transition('500').attr('r', radius * 2);
+      linkSvg
+        .selectAll('.link')
+        .data(links)
+        .filter(
+          (link) =>
+            (typeof link.source === 'object'
+              ? link.source.id === node.id
+              : link.source === node.id) ||
+            (typeof link.target === 'object'
+              ? link.target.id === node.id
+              : link.target === node.id),
+        )
+        .attr('stroke', highlightColor)
+        .attr('stroke-width', '2');
     })
     // eslint-disable-next-line func-names
-    .on('mouseout', function () {
-      select(this).attr('fill', fillColor).transition('500').attr('r', radius);
+    .on('mouseout', function (event, node) {
+      const thisNode = select(this);
+      if (!node.isLocked) {
+        thisNode.attr('fill', fillColor);
+      }
+      thisNode.transition('500').attr('r', radius);
+      linkSvg
+        .selectAll('.link')
+        .data(links)
+        .filter(
+          (link) =>
+            (typeof link.source === 'object'
+              ? link.source.id === node.id
+              : link.source === node.id) ||
+            (typeof link.target === 'object'
+              ? link.target.id === node.id
+              : link.target === node.id),
+        )
+        .attr('stroke', '#aaa')
+        .attr('stroke-width', '1');
     })
-    .on('click', (_, node) => onClick(node));
+    .on('click', (_, node) => onClick(node))
+    .call(
+      drag()
+        // eslint-disable-next-line func-names
+        .on('drag', (event, value) => {
+          const node = value as GraphNode;
+          node.fx = event.x;
+          node.fy = event.y;
+          node.isLocked = true;
+        })
+        // eslint-disable-next-line func-names
+        .on('start', function (event, _) {
+          if (!event.active && simulation) simulation.alpha(simulation.alpha() + 0.3);
+          select(this).attr('fill', '#7f0dd1');
+        })
+        .on('end', (_, d) => {
+          const node = d as GraphNode;
+          // node.isLocked = false;
+        }) as any,
+    );
 };
 
 export const updateNodePositions = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
   nodes: GraphNode[],
   nodeClassName: string,
 ) => {
   svg
     .selectAll(nodeClassName)
     .data(nodes)
-    .join('circle')
     .attr('cx', (node) => node.x!)
     .attr('cy', (node) => node.y!);
 };
 
 export const drawNodeLabels = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
   nodes: GraphNode[],
   labelClassName: string,
 ) => {
@@ -145,24 +217,23 @@ export const drawNodeLabels = (
     .text((node) => node.name)
     .attr('text-anchor', 'middle')
     .attr('pointer-events', 'none')
-    .attr('fill', '#aaa');
+    .attr('fill', '#000');
 };
 
 export const updateLabelPositions = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
   nodes: GraphNode[],
   labelClassName: string,
 ) => {
   svg
     .selectAll(labelClassName)
     .data(nodes)
-    .join('text')
     .attr('x', (node) => node.x!)
     .attr('y', (node) => node.y!);
 };
 
 export const drawEdgeLabels = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
   links: GraphEdge[],
   labelClassName: string,
 ) => {
@@ -178,14 +249,13 @@ export const drawEdgeLabels = (
 };
 
 export const updateEdgeLabelPositions = (
-  svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
-  links: GraphEdge[],
+  svg: Selection<SVGGElement | null, unknown, null, undefined>,
+  links: Array<D3Edge | GraphEdge>,
   labelClassName: string,
 ) => {
   svg
     .selectAll(labelClassName)
     .data(links)
-    .join('text')
     .attr('x', (link: any) => (link.source.x + link.target.x) / 2)
     .attr('y', (link: any) => (link.source.y + link.target.y) / 2);
 };

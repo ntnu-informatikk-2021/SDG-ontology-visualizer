@@ -1,30 +1,39 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { select, Simulation } from 'd3';
-import { useDispatch, useSelector } from 'react-redux';
 import { Center } from '@chakra-ui/react';
-import { GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
+import { select, Simulation } from 'd3';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
+import {
+  makePredicateUnique,
+  mapNodeToGraphNode,
+  mapOntologyToGraphEdge,
+  removeDuplicates,
+} from '../../common/d3';
 import {
   createForceSimulation,
   drawLinks,
   drawNodeLabels,
   drawNodes,
   resetSimulation,
-  updateEdgeLabelPositions,
   updateLabelPositions,
   updateLinkPositions,
   updateNodePositions,
 } from '../../d3/d3';
-import { makePredicateUnique, mapOntologyToGraphEdge, removeDuplicates } from '../../common/d3';
-import { RootState } from '../../state/store';
-import { selectNode } from '../../state/reducers/ontologyReducer';
 import { setError } from '../../state/reducers/apiErrorReducer';
+import { selectNode } from '../../state/reducers/ontologyReducer';
+import { RootState } from '../../state/store';
+import { D3Edge, GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
 
 const Graph: React.FC = () => {
   const [hasInitialized, setHasInitialized] = useState<boolean>(false);
+  const [zoomVar, setZoom] = useState(1);
   const svgref = useRef<SVGSVGElement>(null);
+  const linksRef = useRef<SVGGElement>(null);
+  const nodesRef = useRef<SVGGElement>(null);
+  const edgeLabelsRef = useRef<SVGGElement>(null);
+  const nodeLabelsRef = useRef<SVGGElement>(null);
   const [nodes, setNodes] = useState<GraphNode[]>([]);
-  const [links, setLinks] = useState<GraphEdge[]>([]);
+  const [links, setLinks] = useState<Array<GraphEdge | D3Edge>>([]);
   const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
@@ -39,18 +48,23 @@ const Graph: React.FC = () => {
     } else {
       newNodes.push(clickedNode as GraphNode);
     }
-    newNodes = newNodes.filter(removeDuplicates);
+    newNodes = newNodes
+      .filter(removeDuplicates)
+      .map((node) => mapNodeToGraphNode(node, clickedNode));
 
     setNodes(newNodes);
   };
 
   const updateLinks = (ontologies: Array<Ontology>) => {
-    let newLinks = ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge);
+    let newLinks: Array<GraphEdge | D3Edge> = ontologies
+      .map(makePredicateUnique)
+      .map(mapOntologyToGraphEdge);
     if (hasInitialized) {
       newLinks = links.concat(newLinks);
     }
     newLinks = newLinks.filter(removeDuplicates);
 
+    console.log(newLinks.map((link) => link.source));
     setLinks(newLinks);
   };
 
@@ -82,28 +96,44 @@ const Graph: React.FC = () => {
   const drawGraph = () => {
     if (!nodes || !links || nodes.length === 0 || links.length === 0) return;
 
-    const svg = select(svgref.current);
+    // const svg = select(svgref.current);
+    const svgLinks = select(linksRef.current);
+    const svgNodes = select(nodesRef.current);
+    // const svgLinkLabels = select(linksRef.current);
+    const svgNodeLabels = select(nodeLabelsRef.current);
 
-    drawLinks(svg, links, '.link', 'none', '#a03', 1);
-    drawNodes(svg, nodes, '.node', 10, '#22a', '#22e', onClickNode);
-    drawNodeLabels(svg, nodes, '.nodeLabel');
+    drawLinks(svgLinks, links, '.link', 'none', '#aaa', 1);
+    drawNodes(
+      svgLinks,
+      svgNodes,
+      nodes,
+      '.node',
+      10,
+      '#4299e1',
+      '#322659',
+      onClickNode,
+      links,
+      forceSim,
+    );
+    drawNodeLabels(svgNodeLabels, nodes, '.nodeLabel');
     // drawEdgeLabels(svg, links, '.edgeLabel');
 
     // TODO: Simplify this
     if (forceSim) {
       forceSim.on('tick', () => {
-        updateLinkPositions(svg, links, '.link');
-        updateNodePositions(svg, nodes, '.node');
-        updateLabelPositions(svg, nodes, '.nodeLabel');
-        updateEdgeLabelPositions(svg, links, '.edgeLabel');
+        updateLinkPositions(svgLinks, links, '.link');
+        updateNodePositions(svgNodes, nodes, '.node');
+        updateLabelPositions(svgNodeLabels, nodes, '.nodeLabel');
+        // updateEdgeLabelPositions(svg, links, '.edgeLabel');
       });
       resetSimulation(forceSim, nodes, links);
     } else {
       const newForceSim = createForceSimulation(nodes, links).on('tick', () => {
-        updateLinkPositions(svg, links, '.link');
-        updateNodePositions(svg, nodes, '.node');
-        updateLabelPositions(svg, nodes, '.nodeLabel');
-        updateEdgeLabelPositions(svg, links, '.edgeLabel');
+        // console.log(newForceSim.alpha());
+        updateLinkPositions(svgLinks, links, '.link');
+        updateNodePositions(svgNodes, nodes, '.node');
+        updateLabelPositions(svgNodeLabels, nodes, '.nodeLabel');
+        // updateEdgeLabelPositions(svg, links, '.edgeLabel');
       });
       setForceSim(newForceSim);
     }
@@ -114,12 +144,38 @@ const Graph: React.FC = () => {
   }, [selectedNode]);
 
   useEffect(() => {
+    console.log('nodes or links changed');
     drawGraph();
-  }, [nodes, links]);
+  }, [links]);
+
+  const handleScroll = (event: Event) => {
+    // TODO: Implement zoom
+    console.log(event);
+    setZoom(Math.random() * 2);
+  };
+
+  useEffect(() => {
+    svgref.current?.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Center mx="auto" my="0">
-      <svg height="800px" width="500px" overflow="visible" ref={svgref} />
+      <svg
+        viewBox={`0 0 ${500 / zoomVar} ${800 / zoomVar}`}
+        height="800px"
+        width="500px"
+        overflow="visible"
+        ref={svgref}
+      >
+        <g ref={linksRef} />
+        <g ref={nodesRef} />
+        <g ref={edgeLabelsRef} />
+        <g ref={nodeLabelsRef} />
+      </svg>
     </Center>
   );
 };
