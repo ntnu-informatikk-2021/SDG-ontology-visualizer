@@ -84,12 +84,15 @@ const DetailView: React.FC = () => {
         </Text>
         {contributions.map((contribution) => (
           <Button
+            {...(contribution.harHøyKorrelasjon
+              ? 'Har positiv virkning til'
+              : 'Har ingen etablerte positive påvirkninger enda')}
             onClick={() => onClickConnections(contribution.Object)}
             colorScheme="blue"
             style={{ margin: 5 }}
             key={contribution.Object.id}
           >
-            {contribution.Object.name}
+            {contribution.harHøyKorrelasjon}
           </Button>
         ))}
         <Text>
