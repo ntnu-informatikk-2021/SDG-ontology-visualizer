@@ -235,7 +235,7 @@ export const updateLabelPositions = (
 
 export const drawEdgeLabels = (
   svg: Selection<SVGGElement | null, unknown, null, undefined>,
-  links: GraphEdge[],
+  links: Array<GraphEdge | D3Edge>,
   labelClassName: string,
 ) => {
   svg

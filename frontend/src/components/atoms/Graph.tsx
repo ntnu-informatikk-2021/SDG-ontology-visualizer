@@ -119,7 +119,7 @@ const Graph: React.FC = () => {
       forceSim,
     );
     drawNodeLabels(svgNodeLabels, nodes, '.nodeLabel');
-    // drawEdgeLabels(svg, links, '.edgeLabel');
+    // drawEdgeLabels(svgLinkLabels, links, '.edgeLabel');
 
     // TODO: Simplify this
     if (forceSim) {
@@ -127,7 +127,7 @@ const Graph: React.FC = () => {
         updateLinkPositions(svgLinks, links, '.link');
         updateNodePositions(svgNodes, nodes, '.node');
         updateLabelPositions(svgNodeLabels, nodes, '.nodeLabel');
-        // updateEdgeLabelPositions(svg, links, '.edgeLabel');
+        // updateEdgeLabelPositions(svgLinkLabels, links, '.edgeLabel');
       });
       resetSimulation(forceSim, nodes, links);
     } else {
@@ -138,7 +138,7 @@ const Graph: React.FC = () => {
           updateLinkPositions(svgLinks, links, '.link');
           updateNodePositions(svgNodes, nodes, '.node');
           updateLabelPositions(svgNodeLabels, nodes, '.nodeLabel');
-          // updateEdgeLabelPositions(svg, links, '.edgeLabel');
+          // updateEdgeLabelPositions(svgLinkLabels, links, '.edgeLabel');
         },
       );
       setForceSim(newForceSim);
