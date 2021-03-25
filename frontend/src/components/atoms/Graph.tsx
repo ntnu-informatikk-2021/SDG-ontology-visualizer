@@ -157,17 +157,21 @@ const Graph: React.FC = () => {
     const svgNodes = select(nodesRef.current);
     const svgLinkLabels = select(edgeLabelsRef.current);
     const svgNodeLabels = select(nodeLabelsRef.current);
+    const rect = document.getElementById('svgGraph')!.getBoundingClientRect(); // or other selector like querySelector()
 
     svg.call(
-      zoom().on('zoom', (event: D3ZoomEvent<SVGSVGElement, any>) => {
-        const scale = event.transform.k;
-        const translate = [event.transform.x, event.transform.y];
-
-        svgLinks.attr('transform', `translate(${translate}) scale(${scale})`);
-        svgNodes.attr('transform', `translate(${translate}) scale(${scale})`);
-        svgLinkLabels.attr('transform', `translate(${translate}) scale(${scale})`);
-        svgNodeLabels.attr('transform', `translate(${translate}) scale(${scale})`);
-      }) as any,
+      zoom()
+        .on('zoom', (event: D3ZoomEvent<SVGSVGElement, any>) => {
+          const scale = event.transform.k;
+          const translate = [event.transform.x, event.transform.y];
+          console.log(translate);
+          console.log(rect);
+          svgLinks.attr('transform', `translate(${translate}) scale(${scale})`);
+          svgNodes.attr('transform', `translate(${translate}) scale(${scale})`);
+          svgLinkLabels.attr('transform', `translate(${translate}) scale(${scale})`);
+          svgNodeLabels.attr('transform', `translate(${translate}) scale(${scale})`);
+        })
+        .scaleExtent([0.2, 4]) as any,
     );
   }, []);
 
@@ -175,6 +179,7 @@ const Graph: React.FC = () => {
     <Center mx="auto" my="0">
       <svg
         // viewBox={`0 0 ${500 / zoomVar} ${800 / zoomVar}`}
+        id="svgGraph"
         height="500px"
         width="100%"
         ref={svgref}
