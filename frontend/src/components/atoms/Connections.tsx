@@ -1,4 +1,4 @@
-import { Button, color, Text, Wrap } from '@chakra-ui/react';
+import { Button, Text, Wrap } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { selectNode } from '../../state/reducers/ontologyReducer';

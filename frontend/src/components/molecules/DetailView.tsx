@@ -44,18 +44,23 @@ const DetailView: React.FC = () => {
             {annotations.description}
           </Text>
         </Container>
-        <Connections
-          connections={contributions}
-          titles={['Har positiv virkning til', 'har ingen etablerte positive påvirkninger enda']}
-        />
-        <Connections
-          connections={tradeOffs}
-          titles={['Har negativ virkning til', 'Har ingen etablerte negative påvirkninger enda']}
-        />
-        <Connections
-          connections={developmentAreas}
-          titles={['Har utviklingsområde til', 'Har ingen utviklingsområder']}
-        />
+        <Box>
+          <Connections
+            connections={contributions}
+            titles={['Har positiv virkning til', 'har ingen etablerte positive påvirkninger enda']}
+            color="green"
+          />
+          <Connections
+            connections={tradeOffs}
+            titles={['Har negativ virkning til', 'Har ingen etablerte negative påvirkninger enda']}
+            color="red"
+          />
+          <Connections
+            connections={developmentAreas}
+            titles={['Har utviklingsområde til', 'Har ingen utviklingsområder']}
+            color="blue"
+          />
+        </Box>
       </SimpleGrid>
     </Box>
   );
