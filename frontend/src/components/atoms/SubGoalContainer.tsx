@@ -26,6 +26,8 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
     <Accordion allowToggle>
       <AccordionItem boxShadow="lg" borderRadius="md">
         <AccordionButton
+          _expanded={{ borderBottomRadius: '0' }}
+          borderRadius="md"
           bg={colorSwitcher(selectedNode! && selectedNode.id)}
           color="white"
           _hover={{ opacity: '75%' }}
