@@ -153,20 +153,20 @@ const Graph: React.FC = () => {
   useEffect(() => {
     // const zoom:ZoomBehavior<SVGSVGElement, any> = () => {}
     const svg = select(svgref.current);
-    const links2 = select(linksRef.current);
-    const nodes2 = select(nodesRef.current);
-    const edge2 = select(edgeLabelsRef.current);
-    const label2 = select(nodeLabelsRef.current);
+    const svgLinks = select(linksRef.current);
+    const svgNodes = select(nodesRef.current);
+    const svgLinkLabels = select(edgeLabelsRef.current);
+    const svgNodeLabels = select(nodeLabelsRef.current);
 
     svg.call(
       zoom().on('zoom', (event: D3ZoomEvent<SVGSVGElement, any>) => {
         const scale = event.transform.k;
         const translate = [event.transform.x, event.transform.y];
 
-        links2.attr('transform', `translate(${translate}) scale(${scale})`);
-        nodes2.attr('transform', `translate(${translate}) scale(${scale})`);
-        edge2.attr('transform', `translate(${translate}) scale(${scale})`);
-        label2.attr('transform', `translate(${translate}) scale(${scale})`);
+        svgLinks.attr('transform', `translate(${translate}) scale(${scale})`);
+        svgNodes.attr('transform', `translate(${translate}) scale(${scale})`);
+        svgLinkLabels.attr('transform', `translate(${translate}) scale(${scale})`);
+        svgNodeLabels.attr('transform', `translate(${translate}) scale(${scale})`);
       }) as any,
     );
   }, []);
