@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Heading, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -6,12 +6,10 @@ import {
   getContributions,
   getTradeOff,
   getDevelopmentArea,
-  getSubGoals,
 } from '../../api/ontologies';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { Annotation, Node, SubGoal } from '../../types/ontologyTypes';
-import SubGoalContainer from '../atoms/SubGoalContainer';
+import { Annotation, Node } from '../../types/ontologyTypes';
 
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
@@ -19,7 +17,6 @@ const DetailView: React.FC = () => {
     description: '',
   });
   const [contributions, setContributions] = useState<Array<Node>>([]);
-  const [subGoals, setSubGoals] = useState<Array<SubGoal>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
@@ -29,12 +26,6 @@ const DetailView: React.FC = () => {
     if (!selectedNode) return;
     const data = await getAnnotations(selectedNode.id);
     setAnnotations(data);
-  };
-
-  const loadSubGoal = async () => {
-    if (!selectedNode) return;
-    const data = await getSubGoals(selectedNode.id);
-    setSubGoals(data);
   };
 
   const loadContributions = async () => {
@@ -64,11 +55,10 @@ const DetailView: React.FC = () => {
     loadContributions();
     loadTradeOff();
     loadDevelopmentArea();
-    loadSubGoal();
   }, [selectedNode]);
 
   return (
-    <Box bg="tomato" w="100%" p={6} color="white">
+    <Box bg="cyan.600" w="100%" p={6} color="white">
       <Container w="60%" maxW="1000px">
         <Heading as="h2" size="2xl" fontWeight="hairline">
           {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
@@ -119,19 +109,6 @@ const DetailView: React.FC = () => {
             {developmentArea.name}
           </Button>
         ))}
-        {subGoals.length ? (
-          <Box>
-            {/* Todo: put ${selectedNode?.name} */}
-            <Heading as="h2" size="2xl" fontWeight="hairline">
-              DELMÅL:
-            </Heading>
-            <SimpleGrid columns={2}>
-              {subGoals.map((subGoal) => (
-                <SubGoalContainer subGoalNode={subGoal} />
-              ))}
-            </SimpleGrid>
-          </Box>
-        ) : null}
       </Container>
     </Box>
   );
