@@ -19,12 +19,14 @@ import {
   updateLinkPositions,
   updateNodePositions,
 } from '../../d3/d3';
+import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { D3Edge, GraphEdge, GraphNode, Ontology } from '../../types/ontologyTypes';
 
 const Graph: React.FC = () => {
+  const { height, width } = useWindowDimensions();
   const [hasInitialized, setHasInitialized] = useState<boolean>(false);
   const svgref = useRef<SVGSVGElement>(null);
   const linksRef = useRef<SVGGElement>(null);
@@ -129,13 +131,16 @@ const Graph: React.FC = () => {
       });
       resetSimulation(forceSim, nodes, links);
     } else {
-      const newForceSim = createForceSimulation(nodes, links).on('tick', () => {
-        // console.log(newForceSim.alpha());
-        updateLinkPositions(svgLinks, links, '.link');
-        updateNodePositions(svgNodes, nodes, '.node');
-        updateLabelPositions(svgNodeLabels, nodes, '.nodeLabel');
-        // updateEdgeLabelPositions(svg, links, '.edgeLabel');
-      });
+      const newForceSim = createForceSimulation(nodes, links, width, height - 200).on(
+        'tick',
+        () => {
+          // console.log(newForceSim.alpha());
+          updateLinkPositions(svgLinks, links, '.link');
+          updateNodePositions(svgNodes, nodes, '.node');
+          updateLabelPositions(svgNodeLabels, nodes, '.nodeLabel');
+          // updateEdgeLabelPositions(svg, links, '.edgeLabel');
+        },
+      );
       setForceSim(newForceSim);
     }
   };
@@ -180,8 +185,8 @@ const Graph: React.FC = () => {
       <svg
         // viewBox={`0 0 ${500 / zoomVar} ${800 / zoomVar}`}
         id="svgGraph"
-        height="500px"
-        width="100%"
+        height={height - 200}
+        width={width}
         ref={svgref}
       >
         <g ref={linksRef} />

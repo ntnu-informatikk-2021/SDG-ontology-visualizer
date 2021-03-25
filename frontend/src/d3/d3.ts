@@ -18,10 +18,12 @@ import { D3Edge, GraphEdge, GraphNode } from '../types/ontologyTypes';
 export const createForceSimulation = (
   nodes: GraphNode[],
   links: Array<D3Edge | GraphEdge>,
+  width: number,
+  height: number,
 ): Simulation<GraphNode, GraphEdge> =>
   forceSimulation(nodes)
     .force('banan', forceManyBody().strength(-100)) // strength between all nodes
-    .force('center', forceCenter(500 / 2, 500 / 2)) // strength towards center of SVG
+    .force('center', forceCenter(width / 2, height / 2)) // strength towards center of SVG
     .force('collide', forceCollide().radius(20)) // prevent collision
     .force(
       // force between two connected nodes
