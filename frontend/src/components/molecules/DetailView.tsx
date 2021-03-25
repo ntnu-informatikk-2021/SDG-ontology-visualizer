@@ -1,11 +1,11 @@
-import { Box, Button, Container, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Heading, SimpleGrid, Text, Wrap } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getAnnotations,
   getContributions,
-  getTradeOff,
   getDevelopmentArea,
+  getTradeOff,
 } from '../../api/ontologies';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
@@ -58,58 +58,70 @@ const DetailView: React.FC = () => {
   }, [selectedNode]);
 
   return (
-    <Box bg="cyan.600" w="100%" p={6} color="white">
-      <Container w="60%" maxW="1000px">
-        <Heading as="h2" size="2xl" fontWeight="hairline">
-          {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
-        </Heading>
-        <Heading as="h3" size="md" my="4">
-          {annotations.description}
-        </Heading>
-        <Text>
-          {contributions.length
-            ? 'Har positiv virkning til'
-            : 'Har ingen etablerte positive påvirkninger enda'}
-        </Text>
-        {contributions.map((contribution) => (
-          <Button
-            onClick={() => onClickConnections(contribution)}
-            colorScheme="blue"
-            style={{ margin: 5 }}
-            key={contribution.id}
-          >
-            {contribution.name}
-          </Button>
-        ))}
-        <Text>
-          {tradeOffs.length
-            ? 'Har negativ virkning til'
-            : 'Har ingen etablerte negative påvirkninger enda'}
-        </Text>
-        {tradeOffs.map((tradeoff) => (
-          <Button
-            onClick={() => onClickConnections(tradeoff)}
-            colorScheme="blue"
-            style={{ margin: 5 }}
-            key={tradeoff.id}
-          >
-            {tradeoff.name}
-          </Button>
-        ))}
-        <Text>
-          {developmentAreas.length ? 'Har utviklingsområde til' : 'Har ingen utviklingsområder'}
-        </Text>
-        {developmentAreas.map((developmentArea) => (
-          <Button
-            onClick={() => onClickConnections(developmentArea)}
-            colorScheme="blue"
-            style={{ margin: 5 }}
-            key={developmentArea.id}
-          >
-            {developmentArea.name}
-          </Button>
-        ))}
-      </Container>
+    <Box spacing={10} bg="cyan.600" w="100%" p={6} color="white">
+      <Heading as="h2" size="2xl" fontWeight="hairline" textAlign="center" paddingBottom="5">
+        {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
+      </Heading>
+      <SimpleGrid columns={2}>
+        <Container centerContent>
+          <Text fontSize="xl" my="4">
+            {annotations.description}
+          </Text>
+        </Container>
+        <Box>
+          <Text>
+            {contributions.length
+              ? 'Har positiv virkning til'
+              : 'Har ingen etablerte positive påvirkninger enda'}
+          </Text>
+          <Wrap>
+            {contributions.map((contribution) => (
+              <Button
+                onClick={() => onClickConnections(contribution)}
+                colorScheme="green"
+                bg="green.400"
+                style={{ margin: 5 }}
+                key={contribution.id}
+              >
+                {contribution.name}
+              </Button>
+            ))}
+          </Wrap>
+          <Text>
+            {tradeOffs.length
+              ? 'Har negativ virkning til'
+              : 'Har ingen etablerte negative påvirkninger enda'}
+          </Text>
+          <Wrap>
+            {tradeOffs.map((tradeoff) => (
+              <Button
+                onClick={() => onClickConnections(tradeoff)}
+                colorScheme="red"
+                style={{ margin: 5 }}
+                key={tradeoff.id}
+              >
+                {tradeoff.name}
+              </Button>
+            ))}
+          </Wrap>
+          <Text>
+            {developmentAreas.length ? 'Har utviklingsområde til' : 'Har ingen utviklingsområder'}
+          </Text>
+          <Wrap>
+            {developmentAreas.map((developmentArea) => (
+              <Button
+                onClick={() => onClickConnections(developmentArea)}
+                _hover={{ backgroundColor: 'blue.800' }}
+                bg="blue.600"
+                style={{ margin: 5 }}
+                key={developmentArea.id}
+              >
+                {developmentArea.name}
+              </Button>
+            ))}
+          </Wrap>
+        </Box>
+      </SimpleGrid>
     </Box>
   );
 };
