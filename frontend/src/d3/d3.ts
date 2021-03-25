@@ -12,7 +12,6 @@ import {
   Selection,
   Simulation,
   SimulationNodeDatum,
-  SimulationLinkDatum,
 } from 'd3';
 import { D3Edge, GraphEdge, GraphNode } from '../types/ontologyTypes';
 
@@ -259,3 +258,6 @@ export const updateEdgeLabelPositions = (
     .attr('x', (link: any) => (link.source.x + link.target.x) / 2)
     .attr('y', (link: any) => (link.source.y + link.target.y) / 2);
 };
+function size(arg0: number): null {
+  throw new Error('Function not implemented.');
+}

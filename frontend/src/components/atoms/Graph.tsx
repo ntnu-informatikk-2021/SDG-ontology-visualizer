@@ -1,5 +1,5 @@
 import { Center } from '@chakra-ui/react';
-import { select, Simulation } from 'd3';
+import { D3ZoomEvent, select, Simulation, zoom } from 'd3';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
@@ -26,7 +26,6 @@ import { D3Edge, GraphEdge, GraphNode, Ontology } from '../../types/ontologyType
 
 const Graph: React.FC = () => {
   const [hasInitialized, setHasInitialized] = useState<boolean>(false);
-  const [zoomVar, setZoom] = useState(1);
   const svgref = useRef<SVGSVGElement>(null);
   const linksRef = useRef<SVGGElement>(null);
   const nodesRef = useRef<SVGGElement>(null);
@@ -35,7 +34,9 @@ const Graph: React.FC = () => {
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<Array<GraphEdge | D3Edge>>([]);
   const [forceSim, setForceSim] = useState<Simulation<GraphNode, GraphEdge>>();
+
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+
   const dispatch = useDispatch();
 
   const updateNodes = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
@@ -148,27 +149,34 @@ const Graph: React.FC = () => {
     drawGraph();
   }, [links]);
 
-  const handleScroll = (event: Event) => {
-    // TODO: Implement zoom
-    console.log(event);
-    setZoom(Math.random() * 2);
-  };
-
+  // Does only change the transform values of each g element.
   useEffect(() => {
-    svgref.current?.addEventListener('scroll', handleScroll);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // const zoom:ZoomBehavior<SVGSVGElement, any> = () => {}
+    const svg = select(svgref.current);
+    const links2 = select(linksRef.current);
+    const nodes2 = select(nodesRef.current);
+    const edge2 = select(edgeLabelsRef.current);
+    const label2 = select(nodeLabelsRef.current);
+
+    svg.call(
+      zoom().on('zoom', (event: D3ZoomEvent<SVGSVGElement, any>) => {
+        const scale = event.transform.k;
+        const translate = [event.transform.x, event.transform.y];
+
+        links2.attr('transform', `translate(${translate}) scale(${scale})`);
+        nodes2.attr('transform', `translate(${translate}) scale(${scale})`);
+        edge2.attr('transform', `translate(${translate}) scale(${scale})`);
+        label2.attr('transform', `translate(${translate}) scale(${scale})`);
+      }) as any,
+    );
   }, []);
 
   return (
     <Center mx="auto" my="0">
       <svg
-        viewBox={`0 0 ${500 / zoomVar} ${800 / zoomVar}`}
-        height="800px"
-        width="500px"
-        overflow="visible"
+        // viewBox={`0 0 ${500 / zoomVar} ${800 / zoomVar}`}
+        height="500px"
+        width="100%"
         ref={svgref}
       >
         <g ref={linksRef} />
