@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
+import { Box, Center, Heading, SimpleGrid } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { getSubGoals } from '../../api/ontologies';
 import { RootState } from '../../state/store';
@@ -21,16 +21,18 @@ const SubGoalsGrid = () => {
   }, [selectedNode]);
 
   return (
-    <Stack align="center" w="100%">
-      <Heading as="h2" size="2xl" fontWeight="hairline">
-        DELMÅL:
-      </Heading>
-      <SimpleGrid autoColumns="max-content" spacing={10} minChildWidth="400px">
+    <Box mx="10%" my="5%">
+      <Center mb="5%">
+        <Heading as="h2" size="2xl" fontWeight="hairline" color="gray.800">
+          DELMÅL:
+        </Heading>
+      </Center>
+      <SimpleGrid columns={2} spacing={10}>
         {subGoals.map((subGoal) => (
           <SubGoalContainer key={subGoal.id} subGoalNode={subGoal} />
         ))}
       </SimpleGrid>
-    </Stack>
+    </Box>
   );
 };
 
