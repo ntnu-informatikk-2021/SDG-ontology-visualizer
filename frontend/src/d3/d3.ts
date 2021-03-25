@@ -22,7 +22,7 @@ export const createForceSimulation = (
   height: number,
 ): Simulation<GraphNode, GraphEdge> =>
   forceSimulation(nodes)
-    .force('banan', forceManyBody().strength(-100)) // strength between all nodes
+    .force('charge', forceManyBody().strength(-100)) // strength between all nodes
     .force('center', forceCenter(width / 2, height / 2)) // strength towards center of SVG
     .force('collide', forceCollide().radius(20)) // prevent collision
     .force(
