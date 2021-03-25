@@ -20,7 +20,7 @@ const SubGoalsGrid = () => {
     loadSubGoal();
   }, [selectedNode]);
 
-  return (
+  return subGoals.length ? (
     <Box mx="10%" my="5%">
       <Center mb="5%">
         <Heading as="h2" size="2xl" fontWeight="hairline" color="gray.800">
@@ -33,6 +33,8 @@ const SubGoalsGrid = () => {
         ))}
       </SimpleGrid>
     </Box>
+  ) : (
+    <></>
   );
 };
 
