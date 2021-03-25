@@ -31,24 +31,7 @@ export const createForceSimulation = (
       forceLink()
         .id((node: SimulationNodeDatum) => (node as GraphNode).id)
         .links(links)
-        /*
-          {
-            id: string,
-            source: object,
-            target: object,
-          }
-          {
-            id: string,
-            source: string,
-            target: string,
-          }
-        */
         .distance(100),
-
-      // .distance((link) =>
-      //   Math.min(links.filter((l) => l.source === link.target).length * 10 + 30, 400),
-      // )
-      // .strength(1),
     )
     .alphaTarget(0.03)
     .alphaDecay(0.01)
@@ -60,7 +43,6 @@ export const resetSimulation = (
   nodes: GraphNode[],
   links: Array<D3Edge | GraphEdge>,
 ) => {
-  // console.log(nodes.map((node) => node.x));
   simulation.nodes(nodes);
   const centerForce = simulation.force<ForceCenter<GraphNode>>('center');
   if (centerForce) {
@@ -71,8 +53,6 @@ export const resetSimulation = (
     linkForce.links(links);
   }
   simulation.alpha(simulation.alpha() + 0.5);
-  // simulation.force('collide');
-  // simulation.alpha(1).restart();
 };
 
 export const drawLinks = (
@@ -214,7 +194,6 @@ export const drawNodeLabels = (
     .data(nodes)
     .join('text')
     .attr('class', labelClassName.substring(1)) // remove . from class name
-    // .text((node) => node.name.substring(0, 8)) // temporary to prevent clutter
     .text((node) => node.name)
     .attr('text-anchor', 'middle')
     .attr('pointer-events', 'none')

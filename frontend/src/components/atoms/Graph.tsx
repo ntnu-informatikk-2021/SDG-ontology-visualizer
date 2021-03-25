@@ -156,21 +156,17 @@ const Graph: React.FC = () => {
 
   // Does only change the transform values of each g element.
   useEffect(() => {
-    // const zoom:ZoomBehavior<SVGSVGElement, any> = () => {}
     const svg = select(svgref.current);
     const svgLinks = select(linksRef.current);
     const svgNodes = select(nodesRef.current);
     const svgLinkLabels = select(edgeLabelsRef.current);
     const svgNodeLabels = select(nodeLabelsRef.current);
-    const rect = document.getElementById('svgGraph')!.getBoundingClientRect(); // or other selector like querySelector()
 
     svg.call(
       zoom()
         .on('zoom', (event: D3ZoomEvent<SVGSVGElement, any>) => {
           const scale = event.transform.k;
           const translate = [event.transform.x, event.transform.y];
-          console.log(translate);
-          console.log(rect);
           svgLinks.attr('transform', `translate(${translate}) scale(${scale})`);
           svgNodes.attr('transform', `translate(${translate}) scale(${scale})`);
           svgLinkLabels.attr('transform', `translate(${translate}) scale(${scale})`);
@@ -182,13 +178,7 @@ const Graph: React.FC = () => {
 
   return (
     <Center mx="auto" my="0">
-      <svg
-        // viewBox={`0 0 ${500 / zoomVar} ${800 / zoomVar}`}
-        id="svgGraph"
-        height={height - 200}
-        width={width}
-        ref={svgref}
-      >
+      <svg id="svgGraph" height={height - 200} width={width} ref={svgref}>
         <g ref={linksRef} />
         <g ref={nodesRef} />
         <g ref={edgeLabelsRef} />
