@@ -1,4 +1,4 @@
-import { Node, Prefix } from '../types/ontologyTypes';
+import { Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
 
 export const mapPrefixNameToNode = (prefix: string, name: string): Node => ({
   prefix: {
@@ -40,4 +40,11 @@ export const mapIdToNode = (id: string): Node | null => {
     name,
     id,
   };
+};
+
+export const mapSustainabilityGoalToNode = (sdg: SustainabilityGoal): Node | null => {
+  const node = mapIdToNode(sdg.instancesOf);
+  if (!node) return null;
+  node.name = sdg.label;
+  return node;
 };
