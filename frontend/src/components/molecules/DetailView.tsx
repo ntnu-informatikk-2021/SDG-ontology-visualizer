@@ -10,7 +10,7 @@ import {
 } from '../../api/ontologies';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { Annotation, Node, Correlation, SubGoal } from '../../types/ontologyTypes';
+import { Annotation, Node, SubGoal } from '../../types/ontologyTypes';
 import SubGoalContainer from '../atoms/SubGoalContainer';
 
 const DetailView: React.FC = () => {
@@ -18,7 +18,7 @@ const DetailView: React.FC = () => {
     label: '',
     description: '',
   });
-  const [contributions, setContributions] = useState<Array<Correlation>>([]);
+  const [contributions, setContributions] = useState<Array<Node>>([]);
   const [subGoals, setSubGoals] = useState<Array<SubGoal>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
@@ -84,15 +84,12 @@ const DetailView: React.FC = () => {
         </Text>
         {contributions.map((contribution) => (
           <Button
-            {...(contribution.harHøyKorrelasjon
-              ? 'Har positiv virkning til'
-              : 'Har ingen etablerte positive påvirkninger enda')}
-            onClick={() => onClickConnections(contribution.Object)}
+            onClick={() => onClickConnections(contribution)}
             colorScheme="blue"
             style={{ margin: 5 }}
-            key={contribution.Object.id}
+            key={contribution.id}
           >
-            {contribution.harHøyKorrelasjon}
+            {contribution.name}
           </Button>
         ))}
         <Text>

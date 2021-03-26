@@ -20,16 +20,12 @@ export interface UniqueObject {
   id: string;
 }
 
-export type Correlation = {
-  Object: Node;
-  harHøyKorrelasjon: string | null;
-  harModeratKorrelasjon: string | null;
-  harLavKorrelasjon: string | null;
-};
-
 export interface Node extends UniqueObject {
   name: string;
   prefix: Prefix;
+  high?: string;
+  moderate?: string;
+  low?: string;
 }
 
 export interface GraphNode extends Node, SimulationNodeDatum {}

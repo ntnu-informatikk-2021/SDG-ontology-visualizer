@@ -4,16 +4,13 @@ export type OntologyEntity = {
   prefix: Prefix;
   id: string;
   name: string;
+  High?: string;
+  Moderate?: string;
+  Low?: string;
 };
 export interface SubGoal extends Node {
   description: string;
 }
-export type Correlation = {
-  Object: Node | null;
-  harHøyKorrelasjon: string | null;
-  harModeratKorrelasjon: string | null;
-  harLavKorrelasjon: string | null;
-};
 
 export interface Node extends OntologyEntity {}
 export interface Edge extends OntologyEntity {}
@@ -30,9 +27,9 @@ export type Record = {
   Object: string | null;
   ObjectLabel: string | null;
   Predicate: string;
-  HarHøyKorrelasjon: string | null;
-  HarModeratKorrelasjon: string | null;
-  HarLavKorrelasjon: string | null;
+  High: string | null;
+  Moderate: string | null;
+  Low: string | null;
 };
 
 export class ApiError extends Error {

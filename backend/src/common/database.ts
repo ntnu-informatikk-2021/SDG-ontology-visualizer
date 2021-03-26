@@ -1,5 +1,5 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
-import { Node, OntologyEntity, Record, Ontology, Correlation } from '../types/types';
+import { Node, OntologyEntity, Record, Ontology } from '../types/types';
 
 export const parseNameFromClassId = (id: string): string => {
   const regex = /^[^_]*#/;
@@ -23,14 +23,25 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
-export const mapIdToOntologyEntity = (id: string): OntologyEntity | null => {
+export const mapIdToOntologyEntity = (
+  id: string,
+  high?: string,
+  moderate?: string,
+  low?: string,
+): OntologyEntity | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
+  let High = high;
+  let Moderate = moderate;
+  let Low = low;
   if (!prefix || !name) return null;
   return {
     prefix,
     name,
     id,
+    High,
+    Moderate,
+    Low,
   };
 };
 
@@ -51,36 +62,23 @@ export const mapRecordToOntology = (record: Record): Ontology => {
 };
 
 export const mapRecordToObject = (record: Record): Node | null => {
-  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
+  let high;
+  if (record.High != null) {
+    high = record.High;
+  }
+  let moderate;
+  if (record.Moderate != null) {
+    moderate = record.Moderate;
+  }
+  let low;
+  if (record.Low != null) {
+    low = record.Low;
+  }
+  let object = record.Object ? mapIdToOntologyEntity(record.Object, high, moderate, low) : null;
   if (object && record.ObjectLabel) {
     object = { ...object, name: record.ObjectLabel };
   }
   return object;
-};
-
-export const mapCorrelationToObject = (record: Record): Correlation | null => {
-  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
-  if (object && record.ObjectLabel) {
-    object = { ...object, name: record.ObjectLabel };
-  }
-  let harHøyKorrelasjon;
-  if (record.HarHøyKorrelasjon != null) {
-    harHøyKorrelasjon = record.HarHøyKorrelasjon;
-  }
-  let harModeratKorrelasjon;
-  if (record.HarModeratKorrelasjon != null) {
-    harModeratKorrelasjon = record.HarModeratKorrelasjon;
-  }
-  let harLavKorrelasjon;
-  if (record.HarLavKorrelasjon != null) {
-    harLavKorrelasjon = record.HarLavKorrelasjon;
-  }
-  return {
-    Object: object,
-    harHøyKorrelasjon: harHøyKorrelasjon,
-    harModeratKorrelasjon: harModeratKorrelasjon,
-    harLavKorrelasjon: harLavKorrelasjon,
-  };
 };
 
 export const mapRecordToSubject = (record: Record): Node | null => {

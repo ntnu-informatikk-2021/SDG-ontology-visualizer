@@ -20,15 +20,15 @@ export default (nodeId: string): string => {
       ?Object rdfs:label ?ObjectLabel
       Optional {
         ?Object SDG:harHøyKorrelasjon SDG:B1.
-        ?Object rdfs:label ?HarHøyKorrelasjon }
+        ?Object rdfs:label ?High }
 
      Optional {
       ?Object SDG:harModeratKorrelasjon SDG:B1.
-      ?Object rdfs:label ?HarModeratKorrelasjon }
+      ?Object rdfs:label ?Moderate }
   
      Optional {
       ?Object SDG:harLavKorrelasjon SDG:B1.
-      ?Object rdfs:label ?HarLavKorrelasjon }
+      ?Object rdfs:label ?Low }
   
 
   }`;
