@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { clearError } from '../../state/reducers/apiErrorReducer';
 import { RootState } from '../../state/store';
 import { ApiError } from '../../types/redux/errorTypes';
@@ -20,6 +20,7 @@ const ErrorModal: React.FC = () => {
   const [open, setOpen] = useState(false);
   const apiError = useSelector((state: RootState) => state.apiError.error);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onClose = () => dispatch(clearError());
 
@@ -37,12 +38,17 @@ const ErrorModal: React.FC = () => {
         <ModalCloseButton />
         <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
         <ModalFooter>
-          <Link to="/">
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              <ArrowLeftIcon mr="2" />
-              Back to Home Page
-            </Button>
-          </Link>
+          <Button
+            colorScheme="blue"
+            mr={3}
+            onClick={() => {
+              onClose();
+              history.push('/');
+            }}
+          >
+            <ArrowLeftIcon mr="2" />
+            Back to Home Page
+          </Button>
           <Button colorScheme="red" mr={3} onClick={onClose}>
             <CloseIcon mr="2" />
             Close
