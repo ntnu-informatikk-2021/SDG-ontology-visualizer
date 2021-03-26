@@ -23,9 +23,7 @@ export interface UniqueObject {
 export interface Node extends UniqueObject {
   name: string;
   prefix: Prefix;
-  high?: string;
-  moderate?: string;
-  low?: string;
+  correlation: number;
 }
 
 export interface GraphNode extends Node, SimulationNodeDatum {}
