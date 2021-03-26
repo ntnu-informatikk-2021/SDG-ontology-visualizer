@@ -5,10 +5,11 @@ import { MotionBox } from '../../types/react/componentTypes';
 
 interface SlideInDrawerProps {
   expanded: Boolean;
+  width: string;
   children: JSX.Element;
 }
 
-const SlideInDrawer = ({ expanded, children }: SlideInDrawerProps) => (
+const SlideInDrawer = ({ expanded, width, children }: SlideInDrawerProps) => (
   <AnimatePresence initial={false}>
     {expanded && (
       <MotionBox
@@ -22,7 +23,9 @@ const SlideInDrawer = ({ expanded, children }: SlideInDrawerProps) => (
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        <Box overflow="hidden">{children}</Box>
+        <Box overflow="hidden">
+          <Box w={width}>{children}</Box>
+        </Box>
       </MotionBox>
     )}
   </AnimatePresence>

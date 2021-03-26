@@ -14,6 +14,54 @@ import { Annotation, Node } from '../../types/ontologyTypes';
 import Connections from '../atoms/Connections';
 import SlideInDrawer from '../atoms/SlideInDrawer';
 
+interface ContextDividerProps {
+  visible: boolean;
+}
+
+const ContextDivider: React.FC<ContextDividerProps> = ({ visible }: ContextDividerProps) => {
+  if (!visible) return <></>;
+  return (
+    <Center mx="20">
+      <Divider orientation="vertical" />
+    </Center>
+  );
+};
+
+interface AllConnectionsProps {
+  contributions: Array<Node>;
+  tradeOffs: Array<Node>;
+  developmentAreas: Array<Node>;
+  onClick: (connection: Node) => void;
+}
+
+const AllConnections: React.FC<AllConnectionsProps> = ({
+  contributions,
+  tradeOffs,
+  developmentAreas,
+  onClick,
+}: AllConnectionsProps) => (
+  <Stack spacing={5}>
+    <Connections
+      connections={contributions}
+      titles={['Har positiv virkning til:', 'Har ingen etablerte positive påvirkninger enda']}
+      color="green"
+      onClick={onClick}
+    />
+    <Connections
+      connections={tradeOffs}
+      titles={['Har negativ virkning til:', 'Har ingen etablerte negative påvirkninger enda']}
+      color="red"
+      onClick={onClick}
+    />
+    <Connections
+      connections={developmentAreas}
+      titles={['Har utviklingsområde til:', 'Har ingen utviklingsområder']}
+      color="blue"
+      onClick={onClick}
+    />
+  </Stack>
+);
+
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
@@ -49,66 +97,37 @@ const DetailView: React.FC = () => {
         {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
       </Heading>
       <Flex justify="space-between">
-        <SlideInDrawer expanded={!expanded}>
-          <Box w="40vw">
-            <Text fontSize="xl" mt="2">
-              {annotations.description}
-            </Text>
-          </Box>
+        <SlideInDrawer expanded={!expanded} width="40vw">
+          <Text fontSize="xl" mt="2">
+            {annotations.description}
+          </Text>
         </SlideInDrawer>
-        {!expanded && (
-          <Center mx="20">
-            <Divider orientation="vertical" />
-          </Center>
-        )}
-        <Stack spacing={5}>
-          <Connections
-            connections={contributions}
-            titles={['Har positiv virkning til:', 'Har ingen etablerte positive påvirkninger enda']}
-            color="green"
-            onClick={expandConnection}
-          />
-          <Connections
-            connections={tradeOffs}
-            titles={['Har negativ virkning til:', 'Har ingen etablerte negative påvirkninger enda']}
-            color="red"
-            onClick={expandConnection}
-          />
-          <Connections
-            connections={developmentAreas}
-            titles={['Har utviklingsområde til:', 'Har ingen utviklingsområder']}
-            color="blue"
-            onClick={expandConnection}
-          />
-        </Stack>
-        {expanded && (
-          <Center mx="20">
-            <Divider orientation="vertical" />
-          </Center>
-        )}
-        <SlideInDrawer expanded={expanded}>
+        <ContextDivider visible={!expanded} />
+        <AllConnections
+          contributions={contributions}
+          tradeOffs={tradeOffs}
+          developmentAreas={developmentAreas}
+          onClick={expandConnection}
+        />
+        <ContextDivider visible={expanded} />
+        <SlideInDrawer expanded={expanded} width="40vw">
           <>
-            <Center mx="20">
-              <Divider orientation="vertical" />
-            </Center>
-            <Box w="40vw">
-              <Heading as="h3">
-                {`Har ${
-                  selectedConnection && mapCorrelationToName(selectedConnection.correlation)
-                }  korrelasjon`}
-              </Heading>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint itaque odit
-                dignissimos eligendi, quaerat, minima sed quas incidunt ratione deserunt non neque
-                nulla soluta expedita nemo consectetur officiis quidem! Fuga?
-              </Text>
-              <IconButton
-                aria-label="Close connection view"
-                onClick={() => setExpanded(false)}
-                colorScheme="blue"
-                icon={<ArrowRightIcon />}
-              />
-            </Box>
+            <Heading as="h3">
+              {`${annotations.label} har ${
+                selectedConnection && mapCorrelationToName(selectedConnection.correlation)
+              } korrelasjon til ${selectedConnection && selectedConnection.name}`}
+            </Heading>
+            <Text>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti porro saepe
+              laboriosam iure amet, atque, id ex asperiores tempora voluptatem totam necessitatibus.
+              A maiores laboriosam, pariatur earum perferendis distinctio dicta?
+            </Text>
+            <IconButton
+              aria-label="Close connection view"
+              onClick={() => setExpanded(false)}
+              colorScheme="blue"
+              icon={<ArrowRightIcon />}
+            />
           </>
         </SlideInDrawer>
       </Flex>
