@@ -20,6 +20,7 @@ const DetailView: React.FC = () => {
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   const loadData = async () => {
     if (!selectedNode) return;
@@ -50,18 +51,33 @@ const DetailView: React.FC = () => {
             connections={contributions}
             titles={['Har positiv virkning til:', 'Har ingen etablerte positive påvirkninger enda']}
             color="green"
+            onClick={() => setExpanded(!expanded)}
           />
           <Connections
             connections={tradeOffs}
             titles={['Har negativ virkning til:', 'Har ingen etablerte negative påvirkninger enda']}
             color="red"
+            onClick={() => setExpanded(!expanded)}
           />
           <Connections
             connections={developmentAreas}
             titles={['Har utviklingsområde til:', 'Har ingen utviklingsområder']}
             color="blue"
+            onClick={() => setExpanded(!expanded)}
           />
         </Stack>
+        {expanded ? (
+          <>
+            <Center mx="20">
+              <Divider orientation="vertical" />
+            </Center>
+            <Box w="500px">
+              <Text>hei, jeg </Text>
+            </Box>
+          </>
+        ) : (
+          <></>
+        )}
       </Flex>
     </Box>
   );
