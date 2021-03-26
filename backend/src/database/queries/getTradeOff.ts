@@ -13,12 +13,21 @@ export default (nodeId: string): string => {
   const prefixString = parsePrefixesToQuery(node.prefix, PREFIXES.RDFS);
 
   return `
-      ${prefixString}
-      SELECT *
-      WHERE {
-        {
-          ${fullNodeName} SDG:harTradeOffTil ?Object .
-          OPTIONAL {?Object rdfs:label ?ObjectLabel}
-        }
-      }`;
+    ${prefixString}
+    SELECT ?Object ?ObjectLabel ?High ?Moderate ?Low 
+      WHERE { 
+      ${fullNodeName} SDG:harTradeOffTil ?Object.
+      ?Object rdfs:label ?ObjectLabel
+      Optional {
+          ?Object SDG:harHøyTradeOffTil ${fullNodeName}.
+          ?Object rdfs:label ?High }
+
+      Optional {
+          ?Object SDG:harModeratTradeOffTil ${fullNodeName}.
+          ?Object rdfs:label ?Moderate }
+
+      Optional {
+          ?Object SDG:harLavTradeOffTil ${fullNodeName}.
+          ?Object rdfs:label ?Low }
+    }`;
 };
