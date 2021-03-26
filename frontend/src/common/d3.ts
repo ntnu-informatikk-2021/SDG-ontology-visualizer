@@ -1,4 +1,4 @@
-import { GraphEdge, Ontology, UniqueObject } from '../types/ontologyTypes';
+import { GraphEdge, GraphNode, Ontology, UniqueObject } from '../types/ontologyTypes';
 
 // eslint-disable-next-line import/prefer-default-export
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => ({
@@ -20,3 +20,13 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
     id: ontology.Predicate.id + ontology.Subject.id + ontology.Object.id,
   },
 });
+
+export const mapNodeToGraphNode = (node: GraphNode, clickedGraphNode: GraphNode): GraphNode => {
+  if (node.x) return node;
+  const newNode: GraphNode = node;
+  newNode.x = clickedGraphNode.x;
+  newNode.y = clickedGraphNode.y;
+  newNode.vx = 0;
+  newNode.vy = 0;
+  return newNode;
+};
