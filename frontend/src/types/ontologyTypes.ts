@@ -23,13 +23,24 @@ export interface UniqueObject {
 export interface Node extends UniqueObject {
   name: string;
   prefix: Prefix;
+  correlation: number;
 }
 
-export interface GraphNode extends Node, SimulationNodeDatum {}
+export interface GraphNode extends Node, SimulationNodeDatum {
+  isLocked?: boolean;
+  lockedX?: number;
+  lockedY?: number;
+  color?: string;
+}
 
 export interface Edge extends UniqueObject {
   name: string;
   prefix: Prefix;
+}
+
+export interface D3Edge extends Edge {
+  source: GraphNode;
+  target: GraphNode;
 }
 
 export interface GraphEdge extends Edge {

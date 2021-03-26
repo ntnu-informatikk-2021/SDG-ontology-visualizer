@@ -1,9 +1,9 @@
-import { ApiError } from '../types/types';
+import { ApiError, OntologyEntity } from '../types/types';
 import { mapRecordToObject } from '../common/database';
 import DB from './index';
 import getContributions from './queries/getContributions';
 
-export default async (nodeId: string): Promise<Array<Node>> => {
+export default async (nodeId: string): Promise<Array<OntologyEntity>> => {
   const query = getContributions(nodeId);
   if (!nodeId) {
     throw new ApiError(400, 'Could not parse ontology entity from the given class ID');

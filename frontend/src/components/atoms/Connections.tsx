@@ -22,6 +22,7 @@ const Connections: React.FC<ConnectionsProps> = ({
     dispatch(selectNode(node));
   };
 */
+  // TODO: Define this somewhere else and use other colors. This is just a placeholder to show how correlation indices work
 
   <>
     <Text as="b" fontSize="xl">
@@ -36,5 +37,20 @@ const Connections: React.FC<ConnectionsProps> = ({
     </Wrap>
   </>
 );
+
+/*
+const correlationToColor = (correlation: number) => {
+  switch (correlation) {
+    case 2:
+      return 'green';
+    case 1:
+      return 'yellow';
+    case 0:
+      return 'red';
+    default:
+      return 'blue';
+  }
+};
+*/
 
 export default Connections;
