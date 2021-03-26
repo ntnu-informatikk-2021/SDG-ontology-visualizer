@@ -10821,6 +10821,17 @@ English: (For inital development, expansion of this class along with possible co
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:harHøyTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
         <schema:icon>https://www.fn.no/var/globalis/storage/images/_aliases/medium/3/5/7/1/831753-34-nor-NO/M%C3%A5l%204%20RGB.png</schema:icon>
         <SDG:description>Sikre inkluderende, rettferdig og god utdanning og fremme muligheter for livslang læring for alle
 Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i dag på skole enn for bare få tiår siden. Før koronapandemien, gikk ni av ti barn på skolen. Til tross for dette, kan fremdeles over 750 millioner mennesker i verden fortsatt ikke lese eller skrive, hvorav to tredjedeler er kvinner. Inkluderende opplæring av god kvalitet for alle, er en  av de viktigste byggesteinene for velstand, helse og likeverd i alle samfunn.</SDG:description>
@@ -10835,6 +10846,16 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:harModeratTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/0/7/7/1/831770-32-nor-NO/M%C3%A5l%205%20RGB.png"/>
         <SDG:description>Oppnå likestilling og styrke jenters og kvinners stilling i samfunnet. Likestilling handler om en rettferdig fordeling av makt, innflytelse og ressurser. Å leve et fritt liv uten vold og diskriminering er en grunnleggende menneskerettighet og er avgjørende for utvikling av menneskene og for samfunnet. Det er bevist mange ganger at politisk, økonomisk og sosial likestilling mellom kjønnene bidrar til en positiv utvikling på alle plan. Likestilling og kvinners rettigheter er et gjennomgående tema i bærekraftsmålene, og det er helt essensielt for å kunne nå alle FNs bærekraftsmål innen 2030.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 5</SDG:hasExactSynonym>
@@ -10849,7 +10870,13 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
-        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:harModeratTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/7/8/7/1/831787-30-nor-NO/M%C3%A5l%206%20RGB.png"/>
         <SDG:description>Sikre bærekraftig vannforvaltning og tilgang til vann og gode sanitærforhold for alle. Det finnes nok ferskvann i verden, men økonomi og manglende infrastruktur står i veien for at alle skal få tilgang. I tillegg fører befolkningsvekst og klimaendringer til at vannmangelen øker flere steder. Derfor er det viktig at vi beskytter de drikkevannskildene vi har, og at vi investerer i nye vann- og sanitæranlegg i regionene der disse mangler.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 6</SDG:hasExactSynonym>
@@ -10863,6 +10890,13 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:harHøyTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
         <schema:icon>https://www.fn.no/var/globalis/storage/images/_aliases/medium/4/0/8/1/831804-32-nor-NO/M%C3%A5l%207%20RGB@4x.png</schema:icon>
         <SDG:description>Sikre tilgang til pålitelig, bærekraftig og moderne energi til en overkommelig pris for alle. Bærekraftsmål 7 handler om at alle mennesker skal ha tilgang til energi. Energien skal være pålitelig, bærekraftig, moderne, og ikke altfor dyr. Arbeidet med dette målet utarter seg ulikt forskjellige steder i verden.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 7</SDG:hasExactSynonym>
@@ -10877,6 +10911,14 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
+        <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
+        <SDG:harHøyTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
+        <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
+        <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11"/>
+        <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
         <SDG:harUtviklingsOmråde rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/1/2/8/1/831821-23-nor-NO/M%C3%A5l%208%20RGB.png"/>
         <SDG:description>Fremme varig, inkluderende og bærekraftig økonomisk vekst, full sysselsetting og anstendig arbeid for alle. Mer anstendig arbeid- Omtrent halvparten av verdens befolkning tjener så dårlig at ikke de kan leve av lønnen sin. Å skape arbeidsplasser av god kvalitet er en stor utfordring for alle land fram mot 2030.</SDG:description>
