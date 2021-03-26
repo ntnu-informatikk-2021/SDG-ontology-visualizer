@@ -16,18 +16,18 @@ export default (nodeId: string): string => {
     ${prefixString}
     SELECT *
     WHERE { 
-      SDG:B1 SDG:harBidragTil ?Object.
+      ${fullNodeName} SDG:harBidragTil ?Object.
       ?Object rdfs:label ?ObjectLabel
       Optional {
-        ?Object SDG:harHøyKorrelasjon SDG:B1.
+        ?Object SDG:harHøyKorrelasjon ${fullNodeName}.
         ?Object rdfs:label ?High }
 
      Optional {
-      ?Object SDG:harModeratKorrelasjon SDG:B1.
+      ?Object SDG:harModeratKorrelasjon ${fullNodeName}.
       ?Object rdfs:label ?Moderate }
   
      Optional {
-      ?Object SDG:harLavKorrelasjon SDG:B1.
+      ?Object SDG:harLavKorrelasjon ${fullNodeName}.
       ?Object rdfs:label ?Low }
   
 
