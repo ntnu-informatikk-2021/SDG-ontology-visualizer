@@ -23,7 +23,9 @@ const Connections: React.FC<ConnectionsProps> = ({
 
   return (
     <>
-      <Text>{connections.length ? titles[0] : titles[1]}</Text>
+      <Text as="b" fontSize="xl">
+        {connections.length ? titles[0] : titles[1]}
+      </Text>
       <Wrap>
         {connections.map((connection) => (
           <Button

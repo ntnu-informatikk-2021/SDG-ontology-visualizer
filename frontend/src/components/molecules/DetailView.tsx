@@ -1,4 +1,4 @@
-import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Center, Divider, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -34,34 +34,35 @@ const DetailView: React.FC = () => {
   }, [selectedNode]);
 
   return (
-    <Box spacing={10} bg="cyan.600" w="100%" p={6} color="white">
-      <Heading as="h2" size="2xl" fontWeight="hairline" textAlign="center" paddingBottom="5">
+    <Box spacing={10} bg="cyan.500" w="100%" px={10} py={6} color="white">
+      <Heading as="h2" size="2xl" fontWeight="hairline" textAlign="left" paddingBottom="5">
         {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
       </Heading>
-      <SimpleGrid columns={2}>
-        <Container centerContent>
-          <Text fontSize="xl" my="4">
-            {annotations.description}
-          </Text>
-        </Container>
-        <Box>
+      <Flex justify="space-between">
+        <Text fontSize="xl" mt="2">
+          {annotations.description}
+        </Text>
+        <Center mx="20">
+          <Divider orientation="vertical" />
+        </Center>
+        <Stack spacing={5}>
           <Connections
             connections={contributions}
-            titles={['Har positiv virkning til', 'har ingen etablerte positive påvirkninger enda']}
+            titles={['Har positiv virkning til:', 'Har ingen etablerte positive påvirkninger enda']}
             color="green"
           />
           <Connections
             connections={tradeOffs}
-            titles={['Har negativ virkning til', 'Har ingen etablerte negative påvirkninger enda']}
+            titles={['Har negativ virkning til:', 'Har ingen etablerte negative påvirkninger enda']}
             color="red"
           />
           <Connections
             connections={developmentAreas}
-            titles={['Har utviklingsområde til', 'Har ingen utviklingsområder']}
+            titles={['Har utviklingsområde til:', 'Har ingen utviklingsområder']}
             color="blue"
           />
-        </Box>
-      </SimpleGrid>
+        </Stack>
+      </Flex>
     </Box>
   );
 };
