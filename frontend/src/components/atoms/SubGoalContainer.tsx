@@ -1,5 +1,16 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Heading,
+  Text,
+} from '@chakra-ui/react';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import colorSwitcher from '../../common/colorSwitcher';
+import { RootState } from '../../state/store';
 import { SubGoal } from '../../types/ontologyTypes';
 
 type SubGoalContainerProps = {
@@ -8,15 +19,30 @@ type SubGoalContainerProps = {
 
 const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
   subGoalNode,
-}: SubGoalContainerProps) => (
-  <Container>
-    <Box>
-      <Heading as="h3" size="md" my="4">
-        {subGoalNode.SubjectLabel}
-      </Heading>
-      <Text>{subGoalNode.description}</Text>
-    </Box>
-  </Container>
-);
+}: SubGoalContainerProps) => {
+  const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+
+  return (
+    <Accordion allowToggle>
+      <AccordionItem boxShadow="lg" borderRadius="md">
+        <AccordionButton
+          _expanded={{ borderBottomRadius: '0' }}
+          borderRadius="md"
+          bg={colorSwitcher(selectedNode! && selectedNode.id)}
+          color="white"
+          _hover={{ opacity: '75%' }}
+        >
+          <Heading as="h3" size="md">
+            {subGoalNode.SubjectLabel}
+          </Heading>
+          <AccordionIcon />
+        </AccordionButton>
+        <AccordionPanel>
+          <Text>{subGoalNode.description}</Text>
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+};
 
 export default SubGoalContainer;
