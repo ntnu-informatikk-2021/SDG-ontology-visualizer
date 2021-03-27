@@ -32,8 +32,6 @@ const Connections: React.FC<ConnectionsProps> = ({
       {connections
         .sort((a, b) => b.correlation - a.correlation)
         .map((connection) => {
-          console.log(connection);
-          console.log(color + correlationToColor(connection.correlation));
           return (
             <Button
               colorScheme="whiteAlpha"
