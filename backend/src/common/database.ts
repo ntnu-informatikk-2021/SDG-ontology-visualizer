@@ -1,6 +1,13 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
 import { Node, OntologyEntity, Record, Ontology } from '../types/types';
 
+const getCorrelationIndexFromRecord = (record: Record): number => {
+  if (record.High) return 2;
+  if (record.Moderate) return 1;
+  if (record.Low) return 0;
+  return -1;
+};
+
 export const parseNameFromClassId = (id: string): string => {
   const regex = /^[^_]*#/;
   const name = id.replace(regex, '');
@@ -23,7 +30,7 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
-export const mapIdToOntologyEntity = (id: string): OntologyEntity | null => {
+export const mapIdToOntologyEntity = (id: string, correlation?: number): OntologyEntity | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -31,6 +38,7 @@ export const mapIdToOntologyEntity = (id: string): OntologyEntity | null => {
     prefix,
     name,
     id,
+    correlation: correlation || -1,
   };
 };
 
@@ -51,7 +59,8 @@ export const mapRecordToOntology = (record: Record): Ontology => {
 };
 
 export const mapRecordToObject = (record: Record): Node | null => {
-  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
+  const correlation = getCorrelationIndexFromRecord(record);
+  let object = record.Object ? mapIdToOntologyEntity(record.Object, correlation) : null;
   if (object && record.ObjectLabel) {
     object = { ...object, name: record.ObjectLabel };
   }

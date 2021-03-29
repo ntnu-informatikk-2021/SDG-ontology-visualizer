@@ -15,10 +15,21 @@ export default (nodeId: string): string => {
   return `
     ${prefixString}
     SELECT *
-    WHERE {
-      {
-        ${fullNodeName} SDG:harBidragTil ?Object .
-        OPTIONAL {?Object rdfs:label ?ObjectLabel}
-      }
-    }`;
+    WHERE { 
+      ${fullNodeName} SDG:harBidragTil ?Object.
+      ?Object rdfs:label ?ObjectLabel
+      Optional {
+        ?Object SDG:harHøyKorrelasjon ${fullNodeName}.
+        ?Object rdfs:label ?High }
+
+     Optional {
+      ?Object SDG:harModeratKorrelasjon ${fullNodeName}.
+      ?Object rdfs:label ?Moderate }
+  
+     Optional {
+      ?Object SDG:harLavKorrelasjon ${fullNodeName}.
+      ?Object rdfs:label ?Low }
+  
+
+  }`;
 };

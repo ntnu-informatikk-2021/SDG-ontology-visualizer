@@ -1,13 +1,16 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
 
-export type OntologyEntity = {
+export interface OntologyEntity {
   prefix: Prefix;
   id: string;
   name: string;
-};
+  correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
+}
+
 export interface SubGoal extends Node {
   description: string;
 }
+
 export interface Node extends OntologyEntity {}
 export interface Edge extends OntologyEntity {}
 
@@ -23,6 +26,9 @@ export type Record = {
   Object: string | null;
   ObjectLabel: string | null;
   Predicate: string;
+  High: string | null;
+  Moderate: string | null;
+  Low: string | null;
 };
 
 export class ApiError extends Error {

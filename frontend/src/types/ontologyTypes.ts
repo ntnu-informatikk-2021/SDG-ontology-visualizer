@@ -23,6 +23,7 @@ export interface UniqueObject {
 export interface Node extends UniqueObject {
   name: string;
   prefix: Prefix;
+  correlation: number;
 }
 
 export interface GraphNode extends Node, SimulationNodeDatum {

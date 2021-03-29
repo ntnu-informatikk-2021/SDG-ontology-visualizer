@@ -1,12 +1,13 @@
 import { Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
 
-export const mapPrefixNameToNode = (prefix: string, name: string): Node => ({
+export const mapPrefixNameToNode = (prefix: string, name: string, correlation?: number): Node => ({
   prefix: {
     prefix,
     iri: `http://www.semanticweb.org/aga/ontologies/2017/9/${prefix}#`,
   },
   name,
   id: `http://www.semanticweb.org/aga/ontologies/2017/9/${prefix}#${name}`,
+  correlation: correlation || -1,
 });
 
 export const parseNameFromClassId = (id: string): string => {
@@ -31,7 +32,7 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
-export const mapIdToNode = (id: string): Node | null => {
+export const mapIdToNode = (id: string, correlation?: number): Node | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -39,6 +40,7 @@ export const mapIdToNode = (id: string): Node | null => {
     prefix,
     name,
     id,
+    correlation: correlation || -1,
   };
 };
 

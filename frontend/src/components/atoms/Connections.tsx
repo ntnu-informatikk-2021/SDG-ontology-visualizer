@@ -16,19 +16,35 @@ const Connections: React.FC<ConnectionsProps> = ({ connections, titles }: Connec
     dispatch(selectNode(node));
   };
 
+  // TODO: Define this somewhere else and use other colors. This is just a placeholder to show how correlation indices work
+  const correlationToColor = (correlation: number) => {
+    switch (correlation) {
+      case 2:
+        return 'green';
+      case 1:
+        return 'yellow';
+      case 0:
+        return 'red';
+      default:
+        return 'blue';
+    }
+  };
+
   return (
     <>
       <Text>{connections.length ? titles[0] : titles[1]}</Text>
-      {connections.map((connection) => (
-        <Button
-          onClick={() => onClickConnections(connection)}
-          colorScheme="blue"
-          style={{ margin: 5 }}
-          key={connection.id}
-        >
-          {connection.name}
-        </Button>
-      ))}
+      {connections
+        .sort((a, b) => b.correlation - a.correlation)
+        .map((connection) => (
+          <Button
+            onClick={() => onClickConnections(connection)}
+            colorScheme={correlationToColor(connection.correlation)}
+            style={{ margin: 5 }}
+            key={connection.id}
+          >
+            {connection.name}
+          </Button>
+        ))}
     </>
   );
 };
