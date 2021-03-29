@@ -66,20 +66,26 @@ export default class {
     );
   };
 
+  chargeForce = () => d3.forceManyBody().strength(-100);
+
+  centerForce = () => d3.forceCenter(this.width / 2, this.height / 2);
+
+  collisionForce = () => d3.forceCollide().radius(nodeRadius * 2);
+
+  linkForce = () =>
+    d3
+      .forceLink()
+      .id((node) => (node as GraphNode).id)
+      .links(this.edges)
+      .distance(100);
+
   initForceSimulation = () =>
     d3
       .forceSimulation(this.nodes)
-      .force('charge', d3.forceManyBody().strength(-100))
-      .force('center', d3.forceCenter(this.width / 2, this.height / 2))
-      .force('collide', d3.forceCollide().radius(nodeRadius * 2))
-      .force(
-        'link',
-        d3
-          .forceLink()
-          .id((node: d3.SimulationNodeDatum) => (node as GraphNode).id) // implicit types?
-          .links(this.edges)
-          .distance(100),
-      )
+      .force('charge', this.chargeForce())
+      .force('center', this.centerForce())
+      .force('collide', this.collisionForce())
+      .force('link', this.linkForce())
       .alphaTarget(0.03)
       .alphaDecay(0.01)
       .alpha(0.5)
