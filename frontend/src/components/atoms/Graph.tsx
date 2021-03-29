@@ -17,11 +17,7 @@ const Graph: React.FC = () => {
   const [simulation, setSimulation] = useState<GraphSimulation>();
 
   const loadData = async () => {
-    if (!selectedNode) {
-      dispatch(setError(new Error('No nodes selected in Graph')));
-      return;
-    }
-    if (!simulation) return;
+    if (!simulation || !selectedNode) return;
 
     const ontologies = await getRelations(selectedNode.id);
     simulation.addData(ontologies, selectedNode);
@@ -32,7 +28,11 @@ const Graph: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!svgRef || !svgRef.current || !selectedNode) return;
+    if (!svgRef || !svgRef.current) return;
+    if (!selectedNode) {
+      dispatch(setError(new Error('No nodes selected in Graph')));
+      return;
+    }
     if (!simulation) {
       setSimulation(new GraphSimulation(svgRef.current, width, height, selectedNode, onClickNode));
     } else {
