@@ -12,22 +12,21 @@ import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
 const edgeClassName = '.edge';
-const nodeLabelClassName = '.node';
-const edgeLabelClassName = '.edge';
 const nodeRadius = 10;
+const fontSize = 18;
+const linkDistance = 100;
 
 export default class {
   private readonly forceSimulation: ForceSimulation;
   private readonly svg: MainSvgSelection;
   private readonly nodeSvg: SubSvgSelection;
   private readonly edgeSvg: SubSvgSelection;
-  private readonly nodeLabelSvg: SubSvgSelection;
-  private readonly edgeLabelSvg: SubSvgSelection;
   private readonly onClickNode: (node: GraphNode) => void;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
   private edges: Array<D3Edge | GraphEdge>;
+  private scale: number = 1;
 
   constructor(
     svg: SVGSVGElement,
@@ -39,8 +38,6 @@ export default class {
     this.svg = d3.select(svg);
     this.edgeSvg = this.svg.append('g');
     this.nodeSvg = this.svg.append('g');
-    this.nodeLabelSvg = this.svg.append('g');
-    this.edgeLabelSvg = this.svg.append('g');
     this.width = width;
     this.height = height;
     this.nodes = [initialNode as GraphNode];
@@ -55,14 +52,12 @@ export default class {
       d3
         .zoom()
         .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, any>) => {
-          const scale = event.transform.k;
+          this.scale = event.transform.k;
           const translate = [event.transform.x, event.transform.y];
-          this.nodeSvg.attr('transform', `translate(${translate}) scale(${scale})`);
-          this.edgeSvg.attr('transform', `translate(${translate}) scale(${scale})`);
-          this.nodeLabelSvg.attr('transform', `translate(${translate}) scale(${scale})`);
-          this.edgeLabelSvg.attr('transform', `translate(${translate}) scale(${scale})`);
+          this.nodeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
+          this.edgeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
         })
-        .scaleExtent([0.2, 4]) as any,
+        .scaleExtent([0.2, 20]) as any,
     );
   };
 
@@ -77,7 +72,7 @@ export default class {
       .forceLink()
       .id((node) => (node as GraphNode).id)
       .links(this.edges)
-      .distance(100);
+      .distance(linkDistance);
 
   initForceSimulation = () =>
     d3
@@ -124,14 +119,10 @@ export default class {
   drawGraph = () => {
     this.drawLinks();
     this.drawNodes();
-    this.drawNodeLabels();
-    // this.drawEdgeLabels();
 
     this.forceSimulation.on('tick', () => {
       this.updateEdgePositions();
       this.updateNodePositions();
-      this.updateNodeLabelPositions();
-      // this.updateEdgeLabelPositions();
     });
   };
 
@@ -147,41 +138,27 @@ export default class {
   };
 
   drawNodes = () => {
-    this.nodeSvg
+    const g = this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .join((enter) => enter.append('circle').attr('cx', 100).attr('cy', 100))
-      .attr('class', nodeClassName.substring(1)) // remove . from class name
+      .join((enter) => enter.append('g'))
+      .attr('class', nodeClassName.substring(1)); // remove . from class name
+
+    g.append('circle')
       .attr('r', nodeRadius)
       .attr('fill', (node) => (node.isLocked ? '#7f0dd1' : '#4299e1'))
+      .attr('class', 'foo') // remove . from class name
       .on('click', (_, node) => this.onClickNode(node));
-    this.registerMouseoverNodeEvent(this.edgeSvg, this.edges);
-    this.registerMouseoutNodeEvent(this.edgeSvg, this.edges);
-    this.registerDragNodeEvent(this.forceSimulation);
-  };
 
-  drawNodeLabels = () => {
-    this.nodeLabelSvg
-      .selectAll(nodeLabelClassName)
-      .data(this.nodes)
-      .join('text')
-      .attr('class', nodeLabelClassName.substring(1)) // remove . from class name
+    g.append('text')
       .text((node) => node.name)
       .attr('text-anchor', 'middle')
       .attr('pointer-events', 'none')
       .attr('fill', '#000');
-  };
 
-  drawEdgeLabels = () => {
-    this.edgeLabelSvg
-      .selectAll(edgeLabelClassName)
-      .data(this.edges)
-      .join('text')
-      .attr('class', edgeLabelClassName.substring(1)) // remove . from class name
-      .text((node) => node.name)
-      .attr('text-anchor', 'middle')
-      .attr('pointer-events', 'none')
-      .attr('fill', '#222');
+    this.registerMouseoverNodeEvent(this.edgeSvg, this.edges);
+    this.registerMouseoutNodeEvent(this.edgeSvg, this.edges);
+    this.registerDragNodeEvent(this.forceSimulation);
   };
 
   updateEdgePositions = () => {
@@ -194,28 +171,17 @@ export default class {
       .attr('y2', (link: any) => link.target.y);
   };
 
+  selectNode = (_: any, index: number) => index === 0;
+
+  selectLabel = (_: any, index: number) => index === 1;
+
   updateNodePositions = () => {
-    this.nodeSvg
+    const g = this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .attr('cx', (node) => node.x!)
-      .attr('cy', (node) => node.y!);
-  };
+      .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
 
-  updateEdgeLabelPositions = () => {
-    this.edgeLabelSvg
-      .selectAll(edgeLabelClassName)
-      .data(this.edges)
-      .attr('x', (link: any) => (link.source.x + link.target.x) / 2)
-      .attr('y', (link: any) => (link.source.y + link.target.y) / 2);
-  };
-
-  updateNodeLabelPositions = () => {
-    this.nodeLabelSvg
-      .selectAll(nodeLabelClassName)
-      .data(this.nodes)
-      .attr('x', (node) => node.x!)
-      .attr('y', (node) => node.y!);
+    g.selectChild(this.selectLabel).attr('font-size', fontSize / this.scale);
   };
 
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
@@ -224,7 +190,7 @@ export default class {
       .data(this.nodes)
       // eslint-disable-next-line func-names
       .on('mouseover', function (event, node) {
-        const thisNode = d3.select(this);
+        const thisNode = d3.select(this).selectChild();
         if (!node.isLocked) {
           thisNode.attr('fill', '#322659');
         }
@@ -252,7 +218,7 @@ export default class {
       .data(this.nodes)
       // eslint-disable-next-line func-names
       .on('mouseout', function (event, node) {
-        const thisNode = d3.select(this);
+        const thisNode = d3.select(this).selectChild();
         if (!node.isLocked) {
           thisNode.attr('fill', '#4299e1');
         }
