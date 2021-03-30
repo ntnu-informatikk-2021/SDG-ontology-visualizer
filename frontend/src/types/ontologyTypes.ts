@@ -38,11 +38,6 @@ export interface Edge extends UniqueObject {
   prefix: Prefix;
 }
 
-export interface D3Edge extends Edge {
-  source: GraphNode;
-  target: GraphNode;
-}
-
 export interface GraphEdge extends Edge {
   source: string;
   target: string;
