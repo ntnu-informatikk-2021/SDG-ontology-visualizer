@@ -81,8 +81,7 @@ export default class {
       .force('center', this.centerForce())
       .force('collide', this.collisionForce())
       .force('link', this.linkForce())
-      .alphaTarget(0.03)
-      .alphaDecay(0.01)
+      .alphaDecay(0.015)
       .alpha(0.5)
       .velocityDecay(0.75);
 
@@ -97,6 +96,7 @@ export default class {
       linkForce.links(this.edges);
     }
     this.forceSimulation.alpha(this.forceSimulation.alpha() + 0.5);
+    this.forceSimulation.restart();
   };
 
   addData = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
@@ -259,7 +259,10 @@ export default class {
           })
           // eslint-disable-next-line func-names
           .on('start', function (event) {
-            if (!event.active) simulation.alpha(simulation.alpha() + 0.3);
+            if (!event.active) {
+              simulation.alpha(simulation.alpha() + 0.3);
+              simulation.restart();
+            }
             d3.select(this).attr('fill', '#7f0dd1');
           }) as any,
         // .on('end', (_, d) => {
