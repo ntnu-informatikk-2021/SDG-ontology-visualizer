@@ -117,7 +117,7 @@ export default class {
   };
 
   drawGraph = () => {
-    this.drawLinks();
+    this.drawEdges();
     this.drawNodes();
 
     this.forceSimulation.on('tick', () => {
@@ -126,7 +126,7 @@ export default class {
     });
   };
 
-  drawLinks = () => {
+  drawEdges = () => {
     this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
