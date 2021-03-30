@@ -56,6 +56,7 @@ export default class {
           const translate = [event.transform.x, event.transform.y];
           this.nodeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
           this.edgeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
+          this.makeTextSizeConstant();
         })
         .scaleExtent([0.2, 20]) as any,
     );
@@ -130,11 +131,20 @@ export default class {
     this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
-      .join('line')
-      .attr('class', edgeClassName.substring(1)) // remove . before class name
-      .attr('fill', 'none')
-      .attr('stroke', '#aaa')
-      .attr('stroke-width', 1);
+      .join((enter) => {
+        const g = enter.append('g');
+
+        g.append('line').attr('fill', 'none').attr('stroke', '#aaa').attr('stroke-width', 1);
+
+        g.append('text')
+          .text((node) => node.name)
+          .attr('text-anchor', 'middle')
+          .attr('pointer-events', 'none')
+          .attr('fill', '#222');
+
+        return g;
+      })
+      .attr('class', edgeClassName.substring(1)); // remove . before class name
   };
 
   drawNodes = () => {
@@ -165,26 +175,46 @@ export default class {
   };
 
   updateEdgePositions = () => {
-    this.edgeSvg
+    const g = this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
-      .attr('x1', (link: any) => link.source.x)
-      .attr('y1', (link: any) => link.source.y)
-      .attr('x2', (link: any) => link.target.x)
-      .attr('y2', (link: any) => link.target.y);
+      .attr(
+        'transform',
+        (link: any) =>
+          `translate(${(link.source.x + link.target.x) / 2},${
+            (link.source.y + link.target.y) / 2
+          })`,
+      );
+
+    g.selectChild(this.selectNodeOrEdge)
+      .attr('x1', (link: any) => link.source.x - (link.source.x + link.target.x) / 2)
+      .attr('y1', (link: any) => link.source.y - (link.source.y + link.target.y) / 2)
+      .attr('x2', (link: any) => link.target.x - (link.source.x + link.target.x) / 2)
+      .attr('y2', (link: any) => link.target.y - (link.source.y + link.target.y) / 2);
   };
 
-  selectNode = (_: any, index: number) => index === 0;
+  selectNodeOrEdge = (_: any, index: number) => index === 0;
 
   selectLabel = (_: any, index: number) => index === 1;
 
   updateNodePositions = () => {
-    const g = this.nodeSvg
+    this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
+  };
 
-    g.selectChild(this.selectLabel).attr('font-size', fontSize / this.scale);
+  makeTextSizeConstant = () => {
+    this.nodeSvg
+      .selectAll(nodeClassName)
+      .data(this.nodes)
+      .selectChild(this.selectLabel)
+      .attr('font-size', fontSize / this.scale);
+    this.edgeSvg
+      .selectAll(edgeClassName)
+      .data(this.edges)
+      .selectChild(this.selectLabel)
+      .attr('font-size', fontSize / this.scale);
   };
 
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
