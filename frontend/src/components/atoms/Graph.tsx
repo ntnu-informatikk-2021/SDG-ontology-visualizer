@@ -34,7 +34,9 @@ const Graph: React.FC = () => {
       return;
     }
     if (!simulation) {
-      setSimulation(new GraphSimulation(svgRef.current, width, height, selectedNode, onClickNode));
+      setSimulation(
+        new GraphSimulation(svgRef.current, width, height - 200, selectedNode, onClickNode),
+      );
     } else {
       loadData();
     }
