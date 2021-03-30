@@ -138,23 +138,26 @@ export default class {
   };
 
   drawNodes = () => {
-    const g = this.nodeSvg
+    this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .join((enter) => enter.append('g'))
+      .join((enter) => {
+        const g = enter.append('g');
+
+        g.append('circle')
+          .attr('r', nodeRadius)
+          .attr('fill', (node) => (node.isLocked ? '#7f0dd1' : '#4299e1'))
+          .on('click', (_, node) => this.onClickNode(node));
+
+        g.append('text')
+          .text((node) => node.name)
+          .attr('text-anchor', 'middle')
+          .attr('pointer-events', 'none')
+          .attr('fill', '#000');
+
+        return g;
+      })
       .attr('class', nodeClassName.substring(1)); // remove . from class name
-
-    g.append('circle')
-      .attr('r', nodeRadius)
-      .attr('fill', (node) => (node.isLocked ? '#7f0dd1' : '#4299e1'))
-      .attr('class', 'foo') // remove . from class name
-      .on('click', (_, node) => this.onClickNode(node));
-
-    g.append('text')
-      .text((node) => node.name)
-      .attr('text-anchor', 'middle')
-      .attr('pointer-events', 'none')
-      .attr('fill', '#000');
 
     this.registerMouseoverNodeEvent(this.edgeSvg, this.edges);
     this.registerMouseoutNodeEvent(this.edgeSvg, this.edges);
