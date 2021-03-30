@@ -58,7 +58,7 @@ export default class {
           this.edgeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
           this.makeTextSizeConstant();
         })
-        .scaleExtent([0.2, 20]) as any,
+        .scaleExtent([0.2, 10]) as any,
     );
   };
 
