@@ -193,10 +193,6 @@ export default class {
       .attr('y2', (link: any) => link.target.y - (link.source.y + link.target.y) / 2);
   };
 
-  selectNodeOrEdge = (_: any, index: number) => index === 0;
-
-  selectLabel = (_: any, index: number) => index === 1;
-
   updateNodePositions = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -301,4 +297,8 @@ export default class {
         // }) as any,
       );
   };
+
+  selectNodeOrEdge = (_: any, index: number) => index === 0;
+
+  selectLabel = (_: any, index: number) => index === 1;
 }
