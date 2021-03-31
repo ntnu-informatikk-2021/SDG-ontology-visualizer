@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import {
+  getTranselatedRotationAndPosition,
   makePredicateUnique,
   mapNodeToGraphNodeAtDefaultPosition,
   mapOntologyToGraphEdge,
@@ -12,9 +13,16 @@ import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
 const edgeClassName = '.edge';
-const nodeRadius = 10;
+const nodeRadius = 20;
 const fontSize = 18;
-const linkDistance = 100;
+const edgeDistance = 100;
+const edgeStrokeWidth = 2;
+const minScale: number = 0.2;
+const maxScale: number = 10;
+
+// input = number between 0 and 1, return value between 0.2 and 10.
+// const normalizeScale = (value: number) => value * (maxScale - minScale) + minScale;
+const normalizeScale = (value: number, min: number, max: number) => (value - min) / (max - min);
 
 export default class {
   private readonly forceSimulation: ForceSimulation;
@@ -52,13 +60,18 @@ export default class {
       d3
         .zoom()
         .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, any>) => {
+          const newScale = event.transform.k;
+          if (this.scale !== newScale) {
+            this.scale = event.transform.k;
+            this.dynamicScaleManager();
+          }
+
           this.scale = event.transform.k;
           const translate = [event.transform.x, event.transform.y];
           this.nodeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
           this.edgeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
-          this.makeTextSizeConstant();
         })
-        .scaleExtent([0.2, 10]) as any,
+        .scaleExtent([minScale, maxScale]) as any,
     );
   };
 
@@ -73,7 +86,7 @@ export default class {
       .forceLink()
       .id((node) => (node as GraphNode).id)
       .links(this.edges)
-      .distance(linkDistance);
+      .distance(edgeDistance);
 
   initForceSimulation = () =>
     d3
@@ -120,6 +133,7 @@ export default class {
   drawGraph = () => {
     this.drawEdges();
     this.drawNodes();
+    this.dynamicScaleManager();
 
     this.forceSimulation.on('tick', () => {
       this.updateEdgePositions();
@@ -134,10 +148,13 @@ export default class {
       .join((enter) => {
         const g = enter.append('g');
 
-        g.append('line').attr('fill', 'none').attr('stroke', '#aaa').attr('stroke-width', 1);
+        g.append('line')
+          .attr('fill', 'none')
+          .attr('stroke', '#aaa')
+          .attr('stroke-width', edgeStrokeWidth);
 
         g.append('text')
-          .text((node) => node.name)
+          .text((edge: any) => edge.sourceToTarget.name)
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
           .attr('fill', '#222');
@@ -192,32 +209,8 @@ export default class {
       .attr('y2', (link: any) => link.target.y - (link.source.y + link.target.y) / 2);
 
     g.selectChild(this.selectLabel).attr('transform', (link: any) => {
-      const x1 = link.source.x;
-      const y1 = link.source.y;
-      const x2 = link.target.x;
-      const y2 = link.target.y;
-
-      let angleDeg = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
-      let rads = angleDeg / 180;
-      let position = [0, 0];
-      const margin = 5;
-
-      if (angleDeg >= 90) {
-        rads = ((angleDeg - 90) * 2) / 180;
-        position = [-(1 - rads) * margin, -rads * margin];
-        angleDeg -= 180;
-      } else if (angleDeg >= 0) {
-        rads = (angleDeg * 2) / 180;
-        position = [rads * margin, -(1 - rads) * margin];
-      } else if (angleDeg >= -90) {
-        rads = (angleDeg * 2) / 180;
-        position = [rads * margin, -(1 + rads) * margin];
-      } else if (angleDeg >= -180) {
-        rads = ((angleDeg + 90) * 2) / 180;
-        position = [(1 + rads) * margin, rads * margin];
-        angleDeg += 180;
-      }
-      return `translate(${position}), rotate(${angleDeg})`;
+      const position = getTranselatedRotationAndPosition(link, 1);
+      return `translate(${position.position}), rotate(${position.degree})`;
     });
   };
 
@@ -228,17 +221,43 @@ export default class {
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
   };
 
-  makeTextSizeConstant = () => {
-    this.nodeSvg
+  dynamicScaleManager = () => {
+    // nodeLabel
+    const nodeLabel = this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .selectChild(this.selectLabel)
-      .attr('font-size', fontSize / this.scale);
-    this.edgeSvg
+      .selectChild(this.selectLabel);
+
+    // edgeLabel
+    const edgeLabel = this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
-      .selectChild(this.selectLabel)
-      .attr('font-size', fontSize / this.scale);
+      .selectChild(this.selectLabel);
+
+    // edgeSVGSVGLinee
+    const edgeSVGLine = this.edgeSvg
+      .selectAll(edgeClassName)
+      .data(this.edges)
+      .selectChild(this.selectNodeOrEdge);
+    if (this.scale >= 2) {
+      nodeLabel.attr('font-size', fontSize / this.scale);
+      edgeLabel.attr('font-size', fontSize / this.scale);
+      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
+    } else if (this.scale >= 1) {
+      nodeLabel.attr('font-size', fontSize / this.scale);
+      edgeLabel.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
+      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
+    } else if (this.scale > 0.8) {
+      nodeLabel.attr('font-size', fontSize / this.scale);
+      edgeLabel
+        .attr('font-size', fontSize / (this.scale + 1 / this.scale))
+        .style('opacity', normalizeScale(this.scale, 0.8, 1));
+      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
+    } else if (this.scale < 0.8) {
+      nodeLabel.attr('font-size', fontSize / this.scale);
+      edgeLabel.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
+      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
+    }
   };
 
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {

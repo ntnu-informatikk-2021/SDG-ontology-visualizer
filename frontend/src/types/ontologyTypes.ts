@@ -38,9 +38,11 @@ export interface Edge extends UniqueObject {
   prefix: Prefix;
 }
 
-export interface GraphEdge extends Edge {
+export interface GraphEdge extends UniqueObject {
   source: string;
   target: string;
+  sourceToTarget: Edge;
+  targetToSource?: Edge;
 }
 
 export type Ontology = {
