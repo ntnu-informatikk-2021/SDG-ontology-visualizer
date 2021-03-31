@@ -9,6 +9,7 @@ import getTradeOff from '../database/getTradeOffTil';
 import getDevelopmentArea from '../database/getDevelopmentArea';
 import getSubGoals from '../database/getSubGoals';
 import onError from './middleware/onError';
+import verifyDatabaseAccess from './middleware/verifyDatabaseAccess';
 
 const router = Router();
 
@@ -96,14 +97,14 @@ const regexSearch = async (req, res) => {
   }
 };
 
-router.get('/relations/:classId', getRelationsFromClass);
-router.get('/subclasses/:classId', getSubclassesFromClass);
-router.get('/annotations/:classId', getAnnotationsFromClass);
-router.get('/sustainabilityGoals', getSustainabilityGoalsFromOntology);
-router.get('/search', regexSearch);
-router.get('/contributions/:classId', getContributionsToNodes);
-router.get('/tradeoff/:classId', getTradeOffToNodes);
-router.get('/developmentarea/:classId', getDevelopmentAreaToNodes);
-router.get('/subgoals/:classId', getSubGoalsfromSDG);
+router.get('/relations/:classId', verifyDatabaseAccess, getRelationsFromClass);
+router.get('/subclasses/:classId', verifyDatabaseAccess, getSubclassesFromClass);
+router.get('/annotations/:classId', verifyDatabaseAccess, getAnnotationsFromClass);
+router.get('/sustainabilityGoals', verifyDatabaseAccess, getSustainabilityGoalsFromOntology);
+router.get('/search', verifyDatabaseAccess, regexSearch);
+router.get('/contributions/:classId', verifyDatabaseAccess, getContributionsToNodes);
+router.get('/tradeoff/:classId', verifyDatabaseAccess, getTradeOffToNodes);
+router.get('/developmentarea/:classId', verifyDatabaseAccess, getDevelopmentAreaToNodes);
+router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 
 export default router;
