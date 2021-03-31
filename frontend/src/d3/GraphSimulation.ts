@@ -141,7 +141,6 @@ export default class {
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
           .attr('fill', '#222');
-
         return g;
       })
       .attr('class', edgeClassName.substring(1)); // remove . before class name
@@ -191,6 +190,35 @@ export default class {
       .attr('y1', (link: any) => link.source.y - (link.source.y + link.target.y) / 2)
       .attr('x2', (link: any) => link.target.x - (link.source.x + link.target.x) / 2)
       .attr('y2', (link: any) => link.target.y - (link.source.y + link.target.y) / 2);
+
+    g.selectChild(this.selectLabel).attr('transform', (link: any) => {
+      const x1 = link.source.x;
+      const y1 = link.source.y;
+      const x2 = link.target.x;
+      const y2 = link.target.y;
+
+      let angleDeg = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+      let rads = angleDeg / 180;
+      let position = [0, 0];
+      const margin = 5;
+
+      if (angleDeg >= 90) {
+        rads = ((angleDeg - 90) * 2) / 180;
+        position = [-(1 - rads) * margin, -rads * margin];
+        angleDeg -= 180;
+      } else if (angleDeg >= 0) {
+        rads = (angleDeg * 2) / 180;
+        position = [rads * margin, -(1 - rads) * margin];
+      } else if (angleDeg >= -90) {
+        rads = (angleDeg * 2) / 180;
+        position = [rads * margin, -(1 + rads) * margin];
+      } else if (angleDeg >= -180) {
+        rads = ((angleDeg + 90) * 2) / 180;
+        position = [(1 + rads) * margin, rads * margin];
+        angleDeg += 180;
+      }
+      return `translate(${position}), rotate(${angleDeg})`;
+    });
   };
 
   updateNodePositions = () => {
@@ -235,9 +263,9 @@ export default class {
               (typeof edge.target === 'object'
                 ? edge.target.id === node.id
                 : edge.target === node.id),
-          )
-          .attr('stroke', '#322659')
-          .attr('stroke-width', '2');
+          );
+        // .attr('stroke', '#322659')
+        // .attr('stroke-width', '2');
       });
   };
 
@@ -263,9 +291,9 @@ export default class {
               (typeof edge.target === 'object'
                 ? edge.target.id === node.id
                 : edge.target === node.id),
-          )
-          .attr('stroke', '#aaa')
-          .attr('stroke-width', '1');
+          );
+        //  .attr('stroke', '#aaa')
+        //   .attr('stroke-width', '1');
       });
   };
 
