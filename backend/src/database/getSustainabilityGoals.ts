@@ -1,5 +1,5 @@
 import DB from './index';
-import { Node } from '../types/types';
+import { Node } from '../types/ontologyTypes';
 import getSustainabilityGoals from './queries/getSustainabilityGoals';
 
 export default async (): Promise<Array<Node>> => {

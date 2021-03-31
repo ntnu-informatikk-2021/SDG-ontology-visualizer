@@ -1,4 +1,5 @@
-import { Node, ApiError } from '../types/types';
+import { Node } from '../types/ontologyTypes';
+import { ApiError } from '../types/errorTypes';
 import { mapRecordToObject } from '../common/database';
 import DB from './index';
 import getTradeOff from './queries/getTradeOff';

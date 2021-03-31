@@ -1,5 +1,5 @@
 import { GraphDBError } from '@innotrade/enapso-graphdb-client';
-import { ApiError } from '../../types/types';
+import { ApiError } from '../../types/errorTypes';
 
 const isGraphDBError = (e: object) => {
   const objectKeys = Object.keys(e);

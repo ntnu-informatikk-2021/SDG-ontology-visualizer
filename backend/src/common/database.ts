@@ -1,5 +1,5 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
-import { Node, OntologyEntity, Record, Ontology } from '../types/types';
+import { Node, OntologyEntity, Record, Ontology } from '../types/ontologyTypes';
 
 const getCorrelationIndexFromRecord = (record: Record): number => {
   if (record.High) return 2;

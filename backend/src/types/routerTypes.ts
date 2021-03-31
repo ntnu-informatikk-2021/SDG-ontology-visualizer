@@ -13,7 +13,7 @@
  */
 
 import { Request, Response } from 'express';
-import { Annotation, Node, Ontology } from './types';
+import { Annotation, Node, Ontology } from './ontologyTypes';
 
 type RegexQueryParams = {
   search?: string;

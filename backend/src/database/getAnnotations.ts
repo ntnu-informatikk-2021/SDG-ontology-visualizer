@@ -1,5 +1,5 @@
 import DB from './index';
-import { Annotation } from '../types/types';
+import { Annotation } from '../types/ontologyTypes';
 import getAnnotations from './queries/getAnnotations';
 
 export default async (classId: string): Promise<Annotation> => {

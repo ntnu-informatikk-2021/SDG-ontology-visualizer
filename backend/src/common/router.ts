@@ -1,4 +1,4 @@
-import { ApiError } from '../types/types';
+import { ApiError } from '../types/errorTypes';
 
 export const verifyRequestQueryParams = (...args: Array<string | number | undefined>) => {
   if (args.some((arg) => arg === undefined)) throw new ApiError(400, 'Missing query data');

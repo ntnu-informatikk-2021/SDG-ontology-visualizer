@@ -1,5 +1,6 @@
 import { mapRecordToObject } from '../common/database';
-import { ApiError, Node } from '../types/types';
+import { ApiError } from '../types/errorTypes';
+import { Node } from '../types/ontologyTypes';
 import DB from './index';
 import getContributions from './queries/getContributions';
 

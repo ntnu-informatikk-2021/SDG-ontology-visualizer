@@ -1,5 +1,6 @@
 import DB from './index';
-import { ApiError, Ontology } from '../types/types';
+import { ApiError } from '../types/errorTypes';
+import { Ontology } from '../types/ontologyTypes';
 import getRelations from './queries/getRelations';
 import {
   addEntityToNullFields,

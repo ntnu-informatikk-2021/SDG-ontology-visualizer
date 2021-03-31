@@ -1,5 +1,5 @@
 import DB from './index';
-import { Node } from '../types/types';
+import { Node } from '../types/ontologyTypes';
 import getSubclasses from './queries/getSubclasses';
 import { mapIdToOntologyEntity } from '../common/database';
 
