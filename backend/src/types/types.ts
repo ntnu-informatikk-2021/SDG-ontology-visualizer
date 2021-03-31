@@ -12,6 +12,7 @@ export interface SubGoal extends Node {
 }
 
 export interface Node extends OntologyEntity {}
+
 export interface Edge extends OntologyEntity {}
 
 export type Ontology = {
@@ -29,6 +30,11 @@ export type Record = {
   High: string | null;
   Moderate: string | null;
   Low: string | null;
+};
+
+export type Annotation = {
+  label: string;
+  description: string;
 };
 
 export class ApiError extends Error {

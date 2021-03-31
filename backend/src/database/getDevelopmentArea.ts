@@ -1,4 +1,4 @@
-import { ApiError } from '../types/types';
+import { Node, ApiError } from '../types/types';
 import { mapRecordToObject } from '../common/database';
 import DB from './index';
 import getDevelopmentArea from './queries/getDevelopmentArea';
