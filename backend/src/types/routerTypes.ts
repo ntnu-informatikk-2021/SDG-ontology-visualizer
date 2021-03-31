@@ -25,6 +25,11 @@ type ClassIdParams = {
 };
 
 export type EmptyRequest = Request;
+export type EmptyResponse = Response;
+
+// very permissive request and response, used for middleware that are meant to handle any type of requests/responses
+export type AnyRequest = Request<any, any, any, any, any>;
+export type AnyResponse = Response<any, any>;
 
 export type RegexRequest = Request<{}, {}, {}, RegexQueryParams>;
 
