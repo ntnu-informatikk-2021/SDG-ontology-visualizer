@@ -86,7 +86,6 @@ const getDevelopmentAreaToNodes = async (req: ClassIdRequest, res: NodeArrayResp
 };
 
 const getSubGoalsfromSDG = async (req: ClassIdRequest, res: NodeArrayResponse) => {
-  console.log('get sub goals from SDG');
   try {
     const data = await getSubGoals(req.params.classId);
     res.json(data);
