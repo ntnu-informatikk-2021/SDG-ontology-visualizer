@@ -19,7 +19,6 @@ const resolveGraphDBErrorMessage = (err: GraphDBError) => {
 };
 
 export default (err, req, res) => {
-  console.log(err);
   if (isGraphDBError(err)) {
     res.status(err.statusCode);
     res.json({ message: resolveGraphDBErrorMessage(err) });
