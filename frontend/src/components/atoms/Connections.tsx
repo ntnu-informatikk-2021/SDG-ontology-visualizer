@@ -1,29 +1,21 @@
 import { Button, Text, Wrap } from '@chakra-ui/react';
 import React from 'react';
-import { correlationToColor } from '../../common/node';
-// import { useDispatch } from 'react-redux';
+import { mapCorrelationToColor } from '../../common/node';
 import { Node } from '../../types/ontologyTypes';
 
 type ConnectionsProps = {
   connections: Array<Node>;
   titles: Array<string>;
   color: string;
-  onClick: (selectedConnection: Node) => void;
+  handleOnClick: (selectedConnection: Node) => void;
 };
 
 const Connections: React.FC<ConnectionsProps> = ({
   connections,
   titles,
   color,
-  onClick,
+  handleOnClick,
 }: ConnectionsProps) => (
-  /*
-  const dispatch = useDispatch();
-  const onClickConnections = (node: Node) => {
-    dispatch(selectNode(node));
-  };
-*/
-
   <>
     <Text as="b" fontSize="xl">
       {connections.length ? titles[0] : titles[1]}
@@ -31,19 +23,17 @@ const Connections: React.FC<ConnectionsProps> = ({
     <Wrap>
       {connections
         .sort((a, b) => b.correlation - a.correlation)
-        .map((connection) => {
-          return (
-            <Button
-              colorScheme="whiteAlpha"
-              bg={color + correlationToColor(connection.correlation)}
-              style={{ margin: 5 }}
-              key={connection.id}
-              onClick={() => onClick(connection)}
-            >
-              {connection.name}
-            </Button>
-          );
-        })}
+        .map((connection) => (
+          <Button
+            colorScheme="whiteAlpha"
+            bg={color + mapCorrelationToColor(connection.correlation)}
+            style={{ margin: 5 }}
+            key={connection.id}
+            onClick={() => handleOnClick(connection)}
+          >
+            {connection.name}
+          </Button>
+        ))}
     </Wrap>
   </>
 );

@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from '@chakra-ui/icons';
-import { Box, Center, Divider, Flex, Heading, IconButton, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getAnnotations,
   getContributions,
@@ -9,64 +9,19 @@ import {
   getTradeOff,
 } from '../../api/ontologies';
 import { mapCorrelationToName } from '../../common/node';
+import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
-import Connections from '../atoms/Connections';
+import ContextDivider from '../atoms/ContextDivider';
 import SlideInDrawer from '../atoms/SlideInDrawer';
-
-interface ContextDividerProps {
-  visible: boolean;
-}
-
-const ContextDivider: React.FC<ContextDividerProps> = ({ visible }: ContextDividerProps) => {
-  if (!visible) return <></>;
-  return (
-    <Center mx="20">
-      <Divider orientation="vertical" />
-    </Center>
-  );
-};
-
-interface AllConnectionsProps {
-  contributions: Array<Node>;
-  tradeOffs: Array<Node>;
-  developmentAreas: Array<Node>;
-  onClick: (connection: Node) => void;
-}
-
-const AllConnections: React.FC<AllConnectionsProps> = ({
-  contributions,
-  tradeOffs,
-  developmentAreas,
-  onClick,
-}: AllConnectionsProps) => (
-  <Stack spacing={5}>
-    <Connections
-      connections={contributions}
-      titles={['Har positiv virkning til:', 'Har ingen etablerte positive påvirkninger enda']}
-      color="green"
-      onClick={onClick}
-    />
-    <Connections
-      connections={tradeOffs}
-      titles={['Har negativ virkning til:', 'Har ingen etablerte negative påvirkninger enda']}
-      color="red"
-      onClick={onClick}
-    />
-    <Connections
-      connections={developmentAreas}
-      titles={['Har utviklingsområde til:', 'Har ingen utviklingsområder']}
-      color="blue"
-      onClick={onClick}
-    />
-  </Stack>
-);
+import AllConnections from './AllConnections';
 
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
     description: '',
   });
+  const dispatch = useDispatch();
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
@@ -90,6 +45,10 @@ const DetailView: React.FC = () => {
   useEffect(() => {
     loadData();
   }, [selectedNode]);
+
+  const onClickConnections = (node: Node) => {
+    dispatch(selectNode(node));
+  };
 
   return (
     <Box spacing={10} bg="cyan.500" w="100%" px={10} py={6} color="white">
@@ -122,12 +81,22 @@ const DetailView: React.FC = () => {
               laboriosam iure amet, atque, id ex asperiores tempora voluptatem totam necessitatibus.
               A maiores laboriosam, pariatur earum perferendis distinctio dicta?
             </Text>
-            <IconButton
+            <Button
+              mr="3"
+              colorScheme="blue"
+              onClick={() => onClickConnections(selectedConnection!)}
+            >
+              {`Gå til 
+              ${selectedConnection && selectedConnection.name}`}
+            </Button>
+            <Button
               aria-label="Close connection view"
               onClick={() => setExpanded(false)}
               colorScheme="blue"
-              icon={<ArrowRightIcon />}
-            />
+              rightIcon={<ArrowRightIcon />}
+            >
+              Lukk
+            </Button>
           </>
         </SlideInDrawer>
       </Flex>

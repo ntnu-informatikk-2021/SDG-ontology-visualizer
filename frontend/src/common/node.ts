@@ -64,7 +64,7 @@ export const mapCorrelationToName = (correlation: number) => {
   }
 };
 
-export const correlationToColor = (correlation: number) => {
+export const mapCorrelationToColor = (correlation: number) => {
   switch (correlation) {
     case 2:
       return '.600';
