@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -21,13 +21,13 @@ const DetailView: React.FC = () => {
     label: '',
     description: '',
   });
-  const dispatch = useDispatch();
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
-  const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const [expanded, setExpanded] = useState<boolean>(false);
   const [selectedConnection, setSelectedConnection] = useState<Node>();
+  const dispatch = useDispatch();
+  const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
   const loadData = async () => {
     if (!selectedNode) return;
@@ -47,6 +47,7 @@ const DetailView: React.FC = () => {
   }, [selectedNode]);
 
   const onClickConnections = (node: Node) => {
+    setExpanded(false);
     dispatch(selectNode(node));
   };
 
@@ -70,7 +71,7 @@ const DetailView: React.FC = () => {
         />
         <ContextDivider visible={expanded} />
         <SlideInDrawer expanded={expanded} width="40vw">
-          <>
+          <Stack spacing="5">
             <Heading as="h3">
               {`${annotations.label} har ${
                 selectedConnection && mapCorrelationToName(selectedConnection.correlation)
@@ -81,23 +82,25 @@ const DetailView: React.FC = () => {
               laboriosam iure amet, atque, id ex asperiores tempora voluptatem totam necessitatibus.
               A maiores laboriosam, pariatur earum perferendis distinctio dicta?
             </Text>
-            <Button
-              mr="3"
-              colorScheme="blue"
-              onClick={() => onClickConnections(selectedConnection!)}
-            >
-              {`Gå til 
+            <Flex>
+              <Button
+                mr="3"
+                colorScheme="blue"
+                onClick={() => onClickConnections(selectedConnection!)}
+              >
+                {`Gå til 
               ${selectedConnection && selectedConnection.name}`}
-            </Button>
-            <Button
-              aria-label="Close connection view"
-              onClick={() => setExpanded(false)}
-              colorScheme="blue"
-              rightIcon={<ArrowRightIcon />}
-            >
-              Lukk
-            </Button>
-          </>
+              </Button>
+              <Button
+                aria-label="Close connection view"
+                onClick={() => setExpanded(false)}
+                colorScheme="blue"
+                rightIcon={<ArrowRightIcon />}
+              >
+                Lukk
+              </Button>
+            </Flex>
+          </Stack>
         </SlideInDrawer>
       </Flex>
     </Box>
