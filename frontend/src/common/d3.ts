@@ -1,12 +1,17 @@
 import { Node, GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
+import { mapIdToEdge } from './node';
 
-export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => ({
-  id: ontology.Predicate.id,
-  source: ontology.Subject.id,
-  target: ontology.Object.id,
-  sourceToTarget: [ontology.Predicate],
-  targetToSource: [],
-});
+export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
+  const edge = mapIdToEdge(ontology.Predicate.id);
+  if (!edge) throw new Error('Could not map ontology to graph edge');
+  return {
+    ...edge,
+    source: ontology.Subject.id,
+    target: ontology.Object.id,
+    sourceToTarget: [ontology.Predicate],
+    targetToSource: [],
+  };
+};
 
 export const removeDuplicates = <T extends UniqueObject>(
   node: T,

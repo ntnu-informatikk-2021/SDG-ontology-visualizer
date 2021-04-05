@@ -1,4 +1,4 @@
-import { Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
+import { Edge, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
 
 export const mapPrefixNameToNode = (prefix: string, name: string, correlation?: number): Node => ({
   prefix: {
@@ -49,4 +49,15 @@ export const mapSustainabilityGoalToNode = (sdg: SustainabilityGoal): Node | nul
   if (!node) return null;
   node.name = sdg.label;
   return node;
+};
+
+export const mapIdToEdge = (id: string): Edge | null => {
+  const prefix = parsePrefixFromClassId(id);
+  const name = parseNameFromClassId(id);
+  if (!prefix || !name) return null;
+  return {
+    prefix,
+    name,
+    id,
+  };
 };

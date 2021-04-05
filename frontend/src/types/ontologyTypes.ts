@@ -38,7 +38,7 @@ export interface Edge extends UniqueObject {
   prefix: Prefix;
 }
 
-export interface GraphEdge extends UniqueObject {
+export interface GraphEdge extends Edge {
   source: string;
   target: string;
   sourceToTarget: Edge[];
