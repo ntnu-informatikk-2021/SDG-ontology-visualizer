@@ -240,21 +240,13 @@ export default class {
       const position = getRotationAndPosition(edge);
       const thisEdge = select(this);
       thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
-      if (position.flip) {
-        thisEdge.text(createEdgeLabelText(edge.sourceToTarget, true));
-      } else {
-        thisEdge.text(createEdgeLabelText(edge.sourceToTarget));
-      }
+      thisEdge.text(createEdgeLabelText(edge.sourceToTarget, position.flip));
     });
     g.selectChild(this.selectLabel2).each(function (edge: any) {
       const position = getRotationAndPosition(edge);
       const thisEdge = select(this);
       thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
-      if (position.flip) {
-        thisEdge.text(createEdgeLabelText(edge.targetToSource));
-      } else {
-        thisEdge.text(createEdgeLabelText(edge.targetToSource, true));
-      }
+      thisEdge.text(createEdgeLabelText(edge.targetToSource, !position.flip));
     });
   };
 
@@ -382,7 +374,6 @@ export default class {
   };
 
   selectNodeOrEdge = (_: any, index: number) => index === 0;
-
   selectLabel1 = (_: any, index: number) => index === 1;
   selectLabel2 = (_: any, index: number) => index === 2;
 }
