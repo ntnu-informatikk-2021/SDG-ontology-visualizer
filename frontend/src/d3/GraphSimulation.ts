@@ -160,7 +160,7 @@ export default class {
           .attr('stroke-width', edgeStrokeWidth);
 
         g.append('text')
-          .text((edge: any) => createEdgeLabelText(edge.sourceToTarget))
+          .text((edge: any) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'after-egde')
           .attr('pointer-events', 'none')
@@ -238,21 +238,15 @@ export default class {
     // Et forslag som fikser dette er om vi kan assigne verdier til edges. Da kunne man lagt til flip status.
     g.selectChild(this.selectLabel1).each(function (edge: any) {
       const position = getRotationAndPosition(edge);
-      select(this).attr('transform', `translate(${position.position}), rotate(${position.degree})`);
-      if (position.flip) {
-        select(this).text(createEdgeLabelText(edge.sourceToTarget, true));
-      } else {
-        select(this).text(createEdgeLabelText(edge.sourceToTarget));
-      }
+      const thisEdge = select(this);
+      thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
+      thisEdge.text(createEdgeLabelText(edge.sourceToTarget, position.flip));
     });
     g.selectChild(this.selectLabel2).each(function (edge: any) {
       const position = getRotationAndPosition(edge);
-      select(this).attr('transform', `translate(${position.position}), rotate(${position.degree})`);
-      if (position.flip) {
-        select(this).text(createEdgeLabelText(edge.targetToSource));
-      } else {
-        select(this).text(createEdgeLabelText(edge.targetToSource, true));
-      }
+      const thisEdge = select(this);
+      thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
+      thisEdge.text(createEdgeLabelText(edge.targetToSource, !position.flip));
     });
   };
 
@@ -263,44 +257,35 @@ export default class {
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
   };
 
+  getEdgeLabelOpacity = () => {
+    if (this.scale >= 1) return 1;
+    if (this.scale > 0.9) return normalizeScale(this.scale, 0.8, 1);
+    return 0;
+  };
+
+  getEdgeLabelFontSize = () => {
+    if (this.scale >= 2) return fontSize / this.scale;
+    return fontSize / (this.scale + 1 / this.scale);
+  };
+
   dynamicScaleManager = () => {
-    // nodeLabel
-    const nodeLabel = this.nodeSvg
+    this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .selectChild(this.selectLabel1);
+      .selectChild(this.selectLabel1)
+      .attr('font-size', fontSize / this.scale);
 
-    // edges
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
+
+    const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
+    edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
+
     const edgeLabel1 = edges.selectChild(this.selectLabel1);
     const edgeLabel2 = edges.selectChild(this.selectLabel2);
-    const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
-
-    if (this.scale >= 2) {
-      nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel1.attr('font-size', fontSize / this.scale);
-      edgeLabel2.attr('font-size', fontSize / this.scale);
-      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
-    } else if (this.scale >= 1) {
-      nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel1.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
-      edgeLabel2.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
-      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
-    } else if (this.scale > 0.9) {
-      nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel1
-        .attr('font-size', fontSize / (this.scale + 1 / this.scale))
-        .style('opacity', normalizeScale(this.scale, 0.8, 1));
-      edgeLabel2
-        .attr('font-size', fontSize / (this.scale + 1 / this.scale))
-        .style('opacity', normalizeScale(this.scale, 0.8, 1));
-      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
-    } else if (this.scale < 0.9) {
-      nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel1.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
-      edgeLabel2.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
-      edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
-    }
+    const edgeLabelFontSize = this.getEdgeLabelFontSize();
+    const edgeLabelOpacity = this.getEdgeLabelOpacity();
+    edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+    edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
@@ -389,7 +374,6 @@ export default class {
   };
 
   selectNodeOrEdge = (_: any, index: number) => index === 0;
-
   selectLabel1 = (_: any, index: number) => index === 1;
   selectLabel2 = (_: any, index: number) => index === 2;
 }
