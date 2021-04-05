@@ -16,9 +16,9 @@ import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
 const edgeClassName = '.edge';
-const nodeRadius = 10;
+const nodeRadius = 20;
 const fontSize = 18;
-const edgeDistance = 100;
+const edgeDistance = 200;
 const edgeStrokeWidth = 2;
 const minScale: number = 0.2;
 const maxScale: number = 10;
@@ -129,8 +129,6 @@ export default class {
       .filter(removeDuplicates)
       .filter(mergeParallelEdges);
 
-    console.log(this.edges);
-
     this.resetForceSimulation();
 
     this.drawGraph();
@@ -233,20 +231,23 @@ export default class {
         .attr('y2', edge.target.y - (edge.source.y + edge.target.y) / 2);
     });
 
-    // Posisjonerer, flipper og setter teksten på nytt etter flipping.
-    // Disse to metodene under krever mye scripting.
-    // Et forslag som fikser dette er om vi kan assigne verdier til edges. Da kunne man lagt til flip status.
     g.selectChild(this.selectLabel1).each(function (edge: any) {
       const position = getRotationAndPosition(edge);
       const thisEdge = select(this);
       thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
-      thisEdge.text(createEdgeLabelText(edge.sourceToTarget, position.flip));
+      const text = createEdgeLabelText(edge.sourceToTarget, position.flip);
+      if (thisEdge.text() !== text) {
+        thisEdge.text(text);
+      }
     });
     g.selectChild(this.selectLabel2).each(function (edge: any) {
       const position = getRotationAndPosition(edge);
       const thisEdge = select(this);
       thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
-      thisEdge.text(createEdgeLabelText(edge.targetToSource, !position.flip));
+      const text = createEdgeLabelText(edge.targetToSource, !position.flip);
+      if (thisEdge.text() !== text) {
+        thisEdge.text(text);
+      }
     });
   };
 
@@ -259,13 +260,13 @@ export default class {
 
   getEdgeLabelOpacity = () => {
     if (this.scale >= 1) return 1;
-    if (this.scale > 0.9) return normalizeScale(this.scale, 0.8, 1);
+    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
     return 0;
   };
 
   getEdgeLabelFontSize = () => {
     if (this.scale >= 2) return fontSize / this.scale;
-    return fontSize / (this.scale + 1 / this.scale);
+    return (fontSize - 12 * normalizeScale(this.scale, 2, minScale)) / this.scale;
   };
 
   dynamicScaleManager = () => {
