@@ -16,7 +16,7 @@ import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
 const edgeClassName = '.edge';
-const nodeRadius = 20;
+const nodeRadius = 10;
 const fontSize = 18;
 const edgeDistance = 100;
 const edgeStrokeWidth = 2;
@@ -270,22 +270,12 @@ export default class {
       .data(this.nodes)
       .selectChild(this.selectLabel1);
 
-    // edgeLabel
-    const edgeLabel1 = this.edgeSvg
-      .selectAll(edgeClassName)
-      .data(this.edges)
-      .selectChild(this.selectLabel1);
+    // edges
+    const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
+    const edgeLabel1 = edges.selectChild(this.selectLabel1);
+    const edgeLabel2 = edges.selectChild(this.selectLabel2);
+    const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
 
-    const edgeLabel2 = this.edgeSvg
-      .selectAll(edgeClassName)
-      .data(this.edges)
-      .selectChild(this.selectLabel2);
-
-    // edgeSVGSVGLinee
-    const edgeSVGLine = this.edgeSvg
-      .selectAll(edgeClassName)
-      .data(this.edges)
-      .selectChild(this.selectNodeOrEdge);
     if (this.scale >= 2) {
       nodeLabel.attr('font-size', fontSize / this.scale);
       edgeLabel1.attr('font-size', fontSize / this.scale);
@@ -296,7 +286,7 @@ export default class {
       edgeLabel1.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
       edgeLabel2.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
       edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
-    } else if (this.scale > 0.8) {
+    } else if (this.scale > 0.9) {
       nodeLabel.attr('font-size', fontSize / this.scale);
       edgeLabel1
         .attr('font-size', fontSize / (this.scale + 1 / this.scale))
@@ -305,7 +295,7 @@ export default class {
         .attr('font-size', fontSize / (this.scale + 1 / this.scale))
         .style('opacity', normalizeScale(this.scale, 0.8, 1));
       edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
-    } else if (this.scale < 0.8) {
+    } else if (this.scale < 0.9) {
       nodeLabel.attr('font-size', fontSize / this.scale);
       edgeLabel1.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
       edgeLabel2.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
