@@ -60,6 +60,7 @@ export const mapIdToEdge = (id: string): Edge | null => {
     name,
     id,
   };
+};
 
 export const mapCorrelationToName = (correlation: number) => {
   switch (correlation) {
