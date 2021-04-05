@@ -14,7 +14,7 @@ import NotFoundPage from './components/pages/NotFound';
 const App: React.FC = () => (
   <ChakraProvider>
     <Provider store={store}>
-      <Flex m={0} minHeight="100vh" direction="column">
+      <Flex m={0} minHeight="100vh" direction="column" overflow="hidden">
         <Router>
           <ErrorModal />
           <Navbar />
