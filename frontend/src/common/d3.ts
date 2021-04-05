@@ -102,22 +102,18 @@ export const getRotationAndPosition = (edge: any) => {
   return { position, degree, flip };
 };
 
-// Dersom det er flere enn en relasjoner i hver rettning vil den heller skrive ut antallet.
-// Dette kan vi jo løse annerledes senere. Dette er sånn de gjør det i graphDB
-export const createEdgeLabelText = (edge: Edge[], flipDirection?: boolean) => {
-  let text = '';
-  if (!flipDirection) {
-    if (edge.length > 1) {
-      text = text.concat(`${edge.length} Predicates -->`);
-    } else if (edge.length > 0) {
-      text = text.concat(`${edge[0].name} -->`);
-    }
-  } else if (flipDirection) {
-    if (edge.length > 1) {
-      text = text.concat(`<--${edge.length} Predicates`);
-    } else if (edge.length > 0) {
-      text = text.concat(`<--${edge[0].name}`);
-    }
+const addDirectionArrowToEdgeLabelText = (text: string, direction: boolean): string => {
+  if (direction) return `<-- ${text}`;
+  return `${text} -->`;
+};
+
+export const createEdgeLabelText = (edge: Edge[], flipDirection: boolean): string => {
+  switch (edge.length) {
+    case 0:
+      return '';
+    case 1:
+      return addDirectionArrowToEdgeLabelText(edge[0].name, flipDirection);
+    default:
+      return addDirectionArrowToEdgeLabelText(`${edge.length} Predicates`, flipDirection);
   }
-  return text;
 };

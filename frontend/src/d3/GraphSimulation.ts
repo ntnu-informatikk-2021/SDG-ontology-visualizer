@@ -160,7 +160,7 @@ export default class {
           .attr('stroke-width', edgeStrokeWidth);
 
         g.append('text')
-          .text((edge: any) => createEdgeLabelText(edge.sourceToTarget))
+          .text((edge: any) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'after-egde')
           .attr('pointer-events', 'none')
