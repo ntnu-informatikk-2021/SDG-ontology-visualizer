@@ -50,3 +50,29 @@ export const mapSustainabilityGoalToNode = (sdg: SustainabilityGoal): Node | nul
   node.name = sdg.label;
   return node;
 };
+
+export const mapCorrelationToName = (correlation: number) => {
+  switch (correlation) {
+    case 2:
+      return 'høy';
+    case 1:
+      return 'medium';
+    case 0:
+      return 'lav';
+    default:
+      return '';
+  }
+};
+
+export const mapCorrelationToColor = (correlation: number) => {
+  switch (correlation) {
+    case 2:
+      return '.600';
+    case 1:
+      return '.500';
+    case 0:
+      return '.400';
+    default:
+      return '.300';
+  }
+};
