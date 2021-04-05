@@ -1,3 +1,4 @@
+import { D3Edge } from '../types/d3/simulation';
 import { Node, GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
 import { mapIdToEdge } from './node';
 
@@ -23,19 +24,23 @@ export const removeDuplicates = <T extends UniqueObject>(
 // Funker med destructuring også.
 // Denne kan sikkert også gjøres smartere, den er jo ikke akkurat effektiv.
 // Har endret sourceToTarget til å være 2 lister.
-export const mergeParallelEdges = (edge: any, _: any, self: any[]): boolean =>
+export const mergeParallelEdges = (
+  edge: GraphEdge | D3Edge,
+  _: number,
+  self: Array<GraphEdge | D3Edge>,
+): boolean =>
   self.every((e) => {
-    if (!edge.sourceToTarget.every((child: any) => child.id !== e.sourceToTarget[0].id)) {
+    if (!edge.sourceToTarget.every((child) => child.id !== e.sourceToTarget[0].id)) {
       console.log('true');
       return true;
     }
-    if (!edge.targetToSource.every((child: any) => child.id !== e.sourceToTarget[0].id)) {
+    if (!edge.targetToSource.every((child) => child.id !== e.sourceToTarget[0].id)) {
       return true;
     }
-    if (!e.sourceToTarget.every((child: any) => child.id !== edge.sourceToTarget[0].id)) {
+    if (!e.sourceToTarget.every((child) => child.id !== edge.sourceToTarget[0].id)) {
       return false;
     }
-    if (!e.targetToSource.every((child: any) => child.id !== edge.sourceToTarget[0].id)) {
+    if (!e.targetToSource.every((child) => child.id !== edge.sourceToTarget[0].id)) {
       return false;
     }
     if (edge.source === e.target && edge.target === e.source) {
