@@ -41,8 +41,9 @@ export interface Edge extends UniqueObject {
 export interface GraphEdge extends UniqueObject {
   source: string;
   target: string;
-  sourceToTarget: Edge;
-  targetToSource?: Edge;
+  sourceToTarget: Edge[];
+  targetToSource: Edge[];
+  flip?: boolean;
 }
 
 export type Ontology = {

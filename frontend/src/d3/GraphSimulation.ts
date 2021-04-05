@@ -1,10 +1,13 @@
 import * as d3 from 'd3';
+import { select } from 'd3';
 import {
-  getTranselatedRotationAndPosition,
+  createEdgeLabelText,
+  getRotationAndPosition,
   makePredicateUnique,
   mapNodeToGraphNodeAtDefaultPosition,
   mapOntologyToGraphEdge,
   mapOntologyToNonClickedGraphNode,
+  mergeParallelEdges,
   removeDuplicates,
 } from '../common/d3';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
@@ -123,7 +126,10 @@ export default class {
 
     this.edges = this.edges
       .concat(ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge))
-      .filter(removeDuplicates);
+      .filter(removeDuplicates)
+      .filter(mergeParallelEdges);
+
+    console.log(this.edges);
 
     this.resetForceSimulation();
 
@@ -154,10 +160,19 @@ export default class {
           .attr('stroke-width', edgeStrokeWidth);
 
         g.append('text')
-          .text((edge: any) => edge.sourceToTarget.name)
+          .text((edge: any) => createEdgeLabelText(edge.sourceToTarget))
           .attr('text-anchor', 'middle')
+          .attr('alignment-baseline', 'after-egde')
           .attr('pointer-events', 'none')
           .attr('fill', '#222');
+
+        g.append('text')
+          .text((edge: any) => createEdgeLabelText(edge.targetToSource, true))
+          .attr('text-anchor', 'middle')
+          .attr('alignment-baseline', 'before-edge')
+          .attr('pointer-events', 'none')
+          .attr('fill', '#222');
+
         return g;
       })
       .attr('class', edgeClassName.substring(1)); // remove . before class name
@@ -196,21 +211,48 @@ export default class {
       .data(this.edges)
       .attr(
         'transform',
-        (link: any) =>
-          `translate(${(link.source.x + link.target.x) / 2},${
-            (link.source.y + link.target.y) / 2
+        (edge: any) =>
+          `translate(${(edge.source.x + edge.target.x) / 2},${
+            (edge.source.y + edge.target.y) / 2
           })`,
       );
 
+    /*
     g.selectChild(this.selectNodeOrEdge)
-      .attr('x1', (link: any) => link.source.x - (link.source.x + link.target.x) / 2)
-      .attr('y1', (link: any) => link.source.y - (link.source.y + link.target.y) / 2)
-      .attr('x2', (link: any) => link.target.x - (link.source.x + link.target.x) / 2)
-      .attr('y2', (link: any) => link.target.y - (link.source.y + link.target.y) / 2);
+      .attr('x1', (edge: any) => edge.source.x - (edge.source.x + edge.target.x) / 2)
+      .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
+      .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
+      .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
+*/
+    // Dette er et forslag som jeg tror kan spare litt scripting tid.
+    g.selectChild(this.selectNodeOrEdge).each(function (edge: any) {
+      select(this)
+        .attr('x1', edge.source.x - (edge.source.x + edge.target.x) / 2)
+        .attr('y1', edge.source.y - (edge.source.y + edge.target.y) / 2)
+        .attr('x2', edge.target.x - (edge.source.x + edge.target.x) / 2)
+        .attr('y2', edge.target.y - (edge.source.y + edge.target.y) / 2);
+    });
 
-    g.selectChild(this.selectLabel).attr('transform', (link: any) => {
-      const position = getTranselatedRotationAndPosition(link, 1);
-      return `translate(${position.position}), rotate(${position.degree})`;
+    // Posisjonerer, flipper og setter teksten på nytt etter flipping.
+    // Disse to metodene under krever mye scripting.
+    // Et forslag som fikser dette er om vi kan assigne verdier til edges. Da kunne man lagt til flip status.
+    g.selectChild(this.selectLabel1).each(function (edge: any) {
+      const position = getRotationAndPosition(edge);
+      select(this).attr('transform', `translate(${position.position}), rotate(${position.degree})`);
+      if (position.flip) {
+        select(this).text(createEdgeLabelText(edge.sourceToTarget, true));
+      } else {
+        select(this).text(createEdgeLabelText(edge.sourceToTarget));
+      }
+    });
+    g.selectChild(this.selectLabel2).each(function (edge: any) {
+      const position = getRotationAndPosition(edge);
+      select(this).attr('transform', `translate(${position.position}), rotate(${position.degree})`);
+      if (position.flip) {
+        select(this).text(createEdgeLabelText(edge.targetToSource));
+      } else {
+        select(this).text(createEdgeLabelText(edge.targetToSource, true));
+      }
     });
   };
 
@@ -226,13 +268,18 @@ export default class {
     const nodeLabel = this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .selectChild(this.selectLabel);
+      .selectChild(this.selectLabel1);
 
     // edgeLabel
-    const edgeLabel = this.edgeSvg
+    const edgeLabel1 = this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
-      .selectChild(this.selectLabel);
+      .selectChild(this.selectLabel1);
+
+    const edgeLabel2 = this.edgeSvg
+      .selectAll(edgeClassName)
+      .data(this.edges)
+      .selectChild(this.selectLabel2);
 
     // edgeSVGSVGLinee
     const edgeSVGLine = this.edgeSvg
@@ -241,21 +288,27 @@ export default class {
       .selectChild(this.selectNodeOrEdge);
     if (this.scale >= 2) {
       nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel.attr('font-size', fontSize / this.scale);
+      edgeLabel1.attr('font-size', fontSize / this.scale);
+      edgeLabel2.attr('font-size', fontSize / this.scale);
       edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
     } else if (this.scale >= 1) {
       nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
+      edgeLabel1.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
+      edgeLabel2.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 1);
       edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
     } else if (this.scale > 0.8) {
       nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel
+      edgeLabel1
+        .attr('font-size', fontSize / (this.scale + 1 / this.scale))
+        .style('opacity', normalizeScale(this.scale, 0.8, 1));
+      edgeLabel2
         .attr('font-size', fontSize / (this.scale + 1 / this.scale))
         .style('opacity', normalizeScale(this.scale, 0.8, 1));
       edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
     } else if (this.scale < 0.8) {
       nodeLabel.attr('font-size', fontSize / this.scale);
-      edgeLabel.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
+      edgeLabel1.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
+      edgeLabel2.attr('font-size', fontSize / (this.scale + 1 / this.scale)).style('opacity', 0);
       edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
     }
   };
@@ -347,5 +400,6 @@ export default class {
 
   selectNodeOrEdge = (_: any, index: number) => index === 0;
 
-  selectLabel = (_: any, index: number) => index === 1;
+  selectLabel1 = (_: any, index: number) => index === 1;
+  selectLabel2 = (_: any, index: number) => index === 2;
 }
