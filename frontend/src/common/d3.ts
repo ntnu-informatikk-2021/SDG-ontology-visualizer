@@ -1,4 +1,4 @@
-import { D3Edge } from '../types/d3/simulation';
+import { D3Edge, LabelTransform } from '../types/d3/simulation';
 import { Node, GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
 import { mapIdToEdge } from './node';
 
@@ -20,27 +20,22 @@ export const removeDuplicates = <T extends UniqueObject>(
   self: T[],
 ): boolean => index === self.findIndex((n) => node.id === n.id);
 
-// Vet ikke heelt hvorfor eslint ikke arresterer meg på den push metoden der.
-// Funker med destructuring også.
-// Denne kan sikkert også gjøres smartere, den er jo ikke akkurat effektiv.
-// Har endret sourceToTarget til å være 2 lister.
 export const mergeParallelEdges = (
   edge: GraphEdge | D3Edge,
   _: number,
   self: Array<GraphEdge | D3Edge>,
 ): boolean =>
   self.every((e) => {
-    if (!edge.sourceToTarget.every((child) => child.id !== e.sourceToTarget[0].id)) {
-      console.log('true');
+    if (edge.sourceToTarget.some((child) => child.id === e.sourceToTarget[0].id)) {
       return true;
     }
-    if (!edge.targetToSource.every((child) => child.id !== e.sourceToTarget[0].id)) {
+    if (edge.targetToSource.some((child) => child.id === e.sourceToTarget[0].id)) {
       return true;
     }
-    if (!e.sourceToTarget.every((child) => child.id !== edge.sourceToTarget[0].id)) {
+    if (e.sourceToTarget.some((child) => child.id === edge.sourceToTarget[0].id)) {
       return false;
     }
-    if (!e.targetToSource.every((child) => child.id !== edge.sourceToTarget[0].id)) {
+    if (e.targetToSource.some((child) => child.id === edge.sourceToTarget[0].id)) {
       return false;
     }
     if (edge.source === e.target && edge.target === e.source) {
@@ -78,28 +73,35 @@ export const mapOntologyToNonClickedGraphNode = (clickedNode: GraphNode) => (
   ontology: Ontology,
 ): Node => (ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject);
 
-export const getRotationAndPosition = (edge: any) => {
+export const isD3Edge = (edge: GraphEdge | D3Edge) => typeof edge.target === 'string';
+export const isGraphEdge = (edge: GraphEdge | D3Edge) => typeof edge.target !== 'string';
+
+export const getRotationAndPosition = (edge: any): LabelTransform => {
   let degree =
-    (Math.atan2(edge.target.y - edge.source.y, edge.target.x - edge.source.x) * 180) / Math.PI;
+    (Math.atan2(edge.target.y! - edge.source.y!, edge.target.x! - edge.source.x!) * 180) / Math.PI;
   let radian = degree / 180;
-  let position = [0, 0];
+  let x = 0;
+  let y = 0;
   let flip = false;
   if (degree >= 90) {
     radian = ((degree - 90) * 2) / 180;
-    position = [-(1 - radian), -radian];
+    x = -(1 - radian);
+    y = -radian;
     degree -= 180;
     flip = true;
   } else if (degree >= -90) {
     radian = (degree * 2) / 180;
-    position = [radian, -(1 + radian)];
+    x = radian;
+    y = -(1 + radian);
     flip = false;
   } else if (degree >= -180) {
     radian = ((degree + 90) * 2) / 180;
-    position = [1 + radian, radian];
+    x = 1 + radian;
+    y = radian;
     degree += 180;
     flip = true;
   }
-  return { position, degree, flip };
+  return { x, y, degree, flip };
 };
 
 const addDirectionArrowToEdgeLabelText = (text: string, direction: boolean): string => {

@@ -18,13 +18,12 @@ const nodeClassName = '.node';
 const edgeClassName = '.edge';
 const nodeRadius = 20;
 const fontSize = 18;
+const maxEdgeFontSize = 10;
 const edgeDistance = 200;
 const edgeStrokeWidth = 2;
 const minScale: number = 0.2;
 const maxScale: number = 10;
 
-// input = number between 0 and 1, return value between 0.2 and 10.
-// const normalizeScale = (value: number) => value * (maxScale - minScale) + minScale;
 const normalizeScale = (value: number, min: number, max: number) => (value - min) / (max - min);
 
 export default class {
@@ -215,35 +214,32 @@ export default class {
           })`,
       );
 
-    /*
     g.selectChild(this.selectNodeOrEdge)
       .attr('x1', (edge: any) => edge.source.x - (edge.source.x + edge.target.x) / 2)
       .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
-*/
-    // Dette er et forslag som jeg tror kan spare litt scripting tid.
-    g.selectChild(this.selectNodeOrEdge).each(function (edge: any) {
-      select(this)
-        .attr('x1', edge.source.x - (edge.source.x + edge.target.x) / 2)
-        .attr('y1', edge.source.y - (edge.source.y + edge.target.y) / 2)
-        .attr('x2', edge.target.x - (edge.source.x + edge.target.x) / 2)
-        .attr('y2', edge.target.y - (edge.source.y + edge.target.y) / 2);
-    });
 
-    g.selectChild(this.selectLabel1).each(function (edge: any) {
+    g.selectChild(this.selectLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = select(this);
-      thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
+      thisEdge.attr(
+        'transform',
+        `translate(${[position.x, position.y]}), rotate(${position.degree})`,
+      );
       const text = createEdgeLabelText(edge.sourceToTarget, position.flip);
       if (thisEdge.text() !== text) {
         thisEdge.text(text);
       }
     });
-    g.selectChild(this.selectLabel2).each(function (edge: any) {
+
+    g.selectChild(this.selectLabel2).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = select(this);
-      thisEdge.attr('transform', `translate(${position.position}), rotate(${position.degree})`);
+      thisEdge.attr(
+        'transform',
+        `translate(${[position.x, position.y]}), rotate(${position.degree})`,
+      );
       const text = createEdgeLabelText(edge.targetToSource, !position.flip);
       if (thisEdge.text() !== text) {
         thisEdge.text(text);
@@ -264,10 +260,7 @@ export default class {
     return 0;
   };
 
-  getEdgeLabelFontSize = () => {
-    if (this.scale >= 2) return fontSize / this.scale;
-    return (fontSize - 12 * normalizeScale(this.scale, 2, minScale)) / this.scale;
-  };
+  getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
 
   dynamicScaleManager = () => {
     this.nodeSvg

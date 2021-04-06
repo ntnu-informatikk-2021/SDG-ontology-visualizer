@@ -43,7 +43,6 @@ export interface GraphEdge extends Edge {
   target: string;
   sourceToTarget: Edge[];
   targetToSource: Edge[];
-  flip?: boolean;
 }
 
 export type Ontology = {

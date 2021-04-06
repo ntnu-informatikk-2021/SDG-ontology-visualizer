@@ -15,3 +15,10 @@ export type D3Edge = Modify<
     target: GraphNode;
   }
 >;
+
+export type LabelTransform = {
+  x: number;
+  y: number;
+  degree: number;
+  flip: boolean;
+};
