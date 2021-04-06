@@ -15,14 +15,23 @@ import { D3Edge, CenterForce, ForceSimulation, LinkForce } from '../types/d3/sim
 import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
-const edgeClassName = '.edge';
+const nodeColor = '#4299e1';
+const nodeLockedColor = '#27c';
 const nodeRadius = 20;
-const fontSize = 18;
+const nodeHighlightColor = '#69f';
+const nodeHighlightRadiusMultiplier = 1.5;
+const nodeLabelColor = '#000';
+
+const edgeClassName = '.edge';
 const maxEdgeFontSize = 10;
 const edgeDistance = 200;
-const edgeStrokeWidth = 2;
-const minScale: number = 0.2;
-const maxScale: number = 10;
+const edgeWidth = 2;
+const edgeColor = '#aaa';
+const edgeLabelColor = '#222';
+
+const fontSize = 18;
+const minScale = 0.2;
+const maxScale = 10;
 
 const normalizeScale = (value: number, min: number, max: number) => (value - min) / (max - min);
 
@@ -153,22 +162,22 @@ export default class {
 
         g.append('line')
           .attr('fill', 'none')
-          .attr('stroke', '#aaa')
-          .attr('stroke-width', edgeStrokeWidth);
+          .attr('stroke', edgeColor)
+          .attr('stroke-width', edgeWidth);
 
         g.append('text')
           .text((edge: any) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'after-egde')
           .attr('pointer-events', 'none')
-          .attr('fill', '#222');
+          .attr('fill', edgeLabelColor);
 
         g.append('text')
           .text((edge: any) => createEdgeLabelText(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'before-edge')
           .attr('pointer-events', 'none')
-          .attr('fill', '#222');
+          .attr('fill', edgeLabelColor);
 
         return g;
       })
@@ -184,14 +193,14 @@ export default class {
 
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) => (node.isLocked ? '#7f0dd1' : '#4299e1'))
+          .attr('fill', (node) => (node.isLocked ? nodeLockedColor : nodeColor))
           .on('click', (_, node) => this.onClickNode(node));
 
         g.append('text')
           .text((node) => node.name)
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
-          .attr('fill', '#000');
+          .attr('fill', nodeLabelColor);
 
         return g;
       })
@@ -272,7 +281,7 @@ export default class {
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
 
     const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
-    edgeSVGLine.attr('stroke-width', edgeStrokeWidth / this.scale);
+    edgeSVGLine.attr('stroke-width', edgeWidth / this.scale);
 
     const edgeLabel1 = edges.selectChild(this.selectLabel1);
     const edgeLabel2 = edges.selectChild(this.selectLabel2);
@@ -288,11 +297,12 @@ export default class {
       .data(this.nodes)
       // eslint-disable-next-line func-names
       .on('mouseover', function (event, node) {
-        const thisNode = d3.select(this).selectChild();
-        if (!node.isLocked) {
-          thisNode.attr('fill', '#322659');
-        }
-        thisNode.transition('500').attr('r', nodeRadius * 2);
+        d3.select(this)
+          .selectChild()
+          .attr('fill', nodeHighlightColor)
+          .transition('500')
+          .attr('r', nodeRadius * nodeHighlightRadiusMultiplier);
+
         edgeSvg
           .selectAll(edgeClassName)
           .data(edges)
@@ -305,8 +315,6 @@ export default class {
                 ? edge.target.id === node.id
                 : edge.target === node.id),
           );
-        // .attr('stroke', '#322659')
-        // .attr('stroke-width', '2');
       });
   };
 
@@ -316,11 +324,11 @@ export default class {
       .data(this.nodes)
       // eslint-disable-next-line func-names
       .on('mouseout', function (event, node) {
-        const thisNode = d3.select(this).selectChild();
-        if (!node.isLocked) {
-          thisNode.attr('fill', '#4299e1');
-        }
-        thisNode.transition('500').attr('r', nodeRadius);
+        d3.select(this)
+          .selectChild()
+          .attr('fill', node.isLocked ? nodeLockedColor : nodeColor)
+          .transition('500')
+          .attr('r', nodeRadius);
         edgeSvg
           .selectAll(edgeClassName)
           .data(edges)
@@ -333,8 +341,6 @@ export default class {
                 ? edge.target.id === node.id
                 : edge.target === node.id),
           );
-        //  .attr('stroke', '#aaa')
-        //   .attr('stroke-width', '1');
       });
   };
 
@@ -358,7 +364,7 @@ export default class {
               simulation.alpha(simulation.alpha() + 0.3);
               simulation.restart();
             }
-            d3.select(this).attr('fill', '#7f0dd1');
+            d3.select(this).attr('fill', nodeHighlightColor);
           }) as any,
         // .on('end', (_, d) => {
         // const node = d as GraphNode;
