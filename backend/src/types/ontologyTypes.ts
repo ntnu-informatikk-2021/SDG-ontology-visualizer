@@ -12,6 +12,7 @@ export interface SubGoal extends Node {
 }
 
 export interface Node extends OntologyEntity {}
+
 export interface Edge extends OntologyEntity {}
 
 export type Ontology = {
@@ -31,11 +32,7 @@ export type Record = {
   Low: string | null;
 };
 
-export class ApiError extends Error {
-  statusCode: number;
-
-  constructor(statusCode: number, message: string | undefined) {
-    super(message);
-    this.statusCode = statusCode;
-  }
-}
+export type Annotation = {
+  label: string;
+  description: string;
+};

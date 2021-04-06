@@ -13,7 +13,7 @@ app.use('/api', routes);
 const init = async (): Promise<void> => {
   console.log('Initializing server...');
   await databaseLogin();
-  console.log(`Example app listening at http://localhost:${config.PORT}`);
+  console.log(`Ontology server listening at http://localhost:${config.PORT}`);
 };
 
 app.listen(config.PORT, init);
