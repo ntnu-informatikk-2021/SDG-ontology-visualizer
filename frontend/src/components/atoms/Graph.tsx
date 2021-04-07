@@ -43,8 +43,8 @@ const Graph: React.FC = () => {
   }, [selectedNode, svgRef, simulation]);
 
   return (
-    <Center mx="auto" my="0">
-      <svg id="svgGraph" height={height - 200} width={width} ref={svgRef} />
+    <Center my="0">
+      <svg id="svgGraph" height={height - 200} width={width - width / 5} ref={svgRef} />
     </Center>
   );
 };
