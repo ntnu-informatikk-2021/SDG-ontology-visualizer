@@ -1,5 +1,5 @@
 import { D3Edge, LabelTransform } from '../types/d3/simulation';
-import { Node, GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
+import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
 import { mapIdToEdge } from './node';
 
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
@@ -71,7 +71,7 @@ export const mapNodeToGraphNodeAtDefaultPosition = (x?: number, y?: number) => (
 
 export const mapOntologyToNonClickedGraphNode = (clickedNode: GraphNode) => (
   ontology: Ontology,
-): Node => (ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject);
+): GraphNode => (ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject);
 
 export const isD3Edge = (edge: GraphEdge | D3Edge) => typeof edge.target === 'string';
 export const isGraphEdge = (edge: GraphEdge | D3Edge) => typeof edge.target !== 'string';

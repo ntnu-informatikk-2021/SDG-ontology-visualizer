@@ -1,4 +1,4 @@
-import { Center } from '@chakra-ui/react';
+import { Button, Center } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
@@ -43,9 +43,18 @@ const Graph: React.FC = () => {
   }, [selectedNode, svgRef, simulation]);
 
   return (
-    <Center my="0">
-      <svg id="svgGraph" height={height - 200} width={width - width / 5} ref={svgRef} />
-    </Center>
+    <>
+      <Center my="0">
+        <svg id="svgGraph" height={height - 200} width={width - width / 5} ref={svgRef} />
+      </Center>
+      <Button
+        onClick={() => {
+          if (simulation) simulation.applyFilter(Math.random() < 0.5);
+        }}
+      >
+        test
+      </Button>
+    </>
   );
 };
 
