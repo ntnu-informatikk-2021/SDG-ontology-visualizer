@@ -78,9 +78,9 @@ const DetailView: React.FC = () => {
               } korrelasjon til ${selectedConnection && selectedConnection.name}`}
             </Heading>
             <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti porro saepe
-              laboriosam iure amet, atque, id ex asperiores tempora voluptatem totam necessitatibus.
-              A maiores laboriosam, pariatur earum perferendis distinctio dicta?
+              Definisjonen for dem spesefikke relasjonene skal kommer her. Videre vil ressursene
+              brukt for å opprette relasjonene også bli plassert her i form av: Link til Artikkel
+              eller Ola Nordmann bestemte dette DATO.
             </Text>
             <Flex>
               <Button
