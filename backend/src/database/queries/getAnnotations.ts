@@ -19,6 +19,9 @@ export default (classId: string): string => {
     { 
          ${fullClassName} rdfs:label ?label.
          ${fullClassName} SDG:description ?description.
+    Optional {
+         ${fullClassName} SDG:moreInformation ?moreInformation.
+    }
     }
    } `;
 };
