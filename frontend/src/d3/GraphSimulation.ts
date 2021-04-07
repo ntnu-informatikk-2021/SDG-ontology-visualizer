@@ -10,7 +10,13 @@ import {
   mergeParallelEdges,
   removeDuplicates,
 } from '../common/d3';
-import { CenterForce, D3Edge, ForceSimulation, LinkForce } from '../types/d3/simulation';
+import {
+  CenterForce,
+  D3Edge,
+  ForceSimulation,
+  LinkForce,
+  GraphNodeFilter,
+} from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 
@@ -48,6 +54,7 @@ export default class {
   private edges: Array<D3Edge | GraphEdge>;
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
+  private nodeFilter: GraphNodeFilter;
 
   constructor(
     svg: SVGSVGElement,
@@ -55,6 +62,7 @@ export default class {
     height: number,
     initialNode: GraphNode,
     onClickNode: (node: GraphNode) => void,
+    nodeFilter: GraphNodeFilter,
   ) {
     this.svg = d3.select(svg);
     this.edgeSvg = this.svg.append('g');
@@ -66,24 +74,10 @@ export default class {
     this.edges = [];
     this.unfilteredEdges = [];
     this.onClickNode = onClickNode;
+    this.nodeFilter = nodeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
   }
-
-  // this is temporary until we get node type from query
-  isNotSubgoal = (node: GraphNode): boolean => {
-    const { name } = node;
-    if (name.length === 3) {
-      if (name.charAt(1) !== '.') return true;
-      if (Number.isNaN(parseInt(name.charAt(0), 10))) return true;
-    } else if (name.length === 4) {
-      if (name.charAt(2) !== '.') return true;
-      if (Number.isNaN(parseInt(name.substring(0, 1), 10))) return true;
-    } else {
-      return true;
-    }
-    return false;
-  };
 
   removeDisconnectedEdges = () => {
     this.edges = this.unfilteredEdges.filter((edge) => {
@@ -96,14 +90,18 @@ export default class {
     });
   };
 
-  applyFilter = (showSubgoals: boolean) => {
+  applyFilter = () => {
     // const toggle = this.nodes.length === this.unfilteredNodes.length;
-    this.nodes = showSubgoals
-      ? this.unfilteredNodes
-      : this.unfilteredNodes.filter(this.isNotSubgoal);
+    // this.nodes = showSubgoals ? this.unfilteredNodes : this.unfilteredNodes.filter(isNotSubgoal);
+    this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
     this.drawGraph();
+  };
+
+  setNodeFilter = (filter: GraphNodeFilter, applyImmediately = true) => {
+    this.nodeFilter = filter;
+    if (applyImmediately) this.applyFilter();
   };
 
   initZoom = () => {
@@ -167,8 +165,6 @@ export default class {
   addData = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
     if (ontologies.length === 0 || !clickedNode) return;
 
-    const numNodes = this.unfilteredNodes.length;
-
     this.unfilteredNodes = this.unfilteredNodes
       .concat(ontologies.map(mapOntologyToNonClickedGraphNode(clickedNode)))
       .filter(removeDuplicates)
@@ -179,7 +175,7 @@ export default class {
       .filter(removeDuplicates)
       .filter(mergeParallelEdges);
 
-    this.applyFilter(numNodes === this.nodes.length);
+    this.applyFilter();
   };
 
   drawGraph = () => {
