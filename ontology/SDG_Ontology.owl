@@ -73,6 +73,12 @@
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#moreInformation -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#moreInformation"/>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#year -->
 
     <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#year"/>
@@ -103,7 +109,10 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#bleGjortForBy">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erGjortForBy"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Byer"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Binære relasjon som beskriver at en klasse/instanse (av byer/tettsted) som har en klasse/instanse (av metoder) som er gjennomført eller gjennomførers denne klassen/instansen</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bleGjortForBy</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -115,6 +124,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beskriver en binær relasjon mellom bærekraftsmål og dere respektive delmål.</SDG:description>
+        <rdfs:isDefinedBy rdf:resource="https://www.fn.no/om-fn/fns-baerekraftsmaal"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erBærekraftsmålTil</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -123,8 +135,11 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erGjortForBy">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Byer"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Binære relasjon som beskriver at en klasse/instanse (av metoder) som har gjennomført eller gjennomfører en metode for en klasse/instanse (av byer/tettsted).</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erGjortForBy</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -136,7 +151,22 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Et predikament som beskriver sammenhenge(n/r) mellom SSB&apos;s taxonomi: Indikatorer og framgangsmetoder: Approaches.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Et predikament som beskriver sammenhenge(n/r) mellom SSB&apos;s taxonomi: Indikatorer/framgangsmetoder:</SDG:description>
+        <rdfs:isDefinedBy rdf:resource="https://www.ssb.no/natur-og-miljo/artikler-og-publikasjoner/_attachment/445213?_ts=17780d5d790"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erIndikatorAv</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erMetodeFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erMetodeFor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harMetode"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beskriver en binær relasjoner mellom metoder definert i Metoder klassen og andre konsepter i ontologien</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erMetodeFor</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -178,8 +208,8 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harBidragTilPerspektiverITrondheim">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Perspektiver_i_Trondheim"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
     </owl:ObjectProperty>
     
 
@@ -199,6 +229,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beskriver en binær relasjon mellom bærekraftsmål og dere respektive delmål.</SDG:description>
+        <rdfs:isDefinedBy rdf:resource="https://www.fn.no/om-fn/fns-baerekraftsmaal"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">harBærekraftsmål</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -224,7 +257,7 @@
             </owl:Restriction>
         </rdfs:range>
         <SDG:description>En binær relasjon som beskriver instanser klasser med høy korrelasjon. Hvor høy korrelasjon er definert som sammenhenger hvor en forbedring innenfor en klasse/instanse vil fører til 70% eller mer forbedring innen andre klasser.</SDG:description>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; written by: Luis Miguel Fonseca, José Pedro Domingues and Alina Mihaela Dima. MDPI ; Published: 20 April 2020</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; skrevet av: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. MDPI ; Publisert: 20 April 2020</rdfs:isDefinedBy>
         <rdfs:label>harHøyKorrelasjonTil</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harKorrelasjonsIndex"/>
     </owl:ObjectProperty>
@@ -252,7 +285,7 @@
             </owl:Restriction>
         </rdfs:range>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En relasjon som beskriver høye negative sammenhenger mellom instanser/ klasser. Hvor høye negative sammenhenger er definert som sammenhenger hvor en forbedring innenfor en klasse/instanse vil fører til 70% eller mer negativ påvirkning innen andre klasser.</SDG:description>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; written by: Luis Miguel Fonseca, José Pedro Domingues and Alina Mihaela Dima. MDPI ; Published: 20 April 2020</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; skrevet av: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. MDPI ; Publisert: 20 April 2020</rdfs:isDefinedBy>
         <rdfs:label>harHøyTradeOffTil</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trade_off_index"/>
     </owl:ObjectProperty>
@@ -264,7 +297,11 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Et predikament som beskriver sammenhenge(n/r) mellom Indikatorer/framgangsmetoder og konsepter i SSB&apos;s taxonomi:</SDG:description>
+        <rdfs:isDefinedBy rdf:resource="https://www.ssb.no/natur-og-miljo/artikler-og-publikasjoner/_attachment/445213?_ts=17780d5d790"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">harIndikator</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -293,7 +330,7 @@
             </owl:Restriction>
         </rdfs:range>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En binær relasjon som beskriver instanser klasser med lav korrelasjon. Hvor lav korrelasjon er definert som sammenhenger hvor en forbedring innenfor en klasse/instanse vil føre til mindre enn 40% forbedring innen andre klasser.</SDG:description>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; written by: Luis Miguel Fonseca, José Pedro Domingues and Alina Mihaela Dima. MDPI ; Published: 20 April 2020</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; skrevet av: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. MDPI ; Publisert: 20 April 2020</rdfs:isDefinedBy>
         <rdfs:label>harLavKorrelasjonTil</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harKorrelasjonsIndex"/>
     </owl:ObjectProperty>
@@ -324,9 +361,20 @@
             </owl:Restriction>
         </rdfs:range>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En relasjon som beskriver lave negative sammenhenger mellom instanser/ klasser. Hvor lave negative sammenhenger er definert som sammenhenger hvor en forbedring innenfor en klasse/instanse vil fører til 40% eller mindre negativ påvirkning innen andre klasser.</SDG:description>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; written by: Luis Miguel Fonseca, José Pedro Domingues and Alina Mihaela Dima. MDPI ; Published: 20 April 2020</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; skrevet av: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. MDPI ; Publisert: 20 April 2020</rdfs:isDefinedBy>
         <rdfs:label>harLavTradeOffTil</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trade_off_index"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harMetode -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harMetode">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beskriver en binær relasjoner mellom metoder definert i Metoder klassen og andre konsepter i ontologien</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">harMetode</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -355,7 +403,7 @@
             </owl:Restriction>
         </rdfs:range>
         <SDG:description>En binær relasjon som beskriver instanser klasser med modera korrelasjon. Hvor modera korrelasjon er definert som sammenhenger hvor en forbedring innenfor en klasse/instanse vil fører til en forbedring mellom 40% til 70%  innen andre klasser.</SDG:description>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; written by: Luis Miguel Fonseca, José Pedro Domingues and Alina Mihaela Dima. MDPI ; Published: 20 April 2020</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; skrevet av: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. MDPI ; Publisert: 20 April 2020</rdfs:isDefinedBy>
         <rdfs:label>harModeratKorrelasjonTil</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harKorrelasjonsIndex"/>
     </owl:ObjectProperty>
@@ -386,7 +434,7 @@
             </owl:Restriction>
         </rdfs:range>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En relasjon som beskriver moderat negative sammenhenger mellom instanser/ klasser. Hvor moderat negative sammenhenger er definert som sammenhenger hvor en forbedring innenfor en klasse/instanse vil fører til en negativ påvrikning mellom 40 til 70% innen andre klasser.</SDG:description>
-        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; written by: Luis Miguel Fonseca, José Pedro Domingues and Alina Mihaela Dima. MDPI ; Published: 20 April 2020</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;Mapping the Sustainable Development Goals Relationships&quot; skrevet av: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. MDPI ; Publisert: 20 April 2020</rdfs:isDefinedBy>
         <rdfs:label>harModeratTradeOffTil</rdfs:label>
         <rdfs:seeAlso rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trade_off_index"/>
     </owl:ObjectProperty>
@@ -1776,16 +1824,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Byer -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Byer">
-        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">En by klasse, laget for å videre utviklinge produktet i fremtiden, hvor koblinger og likheter i framgangsmetoder mellom byer I Norge  kan utnyttes
-////
-English: (A city class, created for possible future development in discovering connections and similarities in approaches created by different cities in Norway.)</rdfs:comment>
     </owl:Class>
     
 
@@ -5005,6 +5043,26 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner">
+        <SDG:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">En by klasse, laget for å videre utviklinge produktet i fremtiden, hvor koblinger og likheter i framgangsmetoder mellom kommuner I Norge  kan utnyttes</SDG:description>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A muncipacity class, created for possible future development in discovering connections and similarities in approaches created by different muncipacities in Norway.)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kommuner</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Konstruksjon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Konstruksjon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En klasse som direkte omhandler generel konstuksjon av bygninger</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Konstruksjon</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kvalitet -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kvalitet">
@@ -5469,7 +5527,9 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En klasse som omhandler luftkvalitet. Hvor metoder, målinger og andre konsepter direkte relatert til luftkvalitet plasseres her</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Luftkvalitet</rdfs:label>
     </owl:Class>
     
 
@@ -5694,6 +5754,15 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder">
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En klasse definert for metoder/indikatorer for bærekraftig utvikling</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metoder</rdfs:label>
     </owl:Class>
     
 
@@ -6089,7 +6158,7 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Perspektiver_i_Trondheim -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Perspektiver_i_Trondheim">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim_kommune"/>
         <rdfs:label>Perspektiver i Trondheim</rdfs:label>
     </owl:Class>
     
@@ -8352,13 +8421,14 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim_kommune -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Byer"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim_kommune">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Kommuner"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">For start utvikling, viderutvikling av denne klassen sammen med mulige tilkoblinger til takonolmien til SSB, vil være hoved prioriteten.
 ////
 English: (For inital development, expansion of this class along with possible connections between the taxonomy created by SSB, will be the main priority.)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Trondheim kommune</rdfs:label>
     </owl:Class>
     
 
@@ -10999,6 +11069,19 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Bygninger_i_Trondheim -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Bygninger_i_Trondheim">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Konstruksjon"/>
+        <SDG:erGjortForBy rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim"/>
+        <SDG:erMetodeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Arealer_og_ressursforvaltning"/>
+        <SDG:erMetodeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nærmiljø_og_stedsutvikling"/>
+        <SDG:moreInformation rdf:resource="https://brickschema.org/"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bygninger i Trondheim</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Det_grønne_skiftet -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Det_grønne_skiftet">
@@ -11142,12 +11225,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
-        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L1"/>
-        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L2"/>
-        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L3"/>
-        <owl:sameAs rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L4"/>
-        <SDG:bleGjortForBy rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#P1"/>
         <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
         <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet"/>
         <SDG:description>Dette er en standarisert luftkvalitetsmåling</SDG:description>
@@ -11157,52 +11234,19 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     
 
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L1 -->
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#LT -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L1">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#LT">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:description>Dette er en MOCK luftkvalitets måling</SDG:description>
-        <SDG:location>Gløshaugen, Trondheim</SDG:location>
-        <rdfs:label>Luftkvalitets måling ved Gløshaugen</rdfs:label>
-    </owl:NamedIndividual>
-    
+        <SDG:erGjortForBy rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim"/>
+        <SDG:erMetodeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#P1"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Trondheim Kommunes luftkvalitetssensor prosjekt er et prosjekt der vi tester liten og billig sensorteknologi.
 
+Ettersom små barn og eldre vanligvis er mer følsomme for dårlig luftkvalitet, prioriterte vi å montere sensorene på steder som skoler, barnehager og sykehjem / eldreinstitusjoner for å kartlegge luftkvaliteten på disse stedene. Vi er imidlertid ikke garantert riktige data fra disse sensorene, ettersom vi vet at lavprissensorene for eksempel gir feil avlesning under veldig tåkete forhold. Sensorene logger GPS-posisjon, temperatur, fuktighet og luftkvalitetsdata. Selvfølgelig er det ikke installert kamera, mikrofon eller annen type overvåking.
 
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L2 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L2">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
-        <SDG:description>Dette er en MOCK luftkvalitets måling</SDG:description>
-        <SDG:location>Lade, Trondheim</SDG:location>
-        <rdfs:label>Luftkvalitet måling ved Lade</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L3 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L3">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
-        <SDG:bleGjortForBy rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#P1"/>
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:description>Dette er en MOCK luftkvalitets måling</SDG:description>
-        <SDG:location>Lade, Trondheim</SDG:location>
-        <rdfs:label>Luftkvalitet måling ved Lade</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L4 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L4">
-        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Luftkvalitet"/>
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet"/>
-        <SDG:coordinates>63.418133 , 10.401801</SDG:coordinates>
-        <SDG:description>Dette er en MOCK luftkvalitetsmåling</SDG:description>
-        <SDG:location>Gløshaugen, Trondheim</SDG:location>
-        <rdfs:label>Luftkvalitets måling ved Gløshaugen</rdfs:label>
+Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som du finner på linken under:</SDG:description>
+        <SDG:moreInformation rdf:resource="https://tipqa.trondheim.kommune.no/luftkvalitet-frontend/17dh0cf43jg889"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Luftkvalitetsmålinger i Trondheim</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11316,6 +11360,8 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#P1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Perspektiver_i_Trondheim"/>
         <SDG:harHøyKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nasjonal politikk påvirker helsetilstanden og fordelingen av helse i befolkningen på grunnleggende måter. Gjennom blant annet fordelingspolitikken, utdanningspolitikken, arbeidsmarkedspolitikken og velferdsordninger er nasjonal politikk med på å forme de bakenforliggende årsakene til helse, uhelse og fordelingen av helse. Det nasjonale folkehelsearbeidet må fremme tverrsektorielt arbeid og bidra til at folkehelse ivaretas på alle politikkområder.</SDG:description>
+        <SDG:moreInformation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Folkehelsearbeidet – veien til god helse for alle (Kapittel 6). Ansvarlig utgiver: Helsedirektoratet v/helsedirektør Bjørn-Inge Larsen. Publisert: Oktober 2010</SDG:moreInformation>
         <rdfs:label>God helse for alle</rdfs:label>
     </owl:NamedIndividual>
     
@@ -11447,6 +11493,16 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Grønn_mobilitet"/>
         <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
         <rdfs:label>Transport</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Trondheim_kommune"/>
+        <SDG:description>Byen Trondheim</SDG:description>
+        <rdfs:label>Trondheim</rdfs:label>
     </owl:NamedIndividual>
     
 
