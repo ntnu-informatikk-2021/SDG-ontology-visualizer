@@ -68,4 +68,10 @@ declare module '@innotrade/enapso-graphdb-client' {
     message: string;
     success: boolean;
   };
+
+  export type LoginResponse = {
+    success: boolean;
+    message: string;
+    statusCode: number;
+  };
 }

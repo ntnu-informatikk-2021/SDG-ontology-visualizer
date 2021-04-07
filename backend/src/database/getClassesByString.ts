@@ -1,5 +1,5 @@
 import DB from './index';
-import { Node } from '../types/types';
+import { Node } from '../types/ontologyTypes';
 import getClassesByString from './queries/getClassesByString';
 import { isNotNull, mapRecordToSubject } from '../common/database';
 
