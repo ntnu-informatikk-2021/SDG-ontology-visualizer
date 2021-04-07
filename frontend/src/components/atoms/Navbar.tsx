@@ -15,10 +15,11 @@ const Navbar = () => {
       </Box>
       <Spacer />
       <Button
-        size="lg"
+        size="md"
+        justify="center"
         leftIcon={<InfoIcon />}
         colorScheme="cyan"
-        variant="link"
+        variant="outline"
         onClick={() => {
           history.push('/about');
         }}
