@@ -12674,7 +12674,7 @@ Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål"/>
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2"/>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Innen 2030 utrydde sult og sikre alle mennesker, særlig fattige og personer i utsatte situasjoner, inkludert spedbarn, tilgang til nok, trygg og sunn mat hele året</SDG:description>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.1</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.1</rdfs:label>
     </owl:NamedIndividual>
     
 
