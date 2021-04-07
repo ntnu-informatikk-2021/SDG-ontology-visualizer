@@ -78,7 +78,7 @@ const DetailView: React.FC = () => {
               } korrelasjon til ${selectedConnection && selectedConnection.name}`}
             </Heading>
             <Text>
-              Definisjonen for dem spesefikke relasjonene skal kommer her. Videre vil ressursene
+              Definisjonen for dem spesifikke relasjonene skal komme her. Videre vil ressursene
               brukt for å opprette relasjonene også bli plassert her i form av: Link til Artikkel
               eller Ola Nordmann bestemte dette DATO.
             </Text>
