@@ -2229,6 +2229,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Delmål">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Delmål</rdfs:label>
     </owl:Class>
     
 
@@ -6316,7 +6317,7 @@ English: (Taxonomy created by SSB. During inital development a small expansion o
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Mål"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/full_content/0/5/4/3/833450-19-nor-NO/Alle%20SDG%20farger%20%20Uten%20FN-logo.png"/>
         <SDG:hasExactSynonym rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Bærekraftsmålene</SDG:hasExactSynonym>
-        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">SDG</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SDG</rdfs:label>
     </owl:Class>
     
 
