@@ -45,7 +45,9 @@ const DetailView: React.FC = () => {
 
   const onClickConnections = (node: Node) => {
     setExpanded(false);
-    dispatch(selectNode(node));
+    if (selectedNode && selectedNode.id !== node.id) {
+      dispatch(selectNode(node));
+    }
   };
 
   useEffect(() => {
