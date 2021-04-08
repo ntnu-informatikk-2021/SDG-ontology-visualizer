@@ -6,7 +6,7 @@ import { isSubgoal } from '../../common/node';
 import { GraphNode } from '../../types/ontologyTypes';
 
 const GraphContainer: React.FC = () => {
-  const [showSubgoals, setShowSubgoals] = useState<Boolean>(false);
+  const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);

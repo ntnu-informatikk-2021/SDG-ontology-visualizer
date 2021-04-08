@@ -97,9 +97,9 @@ export default class {
     this.drawGraph();
   };
 
-  setNodeFilter = (filter: GraphNodeFilter, applyImmediately = true) => {
+  setNodeFilter = (filter: GraphNodeFilter) => {
     this.nodeFilter = filter;
-    if (applyImmediately) this.applyFilter();
+    this.applyFilter();
   };
 
   initZoom = () => {
@@ -221,7 +221,7 @@ export default class {
   drawNodes = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
-      .data(this.nodes, (node: any) => node.id)
+      .data(this.nodes, (node) => (node as GraphNode).id)
       .join((enter) => {
         const g = enter.append('g');
 
