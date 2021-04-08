@@ -2,7 +2,7 @@ import { setError } from '../state/reducers/apiErrorReducer';
 import store from '../state/store';
 import { ApiError } from '../types/redux/errorTypes';
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = process.env.REACT_APP_BACKEND_URL;
 
 const responseHandler = async (res: Response): Promise<any> => {
   if (!res.ok) {
