@@ -1,4 +1,4 @@
-import { Center } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
@@ -59,9 +59,9 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [nodeFilter]);
 
   return (
-    <Center my="0">
-      <svg id="svgGraph" height={height - 200} width={width - width / 5} ref={svgRef} />
-    </Center>
+    <Box bg="white" borderRadius="lg" width="75%">
+      <svg id="svgGraph" height="auto" width="100%" ref={svgRef} />
+    </Box>
   );
 };
 
