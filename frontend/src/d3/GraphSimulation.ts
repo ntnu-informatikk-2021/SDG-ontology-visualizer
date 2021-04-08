@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import { select } from 'd3';
 import {
+  changeColorBasedOnType,
   createEdgeLabelText,
   getRotationAndPosition,
   makePredicateUnique,
@@ -8,15 +9,17 @@ import {
   mapOntologyToGraphEdge,
   mapOntologyToNonClickedGraphNode,
   mergeParallelEdges,
-  changeColorBasedOnType,
   removeDuplicates,
+  removingNodeWillMakeGraphEmpty,
 } from '../common/d3';
+import { setError } from '../state/reducers/apiErrorReducer';
+import reduxStore from '../state/store';
 import {
   CenterForce,
   D3Edge,
   ForceSimulation,
-  LinkForce,
   GraphNodeFilter,
+  LinkForce,
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
@@ -47,7 +50,7 @@ export default class {
   private readonly svg: MainSvgSelection;
   private readonly nodeSvg: SubSvgSelection;
   private readonly edgeSvg: SubSvgSelection;
-  private readonly onClickNode: (node: GraphNode) => void;
+  private onClickNode: (node: GraphNode) => void;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
@@ -80,6 +83,35 @@ export default class {
     this.forceSimulation = this.initForceSimulation();
   }
 
+  updateOnClickCallback = (callback: (node: GraphNode) => void) => {
+    this.onClickNode = callback;
+  };
+
+  removeNode = (node: GraphNode) => {
+    if (removingNodeWillMakeGraphEmpty(node, this.edges)) {
+      reduxStore.dispatch(setError(new Error('Oops, this would remove all nodes from the graph')));
+      return;
+    }
+    this.unfilteredNodes = this.unfilteredNodes.filter((n) => n.id !== node.id);
+    this.unfilteredEdges = this.unfilteredEdges.filter((edge) => {
+      const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+      const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+      return node.id !== source && node.id !== target;
+    });
+    this.removeDisconnectedNodes();
+    this.redrawGraphWithFilter();
+  };
+
+  removeDisconnectedNodes = () => {
+    this.unfilteredNodes = this.unfilteredNodes.filter((node) =>
+      this.unfilteredEdges.some((edge) => {
+        const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+        const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+        return node.id === source || node.id === target;
+      }),
+    );
+  };
+
   removeDisconnectedEdges = () => {
     this.edges = this.unfilteredEdges.filter((edge) => {
       const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
@@ -91,7 +123,7 @@ export default class {
     });
   };
 
-  applyFilter = () => {
+  redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
@@ -100,7 +132,7 @@ export default class {
 
   setNodeFilter = (filter: GraphNodeFilter) => {
     this.nodeFilter = filter;
-    this.applyFilter();
+    this.redrawGraphWithFilter();
   };
 
   initZoom = () => {
@@ -174,7 +206,7 @@ export default class {
       .filter(removeDuplicates)
       .filter(mergeParallelEdges);
 
-    this.applyFilter();
+    this.redrawGraphWithFilter();
   };
 
   drawGraph = () => {
@@ -231,7 +263,13 @@ export default class {
           .attr('fill', (node) =>
             node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
           )
-          .on('click', (_, node) => this.onClickNode(node));
+          .on('click', (event: PointerEvent, node) => {
+            if (event.ctrlKey) {
+              this.removeNode(node);
+            } else {
+              this.onClickNode(node);
+            }
+          });
 
         g.append('text')
           .text((node) => node.name)

@@ -125,3 +125,13 @@ export const createEdgeLabelText = (edge: Edge[], flipDirection: boolean): strin
       return addDirectionArrowToEdgeLabelText(`${edge.length} Predicates`, flipDirection);
   }
 };
+
+export const removingNodeWillMakeGraphEmpty = (
+  node: GraphNode,
+  edges: Array<D3Edge | GraphEdge>,
+): boolean =>
+  edges.every((edge) => {
+    const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+    const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+    return node.id === source || node.id === target;
+  });

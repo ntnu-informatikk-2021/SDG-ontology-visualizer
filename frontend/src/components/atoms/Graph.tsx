@@ -29,8 +29,16 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   };
 
   const onClickNode = (node: GraphNode): void => {
-    dispatch(selectNode(node));
+    if (selectedNode && selectedNode.id === node.id) {
+      loadData();
+    } else {
+      dispatch(selectNode(node));
+    }
   };
+
+  useEffect(() => {
+    if (simulation) simulation.updateOnClickCallback(onClickNode);
+  }, [onClickNode]);
 
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
