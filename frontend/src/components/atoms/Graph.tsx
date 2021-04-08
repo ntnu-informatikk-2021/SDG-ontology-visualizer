@@ -42,7 +42,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
       setSimulation(
         new GraphSimulation(
           svgRef.current,
-          0.3 * width,
+          0.4 * width,
           0.4 * height,
           selectedNode,
           onClickNode,
@@ -59,8 +59,8 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [nodeFilter]);
 
   return (
-    <Box bg="white" borderRadius="lg" width="75%">
-      <svg id="svgGraph" height="auto" width="100%" ref={svgRef} />
+    <Box bg="white" borderRadius="lg" width="70vw">
+      <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
     </Box>
   );
 };

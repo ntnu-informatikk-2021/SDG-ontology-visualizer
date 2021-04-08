@@ -19,7 +19,7 @@ const GraphContainer: React.FC = () => {
   };
 
   return (
-    <Stack bg="gray.400" h="60vh" spacing="10" p="10">
+    <Stack bg="gray.400" h="80vh" spacing="10" p="10">
       <SearchBar limit={5} />
       <Flex h="100%" justify="space-between">
         <Graph nodeFilter={nodeFilter} />
