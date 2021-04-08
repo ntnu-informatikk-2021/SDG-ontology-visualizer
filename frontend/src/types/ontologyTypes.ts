@@ -33,6 +33,7 @@ export interface GraphNode extends Node, SimulationNodeDatum {
   lockedX?: number;
   lockedY?: number;
   color?: string;
+  type: string;
 }
 
 export interface Edge extends UniqueObject {
