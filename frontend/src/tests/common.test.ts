@@ -61,6 +61,17 @@ const testNode = {
   type: 'testType',
 };
 
+const testNode2 = {
+  prefix: {
+    prefix: 'foo',
+    iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/foo#',
+  },
+  name: 'bar',
+  id: 'http://www.semanticweb.org/aga/ontologies/2017/9/foo#bar',
+  correlation: 1,
+  type: 'baz',
+};
+
 test('Map Prefix to Node', () => {
   expect(mapPrefixNameToNode('testPrefix', 'testName', 2, 'testType')).toStrictEqual(testNode);
   const undefinedTypeAndCorrelationNode = { ...testNode, type: 'undefined', correlation: -1 };
@@ -183,7 +194,8 @@ test('Map ontology to graph edge', () => {
 
 const testNodeArray = [testNode, testNode];
 
-const testOntology = { Object: testNode, Predicate: testEdge, Subject: testNode };
+const testOntology = { Object: testNode, Predicate: testEdge, Subject: testNode2 };
+const testOntology2 = { Object: testNode2, Predicate: testEdge, Subject: testNode };
 
 test('Remove duplicate nodes', () => {
   expect(testNodeArray.filter(removeDuplicates)).toStrictEqual([testNode]);
@@ -191,14 +203,17 @@ test('Remove duplicate nodes', () => {
 
 test('Make predicate unique', () => {
   expect(
-    makePredicateUnique({ Object: testNode, Predicate: testEdge, Subject: testNode }),
+    makePredicateUnique({ Object: testNode, Predicate: testEdge, Subject: testNode2 }),
   ).toStrictEqual({
     ...testOntology,
     Predicate: {
       ...testEdge,
-      id: testEdge.id + testNode.id + testNode.id,
+      id: testEdge.id + testNode2.id + testNode.id,
     },
   });
+  const first = makePredicateUnique(testOntology).Predicate.id;
+  const second = makePredicateUnique(testOntology2).Predicate.id;
+  expect(first).not.toEqual(second);
 });
 
 test('Create edge label text', () => {
