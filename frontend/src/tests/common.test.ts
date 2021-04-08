@@ -1,5 +1,12 @@
 import colorSwitcher from '../common/colorSwitcher';
 import {
+  createEdgeLabelText,
+  makePredicateUnique,
+  mapOntologyToGraphEdge,
+  mergeParallelEdges,
+  removeDuplicates,
+} from '../common/d3';
+import {
   isSubgoal,
   mapCorrelationToColor,
   mapCorrelationToName,
@@ -126,4 +133,45 @@ test('Is node subgoal', () => {
   expect(isSubgoal(testNode)).toBe(false);
   const testNodeSubGoal = { ...testNode, type: 'Delmål' };
   expect(isSubgoal(testNodeSubGoal)).toBe(true);
+});
+
+/**
+ * D3 tests
+ */
+
+test('Map ontology to graph edge', () => {
+  expect(
+    mapOntologyToGraphEdge({ Object: testNode, Predicate: testEdge, Subject: testNode }),
+  ).toStrictEqual({
+    ...testEdge,
+    source: 'http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName',
+    target: 'http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName',
+    sourceToTarget: [testEdge],
+    targetToSource: [],
+  });
+});
+
+const testNodeArray = [testNode, testNode];
+
+const testOntology = { Object: testNode, Predicate: testEdge, Subject: testNode };
+
+test('Remove duplicate nodes', () => {
+  expect(testNodeArray.filter(removeDuplicates)).toStrictEqual([testNode]);
+});
+
+test('Make predicate unique', () => {
+  expect(
+    makePredicateUnique({ Object: testNode, Predicate: testEdge, Subject: testNode }),
+  ).toStrictEqual({
+    ...testOntology,
+    Predicate: {
+      ...testEdge,
+      id: testEdge.id + testNode.id + testNode.id,
+    },
+  });
+});
+
+test('Create edge label text', () => {
+  expect(createEdgeLabelText([testEdge], true)).toBe(`<-- ${testEdge.name}`);
+  expect(createEdgeLabelText([testEdge], false)).toBe(`${testEdge.name} -->`);
 });
