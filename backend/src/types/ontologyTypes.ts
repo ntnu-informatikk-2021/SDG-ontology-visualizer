@@ -4,15 +4,16 @@ export interface OntologyEntity {
   prefix: Prefix;
   id: string;
   name: string;
-  type: string;
-  correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
 }
 
 export interface SubGoal extends Node {
   description: string;
 }
 
-export interface Node extends OntologyEntity {}
+export interface Node extends OntologyEntity {
+  type: string;
+  correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
+}
 
 export interface Edge extends OntologyEntity {}
 
