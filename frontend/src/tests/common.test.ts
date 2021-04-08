@@ -1,3 +1,4 @@
+import { executionAsyncId } from 'async_hooks';
 import colorSwitcher from '../common/colorSwitcher';
 import {
   createEdgeLabelText,
@@ -25,8 +26,24 @@ test('Color switcher default case', () => {
   expect(colorSwitcher('invalid')).toBe('cyan.800');
 });
 
-test('Color switcher B1', () => {
+test('Color switcher other cases', () => {
   expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B1')).toBe('#E5243B');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B2')).toBe('#DDA63A');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3')).toBe('#4C9F38');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B4')).toBe('#C5192D');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B5')).toBe('#FF3A21');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B6')).toBe('#26BDE2');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B7')).toBe('#FCC30B');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8')).toBe('#A21942');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9')).toBe('#FD6925');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10')).toBe('#DD1367');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B11')).toBe('#FD9D24');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12')).toBe('#BF8B2E');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13')).toBe('#3F7E44');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14')).toBe('#0A97D9');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B15')).toBe('#56C02B');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16')).toBe('#00689D');
+  expect(colorSwitcher('http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17')).toBe('#19486A');
 });
 
 /**
@@ -46,18 +63,24 @@ const testNode = {
 
 test('Map Prefix to Node', () => {
   expect(mapPrefixNameToNode('testPrefix', 'testName', 2, 'testType')).toStrictEqual(testNode);
+  const undefinedTypeAndCorrelationNode = { ...testNode, type: 'undefined', correlation: -1 };
+  expect(mapPrefixNameToNode('testPrefix', 'testName', undefined, undefined)).toStrictEqual(
+    undefinedTypeAndCorrelationNode,
+  );
 });
 
 test('Parse prefix from class ID', () => {
   expect(
     parsePrefixFromClassId('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName'),
   ).toStrictEqual(testNode.prefix);
+  expect(parsePrefixFromClassId('')).toBeNull();
 });
 
 test('Parse name from class ID', () => {
   expect(
     parseNameFromClassId('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName'),
   ).toBe('testName');
+  expect(parseNameFromClassId('#')).toBe('');
 });
 
 test('Map ID to node', () => {
@@ -89,6 +112,13 @@ test('Map sustainability goal to node', () => {
       icon: 'testIcon',
     }),
   ).toStrictEqual(testSustainabilityNode);
+  expect(
+    mapSustainabilityGoalToNode({
+      instancesOf: '',
+      label: 'testName',
+      icon: 'testIcon',
+    }),
+  ).toBeNull();
 });
 
 const testEdge = {
@@ -104,6 +134,7 @@ test('Map ID to edge', () => {
   expect(
     mapIdToEdge('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName'),
   ).toStrictEqual(testEdge);
+  expect(mapIdToEdge('')).toBeNull();
 });
 
 /**
