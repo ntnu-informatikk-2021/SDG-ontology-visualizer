@@ -42,12 +42,12 @@ export const mapIdToOntologyEntity = (id: string): OntologyEntity | null => {
 };
 
 export const mapIdToNode = (id: string, correlation?: number, type?: string): Node | null => {
-  const OntologyEntity = mapIdToOntologyEntity(id);
-  if (!OntologyEntity) return null;
+  const ontologyEntity = mapIdToOntologyEntity(id);
+  if (!ontologyEntity) return null;
   return {
-    prefix: OntologyEntity.prefix,
-    name: OntologyEntity.name,
-    id: OntologyEntity.id,
+    prefix: ontologyEntity.prefix,
+    name: ontologyEntity.name,
+    id: ontologyEntity.id,
     type: type || 'undefined',
     correlation: correlation || -1,
   };
