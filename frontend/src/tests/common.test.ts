@@ -3,7 +3,6 @@ import {
   createEdgeLabelText,
   makePredicateUnique,
   mapOntologyToGraphEdge,
-  mergeParallelEdges,
   removeDuplicates,
 } from '../common/d3';
 import {
