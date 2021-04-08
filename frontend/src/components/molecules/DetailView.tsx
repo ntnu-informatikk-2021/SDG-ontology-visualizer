@@ -60,10 +60,16 @@ const DetailView: React.FC = () => {
       </Heading>
       <Flex justify="space-between">
         <SlideInDrawer expanded={!expanded} width="40vw">
-          <Text fontSize="xl" mt="2">
-            {annotations.description}
-            {annotations.moreInformation}
-          </Text>
+          <>
+            <Text fontSize="xl" mt="2">
+              {annotations.description}
+            </Text>
+            <Text fontSize="base" mt="2">
+              {annotations.moreInformation
+                ? ['Mer informasjon finnes her:  ', annotations.moreInformation]
+                : ''}
+            </Text>
+          </>
         </SlideInDrawer>
         <ContextDivider visible={!expanded} />
         <AllConnections
