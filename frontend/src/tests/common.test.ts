@@ -16,6 +16,7 @@ import {
   parseNameFromClassId,
   parsePrefixFromClassId,
 } from '../common/node';
+import { isUrl } from '../common/regex';
 
 /**
  * Color switcher tests
@@ -207,4 +208,20 @@ test('Create edge label text', () => {
   expect(createEdgeLabelText([], true)).toBe('');
   expect(createEdgeLabelText([testEdge, testEdge], false)).toBe('2 Predicates -->');
   expect(createEdgeLabelText([testEdge, testEdge, testEdge], true)).toBe('<-- 3 Predicates');
+});
+
+/**
+ * Regex tests
+ */
+
+test('Is URL', () => {
+  expect(isUrl('http://google.com')).toBe(true);
+  expect(isUrl('http://google.com/')).toBe(true);
+  expect(isUrl('https://google.com')).toBe(true);
+  expect(isUrl('google.com')).toBe(true);
+  expect(isUrl('asdf')).toBe(false);
+  expect(isUrl('http://127.0.0.1')).toBe(true);
+  expect(isUrl('http://127.0.0.1:7200')).toBe(true);
+  expect(isUrl('http://')).toBe(false);
+  expect(isUrl('http://asdfjh')).toBe(false);
 });
