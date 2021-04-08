@@ -203,4 +203,8 @@ test('Make predicate unique', () => {
 test('Create edge label text', () => {
   expect(createEdgeLabelText([testEdge], true)).toBe(`<-- ${testEdge.name}`);
   expect(createEdgeLabelText([testEdge], false)).toBe(`${testEdge.name} -->`);
+  expect(createEdgeLabelText([], false)).toBe('');
+  expect(createEdgeLabelText([], true)).toBe('');
+  expect(createEdgeLabelText([testEdge, testEdge], false)).toBe('2 Predicates -->');
+  expect(createEdgeLabelText([testEdge, testEdge, testEdge], true)).toBe('<-- 3 Predicates');
 });
