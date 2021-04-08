@@ -16,7 +16,7 @@ const AllConnections: React.FC<AllConnectionsProps> = ({
   developmentAreas,
   onClick,
 }: AllConnectionsProps) => (
-  <Stack spacing={5}>
+  <Stack spacing={5} minW="40%">
     <Connections
       connections={contributions}
       titles={['Har positiv virkning til:', 'Har ingen etablerte positive påvirkninger enda']}

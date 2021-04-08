@@ -1,5 +1,5 @@
-import { ArrowRightIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box, Button, ButtonGroup, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -42,14 +42,15 @@ const DetailView: React.FC = () => {
     setExpanded(true);
   };
 
-  useEffect(() => {
-    loadData();
-  }, [selectedNode]);
-
   const onClickConnections = (node: Node) => {
     setExpanded(false);
     dispatch(selectNode(node));
   };
+
+  useEffect(() => {
+    loadData();
+    onClickConnections(selectedNode!);
+  }, [selectedNode]);
 
   return (
     <Box spacing={10} bg="cyan.500" w="100%" px={10} py={6} color="white">
@@ -72,22 +73,22 @@ const DetailView: React.FC = () => {
         <ContextDivider visible={expanded} />
         <SlideInDrawer expanded={expanded} width="40vw">
           <Stack spacing="5">
-            <Heading as="h3">
-              {`${annotations.label} har ${
-                selectedConnection && mapCorrelationToName(selectedConnection.correlation)
-              } korrelasjon til ${selectedConnection && selectedConnection.name}`}
+            <Heading size="lg">
+              {annotations.label}
+              <Heading size="lg" color="cyan.900">
+                {`har ${
+                  selectedConnection && mapCorrelationToName(selectedConnection.correlation)
+                } korrelasjon til`}
+              </Heading>
+              {selectedConnection && selectedConnection.name}
             </Heading>
             <Text>
-              Definisjonen for dem spesifikke relasjonene skal komme her. Videre vil ressursene
-              brukt for å opprette relasjonene også bli plassert her i form av: Link til Artikkel
-              eller Ola Nordmann bestemte dette DATO.
+              Definisjonen for relasjonen skal stå her. Videre vil ressursene brukt for å opprette
+              relasjonene også bli her i form av [Link til Artikkel] eller [Ola Nordmann bestemte
+              dette dd.mm.åååå.]
             </Text>
-            <Flex>
-              <Button
-                mr="3"
-                colorScheme="blue"
-                onClick={() => onClickConnections(selectedConnection!)}
-              >
+            <ButtonGroup>
+              <Button colorScheme="blue" onClick={() => onClickConnections(selectedConnection!)}>
                 {`Gå til 
               ${selectedConnection && selectedConnection.name}`}
               </Button>
@@ -95,11 +96,11 @@ const DetailView: React.FC = () => {
                 aria-label="Close connection view"
                 onClick={() => setExpanded(false)}
                 colorScheme="blue"
-                rightIcon={<ArrowRightIcon />}
+                rightIcon={<ArrowForwardIcon />}
               >
                 Lukk
               </Button>
-            </Flex>
+            </ButtonGroup>
           </Stack>
         </SlideInDrawer>
       </Flex>
