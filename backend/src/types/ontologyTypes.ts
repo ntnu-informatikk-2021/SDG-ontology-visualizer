@@ -4,6 +4,7 @@ export interface OntologyEntity {
   prefix: Prefix;
   id: string;
   name: string;
+  type: string;
   correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
 }
 
@@ -26,6 +27,7 @@ export type Record = {
   SubjectLabel: string | null;
   Object: string | null;
   ObjectLabel: string | null;
+  TypeLabel: string | null;
   Predicate: string;
   High: string | null;
   Moderate: string | null;

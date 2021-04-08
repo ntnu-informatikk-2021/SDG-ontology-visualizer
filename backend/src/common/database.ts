@@ -30,7 +30,11 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
-export const mapIdToOntologyEntity = (id: string, correlation?: number): OntologyEntity | null => {
+export const mapIdToOntologyEntity = (
+  id: string,
+  correlation?: number,
+  type?: string,
+): OntologyEntity | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -38,6 +42,7 @@ export const mapIdToOntologyEntity = (id: string, correlation?: number): Ontolog
     prefix,
     name,
     id,
+    type: type || 'undefined',
     correlation: correlation || -1,
   };
 };
@@ -45,10 +50,13 @@ export const mapIdToOntologyEntity = (id: string, correlation?: number): Ontolog
 export const mapRecordToOntology = (record: Record): Ontology => {
   let subject = record.Subject ? mapIdToOntologyEntity(record.Subject) : null;
   if (subject && record.SubjectLabel) {
+    if (record.TypeLabel)
+      subject = { ...subject, name: record.SubjectLabel, type: record.TypeLabel };
     subject = { ...subject, name: record.SubjectLabel };
   }
   let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
   if (object && record.ObjectLabel) {
+    if (record.TypeLabel) object = { ...object, name: record.ObjectLabel, type: record.TypeLabel };
     object = { ...object, name: record.ObjectLabel };
   }
   return {

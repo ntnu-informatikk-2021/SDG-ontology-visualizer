@@ -1,6 +1,11 @@
 import { Edge, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
 
-export const mapPrefixNameToNode = (prefix: string, name: string, correlation?: number): Node => ({
+export const mapPrefixNameToNode = (
+  prefix: string,
+  name: string,
+  correlation?: number,
+  type?: string,
+): Node => ({
   prefix: {
     prefix,
     iri: `http://www.semanticweb.org/aga/ontologies/2017/9/${prefix}#`,
@@ -8,6 +13,7 @@ export const mapPrefixNameToNode = (prefix: string, name: string, correlation?: 
   name,
   id: `http://www.semanticweb.org/aga/ontologies/2017/9/${prefix}#${name}`,
   correlation: correlation || -1,
+  type: type || 'undefined',
 });
 
 export const parseNameFromClassId = (id: string): string => {
@@ -32,7 +38,7 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
-export const mapIdToNode = (id: string, correlation?: number): Node | null => {
+export const mapIdToNode = (id: string, correlation?: number, type?: string): Node | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -41,6 +47,7 @@ export const mapIdToNode = (id: string, correlation?: number): Node | null => {
     name,
     id,
     correlation: correlation || -1,
+    type: type || 'undefined',
   };
 };
 
