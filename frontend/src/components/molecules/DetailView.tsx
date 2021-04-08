@@ -20,6 +20,7 @@ const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
     description: '',
+    moreInformation: '',
   });
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
@@ -60,6 +61,7 @@ const DetailView: React.FC = () => {
         <SlideInDrawer expanded={!expanded} width="40vw">
           <Text fontSize="xl" mt="2">
             {annotations.description}
+            {annotations.moreInformation}
           </Text>
         </SlideInDrawer>
         <ContextDivider visible={!expanded} />

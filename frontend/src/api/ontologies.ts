@@ -21,7 +21,7 @@ export const getAnnotations = async (nodeId: string): Promise<Annotation> => {
     return await data;
   } catch (e) {
     console.log(e);
-    return { label: '', description: '' };
+    return { label: '', description: '', moreInformation: '' };
   }
 };
 

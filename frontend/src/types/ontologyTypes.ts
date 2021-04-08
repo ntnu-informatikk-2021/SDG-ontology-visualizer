@@ -3,6 +3,7 @@ import { SimulationNodeDatum } from 'd3';
 export type Annotation = {
   label: string;
   description: string;
+  moreInformation: string | null;
 };
 
 export type SustainabilityGoal = {

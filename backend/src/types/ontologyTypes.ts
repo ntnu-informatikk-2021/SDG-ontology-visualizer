@@ -35,4 +35,5 @@ export type Record = {
 export type Annotation = {
   label: string;
   description: string;
+  moreInformation: string | null;
 };
