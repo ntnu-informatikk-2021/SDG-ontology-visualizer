@@ -9,6 +9,7 @@ import {
   getTradeOff,
 } from '../../api/ontologies';
 import { mapCorrelationToName } from '../../common/node';
+import { isUrl } from '../../common/regex';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -70,9 +71,13 @@ const DetailView: React.FC = () => {
               <Text fontSize="base" mt="2">
                 Mer informasjon finnes her:
                 {'  '}
-                <Link href={annotations.moreInformation} isExternal fontWeight="bold">
-                  {annotations.moreInformation}
-                </Link>
+                {isUrl(annotations.moreInformation) ? (
+                  <Link href={annotations.moreInformation} isExternal fontWeight="bold">
+                    {annotations.moreInformation}
+                  </Link>
+                ) : (
+                  annotations.moreInformation
+                )}
               </Text>
             )}
           </>
