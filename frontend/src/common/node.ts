@@ -95,9 +95,4 @@ export const mapCorrelationToColor = (correlation: number) => {
   }
 };
 
-// this is temporary until we get node type from query
-export const isSubgoal = (node: GraphNode): boolean => {
-  const { type } = node;
-  if (type === 'Delmål') return true;
-  return false;
-};
+export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
