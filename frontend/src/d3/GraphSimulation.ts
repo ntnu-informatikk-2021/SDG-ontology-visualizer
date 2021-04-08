@@ -91,8 +91,6 @@ export default class {
   };
 
   applyFilter = () => {
-    // const toggle = this.nodes.length === this.unfilteredNodes.length;
-    // this.nodes = showSubgoals ? this.unfilteredNodes : this.unfilteredNodes.filter(isNotSubgoal);
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
