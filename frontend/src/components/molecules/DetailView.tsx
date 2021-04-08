@@ -1,5 +1,5 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import { Box, Button, ButtonGroup, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Flex, Heading, Link, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -9,6 +9,7 @@ import {
   getTradeOff,
 } from '../../api/ontologies';
 import { mapCorrelationToName } from '../../common/node';
+import { isUrl } from '../../common/regex';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -66,11 +67,19 @@ const DetailView: React.FC = () => {
             <Text fontSize="xl" mt="2">
               {annotations.description}
             </Text>
-            <Text fontSize="base" mt="2">
-              {annotations.moreInformation
-                ? ['Mer informasjon finnes her:  ', annotations.moreInformation]
-                : ''}
-            </Text>
+            {annotations.moreInformation && (
+              <Text fontSize="base" mt="2">
+                Mer informasjon finnes her:
+                {'  '}
+                {isUrl(annotations.moreInformation) ? (
+                  <Link href={annotations.moreInformation} isExternal fontWeight="bold">
+                    {annotations.moreInformation}
+                  </Link>
+                ) : (
+                  annotations.moreInformation
+                )}
+              </Text>
+            )}
           </>
         </SlideInDrawer>
         <ContextDivider visible={!expanded} />
