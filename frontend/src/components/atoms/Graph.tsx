@@ -7,9 +7,14 @@ import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
+import { GraphNodeFilter } from '../../types/d3/simulation';
 import { GraphNode } from '../../types/ontologyTypes';
 
-const Graph: React.FC = () => {
+type GraphProps = {
+  nodeFilter: GraphNodeFilter;
+};
+
+const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   const { height, width } = useWindowDimensions();
   const svgRef = useRef<SVGSVGElement>(null);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
@@ -35,16 +40,27 @@ const Graph: React.FC = () => {
     }
     if (!simulation) {
       setSimulation(
-        new GraphSimulation(svgRef.current, width, height - 200, selectedNode, onClickNode),
+        new GraphSimulation(
+          svgRef.current,
+          width,
+          height - 200,
+          selectedNode,
+          onClickNode,
+          nodeFilter,
+        ),
       );
     } else {
       loadData();
     }
   }, [selectedNode, svgRef, simulation]);
 
+  useEffect(() => {
+    if (simulation) simulation.setNodeFilter(nodeFilter);
+  }, [nodeFilter]);
+
   return (
-    <Center mx="auto" my="0">
-      <svg id="svgGraph" height={height - 200} width={width} ref={svgRef} />
+    <Center my="0">
+      <svg id="svgGraph" height={height - 200} width={width - width / 5} ref={svgRef} />
     </Center>
   );
 };

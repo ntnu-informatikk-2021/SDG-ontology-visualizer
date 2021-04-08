@@ -1,4 +1,4 @@
-import { Edge, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
+import { Edge, GraphNode, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
 
 export const mapPrefixNameToNode = (
   prefix: string,
@@ -93,4 +93,19 @@ export const mapCorrelationToColor = (correlation: number) => {
     default:
       return '.300';
   }
+};
+
+// this is temporary until we get node type from query
+export const isSubgoal = (node: GraphNode): boolean => {
+  const { name } = node;
+  if (name.length === 3) {
+    if (name.charAt(1) !== '.') return false;
+    if (Number.isNaN(parseInt(name.charAt(0), 10))) return false;
+  } else if (name.length === 4) {
+    if (name.charAt(2) !== '.') return false;
+    if (Number.isNaN(parseInt(name.substring(0, 1), 10))) return false;
+  } else {
+    return false;
+  }
+  return true;
 };

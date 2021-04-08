@@ -22,3 +22,5 @@ export type LabelTransform = {
   degree: number;
   flip: boolean;
 };
+
+export type GraphNodeFilter = (node: GraphNode) => boolean;

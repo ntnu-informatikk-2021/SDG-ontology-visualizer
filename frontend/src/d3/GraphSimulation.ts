@@ -11,9 +11,15 @@ import {
   changeColorBasedOnType,
   removeDuplicates,
 } from '../common/d3';
+import {
+  CenterForce,
+  D3Edge,
+  ForceSimulation,
+  LinkForce,
+  GraphNodeFilter,
+} from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
-import { D3Edge, CenterForce, ForceSimulation, LinkForce } from '../types/d3/simulation';
-import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
+import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
 // const nodeColor = '#4299e1';
@@ -45,27 +51,57 @@ export default class {
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
+  private unfilteredNodes: Array<GraphNode>;
   private edges: Array<D3Edge | GraphEdge>;
+  private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
+  private nodeFilter: GraphNodeFilter;
 
   constructor(
     svg: SVGSVGElement,
     width: number,
     height: number,
-    initialNode: Node,
+    initialNode: GraphNode,
     onClickNode: (node: GraphNode) => void,
+    nodeFilter: GraphNodeFilter,
   ) {
     this.svg = d3.select(svg);
     this.edgeSvg = this.svg.append('g');
     this.nodeSvg = this.svg.append('g');
     this.width = width;
     this.height = height;
-    this.nodes = [initialNode as GraphNode];
+    this.nodes = [initialNode];
+    this.unfilteredNodes = [initialNode];
     this.edges = [];
+    this.unfilteredEdges = [];
     this.onClickNode = onClickNode;
+    this.nodeFilter = nodeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
   }
+
+  removeDisconnectedEdges = () => {
+    this.edges = this.unfilteredEdges.filter((edge) => {
+      const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+      const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+      return (
+        this.nodes.some((node) => node.id === source) &&
+        this.nodes.some((node) => node.id === target)
+      );
+    });
+  };
+
+  applyFilter = () => {
+    this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
+    this.removeDisconnectedEdges();
+    this.resetForceSimulation();
+    this.drawGraph();
+  };
+
+  setNodeFilter = (filter: GraphNodeFilter) => {
+    this.nodeFilter = filter;
+    this.applyFilter();
+  };
 
   initZoom = () => {
     this.svg.call(
@@ -128,19 +164,17 @@ export default class {
   addData = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
     if (ontologies.length === 0 || !clickedNode) return;
 
-    this.nodes = this.nodes
+    this.unfilteredNodes = this.unfilteredNodes
       .concat(ontologies.map(mapOntologyToNonClickedGraphNode(clickedNode)))
       .filter(removeDuplicates)
       .map(mapNodeToGraphNodeAtDefaultPosition(clickedNode.x, clickedNode.y));
 
-    this.edges = this.edges
+    this.unfilteredEdges = this.unfilteredEdges
       .concat(ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge))
       .filter(removeDuplicates)
       .filter(mergeParallelEdges);
 
-    this.resetForceSimulation();
-
-    this.drawGraph();
+    this.applyFilter();
   };
 
   drawGraph = () => {
@@ -188,7 +222,7 @@ export default class {
   drawNodes = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
-      .data(this.nodes)
+      .data(this.nodes, (node) => (node as GraphNode).id)
       .join((enter) => {
         const g = enter.append('g');
 
