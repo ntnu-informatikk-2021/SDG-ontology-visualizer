@@ -14,7 +14,6 @@ const isRelevantOntology = (ontology: Ontology): boolean => {
   if (ontology.Predicate.id.includes('#type')) return false;
   const node = ontology.Subject || ontology.Object;
   if (!node || node.id.includes('node')) return false;
-  if (ontology.Predicate.id.includes('hasWineDescriptor')) return false;
   return true;
 };
 
