@@ -56,7 +56,13 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
     id: ontology.Predicate.id + ontology.Subject.id + ontology.Object.id,
   },
 });
-
+export const changeColorBasedOnType = (type: string) => {
+  let nodeColor = '#4299e1';
+  if (type.includes('SDG')) nodeColor = '#EA5F41';
+  if (type.includes('Trippel bunnlinje')) nodeColor = '#85E664';
+  if (type.includes('Delmål')) nodeColor = '#E0E73F';
+  return nodeColor;
+};
 export const mapNodeToGraphNodeAtDefaultPosition = (x?: number, y?: number) => (
   node: GraphNode,
 ) => {

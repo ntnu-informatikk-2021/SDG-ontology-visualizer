@@ -8,6 +8,7 @@ import {
   mapOntologyToGraphEdge,
   mapOntologyToNonClickedGraphNode,
   mergeParallelEdges,
+  changeColorBasedOnType,
   removeDuplicates,
 } from '../common/d3';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
@@ -15,7 +16,7 @@ import { D3Edge, CenterForce, ForceSimulation, LinkForce } from '../types/d3/sim
 import { GraphEdge, GraphNode, Node, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
-const nodeColor = '#4299e1';
+// const nodeColor = '#4299e1';
 const nodeLockedColor = '#27c';
 const nodeRadius = 20;
 const nodeHighlightColor = '#69f';
@@ -193,7 +194,9 @@ export default class {
 
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) => (node.isLocked ? nodeLockedColor : nodeColor))
+          .attr('fill', (node) =>
+            node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
+          )
           .on('click', (_, node) => this.onClickNode(node));
 
         g.append('text')
@@ -326,7 +329,7 @@ export default class {
       .on('mouseout', function (event, node) {
         d3.select(this)
           .selectChild()
-          .attr('fill', node.isLocked ? nodeLockedColor : nodeColor)
+          .attr('fill', node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type))
           .transition('500')
           .attr('r', nodeRadius);
         edgeSvg

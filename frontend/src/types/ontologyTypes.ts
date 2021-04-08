@@ -23,6 +23,7 @@ export interface UniqueObject {
 
 export interface Node extends UniqueObject {
   name: string;
+  type: string;
   prefix: Prefix;
   correlation: number;
 }

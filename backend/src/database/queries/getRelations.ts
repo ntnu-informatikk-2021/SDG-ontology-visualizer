@@ -19,11 +19,15 @@ export default (classId: string): string => {
     {
       ${fullClassName} ?Predicate ?Object .
       OPTIONAL {?Object rdfs:label ?ObjectLabel}
+      OPTIONAL { ?Object sesame:directType ?Type.
+                     ?Type rdfs:label ?TypeLabel}
     }
     UNION
     {
       ?Subject ?Predicate ${fullClassName} .
       OPTIONAL {?Subject rdfs:label ?SubjectLabel}
+      OPTIONAL { ?Subject sesame:directType ?Type.
+                      ?Type rdfs:label ?TypeLabel}
     }
   }`;
 };
