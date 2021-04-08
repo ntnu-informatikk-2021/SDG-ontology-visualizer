@@ -42,8 +42,8 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
       setSimulation(
         new GraphSimulation(
           svgRef.current,
-          width,
-          height - 200,
+          0.3 * width,
+          0.4 * height,
           selectedNode,
           onClickNode,
           nodeFilter,
