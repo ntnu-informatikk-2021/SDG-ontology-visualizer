@@ -1,4 +1,3 @@
-import { executionAsyncId } from 'async_hooks';
 import colorSwitcher from '../common/colorSwitcher';
 import {
   createEdgeLabelText,
