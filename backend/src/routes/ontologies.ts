@@ -8,7 +8,7 @@ import getRelations from '../database/getRelations';
 import getSubclasses from '../database/getSubclasses';
 import getSubGoals from '../database/getSubGoals';
 import getSustainabilityGoals from '../database/getSustainabilityGoals';
-import getTradeOff from '../database/getTradeOffTil';
+import getTradeOff from '../database/getTradeOffTo';
 import {
   AnnotationResponse,
   ClassIdRequest,
