@@ -529,14 +529,13 @@ export default class {
             node.fx = event.x;
             node.fy = event.y;
             node.isLocked = true;
+            simulation.alpha(0.3);
           })
           // eslint-disable-next-line func-names
           .on('start', (event) => {
-            if (!event.active) {
-              simulation.alpha(simulation.alpha() + 0.3);
-              simulation.restart();
-            }
             d3.select(event.sourceEvent.target).attr('fill', nodeHighlightColor);
+            simulation.alpha(0.3);
+            simulation.restart();
           })
           .on('end', (event, d) => {
             if (!event.sourceEvent.target) return;
