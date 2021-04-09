@@ -31,6 +31,7 @@ const nodeRadius = 20;
 const nodeHighlightColor = '#69f';
 const nodeHighlightRadiusMultiplier = 1.5;
 const nodeLabelColor = '#000';
+const nodeStrokeWidth = 0;
 
 const edgeClassName = '.edge';
 const maxEdgeFontSize = 10;
@@ -263,32 +264,60 @@ export default class {
       .append('g')
       .attr('class', 'menu')
       .attr('transform', `translate(0,${-nodeRadius * 2})`);
-    menuG
+
+    const expandBtn = menuG.append('g').attr('transform', `translate(${nodeRadius}, 0)`);
+    expandBtn
       .append('circle')
       .attr('r', nodeRadius / 2)
-      .attr('fill', '#009')
-      .attr('cx', nodeRadius)
+      .attr('fill', '#eee')
+      .attr('stroke', edgeColor)
       .on('click', () => {
         this.onClickNode(node);
       });
-    menuG
+    expandBtn
+      .append('image')
+      .attr('width', 20)
+      .attr('height', 20)
+      .attr('transform', `translate(${-20 / 2},${-20 / 2})`)
+      .attr('xlink:href', 'icons/addNodesIcon.svg')
+      .attr('pointer-events', 'none');
+
+    const removeNodeBtn = menuG.append('g');
+    removeNodeBtn
       .append('circle')
       .attr('r', nodeRadius / 2)
-      .attr('fill', '#900')
+      .attr('fill', '#eee')
+      .attr('stroke', edgeColor)
       .on('click', () => {
         this.removeNode(node);
       });
-    menuG
+    removeNodeBtn
+      .append('image')
+      .attr('width', 20)
+      .attr('height', 20)
+      .attr('transform', `translate(${-20 / 2},${-20 / 2})`)
+      .attr('xlink:href', 'icons/removeNodeIcon.svg')
+      .attr('pointer-events', 'none');
+
+    const unlockBtn = menuG.append('g').attr('transform', `translate(${-nodeRadius}, 0)`);
+    unlockBtn
       .append('circle')
       .attr('r', nodeRadius / 2)
-      .attr('fill', '#090')
-      .attr('cx', -nodeRadius)
+      .attr('fill', '#eee')
+      .attr('stroke', edgeColor)
       .on('click', (_, d) => {
         const n = d;
         n.fx = undefined;
         n.fy = undefined;
         n.isLocked = false;
       });
+    unlockBtn
+      .append('image')
+      .attr('width', 20)
+      .attr('height', 20)
+      .attr('transform', `translate(${-20 / 2},${-20 / 2})`)
+      .attr('xlink:href', 'icons/unlockNode.svg')
+      .attr('pointer-events', 'none');
     this.nodeMenu = menuG;
   };
 
@@ -311,6 +340,7 @@ export default class {
           .attr('fill', (node) =>
             node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
           )
+          .attr('stroke', '#aaa')
           .on('click', (event: PointerEvent, node) => {
             if (!event.target) return;
             const menu = (event.target as SVGElement).parentNode as SVGGElement;
@@ -415,11 +445,9 @@ export default class {
   getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
 
   dynamicScaleManager = () => {
-    this.nodeSvg
-      .selectAll(nodeClassName)
-      .data(this.nodes)
-      .selectChild(this.selectLabel1)
-      .attr('font-size', fontSize / this.scale);
+    const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
+    nodes.selectChild(this.selectLabel1).attr('font-size', fontSize / this.scale);
+    nodes.selectChild(this.selectNodeOrEdge).attr('stroke-width', nodeStrokeWidth / this.scale);
 
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
 
@@ -496,6 +524,7 @@ export default class {
           .drag()
           // eslint-disable-next-line func-names
           .on('drag', (event, value) => {
+            this.removeNodeMenu();
             const node = value as GraphNode;
             node.fx = event.x;
             node.fy = event.y;
@@ -503,7 +532,6 @@ export default class {
           })
           // eslint-disable-next-line func-names
           .on('start', (event) => {
-            this.removeNodeMenu();
             if (!event.active) {
               simulation.alpha(simulation.alpha() + 0.3);
               simulation.restart();
