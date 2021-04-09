@@ -20,7 +20,7 @@ const isRelevantOntology = (ontology: Ontology): boolean => {
 export default async (classId: string): Promise<Array<Ontology>> => {
   const node = mapIdToNode(classId);
   if (!node) {
-    throw new ApiError(400, 'Could not parse ontology entity from the given class ID');
+    throw new ApiError(400, 'Could not parse node from the given class ID');
   }
   const query = getRelations(classId);
   const response = await DB.query(query, { transform: 'toJSON' });
