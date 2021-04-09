@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+Array [
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har positiv virkning til:
+  </b>,
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-19h3dke"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+    </ul>
+  </div>,
+]
+`;
