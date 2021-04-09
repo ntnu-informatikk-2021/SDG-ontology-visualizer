@@ -6,7 +6,7 @@ type GraphSidebarProps = {
 };
 
 const GraphSidebar: React.FC<GraphSidebarProps> = ({ onSubgoalFilter }: GraphSidebarProps) => (
-  <Stack border="solid" borderColor="cyan.900" borderRadius="lg" p="5" w="20vw">
+  <Stack bg="white" borderRadius="lg" p="5" w="20vw">
     <Heading as="h3">Filter</Heading>
     <Checkbox defaultIsChecked={false} onChange={onSubgoalFilter}>
       Vis delmål
