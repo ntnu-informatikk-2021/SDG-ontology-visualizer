@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Stack } from '@chakra-ui/react';
 import Graph from '../atoms/Graph';
 import GraphSidebar from '../atoms/GraphSidebar';
 import { isSubgoal } from '../../common/node';
 import { GraphNode } from '../../types/ontologyTypes';
+import SearchBar from '../atoms/SearchBar';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
@@ -18,10 +19,13 @@ const GraphContainer: React.FC = () => {
   };
 
   return (
-    <Flex>
-      <Graph nodeFilter={nodeFilter} />
-      <GraphSidebar onSubgoalFilter={filterSubgoals} />
-    </Flex>
+    <Stack bg="gray.400" h="80vh" spacing="10" p="10">
+      <SearchBar limit={5} />
+      <Flex h="100%" justify="space-between">
+        <Graph nodeFilter={nodeFilter} />
+        <GraphSidebar onSubgoalFilter={filterSubgoals} />
+      </Flex>
+    </Stack>
   );
 };
 
