@@ -23,11 +23,18 @@ const DetailView: React.FC = () => {
     description: '',
     moreInformation: '',
   });
+  const [objectAnnotations, setObjectAnnotations] = useState<Annotation>({
+    label: '',
+    description: '',
+    moreInformation: '',
+  });
+
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const [expanded, setExpanded] = useState<boolean>(false);
   const [selectedConnection, setSelectedConnection] = useState<Node>();
+  const [selectedPredicate, setSelectedPredicate] = useState<Array<string>>(['Loading', 'Loading']);
   const dispatch = useDispatch();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
@@ -39,8 +46,15 @@ const DetailView: React.FC = () => {
     setDevelopmentAreas(await getDevelopmentArea(selectedNode.id));
   };
 
-  const expandConnection = (connection: Node) => {
+  const loadObjectPropertyDefinition = async () => {
+    if (!selectedPredicate) return;
+    setObjectAnnotations(await getAnnotations(selectedPredicate[1]));
+  };
+
+  const expandConnection = async (connection: Node, predicate: Array<string>) => {
     setSelectedConnection(connection);
+    setSelectedPredicate(predicate);
+    await loadObjectPropertyDefinition();
     setExpanded(true);
   };
 
@@ -55,6 +69,10 @@ const DetailView: React.FC = () => {
     loadData();
     onClickConnections(selectedNode!);
   }, [selectedNode]);
+
+  useEffect(() => {
+    loadObjectPropertyDefinition();
+  }, [selectedPredicate]);
 
   return (
     <Box spacing={10} bg="cyan.500" w="100%" px={10} py={6} color="white">
@@ -97,14 +115,15 @@ const DetailView: React.FC = () => {
               <Heading size="lg" color="cyan.900">
                 {`har ${
                   selectedConnection && mapCorrelationToName(selectedConnection.correlation)
-                } korrelasjon til`}
+                } ${selectedPredicate[0]} til`}
               </Heading>
               {selectedConnection && selectedConnection.name}
             </Heading>
-            <Text>
-              Definisjonen for relasjonen skal stå her. Videre vil ressursene brukt for å opprette
-              relasjonene også bli her i form av [Link til Artikkel] eller [Ola Nordmann bestemte
-              dette dd.mm.åååå.]
+            <Text fontSize="base" mt="2">
+              {objectAnnotations && objectAnnotations.label}
+            </Text>
+            <Text fontSize="sm" mt="2">
+              {objectAnnotations && objectAnnotations.description}
             </Text>
             <ButtonGroup>
               <Button colorScheme="blue" onClick={() => onClickConnections(selectedConnection!)}>
