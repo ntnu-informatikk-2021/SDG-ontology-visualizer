@@ -275,7 +275,29 @@ export default class {
           .text((node) => node.name)
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
-          .attr('fill', nodeLabelColor);
+          .attr('fill', nodeLabelColor)
+          .attr('alignment-baseline', 'middle')
+          .each(function () {
+            const text = select(this).text();
+            const words = text.split(' ');
+
+            if (text.length > 20 && words.length > 2) {
+              const firstLine = words.reduce((acc, curr) =>
+                acc.length + curr.length > 20 ? acc : `${acc} ${curr}`,
+              );
+              const secondLine = text.replace(firstLine, '');
+              if (!secondLine) return;
+              select(this)
+                .text(firstLine)
+                .attr('alignment-baseline', 'after-edge')
+                .append('tspan')
+                .text(secondLine)
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('text-anchor', 'middle')
+                .attr('alignment-baseline', 'before-edge');
+            }
+          });
 
         return g;
       })
