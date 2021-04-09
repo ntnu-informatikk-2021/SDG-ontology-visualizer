@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-import { select } from 'd3';
 import {
   changeColorBasedOnType,
   createEdgeLabelText,
@@ -23,6 +22,7 @@ import {
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
+import nextFrame from '../common/other';
 
 const nodeClassName = '.node';
 // const nodeColor = '#4299e1';
@@ -59,6 +59,7 @@ export default class {
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
+  private nodeMenu?: d3.Selection<SVGGElement, GraphNode, null, undefined>;
 
   constructor(
     svg: SVGSVGElement,
@@ -68,7 +69,7 @@ export default class {
     onClickNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
   ) {
-    this.svg = d3.select(svg);
+    this.svg = d3.select(svg).on('click', this.removeNodeMenu);
     this.edgeSvg = this.svg.append('g');
     this.nodeSvg = this.svg.append('g');
     this.width = width;
@@ -140,6 +141,7 @@ export default class {
       d3
         .zoom()
         .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, any>) => {
+          this.removeNodeMenu();
           const newScale = event.transform.k;
           if (this.scale !== newScale) {
             this.scale = event.transform.k;
@@ -251,6 +253,52 @@ export default class {
       .attr('class', edgeClassName.substring(1)); // remove . before class name
   };
 
+  showMenuAtNode = async (
+    node: GraphNode,
+    g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
+  ) => {
+    await nextFrame();
+    this.removeNodeMenu();
+    const menuG = g
+      .append('g')
+      .attr('class', 'menu')
+      .attr('transform', `translate(0,${-nodeRadius * 2})`);
+    menuG
+      .append('circle')
+      .attr('r', nodeRadius / 2)
+      .attr('fill', '#009')
+      .attr('cx', nodeRadius)
+      .on('click', () => {
+        this.onClickNode(node);
+      });
+    menuG
+      .append('circle')
+      .attr('r', nodeRadius / 2)
+      .attr('fill', '#900')
+      .on('click', () => {
+        this.removeNode(node);
+      });
+    menuG
+      .append('circle')
+      .attr('r', nodeRadius / 2)
+      .attr('fill', '#090')
+      .attr('cx', -nodeRadius)
+      .on('click', (_, d) => {
+        const n = d;
+        n.fx = undefined;
+        n.fy = undefined;
+        n.isLocked = false;
+      });
+    this.nodeMenu = menuG;
+  };
+
+  removeNodeMenu = () => {
+    if (this.nodeMenu) {
+      this.nodeMenu.remove();
+      this.nodeMenu = undefined;
+    }
+  };
+
   drawNodes = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -264,11 +312,9 @@ export default class {
             node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
           )
           .on('click', (event: PointerEvent, node) => {
-            if (event.ctrlKey) {
-              this.removeNode(node);
-            } else {
-              this.onClickNode(node);
-            }
+            if (!event.target) return;
+            const menu = (event.target as SVGElement).parentNode as SVGGElement;
+            this.showMenuAtNode(node, d3.select(menu));
           });
 
         g.append('text')
@@ -278,7 +324,7 @@ export default class {
           .attr('fill', nodeLabelColor)
           .attr('alignment-baseline', 'middle')
           .each(function () {
-            const text = select(this).text();
+            const text = d3.select(this).text();
             const words = text.split(' ');
 
             if (text.length > 20 && words.length > 2) {
@@ -287,7 +333,7 @@ export default class {
               );
               const secondLine = text.replace(firstLine, '');
               if (!secondLine) return;
-              select(this)
+              d3.select(this)
                 .text(firstLine)
                 .attr('alignment-baseline', 'after-edge')
                 .append('tspan')
@@ -328,7 +374,7 @@ export default class {
 
     g.selectChild(this.selectLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
-      const thisEdge = select(this);
+      const thisEdge = d3.select(this);
       thisEdge.attr(
         'transform',
         `translate(${[position.x, position.y]}), rotate(${position.degree})`,
@@ -341,7 +387,7 @@ export default class {
 
     g.selectChild(this.selectLabel2).each(function (edge) {
       const position = getRotationAndPosition(edge);
-      const thisEdge = select(this);
+      const thisEdge = d3.select(this);
       thisEdge.attr(
         'transform',
         `translate(${[position.x, position.y]}), rotate(${position.degree})`,
@@ -456,17 +502,19 @@ export default class {
             node.isLocked = true;
           })
           // eslint-disable-next-line func-names
-          .on('start', function (event) {
+          .on('start', (event) => {
+            this.removeNodeMenu();
             if (!event.active) {
               simulation.alpha(simulation.alpha() + 0.3);
               simulation.restart();
             }
-            d3.select(this).attr('fill', nodeHighlightColor);
+            d3.select(event.sourceEvent.target).attr('fill', nodeHighlightColor);
+          })
+          .on('end', (event, d) => {
+            if (!event.sourceEvent.target) return;
+            const menu = (event.sourceEvent.target as SVGElement).parentNode as SVGGElement;
+            this.showMenuAtNode(d as GraphNode, d3.select(menu));
           }) as any,
-        // .on('end', (_, d) => {
-        // const node = d as GraphNode;
-        // node.isLocked = false;
-        // }) as any,
       );
   };
 
