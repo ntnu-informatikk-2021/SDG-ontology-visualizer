@@ -176,8 +176,8 @@ export default class {
       .force('center', this.centerForce())
       .force('collide', this.collisionForce())
       .force('link', this.linkForce())
-      .alphaDecay(0.015)
-      .alpha(0.5)
+      .alphaDecay(0.1)
+      .alpha(0.9)
       .velocityDecay(0.75);
 
   resetForceSimulation = () => {
@@ -190,7 +190,7 @@ export default class {
     if (linkForce) {
       linkForce.links(this.edges);
     }
-    this.forceSimulation.alpha(this.forceSimulation.alpha() + 0.5);
+    this.forceSimulation.alpha(0.9);
     this.forceSimulation.restart();
   };
 
@@ -453,19 +453,16 @@ export default class {
       .call(
         d3
           .drag()
-          // eslint-disable-next-line func-names
           .on('drag', (event, value) => {
             const node = value as GraphNode;
             node.fx = event.x;
             node.fy = event.y;
             node.isLocked = true;
+            simulation.alpha(0.5);
+            simulation.restart();
           })
           // eslint-disable-next-line func-names
-          .on('start', function (event) {
-            if (!event.active) {
-              simulation.alpha(simulation.alpha() + 0.3);
-              simulation.restart();
-            }
+          .on('start', function () {
             d3.select(this).attr('fill', nodeHighlightColor);
           }) as any,
         // .on('end', (_, d) => {
