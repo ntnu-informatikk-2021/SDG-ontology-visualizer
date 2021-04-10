@@ -23,6 +23,7 @@ import {
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
+import FpsCounter from '../utils/FpsCounter';
 
 const nodeClassName = '.node';
 // const nodeColor = '#4299e1';
@@ -60,6 +61,7 @@ export default class {
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
   private frameIndex = 0;
+  private readonly fpsCounter: FpsCounter;
 
   constructor(
     svg: SVGSVGElement,
@@ -82,6 +84,7 @@ export default class {
     this.nodeFilter = nodeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
+    this.fpsCounter = new FpsCounter();
   }
 
   updateOnClickCallback = (callback: (node: GraphNode) => void) => {
@@ -328,8 +331,7 @@ export default class {
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
 
-    // Only update edge labels every 2nd frame
-    if (this.frameIndex % 2 === 0) return;
+    if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return;
 
     g.selectChild(this.selectLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
@@ -475,4 +477,16 @@ export default class {
   selectNodeOrEdge = (_: any, index: number) => index === 0;
   selectLabel1 = (_: any, index: number) => index === 1;
   selectLabel2 = (_: any, index: number) => index === 2;
+
+  shouldRenderEdgeLabel = (): boolean => {
+    const { fps } = this.fpsCounter;
+    let frameSkips = 1;
+    if (fps < 15) frameSkips = 10;
+    else if (fps < 20) frameSkips = 6;
+    else if (fps < 30) frameSkips = 4;
+    else if (fps < 40) frameSkips = 2;
+    if (this.frameIndex < frameSkips) return false;
+    this.frameIndex = 0;
+    return true;
+  };
 }
