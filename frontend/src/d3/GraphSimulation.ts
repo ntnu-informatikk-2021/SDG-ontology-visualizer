@@ -33,6 +33,8 @@ const nodeHighlightRadiusMultiplier = 1.2;
 const nodeLabelColor = '#000';
 const nodeStrokeWidth = 0;
 
+const nodeMenuBtnRadius = 15;
+
 const edgeClassName = '.edge';
 const maxEdgeFontSize = 10;
 const edgeDistance = 200;
@@ -41,8 +43,8 @@ const edgeColor = '#aaa';
 const edgeLabelColor = '#222';
 
 const fontSize = 18;
-const minScale = 0.2;
-const maxScale = 10;
+const minScale = 0.4;
+const maxScale = 5;
 
 const normalizeScale = (value: number, min: number, max: number) => (value - min) / (max - min);
 
@@ -142,7 +144,6 @@ export default class {
       d3
         .zoom()
         .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, any>) => {
-          this.removeNodeMenu();
           const newScale = event.transform.k;
           if (this.scale !== newScale) {
             this.scale = event.transform.k;
@@ -260,15 +261,16 @@ export default class {
   ) => {
     await nextFrame();
     this.removeNodeMenu();
+    const menuPos = this.getNodeMenuPosition();
     const menuG = g
       .append('g')
       .attr('class', 'menu')
-      .attr('transform', `translate(0,${-nodeRadius * 2})`);
+      .attr('transform', `translate(${[menuPos.x, menuPos.y]}) scale(${menuPos.scale})`);
 
-    const expandBtn = menuG.append('g').attr('transform', `translate(${nodeRadius}, 0)`);
+    const expandBtn = menuG.append('g').attr('transform', `translate(${nodeMenuBtnRadius * 2}, 0)`);
     expandBtn
       .append('circle')
-      .attr('r', nodeRadius / 2)
+      .attr('r', nodeMenuBtnRadius)
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
       .on('click', () => {
@@ -276,16 +278,16 @@ export default class {
       });
     expandBtn
       .append('image')
-      .attr('width', 20)
-      .attr('height', 20)
-      .attr('transform', `translate(${-20 / 2},${-20 / 2})`)
+      .attr('width', nodeMenuBtnRadius * 2)
+      .attr('height', nodeMenuBtnRadius * 2)
+      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
       .attr('xlink:href', 'icons/addNodesIcon.svg')
       .attr('pointer-events', 'none');
 
     const removeNodeBtn = menuG.append('g');
     removeNodeBtn
       .append('circle')
-      .attr('r', nodeRadius / 2)
+      .attr('r', nodeMenuBtnRadius)
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
       .on('click', () => {
@@ -293,16 +295,18 @@ export default class {
       });
     removeNodeBtn
       .append('image')
-      .attr('width', 20)
-      .attr('height', 20)
-      .attr('transform', `translate(${-20 / 2},${-20 / 2})`)
+      .attr('width', nodeMenuBtnRadius * 2)
+      .attr('height', nodeMenuBtnRadius * 2)
+      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
       .attr('xlink:href', 'icons/removeNodeIcon.svg')
       .attr('pointer-events', 'none');
 
-    const unlockBtn = menuG.append('g').attr('transform', `translate(${-nodeRadius}, 0)`);
+    const unlockBtn = menuG
+      .append('g')
+      .attr('transform', `translate(${-nodeMenuBtnRadius * 2}, 0)`);
     unlockBtn
       .append('circle')
-      .attr('r', nodeRadius / 2)
+      .attr('r', nodeMenuBtnRadius)
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
       .on('click', (_, d) => {
@@ -313,9 +317,9 @@ export default class {
       });
     unlockBtn
       .append('image')
-      .attr('width', 20)
-      .attr('height', 20)
-      .attr('transform', `translate(${-20 / 2},${-20 / 2})`)
+      .attr('width', nodeMenuBtnRadius * 2)
+      .attr('height', nodeMenuBtnRadius * 2)
+      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
       .attr('xlink:href', 'icons/unlockNode.svg')
       .attr('pointer-events', 'none');
     this.nodeMenu = menuG;
@@ -371,7 +375,7 @@ export default class {
                 .attr('x', 0)
                 .attr('y', 0)
                 .attr('text-anchor', 'middle')
-                .attr('alignment-baseline', 'before-edge');
+                .attr('alignment-baseline', 'mathematical');
             }
           });
 
@@ -442,15 +446,28 @@ export default class {
     return 0;
   };
 
+  getNodeMenuPosition = () => {
+    const yPos = -nodeRadius * nodeHighlightRadiusMultiplier - 15 / this.scale;
+    return { x: 0, y: yPos, scale: 1 / this.scale };
+  };
+
   getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
+
+  getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
 
   dynamicScaleManager = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
-    nodes.selectChild(this.selectLabel1).attr('font-size', fontSize / this.scale);
+    nodes.selectChild(this.selectLabel1).attr('font-size', this.getNodeLabelFontSize());
     nodes.selectChild(this.selectNodeOrEdge).attr('stroke-width', nodeStrokeWidth / this.scale);
 
+    if (this.nodeMenu) {
+      const position = this.getNodeMenuPosition();
+      this.nodeMenu.attr(
+        'transform',
+        `translate(${[position.x, position.y]}) scale(${position.scale})`,
+      );
+    }
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
-
     const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
     edgeSVGLine.attr('stroke-width', edgeWidth / this.scale);
 
