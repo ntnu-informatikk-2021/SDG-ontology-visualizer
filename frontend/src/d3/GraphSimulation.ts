@@ -59,6 +59,7 @@ export default class {
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
+  private frameIndex = 0;
 
   constructor(
     svg: SVGSVGElement,
@@ -215,6 +216,7 @@ export default class {
     this.dynamicScaleManager();
 
     this.forceSimulation.on('tick', () => {
+      this.frameIndex += 1;
       this.updateEdgePositions();
       this.updateNodePositions();
     });
@@ -325,6 +327,9 @@ export default class {
       .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
+
+    // Only update edge labels every 2nd frame
+    if (this.frameIndex % 2 === 0) return;
 
     g.selectChild(this.selectLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
