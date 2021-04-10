@@ -46,7 +46,7 @@ const DetailView: React.FC = () => {
     setDevelopmentAreas(await getDevelopmentArea(selectedNode.id));
   };
 
-  const loadObjectPropertyDefinition = async () => {
+  const loadObjectPropertyAnnotations = async () => {
     if (!selectedPredicate) return;
     setObjectAnnotations(await getAnnotations(selectedPredicate[1]));
   };
@@ -54,7 +54,6 @@ const DetailView: React.FC = () => {
   const expandConnection = async (connection: Node, predicate: Array<string>) => {
     setSelectedConnection(connection);
     setSelectedPredicate(predicate);
-    await loadObjectPropertyDefinition();
     setExpanded(true);
   };
 
@@ -71,7 +70,7 @@ const DetailView: React.FC = () => {
   }, [selectedNode]);
 
   useEffect(() => {
-    loadObjectPropertyDefinition();
+    loadObjectPropertyAnnotations();
   }, [selectedPredicate]);
 
   return (
@@ -119,11 +118,9 @@ const DetailView: React.FC = () => {
               </Heading>
               {selectedConnection && selectedConnection.name}
             </Heading>
-            <Text fontSize="base" mt="2">
-              {objectAnnotations && objectAnnotations.label}
-            </Text>
             <Text fontSize="sm" mt="2">
-              {objectAnnotations && objectAnnotations.description}
+              {`Relasjonen  ${objectAnnotations && objectAnnotations.label} er en
+                ${objectAnnotations && objectAnnotations.description} `}
             </Text>
             <ButtonGroup>
               <Button colorScheme="blue" onClick={() => onClickConnections(selectedConnection!)}>
