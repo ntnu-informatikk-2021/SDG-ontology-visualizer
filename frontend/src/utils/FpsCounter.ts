@@ -9,7 +9,7 @@ class FpsCounter {
   }
 
   fpsCounter = () => {
-    const times = new Queue(60);
+    const times = new Queue<number>(60);
 
     const refreshLoop = () => {
       window.requestAnimationFrame(() => {
