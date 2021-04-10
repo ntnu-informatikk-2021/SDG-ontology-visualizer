@@ -29,7 +29,7 @@ const nodeClassName = '.node';
 const nodeLockedColor = '#27c';
 const nodeRadius = 20;
 const nodeHighlightColor = '#69f';
-const nodeHighlightRadiusMultiplier = 1.5;
+const nodeHighlightRadiusMultiplier = 1.2;
 const nodeLabelColor = '#000';
 const nodeStrokeWidth = 0;
 
@@ -466,15 +466,15 @@ export default class {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      // eslint-disable-next-line func-names
-      .on('mouseover', function (event, node) {
-        d3.select(this)
-          .selectChild()
-          .attr('fill', nodeHighlightColor)
+      .selectChild(this.selectNodeOrEdge)
+      .on('mouseover', (event: MouseEvent, node) => {
+        if (!event.target) return;
+        d3.select(event.target as SVGCircleElement)
           .transition('500')
-          .attr('r', nodeRadius * nodeHighlightRadiusMultiplier);
+          .attr('r', nodeRadius * nodeHighlightRadiusMultiplier)
+          .attr('stroke-width', 5 / this.scale);
 
-        edgeSvg
+        const graphEdges = edgeSvg
           .selectAll(edgeClassName)
           .data(edges)
           .filter(
@@ -486,6 +486,22 @@ export default class {
                 ? edge.target.id === node.id
                 : edge.target === node.id),
           );
+        graphEdges
+          .selectChild(this.selectNodeOrEdge)
+          .transition('500')
+          .attr('stroke-width', (edgeWidth * 3) / this.scale);
+        graphEdges
+          .filter((edge) =>
+            typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
+          )
+          .selectChild(this.selectLabel1)
+          .attr('font-weight', 'bold');
+        graphEdges
+          .filter((edge) =>
+            typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
+          )
+          .selectChild(this.selectLabel2)
+          .attr('font-weight', 'bold');
       });
   };
 
@@ -493,14 +509,15 @@ export default class {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      // eslint-disable-next-line func-names
-      .on('mouseout', function (event, node) {
-        d3.select(this)
-          .selectChild()
-          .attr('fill', node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type))
+      .selectChild(this.selectNodeOrEdge)
+      .on('mouseout', (event: MouseEvent, node) => {
+        if (!event.target) return;
+        d3.select(event.target as SVGCircleElement)
           .transition('500')
-          .attr('r', nodeRadius);
-        edgeSvg
+          .attr('r', nodeRadius)
+          .attr('stroke-width', 0);
+
+        const graphEdges = edgeSvg
           .selectAll(edgeClassName)
           .data(edges)
           .filter(
@@ -512,6 +529,22 @@ export default class {
                 ? edge.target.id === node.id
                 : edge.target === node.id),
           );
+        graphEdges
+          .selectChild(this.selectNodeOrEdge)
+          .transition('500')
+          .attr('stroke-width', edgeWidth / this.scale);
+        graphEdges
+          .filter((edge) =>
+            typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
+          )
+          .selectChild(this.selectLabel1)
+          .attr('font-weight', 'normal');
+        graphEdges
+          .filter((edge) =>
+            typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
+          )
+          .selectChild(this.selectLabel2)
+          .attr('font-weight', 'normal');
       });
   };
 
