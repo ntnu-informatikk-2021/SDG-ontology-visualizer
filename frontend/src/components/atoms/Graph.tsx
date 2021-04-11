@@ -1,6 +1,7 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AiOutlineFullscreen } from 'react-icons/ai';
 import { getRelations } from '../../api/ontologies';
 import GraphSimulation from '../../d3/GraphSimulation';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
@@ -67,8 +68,17 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [nodeFilter]);
 
   return (
-    <Box bg="white" borderRadius="lg" width="80vw">
+    <Box position="relative" bg="white" borderRadius="lg" width="80vw">
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
+      <Button
+        position="absolute"
+        right="0px"
+        bottom="0px"
+        bgColor="transparent"
+        onClick={() => console.log('clicked fullscreen button')}
+      >
+        <AiOutlineFullscreen fontSize="32px" />
+      </Button>
     </Box>
   );
 };

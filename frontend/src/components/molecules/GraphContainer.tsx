@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import { Flex, Stack } from '@chakra-ui/react';
-import Graph from '../atoms/Graph';
-import GraphSidebar from '../atoms/GraphSidebar';
-import GraphDescriptions from '../atoms/GraphDescriptions';
+import React, { useState } from 'react';
 import { isSubgoal } from '../../common/node';
 import { GraphNode } from '../../types/ontologyTypes';
+import Graph from '../atoms/Graph';
+import GraphDescriptions from '../atoms/GraphDescriptions';
+import GraphSidebar from '../atoms/GraphSidebar';
 import SearchBar from '../atoms/SearchBar';
 
 const GraphContainer: React.FC = () => {
