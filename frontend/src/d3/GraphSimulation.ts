@@ -25,10 +25,9 @@ import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 
 const nodeClassName = '.node';
-// const nodeColor = '#4299e1';
-const nodeLockedColor = '#27c';
+// const nodeLockedColor = '#27c';
 const nodeRadius = 20;
-const nodeHighlightColor = '#69f';
+const nodeHighlightColor = '#3BDDCA';
 const nodeHighlightRadiusMultiplier = 1.5;
 const nodeLabelColor = '#000';
 
@@ -260,9 +259,7 @@ export default class {
 
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) =>
-            node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
-          )
+          .attr('fill', (node) => changeColorBasedOnType(node.type))
           .on('click', (event: PointerEvent, node) => {
             if (event.ctrlKey) {
               this.removeNode(node);
@@ -423,7 +420,7 @@ export default class {
       .on('mouseout', function (event, node) {
         d3.select(this)
           .selectChild()
-          .attr('fill', node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type))
+          .attr('fill', changeColorBasedOnType(node.type))
           .transition('500')
           .attr('r', nodeRadius);
         edgeSvg
