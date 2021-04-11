@@ -67,7 +67,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [nodeFilter]);
 
   return (
-    <Box bg="white" borderRadius="lg" width="80vw">
+    <Box bg="white" boxShadow="xl" rounded="lg" width="80vw">
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
     </Box>
   );

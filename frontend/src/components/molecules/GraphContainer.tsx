@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
 import { Flex, Stack } from '@chakra-ui/react';
-import Graph from '../atoms/Graph';
-import GraphSidebar from '../atoms/GraphSidebar';
-import GraphDescriptions from '../atoms/GraphDescriptions';
+import React, { useState } from 'react';
 import { isSubgoal } from '../../common/node';
 import { GraphNode } from '../../types/ontologyTypes';
-import SearchBar from '../atoms/SearchBar';
+import Graph from '../atoms/Graph';
+import GraphDescriptions from './GraphDescriptions';
+import GraphToolBar from '../atoms/GraphToolbar';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
@@ -20,13 +19,12 @@ const GraphContainer: React.FC = () => {
   };
 
   return (
-    <Stack bg="gray.400" h="80vh" spacing="5" p="10">
-      <SearchBar limit={5} />
+    <Stack h="80vh">
+      <GraphToolBar onSubgoalFilter={filterSubgoals} />
       <Flex h="100%" justify="space-between">
         <Graph nodeFilter={nodeFilter} />
-        <GraphSidebar onSubgoalFilter={filterSubgoals} />
+        <GraphDescriptions />
       </Flex>
-      <GraphDescriptions />
     </Stack>
   );
 };
