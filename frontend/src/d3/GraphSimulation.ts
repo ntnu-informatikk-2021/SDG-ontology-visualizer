@@ -27,9 +27,9 @@ import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
 const nodeLockedColor = '#27c';
-const nodeRadius = 20;
+const nodeRadius = 30;
 const nodeHighlightRadiusMultiplier = 1.2;
-const nodeLabelColor = '#000';
+const nodeLabelColor = '#2D3748';
 const nodeStrokeWidth = 0;
 
 const nodeMenuBtnRadius = 15;
@@ -38,7 +38,7 @@ const edgeClassName = '.edge';
 const maxEdgeFontSize = 10;
 const edgeDistance = 200;
 const edgeWidth = 2;
-const edgeColor = '#aaa';
+const edgeColor = '#A0AEC0';
 const edgeLabelColor = '#222';
 
 const fontSize = 18;
@@ -528,7 +528,8 @@ export default class {
         d3.select(event.target as SVGCircleElement)
           .transition('500')
           .attr('r', nodeRadius * nodeHighlightRadiusMultiplier)
-          .attr('stroke-width', 5 / this.scale);
+          .attr('stroke-width', 3 / this.scale)
+          .attr('stroke', '#0BC5EA');
 
         const graphEdges = edgeSvg
           .selectAll(edgeClassName)
@@ -545,7 +546,8 @@ export default class {
         graphEdges
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
-          .attr('stroke-width', (edgeWidth * 3) / this.scale);
+          .attr('stroke-width', (edgeWidth * 1.5) / this.scale)
+          .attr('stroke', '#0BC5EA');
         graphEdges
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
@@ -588,7 +590,8 @@ export default class {
         graphEdges
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
-          .attr('stroke-width', edgeWidth / this.scale);
+          .attr('stroke-width', edgeWidth / this.scale)
+          .attr('stroke', '#A0AEC0');
         graphEdges
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
