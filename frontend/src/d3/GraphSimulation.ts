@@ -23,6 +23,7 @@ import {
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 import nextFrame from '../common/other';
+import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
 const nodeLockedColor = '#27c';
@@ -327,7 +328,8 @@ export default class {
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
       .on('click', () => {
-        console.log('Set selected node');
+        this.onExpandNode(node);
+        setBrowserPosition();
       });
     detailBtn
       .append('image')
