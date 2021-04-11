@@ -22,7 +22,7 @@ import {
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
-import nextFrame from '../common/other';
+import { nextFrame, normalizeScale } from '../common/other';
 
 const nodeClassName = '.node';
 const nodeLockedColor = '#27c';
@@ -43,8 +43,6 @@ const edgeLabelColor = '#222';
 const fontSize = 18;
 const minScale = 0.4;
 const maxScale = 5;
-
-const normalizeScale = (value: number, min: number, max: number) => (value - min) / (max - min);
 
 export default class {
   private readonly forceSimulation: ForceSimulation;
