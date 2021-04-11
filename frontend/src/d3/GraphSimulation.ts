@@ -253,6 +253,29 @@ export default class {
       .attr('class', edgeClassName.substring(1)); // remove . before class name
   };
 
+  makeNodeMenuButton = (
+    menu: d3.Selection<SVGGElement, GraphNode, any, any>,
+    x: number,
+    onClick: (event: any) => void,
+    icon: string,
+  ): void => {
+    console.log('asdfhj');
+    const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
+    button
+      .append('circle')
+      .attr('r', nodeMenuBtnRadius)
+      .attr('fill', '#eee')
+      .attr('stroke', edgeColor)
+      .on('click', onClick);
+    button
+      .append('image')
+      .attr('width', nodeMenuBtnRadius * 2)
+      .attr('height', nodeMenuBtnRadius * 2)
+      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
+      .attr('xlink:href', icon)
+      .attr('pointer-events', 'none');
+  };
+
   showMenuAtNode = async (
     node: GraphNode,
     g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
@@ -265,77 +288,43 @@ export default class {
       .attr('class', 'menu')
       .attr('transform', `translate(${[menuPos.x, menuPos.y]}) scale(${menuPos.scale})`);
 
-    const expandBtn = menuG.append('g').attr('transform', `translate(${nodeMenuBtnRadius * 3}, 0)`);
-    expandBtn
-      .append('circle')
-      .attr('r', nodeMenuBtnRadius)
-      .attr('fill', '#eee')
-      .attr('stroke', edgeColor)
-      .on('click', () => {
-        this.onExpandNode(node);
-      });
-    expandBtn
-      .append('image')
-      .attr('width', nodeMenuBtnRadius * 2)
-      .attr('height', nodeMenuBtnRadius * 2)
-      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
-      .attr('xlink:href', 'icons/addNodesIcon.svg')
-      .attr('pointer-events', 'none');
+    // expand button
+    this.makeNodeMenuButton(
+      menuG,
+      nodeMenuBtnRadius * 3,
+      () => this.onExpandNode(node),
+      'icons/addNodesIcon.svg',
+    );
 
-    const removeNodeBtn = menuG.append('g').attr('transform', `translate(${nodeMenuBtnRadius}, 0)`);
-    removeNodeBtn
-      .append('circle')
-      .attr('r', nodeMenuBtnRadius)
-      .attr('fill', '#eee')
-      .attr('stroke', edgeColor)
-      .on('click', () => {
-        this.removeNode(node);
-      });
-    removeNodeBtn
-      .append('image')
-      .attr('width', nodeMenuBtnRadius * 2)
-      .attr('height', nodeMenuBtnRadius * 2)
-      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
-      .attr('xlink:href', 'icons/removeNodeIcon.svg')
-      .attr('pointer-events', 'none');
+    // remove
+    this.makeNodeMenuButton(
+      menuG,
+      nodeMenuBtnRadius,
+      () => this.removeNode(node),
+      'icons/removeNodeIcon.svg',
+    );
 
-    const unlockBtn = menuG.append('g').attr('transform', `translate(${-nodeMenuBtnRadius}, 0)`);
-    unlockBtn
-      .append('circle')
-      .attr('r', nodeMenuBtnRadius)
-      .attr('fill', '#eee')
-      .attr('stroke', edgeColor)
-      .on('click', (event) => {
+    // unlock
+    this.makeNodeMenuButton(
+      menuG,
+      -nodeMenuBtnRadius,
+      (event) => {
+        console.log('lock');
         const nodeContainer = event.target.parentNode.parentNode.parentNode;
         if (node.isLocked) this.unlockNode(nodeContainer, node);
         else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
-      });
-    unlockBtn
-      .append('image')
-      .attr('width', nodeMenuBtnRadius * 2)
-      .attr('height', nodeMenuBtnRadius * 2)
-      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
-      .attr('xlink:href', `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`)
-      .attr('pointer-events', 'none');
+      },
+      `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
+    );
 
-    const detailBtn = menuG
-      .append('g')
-      .attr('transform', `translate(${-nodeMenuBtnRadius * 3}, 0)`);
-    detailBtn
-      .append('circle')
-      .attr('r', nodeMenuBtnRadius)
-      .attr('fill', '#eee')
-      .attr('stroke', edgeColor)
-      .on('click', () => {
-        console.log('Set selected node');
-      });
-    detailBtn
-      .append('image')
-      .attr('width', nodeMenuBtnRadius * 2)
-      .attr('height', nodeMenuBtnRadius * 2)
-      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
-      .attr('xlink:href', 'icons/goToDetailView.svg')
-      .attr('pointer-events', 'none');
+    // detail
+    this.makeNodeMenuButton(
+      menuG,
+      -nodeMenuBtnRadius * 3,
+      () => console.log('set selected node'),
+      'icons/goToDetailView.svg',
+    );
+
     this.nodeMenu = menuG;
   };
 
