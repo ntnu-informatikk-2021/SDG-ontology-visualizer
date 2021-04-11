@@ -15,7 +15,6 @@ const GraphSidebar: React.FC<GraphSidebarProps> = ({ onSubgoalFilter }: GraphSid
       borderRadius="lg"
       p="5"
       w="12vw"
-      // h={isFullscreen ? '80%' : '100%'}
       h="100%"
       position={isFullscreen ? 'absolute' : 'sticky'}
       right="0"

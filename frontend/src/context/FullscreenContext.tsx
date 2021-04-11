@@ -20,10 +20,7 @@ export const FullscreenProvider: React.FC<ProviderProps> = ({ children }: Provid
     <FullscreenContext.Provider
       value={{
         isFullscreen,
-        toggleFullscreen: () => {
-          console.log(`toggle fullscreen. New value: ${!isFullscreen}`);
-          setIsFullscreen(!isFullscreen);
-        },
+        toggleFullscreen: () => setIsFullscreen(!isFullscreen),
       }}
     >
       {children}
