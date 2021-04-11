@@ -5,7 +5,7 @@ import GraphContainer from '../molecules/GraphContainer';
 import SubGoalsGrid from '../molecules/SubGoalsGrid';
 
 const OntologyPage: React.FC = () => (
-  <Stack spacing="10">
+  <Stack spacing="10" px="10">
     <GraphContainer />
     <DetailView />
     <SubGoalsGrid />
