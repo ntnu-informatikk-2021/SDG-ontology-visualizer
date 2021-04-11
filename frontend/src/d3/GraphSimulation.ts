@@ -292,7 +292,6 @@ export default class {
       nodeMenuBtnRadius * 3,
       () => {
         this.onExpandNode(node);
-        setBrowserPosition();
       },
       'icons/addNodesIcon.svg',
     );
@@ -321,10 +320,12 @@ export default class {
     this.makeNodeMenuButton(
       menuG,
       -nodeMenuBtnRadius * 3,
-      () => console.log('set selected node'),
+      () => {
+        this.onExpandNode(node);
+        setBrowserPosition();
+      },
       'icons/goToDetailView.svg',
     );
-
     this.nodeMenu = menuG;
   };
 
