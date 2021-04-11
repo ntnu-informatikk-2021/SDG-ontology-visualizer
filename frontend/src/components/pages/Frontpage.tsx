@@ -15,13 +15,16 @@ const Frontpage: React.FC = () => (
     >
       <Stack spacing="10">
         <Heading size="xl" color="white">
-          Bærekraftsmålene
+          Bærekraftsontologien:
         </Heading>
         <SearchBar limit={5} />
       </Stack>
 
       <Image src="SDG.png" alt="SDG" w="250px" />
     </Flex>
+    <Heading size="xl" align="center" color="cyan.600">
+      Bærekraftsmålene:
+    </Heading>
     <SustainabilityGoals />
   </Stack>
 );
