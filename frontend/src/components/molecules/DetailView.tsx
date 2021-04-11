@@ -57,8 +57,8 @@ const DetailView: React.FC = () => {
   }, [selectedNode]);
 
   return (
-    <Box spacing={10} bg="cyan.500" w="100%" px={10} py={6} color="white">
-      <Heading as="h2" size="2xl" fontWeight="hairline" textAlign="left" paddingBottom="5">
+    <Box bg="cyan.500" p={10} color="white" rounded="lg">
+      <Heading size="2xl" fontWeight="hairline" pb="5">
         {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
       </Heading>
       <Flex justify="space-between">

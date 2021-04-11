@@ -20,10 +20,9 @@ import { Node } from '../../types/ontologyTypes';
 
 interface SearchBarProps {
   limit?: number;
-  margin?: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) => {
+const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 200);
   const [results, setResults] = useState<Array<Node>>();
@@ -53,7 +52,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) 
   }, [debouncedSearchQuery]);
 
   return (
-    <Flex justify="center" align="center" maxW="400px" marginLeft={margin}>
+    <Flex justify="center" align="center" maxW="400px">
       <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
         <PopoverTrigger>
           <InputGroup>
@@ -94,7 +93,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) 
 
 SearchBar.defaultProps = {
   limit: undefined,
-  margin: '',
 };
 
 export default SearchBar;
