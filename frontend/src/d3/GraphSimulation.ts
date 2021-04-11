@@ -259,7 +259,6 @@ export default class {
     onClick: (event: any) => void,
     icon: string,
   ): void => {
-    console.log('asdfhj');
     const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
     button
       .append('circle')
@@ -309,7 +308,6 @@ export default class {
       menuG,
       -nodeMenuBtnRadius,
       (event) => {
-        console.log('lock');
         const nodeContainer = event.target.parentNode.parentNode.parentNode;
         if (node.isLocked) this.unlockNode(nodeContainer, node);
         else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
@@ -345,7 +343,6 @@ export default class {
     y: number,
     updateOpcity: boolean,
   ) => {
-    console.log('heisann monte');
     const n = node;
     n.fx = x;
     n.fy = y;
