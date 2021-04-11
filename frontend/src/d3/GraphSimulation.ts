@@ -235,14 +235,14 @@ export default class {
           .attr('stroke-width', edgeWidth);
 
         g.append('text')
-          .text((edge: any) => createEdgeLabelText(edge.sourceToTarget, false))
+          .text((edge) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'after-egde')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
 
         g.append('text')
-          .text((edge: any) => createEdgeLabelText(edge.targetToSource, true))
+          .text((edge) => createEdgeLabelText(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'before-edge')
           .attr('pointer-events', 'none')
