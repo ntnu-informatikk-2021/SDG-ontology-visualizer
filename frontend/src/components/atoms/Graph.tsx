@@ -1,6 +1,6 @@
 import { Box, Button } from '@chakra-ui/react';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { AiOutlineFullscreen } from 'react-icons/ai';
+import { BsFullscreen, BsFullscreenExit } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
 import FullscreenContext from '../../context/FullscreenContext';
@@ -80,7 +80,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
         onClick={toggleFullscreen}
         zIndex={1}
       >
-        <AiOutlineFullscreen fontSize="32px" />
+        {isFullscreen ? <BsFullscreenExit fontSize="32px" /> : <BsFullscreen fontSize="32px" />}
       </Button>
     </Box>
   );
