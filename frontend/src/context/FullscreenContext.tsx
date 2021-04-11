@@ -14,7 +14,7 @@ const FullscreenContext = createContext<ContextType>({
   toggleFullscreen: () => {},
 });
 
-export const FullscreenContextProvider: React.FC<ProviderProps> = ({ children }: ProviderProps) => {
+export const FullscreenProvider: React.FC<ProviderProps> = ({ children }: ProviderProps) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   return (
     <FullscreenContext.Provider

@@ -1,10 +1,14 @@
 import { InfoIcon } from '@chakra-ui/icons';
 import { Box, Button, Flex, Spacer, Link } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link as RouteLink, useHistory } from 'react-router-dom';
+import FullscreenContext from '../../context/FullscreenContext';
 
 const Navbar = () => {
   const history = useHistory();
+  const { isFullscreen } = useContext(FullscreenContext);
+
+  if (isFullscreen) return <></>;
 
   return (
     <Flex w="100%" bg="white" zIndex="999" align="center" h="70px" px="8" position="sticky" top="0">

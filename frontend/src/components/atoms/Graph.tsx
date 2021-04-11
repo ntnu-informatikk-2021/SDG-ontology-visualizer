@@ -22,7 +22,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
   const [simulation, setSimulation] = useState<GraphSimulation>();
-  const { toggleFullscreen } = useContext(FullscreenContext);
+  const { isFullscreen, toggleFullscreen } = useContext(FullscreenContext);
 
   const loadData = async () => {
     if (!simulation || !selectedNode) return;
@@ -70,7 +70,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [nodeFilter]);
 
   return (
-    <Box position="relative" bg="white" borderRadius="lg" width="80vw">
+    <Box position="relative" bg="white" borderRadius="lg" width={isFullscreen ? '100vw' : '80vw'}>
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <Button
         position="absolute"
@@ -78,6 +78,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
         bottom="0px"
         bgColor="transparent"
         onClick={toggleFullscreen}
+        zIndex={1}
       >
         <AiOutlineFullscreen fontSize="32px" />
       </Button>
