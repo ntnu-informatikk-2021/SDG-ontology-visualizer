@@ -23,6 +23,7 @@ import {
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 import { nextFrame, normalizeScale } from '../common/other';
+import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
 const nodeLockedColor = '#27c';
@@ -289,7 +290,10 @@ export default class {
     this.makeNodeMenuButton(
       menuG,
       nodeMenuBtnRadius * 3,
-      () => this.onExpandNode(node),
+      () => {
+        this.onExpandNode(node);
+        setBrowserPosition();
+      },
       'icons/addNodesIcon.svg',
     );
 
