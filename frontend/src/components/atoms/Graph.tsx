@@ -1,8 +1,9 @@
 import { Box, Button } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineFullscreen } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
+import FullscreenContext from '../../context/FullscreenContext';
 import GraphSimulation from '../../d3/GraphSimulation';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
@@ -21,6 +22,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
   const [simulation, setSimulation] = useState<GraphSimulation>();
+  const { toggleFullscreen } = useContext(FullscreenContext);
 
   const loadData = async () => {
     if (!simulation || !selectedNode) return;
@@ -75,7 +77,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
         right="0px"
         bottom="0px"
         bgColor="transparent"
-        onClick={() => console.log('clicked fullscreen button')}
+        onClick={toggleFullscreen}
       >
         <AiOutlineFullscreen fontSize="32px" />
       </Button>
