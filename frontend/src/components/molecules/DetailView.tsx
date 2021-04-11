@@ -65,7 +65,9 @@ const DetailView: React.FC = () => {
         <SlideInDrawer expanded={!expanded} width="40vw">
           <>
             <Text fontSize="xl" mt="2">
-              {annotations.description}
+              {annotations.description
+                ? annotations.description
+                : 'Dette konseptet er under utvikling '}
             </Text>
             {annotations.moreInformation && (
               <Text fontSize="base" mt="2">
