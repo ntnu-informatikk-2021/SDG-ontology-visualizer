@@ -7,15 +7,18 @@ const GraphDescriptions: React.FC = () => {
 
   return (
     <Flex
+      bgColor="gray.400"
       position={isFullscreen ? 'absolute' : 'static'}
-      bottom={isFullscreen ? '32px' : ''}
+      bottom="0"
       paddingLeft={isFullscreen ? '16px' : ''}
-      paddingRight={isFullscreen ? '64px' : ''}
-      height="1vw"
-      width="80vw"
+      paddingRight={isFullscreen ? '20vw' : ''}
+      pb="16px"
+      height={isFullscreen ? '60px' : '40px'}
+      width={isFullscreen ? '100vw' : '80vw'}
       justify="space-between"
+      alignContent="center"
     >
-      <Flex>
+      <Flex pt="10px">
         <svg height="40" width="40">
           <circle cx="20" cy="20" r="20" fill="#4299e1" />
         </svg>
@@ -23,7 +26,7 @@ const GraphDescriptions: React.FC = () => {
           Standardfarge/StartNode
         </Text>
       </Flex>
-      <Flex>
+      <Flex pt="10px">
         <svg height="40" width="40">
           <circle cx="20" cy="20" r="20" fill="#EA5F41" />
         </svg>
@@ -31,7 +34,7 @@ const GraphDescriptions: React.FC = () => {
           Bærekraftsmål
         </Text>
       </Flex>
-      <Flex>
+      <Flex pt="10px">
         <svg height="40" width="40">
           <circle cx="20" cy="20" r="20" fill="#E0E73F" />
         </svg>
@@ -39,7 +42,7 @@ const GraphDescriptions: React.FC = () => {
           Delmål til bærekraftsmål
         </Text>
       </Flex>
-      <Flex>
+      <Flex pt="10px">
         <svg height="40" width="40">
           <circle cx="20" cy="20" r="20" fill="#85E664" />
         </svg>
@@ -47,7 +50,7 @@ const GraphDescriptions: React.FC = () => {
           Trippelbunnlinje
         </Text>
       </Flex>
-      <Flex>
+      <Flex pt="10px">
         <svg height="40" width="40">
           <circle cx="20" cy="20" r="20" fill="#DDA93B" />
         </svg>
