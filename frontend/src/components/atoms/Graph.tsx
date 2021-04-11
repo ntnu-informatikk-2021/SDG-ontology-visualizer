@@ -28,7 +28,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
     simulation.addData(ontologies, selectedNode);
   };
 
-  const onClickNode = (node: GraphNode): void => {
+  const onExpandNode = (node: GraphNode): void => {
     if (selectedNode && selectedNode.id === node.id) {
       loadData();
     } else {
@@ -37,8 +37,8 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   };
 
   useEffect(() => {
-    if (simulation) simulation.updateOnClickCallback(onClickNode);
-  }, [onClickNode]);
+    if (simulation) simulation.updateOnClickCallback(onExpandNode);
+  }, [onExpandNode]);
 
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
@@ -53,7 +53,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
           0.4 * width,
           0.4 * height,
           selectedNode,
-          onClickNode,
+          onExpandNode,
           nodeFilter,
         ),
       );
