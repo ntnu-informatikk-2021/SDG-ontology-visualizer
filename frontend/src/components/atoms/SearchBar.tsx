@@ -52,7 +52,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   }, [debouncedSearchQuery]);
 
   return (
-    <Flex justify="center" align="center" maxW="400px">
+    <Flex justify="center" align="center">
       <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
         <PopoverTrigger>
           <InputGroup>
@@ -65,16 +65,20 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
               variant="outline"
               bg="white"
               placeholder="Søk..."
+              minW="10em"
             />
           </InputGroup>
         </PopoverTrigger>
-        <PopoverContent border="none">
+        <PopoverContent border="none" boxShadow="xl" borderBottomRadius="lg">
           <Stack w="100%">
             {results &&
               results.map((res) => (
                 <Link
                   padding={2}
-                  _hover={{ backgroundColor: 'purple.800', color: 'white' }}
+                  _hover={{
+                    backgroundColor: 'purple.800',
+                    color: 'white',
+                  }}
                   key={res.id}
                   onClick={() => {
                     onClickNode(res);

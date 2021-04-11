@@ -529,7 +529,7 @@ export default class {
           .transition('500')
           .attr('r', nodeRadius * nodeHighlightRadiusMultiplier)
           .attr('stroke-width', 3 / this.scale)
-          .attr('stroke', '#0BC5EA');
+          .attr('stroke', '#00A3C4');
 
         const graphEdges = edgeSvg
           .selectAll(edgeClassName)
@@ -547,7 +547,7 @@ export default class {
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', (edgeWidth * 1.5) / this.scale)
-          .attr('stroke', '#0BC5EA');
+          .attr('stroke', '#00A3C4');
         graphEdges
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,

@@ -4,11 +4,11 @@ import GraphNodeKey from '../atoms/GraphNodeKey';
 
 const GraphDescriptions: React.FC = () => (
   <Stack px="5">
-    <GraphNodeKey color="#4299e1" description="Standardfarge/StartNode" />
-    <GraphNodeKey color="#EA5F41" description="Bærekraftsmål" />
-    <GraphNodeKey color="#85E664" description="Delmål til bærekraftsmål" />
-    <GraphNodeKey color="#4299e1" description="Trippelbunnlinje" />
-    <GraphNodeKey color="#DDA93B" description="Utviklingsområde" />
+    <GraphNodeKey color="#63B3ED" description="Standardfarge/StartNode" />
+    <GraphNodeKey color="#D6BCFA" description="Bærekraftsmål" />
+    <GraphNodeKey color="#FBD38D" description="Delmål til bærekraftsmål" />
+    <GraphNodeKey color="#68D391" description="Trippelbunnlinje" />
+    <GraphNodeKey color="#FC8181" description="Utviklingsområde" />
   </Stack>
 );
 
