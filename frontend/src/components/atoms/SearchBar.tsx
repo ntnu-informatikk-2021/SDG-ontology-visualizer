@@ -65,7 +65,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
               variant="outline"
               bg="white"
               placeholder="Søk..."
-              minW="10em"
+              minW="25em"
             />
           </InputGroup>
         </PopoverTrigger>
