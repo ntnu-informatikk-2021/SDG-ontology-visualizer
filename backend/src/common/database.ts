@@ -1,11 +1,11 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
-import { Node, OntologyEntity, Record, Ontology } from '../types/ontologyTypes';
+import { Node, OntologyEntity, Record, Ontology, Edge } from '../types/ontologyTypes';
 
 const getCorrelationIndexFromRecord = (record: Record): number => {
-  if (record.High) return 2;
-  if (record.Moderate) return 1;
-  if (record.Low) return 0;
-  return -1;
+  if (record.High) return 3;
+  if (record.Moderate) return 2;
+  if (record.Low) return 1;
+  return 0;
 };
 
 export const parseNameFromClassId = (id: string): string => {
@@ -49,7 +49,21 @@ export const mapIdToNode = (id: string, correlation?: number, type?: string): No
     name: ontologyEntity.name,
     id: ontologyEntity.id,
     type: type || 'undefined',
-    correlation: correlation || -1,
+    correlation: correlation || 0,
+  };
+};
+
+export const mapIdToEdge = (id: string, correlation?: number): Edge | null => {
+  const ontologyEntity = mapIdToOntologyEntity(id);
+  if (!ontologyEntity) return null;
+  if (ontologyEntity.name.includes('Høy')) correlation = 3;
+  if (ontologyEntity.name.includes('Moderat')) correlation = 2;
+  if (ontologyEntity.name.includes('Lav')) correlation = 1;
+  return {
+    prefix: ontologyEntity.prefix,
+    name: ontologyEntity.name,
+    id: ontologyEntity.id,
+    correlation: correlation || 0,
   };
 };
 
@@ -68,7 +82,7 @@ export const mapRecordToOntology = (record: Record): Ontology => {
   return {
     Subject: subject,
     Object: object,
-    Predicate: mapIdToOntologyEntity(record.Predicate),
+    Predicate: mapIdToEdge(record.Predicate),
   };
 };
 
@@ -102,6 +116,24 @@ export const addEntityToNullFields = (ontology: Ontology, entity: Node): Ontolog
   Predicate: ontology.Predicate,
   Object: ontology.Object || entity,
 });
+export const removeDuplicatePredicates = (ontology: any): any => {
+  ontology.forEach((Ontology, index) => {
+    ontology.forEach((SameOntology, indexx) => {
+      if (
+        Ontology.Object.name == SameOntology.Object.name &&
+        Ontology.Subject.name == SameOntology.Subject.name &&
+        Ontology.Predicate.name != SameOntology.Predicate.name
+      )
+        if (Ontology.Predicate.correlation == 0) ontology.splice(index, 1);
+        else if (SameOntology.Predicate.correlation == 0) ontology.splice(indexx, 1);
+    });
+  });
+  return {
+    Subject: ontology.Subject,
+    Predicate: ontology.Predicate,
+    Object: ontology.Object,
+  };
+};
 
 export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;

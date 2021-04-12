@@ -7,6 +7,7 @@ import {
   isNotLoopOntology,
   mapIdToNode,
   mapRecordToOntology,
+  removeDuplicatePredicates,
 } from '../common/database';
 
 const isRelevantOntology = (ontology: Ontology): boolean => {
@@ -29,6 +30,7 @@ export default async (classId: string): Promise<Array<Ontology>> => {
     .map((ont) => addEntityToNullFields(ont, node))
     .filter(isRelevantOntology)
     .filter(isNotLoopOntology);
+  removeDuplicatePredicates(ontologies);
 
   return ontologies;
 };

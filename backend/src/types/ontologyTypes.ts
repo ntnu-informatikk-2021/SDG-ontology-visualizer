@@ -15,7 +15,9 @@ export interface Node extends OntologyEntity {
   correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
 }
 
-export interface Edge extends OntologyEntity {}
+export interface Edge extends OntologyEntity {
+  correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
+}
 
 export type Ontology = {
   Subject: Node | null;
