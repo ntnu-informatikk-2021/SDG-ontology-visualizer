@@ -10779,10 +10779,10 @@ English: (For inital development, expansion of this class along with possible co
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
-        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
         <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
         <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
         <SDG:harModeratTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:harTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/9/8/8/1/831889-22-nor-NO/M%C3%A5l%2012%20RGB.png"/>
         <SDG:description>Sikre bærekraftig forbruks- og produksjonsmønstre. Bærekraftig livsstil - For å sikre gode levekår for nåværende og fremtidige generasjoner må også hver enkelt forbruker endre livsstil. Det innebærer å minske ressursbruken, miljøødeleggelsen og klimautslippene som et samfunn og som enkeltperson. På sikt vil dette føre til økonomisk vekst, begrense klimaendringer og øke livskvaliteten til mennesker på jorda.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 12</SDG:hasExactSynonym>
@@ -11037,6 +11037,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
         <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:harTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/8/3/8/1/831838-32-nor-NO/M%C3%A5l%209%20RGB@4x.png"/>
         <SDG:description>Bygge solid infrastruktur og fremme inkluderende og bærekraftig industrialisering og innovasjon. Hvorfor infrastruktur? Investeringer i infrastruktur som transport, vanningssystemer, energi og informasjonsteknologi er avgjørende for å skape en bærekraftig utvikling. Infrastruktur er den underliggende strukturen som må være på plass for at et samfunn skal fungere.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 9</SDG:hasExactSynonym>
@@ -11105,7 +11106,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utviklingsområde"/>
-        <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering1"/>
+        <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering2"/>
         <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <rdfs:label>Digitalisering</rdfs:label>
     </owl:NamedIndividual>
@@ -11116,7 +11117,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering2">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Perspektiver_i_Trondheim"/>
-        <rdfs:label>Digitalisering</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Digitaliser</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11245,7 +11246,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
 Ettersom små barn og eldre vanligvis er mer følsomme for dårlig luftkvalitet, prioriterte vi å montere sensorene på steder som skoler, barnehager og sykehjem / eldreinstitusjoner for å kartlegge luftkvaliteten på disse stedene. Vi er imidlertid ikke garantert riktige data fra disse sensorene, ettersom vi vet at lavprissensorene for eksempel gir feil avlesning under veldig tåkete forhold. Sensorene logger GPS-posisjon, temperatur, fuktighet og luftkvalitetsdata. Selvfølgelig er det ikke installert kamera, mikrofon eller annen type overvåking.
 
-Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som du finner på linken under:</SDG:description>
+Trondheim Kommune har utviklet en nettside for å vise luftkvalitetsverdier.</SDG:description>
         <SDG:moreInformation rdf:resource="https://tipqa.trondheim.kommune.no/luftkvalitet-frontend/17dh0cf43jg889"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Luftkvalitetsmålinger i Trondheim</rdfs:label>
     </owl:NamedIndividual>
@@ -11544,6 +11545,8 @@ Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
+        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
         <SDG:description>Den økonomiske bunnlinjen representerer den økoomiske framgangen i samfunnet.</SDG:description>
         <rdfs:label>Økonomi</rdfs:label>
     </owl:NamedIndividual>
