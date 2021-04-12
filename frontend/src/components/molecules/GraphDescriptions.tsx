@@ -6,8 +6,8 @@ const GraphDescriptions: React.FC = () => (
   <Stack px="5">
     <GraphNodeKey color="#4299e1" description="Standardfarge/StartNode" />
     <GraphNodeKey color="#EA5F41" description="Bærekraftsmål" />
-    <GraphNodeKey color="#85E664" description="Delmål til bærekraftsmål" />
-    <GraphNodeKey color="#4299e1" description="Trippelbunnlinje" />
+    <GraphNodeKey color="#E0E73F" description="Delmål til bærekraftsmål" />
+    <GraphNodeKey color="#85E664" description="Trippelbunnlinje" />
     <GraphNodeKey color="#DDA93B" description="Utviklingsområde" />
   </Stack>
 );
