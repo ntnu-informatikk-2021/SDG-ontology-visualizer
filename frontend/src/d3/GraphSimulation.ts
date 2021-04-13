@@ -269,7 +269,7 @@ export default class {
       .on('mouseout', function resetHighlightMenu() {
         d3.select(this).style('stroke', edgeColor);
       })
-      .transition('300')
+      .transition('200')
       .attr('r', nodeMenuBtnRadius)
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
@@ -277,7 +277,7 @@ export default class {
 
     button
       .append('image')
-      .transition('300')
+      .transition('200')
       .attr('width', nodeMenuBtnRadius * 2)
       .attr('height', nodeMenuBtnRadius * 2)
       .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
@@ -308,7 +308,7 @@ export default class {
           },
           'icons/addNodesIcon.svg',
         ),
-      300,
+      150,
     );
 
     // remove
@@ -320,7 +320,7 @@ export default class {
           () => this.removeNode(node),
           'icons/removeNodeIcon.svg',
         ),
-      200,
+      100,
     );
 
     // unlock
@@ -336,7 +336,7 @@ export default class {
           },
           `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
         ),
-      100,
+      50,
     );
 
     // detail
