@@ -262,12 +262,22 @@ export default class {
     const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
     button
       .append('circle')
+      .on('click', onClick)
+      .on('mouseover', function highlightMenu() {
+        d3.select(this).style('cursor', 'pointer').style('stroke', edgeHighlightColor);
+      })
+      .on('mouseout', function resetHighlightMenu() {
+        d3.select(this).style('stroke', edgeColor);
+      })
+      .transition('300')
       .attr('r', nodeMenuBtnRadius)
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
-      .on('click', onClick);
+      .style('stroke-width', 2);
+
     button
       .append('image')
+      .transition('300')
       .attr('width', nodeMenuBtnRadius * 2)
       .attr('height', nodeMenuBtnRadius * 2)
       .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
@@ -288,39 +298,51 @@ export default class {
       .attr('transform', `translate(${[menuPos.x, menuPos.y]}) scale(${menuPos.scale})`);
 
     // expand button
-    this.makeNodeMenuButton(
-      menuG,
-      nodeMenuBtnRadius * 3,
-      () => {
-        this.onExpandNode(node);
-      },
-      'icons/addNodesIcon.svg',
+    setTimeout(
+      () =>
+        this.makeNodeMenuButton(
+          menuG,
+          nodeMenuBtnRadius * 3.75,
+          () => {
+            this.onExpandNode(node);
+          },
+          'icons/addNodesIcon.svg',
+        ),
+      300,
     );
 
     // remove
-    this.makeNodeMenuButton(
-      menuG,
-      nodeMenuBtnRadius,
-      () => this.removeNode(node),
-      'icons/removeNodeIcon.svg',
+    setTimeout(
+      () =>
+        this.makeNodeMenuButton(
+          menuG,
+          nodeMenuBtnRadius * 1.25,
+          () => this.removeNode(node),
+          'icons/removeNodeIcon.svg',
+        ),
+      200,
     );
 
     // unlock
-    this.makeNodeMenuButton(
-      menuG,
-      -nodeMenuBtnRadius,
-      (event) => {
-        const nodeContainer = event.target.parentNode.parentNode.parentNode;
-        if (node.isLocked) this.unlockNode(nodeContainer, node);
-        else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
-      },
-      `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
+    setTimeout(
+      () =>
+        this.makeNodeMenuButton(
+          menuG,
+          -nodeMenuBtnRadius * 1.25,
+          (event) => {
+            const nodeContainer = event.target.parentNode.parentNode.parentNode;
+            if (node.isLocked) this.unlockNode(nodeContainer, node);
+            else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
+          },
+          `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
+        ),
+      100,
     );
 
     // detail
     this.makeNodeMenuButton(
       menuG,
-      -nodeMenuBtnRadius * 3,
+      -nodeMenuBtnRadius * 3.75,
       () => {
         this.onExpandNode(node);
         setBrowserPosition();
@@ -352,7 +374,7 @@ export default class {
     n.fy = y;
     n.isLocked = true;
     if (updateOpcity) {
-      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.3);
+      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.7);
     }
   };
 
@@ -383,9 +405,9 @@ export default class {
           });
 
         g.append('image')
-          .attr('width', nodeRadius * 2)
-          .attr('height', nodeRadius * 2)
-          .attr('transform', `translate(${-nodeRadius},${-nodeRadius})`)
+          .attr('width', nodeRadius * 0.8)
+          .attr('height', nodeRadius * 0.8)
+          .attr('transform', `translate(${-nodeRadius / 2.4},${nodeRadius / 4.0})`)
           .attr('xlink:href', 'icons/lockNode.svg')
           .attr('pointer-events', 'none')
           .style('opacity', 0)
