@@ -12,11 +12,11 @@ export interface SubGoal extends Node {
 
 export interface Node extends OntologyEntity {
   type: string;
-  correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
+  correlation: number; // -3 High Negative, -2 Moderat N, -1 = low N, 0= undefined, 1 = Low Posetiv, 2 = medium P, 3 = high P
 }
 
 export interface Edge extends OntologyEntity {
-  correlation: number; // -1 = undefined, 0 = low, 1 = medium, 2 = high
+  correlation: number; // -3 High Negative, -2 Moderat N, -1 = low N, 0= undefined, 1 = Low Posetiv, 2 = medium P, 3 = high P
 }
 
 export type Ontology = {

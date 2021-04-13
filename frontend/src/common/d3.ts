@@ -3,7 +3,7 @@ import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ont
 import { mapIdToEdge } from './node';
 
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
-  const edge = mapIdToEdge(ontology.Predicate.id);
+  const edge = mapIdToEdge(ontology.Predicate.id, ontology.Predicate.correlation);
   if (!edge) throw new Error('Could not map ontology to graph edge');
   return {
     ...edge,

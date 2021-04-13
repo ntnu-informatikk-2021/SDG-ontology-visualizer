@@ -24,3 +24,5 @@ export type LabelTransform = {
 };
 
 export type GraphNodeFilter = (node: GraphNode) => boolean;
+
+export type GraphEdgeFilter = (edge: GraphEdge) => boolean;

@@ -58,7 +58,7 @@ export const mapSustainabilityGoalToNode = (sdg: SustainabilityGoal): Node | nul
   return node;
 };
 
-export const mapIdToEdge = (id: string): Edge | null => {
+export const mapIdToEdge = (id: string, correlation: number): Edge | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -66,6 +66,7 @@ export const mapIdToEdge = (id: string): Edge | null => {
     prefix,
     name,
     id,
+    correlation,
   };
 };
 

@@ -25,6 +25,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
     if (!simulation || !selectedNode) return;
 
     const ontologies = await getRelations(selectedNode.id);
+    console.log(ontologies);
     simulation.addData(ontologies, selectedNode);
   };
 
