@@ -1,4 +1,12 @@
-import { Edge, GraphNode, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
+import {
+  Edge,
+  GraphNode,
+  GraphEdge,
+  Node,
+  Prefix,
+  SustainabilityGoal,
+} from '../types/ontologyTypes';
+import { D3Edge } from '../types/d3/simulation';
 
 export const mapPrefixNameToNode = (
   prefix: string,
@@ -97,3 +105,16 @@ export const mapCorrelationToColor = (correlation: number) => {
 };
 
 export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
+
+export const isPosetiveConnection = (edge: D3Edge | GraphEdge, value: number): boolean => {
+  if (value === 2 && edge.correlation === 1) {
+    return true;
+  }
+  if (value === 1 && (edge.correlation === 1 || edge.correlation === 2)) {
+    return true;
+  }
+  if (value === 0 && (edge.correlation === 1 || edge.correlation === 2 || edge.correlation === 3)) {
+    return true;
+  }
+  return false;
+};

@@ -7,14 +7,15 @@ import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { GraphNodeFilter } from '../../types/d3/simulation';
+import { GraphNodeFilter, GraphEdgeFilter } from '../../types/d3/simulation';
 import { GraphNode } from '../../types/ontologyTypes';
 
 type GraphProps = {
   nodeFilter: GraphNodeFilter;
+  edgeFilter: GraphEdgeFilter;
 };
 
-const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
+const Graph: React.FC<GraphProps> = ({ nodeFilter, edgeFilter }: GraphProps) => {
   const { height, width } = useWindowDimensions();
   const svgRef = useRef<SVGSVGElement>(null);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
@@ -23,9 +24,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
 
   const loadData = async () => {
     if (!simulation || !selectedNode) return;
-
     const ontologies = await getRelations(selectedNode.id);
-    console.log(ontologies);
     simulation.addData(ontologies, selectedNode);
   };
 
@@ -56,6 +55,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
           selectedNode,
           onExpandNode,
           nodeFilter,
+          edgeFilter,
         ),
       );
     } else {
@@ -64,8 +64,11 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [selectedNode, svgRef, simulation]);
 
   useEffect(() => {
-    if (simulation) simulation.setNodeFilter(nodeFilter);
-  }, [nodeFilter]);
+    if (simulation) {
+      simulation.setNodeFilter(nodeFilter);
+      simulation.setEdgeFilter(edgeFilter);
+    }
+  }, [nodeFilter, edgeFilter]);
 
   return (
     <Box bg="white" boxShadow="xl" rounded="lg" width="80vw">

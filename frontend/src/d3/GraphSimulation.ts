@@ -18,6 +18,7 @@ import {
   D3Edge,
   ForceSimulation,
   GraphNodeFilter,
+  GraphEdgeFilter,
   LinkForce,
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
@@ -59,6 +60,7 @@ export default class {
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
+  private edgeFilter: GraphEdgeFilter;
   private nodeMenu?: d3.Selection<SVGGElement, GraphNode, null, undefined>;
 
   constructor(
@@ -68,6 +70,7 @@ export default class {
     initialNode: GraphNode,
     onClickNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
+    edgeFilter: GraphEdgeFilter,
   ) {
     this.svg = d3.select(svg).on('click', this.removeNodeMenu);
     this.edgeSvg = this.svg.append('g');
@@ -80,6 +83,7 @@ export default class {
     this.unfilteredEdges = [];
     this.onExpandNode = onClickNode;
     this.nodeFilter = nodeFilter;
+    this.edgeFilter = edgeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
   }
@@ -126,6 +130,9 @@ export default class {
 
   redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
+    this.edges = this.unfilteredEdges.filter(this.edgeFilter);
+    console.log(this.edges);
+    console.log(this.unfilteredEdges);
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
     this.drawGraph();
@@ -133,6 +140,10 @@ export default class {
 
   setNodeFilter = (filter: GraphNodeFilter) => {
     this.nodeFilter = filter;
+    this.redrawGraphWithFilter();
+  };
+  setEdgeFilter = (filter: GraphEdgeFilter) => {
+    this.edgeFilter = filter;
     this.redrawGraphWithFilter();
   };
 

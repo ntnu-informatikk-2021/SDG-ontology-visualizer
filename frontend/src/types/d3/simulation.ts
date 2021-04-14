@@ -25,4 +25,4 @@ export type LabelTransform = {
 
 export type GraphNodeFilter = (node: GraphNode) => boolean;
 
-export type GraphEdgeFilter = (edge: GraphEdge) => boolean;
+export type GraphEdgeFilter = (edge: D3Edge | GraphEdge) => boolean;
