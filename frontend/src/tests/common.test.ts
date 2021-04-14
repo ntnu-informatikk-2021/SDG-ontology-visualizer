@@ -139,13 +139,14 @@ const testEdge = {
   },
   name: 'testName',
   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName',
+  correlation: 0,
 };
 
 test('Map ID to edge', () => {
   expect(
-    mapIdToEdge('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName'),
+    mapIdToEdge('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName', 0),
   ).toStrictEqual(testEdge);
-  expect(mapIdToEdge('')).toBeNull();
+  expect(mapIdToEdge('', 0)).toBeNull();
 });
 
 /**
