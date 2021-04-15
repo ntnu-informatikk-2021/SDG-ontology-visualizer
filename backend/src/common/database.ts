@@ -125,15 +125,16 @@ export const filterDuplicatePredicates = (
   ontology: Ontology,
   _: number,
   others: Array<Ontology>,
-): boolean =>
-  others.some(
+): boolean => {
+  const hasDuplicate = others.some(
     (ont) =>
-      !(
-        ont.Subject === ontology.Subject &&
-        ont.Object === ontology.Object &&
-        ont.Predicate !== ontology.Predicate
-      ),
-  ) && ontology.Predicate?.correlation !== 0;
+      ont.Subject?.name === ontology.Subject?.name &&
+      ont.Object?.name === ontology.Object?.name &&
+      ont.Predicate?.name !== ontology.Predicate?.name,
+  );
+  if (!hasDuplicate) return true;
+  return ontology.Predicate?.correlation !== 0;
+};
 
 export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;
