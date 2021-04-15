@@ -26,7 +26,6 @@ import { nextFrame, normalizeScale } from '../common/other';
 import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
-const nodeLockedColor = '#27c';
 const nodeRadius = 30;
 const nodeHighlightRadiusMultiplier = 1.2;
 const nodeLabelColor = '#2D3748';
@@ -409,9 +408,7 @@ export default class {
 
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) =>
-            node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
-          )
+          .attr('fill', (node) => changeColorBasedOnType(node.type))
           .attr('stroke', '#aaa')
           .on('click', (event: PointerEvent, node) => {
             if (!event.target) return;
@@ -425,7 +422,7 @@ export default class {
           .attr('transform', `translate(${-nodeRadius / 2.4},${nodeRadius / 4.0})`)
           .attr('xlink:href', 'icons/lockNode.svg')
           .attr('pointer-events', 'none')
-          .style('opacity', 0)
+          .style('opacity', (node) => (node.isLocked ? 0.7 : 0))
           .attr('fill', '#f00');
 
         g.append('text')
