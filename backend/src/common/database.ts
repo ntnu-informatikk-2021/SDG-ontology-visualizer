@@ -120,24 +120,20 @@ export const addEntityToNullFields = (ontology: Ontology, entity: Node): Ontolog
   Predicate: ontology.Predicate,
   Object: ontology.Object || entity,
 });
-export const removeDuplicatePredicates = (ontology: any, sameOntology: any): any => {
-  ontology.forEach((OntologyElement, index) => {
-    sameOntology.forEach((SameOntology, index1) => {
-      if (
-        OntologyElement.Object.name === SameOntology.Object.name &&
-        OntologyElement.Subject.name === SameOntology.Subject.name &&
-        OntologyElement.Predicate.name !== SameOntology.Predicate.name
-      )
-        if (SameOntology.Predicate.correlation === 0) ontology.splice(index1, 1);
-    });
-    if (OntologyElement.Predicate.correlation === 0) ontology.splice(index, 1);
-  });
-  return {
-    Subject: ontology.Subject,
-    Predicate: ontology.Predicate,
-    Object: ontology.Object,
-  };
-};
+
+export const filterDuplicatePredicates = (
+  ontology: Ontology,
+  _: number,
+  others: Array<Ontology>,
+): boolean =>
+  others.some(
+    (ont) =>
+      !(
+        ont.Subject === ontology.Subject &&
+        ont.Object === ontology.Object &&
+        ont.Predicate !== ontology.Predicate
+      ),
+  ) && ontology.Predicate?.correlation !== 0;
 
 export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;

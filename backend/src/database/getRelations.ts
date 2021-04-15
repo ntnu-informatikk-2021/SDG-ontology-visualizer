@@ -1,14 +1,14 @@
-import DB from './index';
-import { ApiError } from '../types/errorTypes';
-import { Ontology } from '../types/ontologyTypes';
-import getRelations from './queries/getRelations';
 import {
   addEntityToNullFields,
+  filterDuplicatePredicates,
   isNotLoopOntology,
   mapIdToNode,
   mapRecordToOntology,
-  removeDuplicatePredicates,
 } from '../common/database';
+import { ApiError } from '../types/errorTypes';
+import { Ontology, Record } from '../types/ontologyTypes';
+import DB from './index';
+import getRelations from './queries/getRelations';
 
 const isRelevantOntology = (ontology: Ontology): boolean => {
   if (!ontology || !ontology.Predicate || !(ontology.Subject || ontology.Object)) return false;
@@ -25,12 +25,13 @@ export default async (classId: string): Promise<Array<Ontology>> => {
   }
   const query = getRelations(classId);
   const response = await DB.query(query, { transform: 'toJSON' });
-  const ontologies = response.records
+  const records = response.records as Array<Record>;
+  const ontologies = records
     .map(mapRecordToOntology)
     .map((ont) => addEntityToNullFields(ont, node))
     .filter(isRelevantOntology)
-    .filter(isNotLoopOntology);
-  removeDuplicatePredicates(ontologies, ontologies);
+    .filter(isNotLoopOntology)
+    .filter(filterDuplicatePredicates);
 
   return ontologies;
 };

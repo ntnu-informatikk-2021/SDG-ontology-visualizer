@@ -9,7 +9,7 @@ import GraphToolBar from '../atoms/GraphToolbar';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
-  const [PosetiveConnectionChoice, setPosetiveConnectionChoice] = useState<number>(3);
+  const [PositiveConnectionChoice, setPosetiveConnectionChoice] = useState<number>(3);
   const [NegativeConnectionChoice, setNegativeonnectionChoice] = useState<number>(3);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (isConnection(edge, PosetiveConnectionChoice, NegativeConnectionChoice)) return false;
+    if (isConnection(edge, PositiveConnectionChoice, NegativeConnectionChoice)) return false;
     return true;
   };
 
