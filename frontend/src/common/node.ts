@@ -103,20 +103,11 @@ export const mapCorrelationToColor = (correlation: number) => {
       return '.300';
   }
 };
-const isPositiveConnection = (edge: D3Edge | GraphEdge, value: number): boolean => {
-  if (edge.correlation === 0) return true;
-  if (value === 3) return false;
-  return value < edge.correlation;
-};
-const isNegativeConnection = (edge: D3Edge | GraphEdge, value: number): boolean => {
+
+export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
+
+export const isWithinCorrelationLimit = (edge: D3Edge | GraphEdge, value: number): boolean => {
   if (edge.correlation === 0) return true;
   if (value === 3) return false;
   return value < Math.abs(edge.correlation);
-};
-
-export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
-export const isConnection = (edge: D3Edge | GraphEdge, Pvalue: number, Nvalue: number): boolean => {
-  if (isPositiveConnection(edge, Pvalue)) return true;
-  if (isNegativeConnection(edge, Nvalue)) return true;
-  return false;
 };

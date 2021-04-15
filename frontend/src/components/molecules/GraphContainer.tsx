@@ -1,6 +1,6 @@
 import { Flex, Stack } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { isSubgoal, isConnection } from '../../common/node';
+import { isSubgoal, isWithinCorrelationLimit } from '../../common/node';
 import { GraphNode, GraphEdge } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
 import GraphDescriptions from './GraphDescriptions';
@@ -9,19 +9,12 @@ import GraphToolBar from '../atoms/GraphToolbar';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
-  const [PositiveConnectionChoice, setPositiveConnectionChoice] = useState<number>(0);
-  const [NegativeConnectionChoice, setNegativeonnectionChoice] = useState<number>(0);
+  const [positiveConnectionChoice, setPositiveConnectionChoice] = useState<number>(0);
+  const [negativeConnectionChoice, setNegativeConnectionChoice] = useState<number>(0);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
-  };
-
-  const getPosetivConnectionChoice = (value: number): void => {
-    setPositiveConnectionChoice(value);
-  };
-  const getNegativeConnectionChoice = (value: number): void => {
-    setNegativeonnectionChoice(value);
   };
 
   const nodeFilter = (node: GraphNode): boolean => {
@@ -29,16 +22,17 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (isConnection(edge, PositiveConnectionChoice, NegativeConnectionChoice)) return true;
-    return false;
+    if (!isWithinCorrelationLimit(edge, positiveConnectionChoice)) return false;
+    if (!isWithinCorrelationLimit(edge, negativeConnectionChoice)) return false;
+    return true;
   };
 
   return (
     <Stack h="80vh">
       <GraphToolBar
         onSubgoalFilter={filterSubgoals}
-        onPositiveConnectionFilter={getPosetivConnectionChoice}
-        onNegativeConnectionFilter={getNegativeConnectionChoice}
+        onPositiveConnectionFilter={setPositiveConnectionChoice}
+        onNegativeConnectionFilter={setNegativeConnectionChoice}
         onUnlockNodes={setUnlockNodes}
       />
       <Flex h="100%" justify="space-between">

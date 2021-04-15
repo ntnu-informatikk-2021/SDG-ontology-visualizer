@@ -13,8 +13,8 @@ import SearchBar from './SearchBar';
 
 type GraphToolBarProps = {
   onSubgoalFilter: () => void;
-  onPositiveConnectionFilter: (value: number) => void;
-  onNegativeConnectionFilter: (value: number) => void;
+  onPositiveConnectionFilter: React.Dispatch<React.SetStateAction<number>>;
+  onNegativeConnectionFilter: React.Dispatch<React.SetStateAction<number>>;
   onUnlockNodes: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
