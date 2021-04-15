@@ -11,7 +11,7 @@ const Navbar = () => {
   if (isFullscreen) return <></>;
 
   return (
-    <Flex align="center" px="20" py="4">
+    <Flex align="center" px="10" py="4">
       <Box>
         <Link fontWeight="bold" color="cyan.600" fontSize="1.5em" as={RouteLink} to="/">
           Trondheim kommune SDG-Ontologi
