@@ -16,11 +16,15 @@ jobs:
       run: yarn add eslint -g
       
     - name: Build frontend
-      run: yarn build
+      run: |
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
+        yarn build
       working-directory: frontend
     
     - name: Build backend
-      run: yarn build
+      run: |
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
+        yarn build
       working-directory: backend
     
     - uses: c-hive/gha-yarn-cache@v1
