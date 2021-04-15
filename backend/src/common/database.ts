@@ -30,11 +30,7 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
-export const mapIdToOntologyEntity = (
-  id: string,
-  correlation?: number,
-  type?: string,
-): OntologyEntity | null => {
+export const mapIdToOntologyEntity = (id: string): OntologyEntity | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -42,19 +38,29 @@ export const mapIdToOntologyEntity = (
     prefix,
     name,
     id,
+  };
+};
+
+export const mapIdToNode = (id: string, correlation?: number, type?: string): Node | null => {
+  const ontologyEntity = mapIdToOntologyEntity(id);
+  if (!ontologyEntity) return null;
+  return {
+    prefix: ontologyEntity.prefix,
+    name: ontologyEntity.name,
+    id: ontologyEntity.id,
     type: type || 'undefined',
     correlation: correlation || -1,
   };
 };
 
 export const mapRecordToOntology = (record: Record): Ontology => {
-  let subject = record.Subject ? mapIdToOntologyEntity(record.Subject) : null;
+  let subject = record.Subject ? mapIdToNode(record.Subject) : null;
   if (subject && record.SubjectLabel) {
     if (record.TypeLabel)
       subject = { ...subject, name: record.SubjectLabel, type: record.TypeLabel };
     subject = { ...subject, name: record.SubjectLabel };
   }
-  let object = record.Object ? mapIdToOntologyEntity(record.Object) : null;
+  let object = record.Object ? mapIdToNode(record.Object) : null;
   if (object && record.ObjectLabel) {
     if (record.TypeLabel) object = { ...object, name: record.ObjectLabel, type: record.TypeLabel };
     object = { ...object, name: record.ObjectLabel };
@@ -68,7 +74,7 @@ export const mapRecordToOntology = (record: Record): Ontology => {
 
 export const mapRecordToObject = (record: Record): Node | null => {
   const correlation = getCorrelationIndexFromRecord(record);
-  let object = record.Object ? mapIdToOntologyEntity(record.Object, correlation) : null;
+  let object = record.Object ? mapIdToNode(record.Object, correlation) : null;
   if (object && record.ObjectLabel) {
     object = { ...object, name: record.ObjectLabel };
   }
@@ -76,7 +82,7 @@ export const mapRecordToObject = (record: Record): Node | null => {
 };
 
 export const mapRecordToSubject = (record: Record): Node | null => {
-  let subject = record.Subject ? mapIdToOntologyEntity(record.Subject) : null;
+  let subject = record.Subject ? mapIdToNode(record.Subject) : null;
   if (subject && record.SubjectLabel) {
     subject = { ...subject, name: record.SubjectLabel };
   }
@@ -91,7 +97,7 @@ export const parsePrefixesToQuery = (...prefixes: Prefix[]): string => {
   return strings.join('\n');
 };
 
-export const addEntityToNullFields = (ontology: Ontology, entity: OntologyEntity): Ontology => ({
+export const addEntityToNullFields = (ontology: Ontology, entity: Node): Ontology => ({
   Subject: ontology.Subject || entity,
   Predicate: ontology.Predicate,
   Object: ontology.Object || entity,

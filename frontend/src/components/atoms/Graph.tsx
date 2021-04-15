@@ -1,4 +1,4 @@
-import { Center } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
@@ -28,7 +28,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
     simulation.addData(ontologies, selectedNode);
   };
 
-  const onClickNode = (node: GraphNode): void => {
+  const onExpandNode = (node: GraphNode): void => {
     if (selectedNode && selectedNode.id === node.id) {
       loadData();
     } else {
@@ -37,8 +37,8 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   };
 
   useEffect(() => {
-    if (simulation) simulation.updateOnClickCallback(onClickNode);
-  }, [onClickNode]);
+    if (simulation) simulation.updateOnClickCallback(onExpandNode);
+  }, [onExpandNode]);
 
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
@@ -50,10 +50,10 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
       setSimulation(
         new GraphSimulation(
           svgRef.current,
-          width,
-          height - 200,
+          0.4 * width,
+          0.4 * height,
           selectedNode,
-          onClickNode,
+          onExpandNode,
           nodeFilter,
         ),
       );
@@ -67,9 +67,9 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter }: GraphProps) => {
   }, [nodeFilter]);
 
   return (
-    <Center my="0">
-      <svg id="svgGraph" height={height - 200} width={width - width / 5} ref={svgRef} />
-    </Center>
+    <Box bg="white" boxShadow="xl" rounded="lg" width="80vw">
+      <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
+    </Box>
   );
 };
 
