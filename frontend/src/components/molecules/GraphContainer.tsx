@@ -9,6 +9,7 @@ import GraphToolBar from '../atoms/GraphToolbar';
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
+  const [edgeLabelsVisible, setEdgeLabelsVisible] = useState<boolean>(true);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
@@ -21,9 +22,17 @@ const GraphContainer: React.FC = () => {
 
   return (
     <Stack h="80vh">
-      <GraphToolBar onSubgoalFilter={filterSubgoals} onUnlockNodes={setUnlockNodes} />
+      <GraphToolBar
+        onSubgoalFilter={filterSubgoals}
+        onUnlockNodes={setUnlockNodes}
+        onEdgeLabelsVisible={setEdgeLabelsVisible}
+      />
       <Flex h="100%" justify="space-between">
-        <Graph nodeFilter={nodeFilter} unlockAllNodes={unlockNodes} />
+        <Graph
+          nodeFilter={nodeFilter}
+          unlockAllNodes={unlockNodes}
+          edgeLabelsVisible={edgeLabelsVisible}
+        />
         <GraphDescriptions />
       </Flex>
     </Stack>
