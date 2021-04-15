@@ -17,7 +17,7 @@ jobs:
       
     - name: Build frontend
       run: |
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev 
+        yarn
         yarn build
       working-directory: frontend
   
