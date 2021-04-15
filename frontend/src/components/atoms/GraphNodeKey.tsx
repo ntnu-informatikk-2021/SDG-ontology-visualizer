@@ -1,15 +1,15 @@
 import { Flex, Icon, Text } from '@chakra-ui/react';
 import React from 'react';
 import { GoPrimitiveDot } from 'react-icons/go';
+import { changeColorBasedOnType } from '../../common/d3';
 
 type GraphNodeKeyProps = {
-  color: string;
   description: string;
 };
 
-const GraphNodeKey = ({ color, description }: GraphNodeKeyProps) => (
+const GraphNodeKey = ({ description }: GraphNodeKeyProps) => (
   <Flex align="center">
-    <Icon as={GoPrimitiveDot} w={10} h={10} color={color} />
+    <Icon as={GoPrimitiveDot} w={12} h={12} color={changeColorBasedOnType(description)} />
     <Text>{description}</Text>
   </Flex>
 );

@@ -13,9 +13,10 @@ import { GraphNode } from '../../types/ontologyTypes';
 type GraphProps = {
   nodeFilter: GraphNodeFilter;
   edgeFilter: GraphEdgeFilter;
+  unlockAllNodes: boolean;
 };
 
-const Graph: React.FC<GraphProps> = ({ nodeFilter, edgeFilter }: GraphProps) => {
+const Graph: React.FC<GraphProps> = ({ nodeFilter, edgeFilter, unlockAllNodes }: GraphProps) => {
   const { height, width } = useWindowDimensions();
   const svgRef = useRef<SVGSVGElement>(null);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
@@ -69,6 +70,10 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, edgeFilter }: GraphProps) => 
       simulation.setEdgeFilter(edgeFilter);
     }
   }, [nodeFilter, edgeFilter]);
+
+  useEffect(() => {
+    if (simulation) simulation.unlockAllNodes();
+  }, [unlockAllNodes]);
 
   return (
     <Box bg="white" boxShadow="xl" rounded="lg" width="80vw">

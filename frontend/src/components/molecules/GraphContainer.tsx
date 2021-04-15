@@ -11,6 +11,7 @@ const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [PosetiveConnectionChoice, setPosetiveConnectionChoice] = useState<number>(3);
   const [NegativeConnectionChoice, setNegativeonnectionChoice] = useState<number>(3);
+  const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
@@ -38,9 +39,10 @@ const GraphContainer: React.FC = () => {
         onSubgoalFilter={filterSubgoals}
         onPosetiveConnectionFilter={getPosetivConnectionChoice}
         onNegativeConnectionFilter={getNegativeConnectionChoice}
+        onUnlockNodes={setUnlockNodes}
       />
       <Flex h="100%" justify="space-between">
-        <Graph nodeFilter={nodeFilter} edgeFilter={edgeFilter} />
+        <Graph nodeFilter={nodeFilter} edgeFilter={edgeFilter} unlockAllNodes={unlockNodes} />
         <GraphDescriptions />
       </Flex>
     </Stack>

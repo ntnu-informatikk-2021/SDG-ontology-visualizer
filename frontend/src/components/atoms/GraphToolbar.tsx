@@ -6,6 +6,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
+  Button,
 } from '@chakra-ui/react';
 import React from 'react';
 import SearchBar from './SearchBar';
@@ -14,12 +15,14 @@ type GraphToolBarProps = {
   onSubgoalFilter: () => void;
   onPosetiveConnectionFilter: (value: number) => void;
   onNegativeConnectionFilter: (value: number) => void;
+  onUnlockNodes: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
   onPosetiveConnectionFilter,
   onNegativeConnectionFilter,
+  onUnlockNodes,
 }: GraphToolBarProps) => (
   <HStack bg="cyan.500" borderRadius="lg" p="2" spacing="5">
     <SearchBar limit={5} />
@@ -52,6 +55,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       </SliderTrack>
       <SliderThumb boxSize={6} />
     </Slider>
+    <Button onClick={() => onUnlockNodes((current) => !current)}>Lås opp alle noder</Button>
   </HStack>
 );
 
