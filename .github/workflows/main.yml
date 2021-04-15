@@ -57,3 +57,19 @@ jobs:
           yarn
           yarn test
         working-directory: backend
+  cypress-run:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn start
+          working-directory: frontend
+
+
