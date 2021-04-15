@@ -352,7 +352,22 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  unlockNode = (nodeContainer: SVGGElement, node: GraphNode) => {
+  unlockAllNodes = () => {
+    this.localUnlockAllNodes(this.unlockNode);
+  };
+
+  localUnlockAllNodes = (unlockNode: (nodeContainer: SVGGElement, node: GraphNode) => void) => {
+    this.removeNodeMenu();
+    this.nodeSvg
+      .selectAll(nodeClassName)
+      .data(this.nodes)
+      .each(function (node) {
+        const nodeContainer = d3.select(this).node() as SVGGElement;
+        unlockNode(nodeContainer, node);
+      });
+  };
+
+  unlockNode = (nodeContainer: SVGGElement, node: GraphNode): void => {
     const n = node;
     n.fx = undefined;
     n.fy = undefined;
