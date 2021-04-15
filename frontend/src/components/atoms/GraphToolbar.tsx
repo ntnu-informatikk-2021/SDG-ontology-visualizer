@@ -34,7 +34,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       min={0}
       max={3}
       step={1}
-      onChangeEnd={(value) => onPositiveConnectionFilter(value)}
+      onChangeEnd={(value) => onPositiveConnectionFilter(3 - value)}
     >
       <SliderTrack bg="green.100">
         <Box position="relative" right={4} />
@@ -47,7 +47,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       min={0}
       max={3}
       step={1}
-      onChangeEnd={(value) => onNegativeConnectionFilter(value)}
+      onChangeEnd={(value) => onNegativeConnectionFilter(3 - value)}
     >
       <SliderTrack bg="red.100">
         <Box position="relative" right={4} />
