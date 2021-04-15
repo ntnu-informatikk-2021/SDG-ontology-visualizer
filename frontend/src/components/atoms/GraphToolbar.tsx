@@ -13,14 +13,14 @@ import SearchBar from './SearchBar';
 
 type GraphToolBarProps = {
   onSubgoalFilter: () => void;
-  onPosetiveConnectionFilter: (value: number) => void;
+  onPositiveConnectionFilter: (value: number) => void;
   onNegativeConnectionFilter: (value: number) => void;
   onUnlockNodes: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
-  onPosetiveConnectionFilter,
+  onPositiveConnectionFilter,
   onNegativeConnectionFilter,
   onUnlockNodes,
 }: GraphToolBarProps) => (
@@ -34,7 +34,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       min={0}
       max={3}
       step={1}
-      onChangeEnd={(value) => onPosetiveConnectionFilter(value)}
+      onChangeEnd={(value) => onPositiveConnectionFilter(value)}
     >
       <SliderTrack bg="green.100">
         <Box position="relative" right={4} />

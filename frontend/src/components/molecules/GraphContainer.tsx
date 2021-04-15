@@ -9,7 +9,7 @@ import GraphToolBar from '../atoms/GraphToolbar';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
-  const [PositiveConnectionChoice, setPosetiveConnectionChoice] = useState<number>(3);
+  const [PositiveConnectionChoice, setPositiveConnectionChoice] = useState<number>(3);
   const [NegativeConnectionChoice, setNegativeonnectionChoice] = useState<number>(3);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
 
@@ -18,7 +18,7 @@ const GraphContainer: React.FC = () => {
   };
 
   const getPosetivConnectionChoice = (value: number): void => {
-    setPosetiveConnectionChoice(value);
+    setPositiveConnectionChoice(value);
   };
   const getNegativeConnectionChoice = (value: number): void => {
     setNegativeonnectionChoice(value);
@@ -37,7 +37,7 @@ const GraphContainer: React.FC = () => {
     <Stack h="80vh">
       <GraphToolBar
         onSubgoalFilter={filterSubgoals}
-        onPosetiveConnectionFilter={getPosetivConnectionChoice}
+        onPositiveConnectionFilter={getPosetivConnectionChoice}
         onNegativeConnectionFilter={getNegativeConnectionChoice}
         onUnlockNodes={setUnlockNodes}
       />
