@@ -78,7 +78,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps)
     <Box
       position="relative"
       bg="white"
-      boxShadow="xl"
+      boxShadow="md"
       rounded="lg"
       width={isFullscreen ? '100vw' : '80vw'}
     >

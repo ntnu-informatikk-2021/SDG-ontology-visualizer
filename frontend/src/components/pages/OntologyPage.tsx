@@ -9,7 +9,7 @@ const OntologyPage: React.FC = () => {
   const { isFullscreen } = useContext(FullscreenContext);
 
   return (
-    <Stack spacing="10" px={[null, null, '0', '10']}>
+    <Stack spacing="4" px={[null, null, '0', '20']}>
       <GraphContainer />
       {!isFullscreen && (
         <>

@@ -1,5 +1,6 @@
 import { Button, Checkbox, HStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext } from 'react';
+import FullscreenContext from '../../context/FullscreenContext';
 import SearchBar from './SearchBar';
 
 type GraphToolBarProps = {
@@ -10,14 +11,18 @@ type GraphToolBarProps = {
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
   onUnlockNodes,
-}: GraphToolBarProps) => (
-  <HStack bg="cyan.500" borderRadius="lg" p="2" spacing="5">
-    <SearchBar limit={5} />
-    <Checkbox color="white" size="lg" onChange={onSubgoalFilter}>
-      Vis delmål
-    </Checkbox>
-    <Button onClick={() => onUnlockNodes((current) => !current)}>Lås opp alle noder</Button>
-  </HStack>
-);
+}: GraphToolBarProps) => {
+  const { isFullscreen } = useContext(FullscreenContext);
+
+  return (
+    <HStack bg="cyan.500" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="5">
+      <SearchBar limit={5} />
+      <Checkbox color="white" size="lg" onChange={onSubgoalFilter}>
+        Vis delmål
+      </Checkbox>
+      <Button onClick={() => onUnlockNodes((current) => !current)}>Lås opp alle noder</Button>
+    </HStack>
+  );
+};
 
 export default GraphToolBar;

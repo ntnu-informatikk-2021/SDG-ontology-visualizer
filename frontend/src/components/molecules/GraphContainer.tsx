@@ -23,17 +23,15 @@ const GraphContainer: React.FC = () => {
 
   return (
     <Stack
-      h={isFullscreen ? '100vh' : '80vh'}
+      h={isFullscreen ? '100vh' : '65vh'}
       w={isFullscreen ? '100vw' : ''}
       position={isFullscreen ? 'absolute' : 'static'}
       top="0px"
       left="0px"
     >
-      {!isFullscreen && (
-        <GraphToolBar onSubgoalFilter={filterSubgoals} onUnlockNodes={setUnlockNodes} />
-      )}
-
-      <Flex h="100%" justify="space-between">
+      <GraphToolBar onSubgoalFilter={filterSubgoals} onUnlockNodes={setUnlockNodes} />
+      {/* chakra adds implicit margin because it's a child of a stack, so we must use !important */}
+      <Flex mt={isFullscreen ? '0 !important' : ''} h="100%" justify="space-between">
         <Graph nodeFilter={nodeFilter} unlockAllNodes={unlockNodes} />
         <GraphDescriptions />
       </Flex>
