@@ -1,5 +1,6 @@
 describe('Graph tests', () => {
   it('Start from homepage', () => {
+    cy.wait(31000);
     cy.visit('http://localhost:3000');
     cy.get('[alt="Utrydde fattigdom"]').click();
     cy.url().should('eq', 'http://localhost:3000/ontology');
