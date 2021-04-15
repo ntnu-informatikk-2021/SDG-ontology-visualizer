@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="css-hae30d"
+>
+  <hr
+    aria-orientation="vertical"
+    className="chakra-divider css-12gj880"
+    role="separator"
+  />
+</div>
+`;

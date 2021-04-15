@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="css-0"
+  style={
+    Object {
+      "width": "auto",
+    }
+  }
+>
+  <div
+    className="css-i6bazn"
+  >
+    <div
+      className="css-bosr71"
+    />
+  </div>
+</div>
+`;

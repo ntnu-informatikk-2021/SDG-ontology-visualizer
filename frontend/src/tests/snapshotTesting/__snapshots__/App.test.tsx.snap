@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="css-11cmkne"
+>
+  <div
+    className="css-13d0swt"
+  >
+    <div
+      className="css-0"
+    >
+      <a
+        className="chakra-link css-r3d2xp"
+        href="/"
+        onClick={[Function]}
+      >
+        Trondheim kommune SDG-Ontologi
+      </a>
+    </div>
+    <div
+      className="css-17xejub"
+    />
+    <button
+      className="chakra-button css-1db41pc"
+      justify="center"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="chakra-button__icon css-ktvjz1"
+      >
+        <svg
+          aria-hidden={true}
+          className="chakra-icon css-onkibi"
+          focusable={false}
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Om
+    </button>
+  </div>
+  <div
+    className="css-1rr4qq7"
+  >
+    <div
+      className="chakra-stack css-14hwfuk"
+    >
+      <div
+        className="css-192tuco"
+        spacing="10"
+      >
+        <div
+          className="chakra-stack css-14hwfuk"
+        >
+          <h2
+            className="chakra-heading css-y5314g"
+          >
+            Bærekraftsontologien:
+          </h2>
+          <div
+            className="css-gmuwbf"
+          >
+            <div
+              aria-controls="popover-content-3"
+              aria-expanded={false}
+              aria-haspopup="dialog"
+              className="chakra-input__group css-4302v8"
+              id="popover-trigger-3"
+              onClick={[Function]}
+            >
+              <div
+                className="chakra-input__left-element css-16fnvti"
+              >
+                <svg
+                  className="chakra-icon css-177yplm"
+                  focusable={false}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <input
+                className="chakra-input css-hak4hc"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Søk..."
+                value=""
+              />
+            </div>
+            <div
+              className="css-11r8ny"
+              style={
+                Object {
+                  "--popper-arrow-shadow-color": "#E2E8F0",
+                  "--popper-arrow-size": undefined,
+                  "visibility": "hidden",
+                }
+              }
+            >
+              <section
+                className="chakra-popover__content css-zfzoez"
+                id="popover-content-3"
+                onBlur={[Function]}
+                onKeyDown={[Function]}
+                role="dialog"
+                style={
+                  Object {
+                    "opacity": 0,
+                    "transform": "scale(0.95) translateZ(0)",
+                    "transformOrigin": "var(--popper-transform-origin)",
+                    "visibility": "hidden",
+                  }
+                }
+                tabIndex={-1}
+              >
+                <div
+                  className="chakra-stack css-1cpt12i"
+                />
+              </section>
+            </div>
+          </div>
+        </div>
+        <img
+          alt="SDG"
+          className="chakra-image__placeholder css-1hskriy"
+        />
+      </div>
+      <h2
+        align="center"
+        className="chakra-heading css-8tpg3x"
+      >
+        Bærekraftsmålene:
+      </h2>
+      <div
+        className="chakra-stack css-38c8fs"
+      >
+        <div
+          className="css-19frufu"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-lfgj71"
+  >
+    <em
+      className="chakra-text css-i3jkqk"
+    >
+      TRDK03-UN
+    </em>
+  </div>
+</div>
+`;
