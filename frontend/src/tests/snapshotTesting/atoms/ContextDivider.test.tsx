@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../../App';
+import ContextDivider from '../../../components/atoms/ContextDivider';
 
 it('renders when there are no items', () => {
-  const tree = renderer.create(<App />).toJSON();
+  const tree = renderer.create(<ContextDivider visible />).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="css-wrabzt"
+  spacing={10}
+>
+  <h2
+    className="chakra-heading css-dqyrn5"
+  >
+    
+  </h2>
+  <div
+    className="css-gg4vpm"
+  >
+    <div
+      className="css-0"
+      style={
+        Object {
+          "width": "auto",
+        }
+      }
+    >
+      <div
+        className="css-i6bazn"
+      >
+        <div
+          className="css-y502al"
+        >
+          <p
+            className="chakra-text css-16y9uqu"
+          >
+            
+          </p>
+          
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-hae30d"
+    >
+      <hr
+        aria-orientation="vertical"
+        className="chakra-divider css-12gj880"
+        role="separator"
+      />
+    </div>
+    <div
+      className="chakra-stack css-1acfu01"
+    >
+      <b
+        className="chakra-text css-6dvxm2"
+      >
+        Har ingen etablerte positive påvirkninger enda
+      </b>
+      <div
+        className="chakra-wrap css-0"
+      >
+        <ul
+          className="chakra-wrap__list css-umyqv7"
+        />
+      </div>
+      <b
+        className="chakra-text css-6dvxm2"
+      >
+        Har ingen etablerte negative påvirkninger enda
+      </b>
+      <div
+        className="chakra-wrap css-0"
+      >
+        <ul
+          className="chakra-wrap__list css-umyqv7"
+        />
+      </div>
+      <b
+        className="chakra-text css-6dvxm2"
+      >
+        Har ingen utviklingsområder
+      </b>
+      <div
+        className="chakra-wrap css-0"
+      >
+        <ul
+          className="chakra-wrap__list css-umyqv7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

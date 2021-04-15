@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="css-253icu"
+>
+  <svg
+    height={568}
+    id="svgGraph"
+    width={819.2}
+  />
+</div>
+`;

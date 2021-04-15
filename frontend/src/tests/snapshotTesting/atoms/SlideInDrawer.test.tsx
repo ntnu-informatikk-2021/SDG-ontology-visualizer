@@ -1,14 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import Navbar from '../../components/atoms/Navbar';
+
+import SlideInDrawer from '../../../components/atoms/SlideInDrawer';
 
 it('renders when there are no items', () => {
   const tree = renderer
     .create(
-      <Router>
-        <Navbar />
-      </Router>,
+      <SlideInDrawer expanded width="10px">
+        <></>
+      </SlideInDrawer>,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

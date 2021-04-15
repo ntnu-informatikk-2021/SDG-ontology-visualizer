@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="chakra-stack css-2n1jg2"
+>
+  <div
+    className="css-r4fmck"
+  />
+</div>
+`;

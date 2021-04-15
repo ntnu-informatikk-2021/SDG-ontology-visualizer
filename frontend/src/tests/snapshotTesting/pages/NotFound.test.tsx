@@ -1,8 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../../App';
+
+import NotFound from '../../../components/pages/NotFound';
 
 it('renders when there are no items', () => {
-  const tree = renderer.create(<App />).toJSON();
+  const tree = renderer.create(<NotFound />).toJSON();
   expect(tree).toMatchSnapshot();
 });
