@@ -33,7 +33,7 @@ const GraphContainer: React.FC = () => {
       {/* chakra adds implicit margin because it's a child of a stack, so we must use !important */}
       <Flex mt={isFullscreen ? '0 !important' : ''} h="100%" justify="space-between">
         <Graph nodeFilter={nodeFilter} unlockAllNodes={unlockNodes} />
-        <GraphDescriptions />
+        <GraphDescriptions float={isFullscreen} />
       </Flex>
     </Stack>
   );
