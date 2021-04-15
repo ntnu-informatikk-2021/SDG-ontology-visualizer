@@ -75,7 +75,13 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps)
   }, [unlockAllNodes]);
 
   return (
-    <Box position="relative" bg="white" borderRadius="lg" width={isFullscreen ? '100vw' : '80vw'}>
+    <Box
+      position="relative"
+      bg="white"
+      boxShadow="xl"
+      rounded="lg"
+      width={isFullscreen ? '100vw' : '80vw'}
+    >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <Button
         position="absolute"
