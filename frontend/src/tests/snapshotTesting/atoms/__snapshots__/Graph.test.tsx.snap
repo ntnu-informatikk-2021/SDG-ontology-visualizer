@@ -2,12 +2,12 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-253icu"
+  className="css-1pm9hwn"
 >
   <svg
-    height={568}
+    height="100%"
     id="svgGraph"
-    width={819.2}
+    width="100%"
   />
 </div>
 `;

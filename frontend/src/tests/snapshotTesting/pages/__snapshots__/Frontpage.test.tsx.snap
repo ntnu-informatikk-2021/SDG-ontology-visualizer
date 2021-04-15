@@ -14,10 +14,10 @@ exports[`renders when there are no items 1`] = `
       <h2
         className="chakra-heading css-kbn7if"
       >
-        Bærekraftsmålene
+        Bærekraftsontologien:
       </h2>
       <div
-        className="css-1lp8bsb"
+        className="css-gmuwbf"
       >
         <div
           aria-controls="popover-content-2"
@@ -42,7 +42,7 @@ exports[`renders when there are no items 1`] = `
             </svg>
           </div>
           <input
-            className="chakra-input css-jfggi0"
+            className="chakra-input css-i2h8e7"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -61,7 +61,7 @@ exports[`renders when there are no items 1`] = `
           }
         >
           <section
-            className="chakra-popover__content css-1xu55c"
+            className="chakra-popover__content css-1lhufj9"
             id="popover-content-2"
             onBlur={[Function]}
             onKeyDown={[Function]}
@@ -88,6 +88,12 @@ exports[`renders when there are no items 1`] = `
       className="chakra-image__placeholder css-1hskriy"
     />
   </div>
+  <h2
+    align="center"
+    className="chakra-heading css-lav2e5"
+  >
+    Bærekraftsmålene:
+  </h2>
   <div
     className="chakra-stack css-2n1jg2"
   >

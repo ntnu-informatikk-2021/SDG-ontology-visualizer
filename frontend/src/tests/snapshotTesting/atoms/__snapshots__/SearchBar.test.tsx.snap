@@ -2,7 +2,7 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-1lp8bsb"
+  className="css-gmuwbf"
 >
   <div
     aria-controls="popover-content-2"
@@ -27,7 +27,7 @@ exports[`renders when there are no items 1`] = `
       </svg>
     </div>
     <input
-      className="chakra-input css-jfggi0"
+      className="chakra-input css-i2h8e7"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -46,7 +46,7 @@ exports[`renders when there are no items 1`] = `
     }
   >
     <section
-      className="chakra-popover__content css-1xu55c"
+      className="chakra-popover__content css-1lhufj9"
       id="popover-content-2"
       onBlur={[Function]}
       onKeyDown={[Function]}

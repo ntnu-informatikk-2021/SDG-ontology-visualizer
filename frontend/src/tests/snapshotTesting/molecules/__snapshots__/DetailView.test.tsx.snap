@@ -2,11 +2,10 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-wrabzt"
-  spacing={10}
+  className="css-iv98nd"
 >
   <h2
-    className="chakra-heading css-dqyrn5"
+    className="chakra-heading css-1huxaib"
   >
     
   </h2>
@@ -30,7 +29,7 @@ exports[`renders when there are no items 1`] = `
           <p
             className="chakra-text css-16y9uqu"
           >
-            
+            Dette konseptet er under utvikling 
           </p>
           
         </div>
