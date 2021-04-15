@@ -26,10 +26,9 @@ import { nextFrame, normalizeScale } from '../common/other';
 import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
-const nodeLockedColor = '#27c';
-const nodeRadius = 20;
+const nodeRadius = 30;
 const nodeHighlightRadiusMultiplier = 1.2;
-const nodeLabelColor = '#000';
+const nodeLabelColor = '#2D3748';
 const nodeStrokeWidth = 0;
 
 const nodeMenuBtnRadius = 15;
@@ -38,8 +37,9 @@ const edgeClassName = '.edge';
 const maxEdgeFontSize = 10;
 const edgeDistance = 200;
 const edgeWidth = 2;
-const edgeColor = '#aaa';
+const edgeColor = '#A0AEC0';
 const edgeLabelColor = '#222';
+const edgeHighlightColor = '#00A3C4';
 
 const fontSize = 18;
 const minScale = 0.4;
@@ -261,12 +261,22 @@ export default class {
     const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
     button
       .append('circle')
+      .on('click', onClick)
+      .on('mouseover', function highlightMenu() {
+        d3.select(this).style('cursor', 'pointer').style('stroke', edgeHighlightColor);
+      })
+      .on('mouseout', function resetHighlightMenu() {
+        d3.select(this).style('stroke', edgeColor);
+      })
+      .transition('200')
       .attr('r', nodeMenuBtnRadius)
       .attr('fill', '#eee')
       .attr('stroke', edgeColor)
-      .on('click', onClick);
+      .style('stroke-width', 2);
+
     button
       .append('image')
+      .transition('200')
       .attr('width', nodeMenuBtnRadius * 2)
       .attr('height', nodeMenuBtnRadius * 2)
       .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
@@ -287,39 +297,51 @@ export default class {
       .attr('transform', `translate(${[menuPos.x, menuPos.y]}) scale(${menuPos.scale})`);
 
     // expand button
-    this.makeNodeMenuButton(
-      menuG,
-      nodeMenuBtnRadius * 3,
-      () => {
-        this.onExpandNode(node);
-      },
-      'icons/addNodesIcon.svg',
+    setTimeout(
+      () =>
+        this.makeNodeMenuButton(
+          menuG,
+          nodeMenuBtnRadius * 3.75,
+          () => {
+            this.onExpandNode(node);
+          },
+          'icons/addNodesIcon.svg',
+        ),
+      150,
     );
 
     // remove
-    this.makeNodeMenuButton(
-      menuG,
-      nodeMenuBtnRadius,
-      () => this.removeNode(node),
-      'icons/removeNodeIcon.svg',
+    setTimeout(
+      () =>
+        this.makeNodeMenuButton(
+          menuG,
+          nodeMenuBtnRadius * 1.25,
+          () => this.removeNode(node),
+          'icons/removeNodeIcon.svg',
+        ),
+      100,
     );
 
     // unlock
-    this.makeNodeMenuButton(
-      menuG,
-      -nodeMenuBtnRadius,
-      (event) => {
-        const nodeContainer = event.target.parentNode.parentNode.parentNode;
-        if (node.isLocked) this.unlockNode(nodeContainer, node);
-        else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
-      },
-      `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
+    setTimeout(
+      () =>
+        this.makeNodeMenuButton(
+          menuG,
+          -nodeMenuBtnRadius * 1.25,
+          (event) => {
+            const nodeContainer = event.target.parentNode.parentNode.parentNode;
+            if (node.isLocked) this.unlockNode(nodeContainer, node);
+            else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
+          },
+          `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
+        ),
+      50,
     );
 
     // detail
     this.makeNodeMenuButton(
       menuG,
-      -nodeMenuBtnRadius * 3,
+      -nodeMenuBtnRadius * 3.75,
       () => {
         this.onExpandNode(node);
         setBrowserPosition();
@@ -329,7 +351,22 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  unlockNode = (nodeContainer: SVGGElement, node: GraphNode) => {
+  unlockAllNodes = () => {
+    this.localUnlockAllNodes(this.unlockNode);
+  };
+
+  localUnlockAllNodes = (unlockNode: (nodeContainer: SVGGElement, node: GraphNode) => void) => {
+    this.removeNodeMenu();
+    this.nodeSvg
+      .selectAll(nodeClassName)
+      .data(this.nodes)
+      .each(function (node) {
+        const nodeContainer = d3.select(this).node() as SVGGElement;
+        unlockNode(nodeContainer, node);
+      });
+  };
+
+  unlockNode = (nodeContainer: SVGGElement, node: GraphNode): void => {
     const n = node;
     n.fx = undefined;
     n.fy = undefined;
@@ -351,7 +388,7 @@ export default class {
     n.fy = y;
     n.isLocked = true;
     if (updateOpcity) {
-      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.3);
+      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.7);
     }
   };
 
@@ -371,9 +408,7 @@ export default class {
 
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) =>
-            node.isLocked ? nodeLockedColor : changeColorBasedOnType(node.type),
-          )
+          .attr('fill', (node) => changeColorBasedOnType(node.type))
           .attr('stroke', '#aaa')
           .on('click', (event: PointerEvent, node) => {
             if (!event.target) return;
@@ -382,12 +417,12 @@ export default class {
           });
 
         g.append('image')
-          .attr('width', nodeRadius * 2)
-          .attr('height', nodeRadius * 2)
-          .attr('transform', `translate(${-nodeRadius},${-nodeRadius})`)
+          .attr('width', nodeRadius * 0.8)
+          .attr('height', nodeRadius * 0.8)
+          .attr('transform', `translate(${-nodeRadius / 2.4},${nodeRadius / 4.0})`)
           .attr('xlink:href', 'icons/lockNode.svg')
           .attr('pointer-events', 'none')
-          .style('opacity', 0)
+          .style('opacity', (node) => (node.isLocked ? 0.7 : 0))
           .attr('fill', '#f00');
 
         g.append('text')
@@ -528,7 +563,8 @@ export default class {
         d3.select(event.target as SVGCircleElement)
           .transition('500')
           .attr('r', nodeRadius * nodeHighlightRadiusMultiplier)
-          .attr('stroke-width', 5 / this.scale);
+          .attr('stroke-width', 3 / this.scale)
+          .attr('stroke', edgeHighlightColor);
 
         const graphEdges = edgeSvg
           .selectAll(edgeClassName)
@@ -545,7 +581,8 @@ export default class {
         graphEdges
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
-          .attr('stroke-width', (edgeWidth * 3) / this.scale);
+          .attr('stroke-width', (edgeWidth * 1.5) / this.scale)
+          .attr('stroke', edgeHighlightColor);
         graphEdges
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
@@ -588,7 +625,8 @@ export default class {
         graphEdges
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
-          .attr('stroke-width', edgeWidth / this.scale);
+          .attr('stroke-width', edgeWidth / this.scale)
+          .attr('stroke', edgeColor);
         graphEdges
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,

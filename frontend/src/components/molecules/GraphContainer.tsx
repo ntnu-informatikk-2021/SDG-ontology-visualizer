@@ -4,12 +4,13 @@ import { isSubgoal } from '../../common/node';
 import FullscreenContext from '../../context/FullscreenContext';
 import { GraphNode } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
-import GraphDescriptions from '../atoms/GraphDescriptions';
-import GraphSidebar from '../atoms/GraphSidebar';
+import GraphDescriptions from './GraphDescriptions';
+import GraphToolBar from '../atoms/GraphToolbar';
 import SearchBar from '../atoms/SearchBar';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
+  const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
   const { isFullscreen } = useContext(FullscreenContext);
 
   const filterSubgoals = () => {
@@ -33,11 +34,11 @@ const GraphContainer: React.FC = () => {
       left="0px"
     >
       {!isFullscreen && <SearchBar limit={5} />}
+      <GraphToolBar onSubgoalFilter={filterSubgoals} onUnlockNodes={setUnlockNodes} />
       <Flex h="100%" justify="space-between">
-        <Graph nodeFilter={nodeFilter} />
-        <GraphSidebar onSubgoalFilter={filterSubgoals} />
+        <Graph nodeFilter={nodeFilter} unlockAllNodes={unlockNodes} />
+        <GraphDescriptions />
       </Flex>
-      <GraphDescriptions />
     </Stack>
   );
 };
