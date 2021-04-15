@@ -17,7 +17,7 @@ jobs:
       
     - name: Build frontend
       run: |
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
+        yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev 
         yarn build
       working-directory: frontend
   
@@ -31,12 +31,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Lint frontend
         run: | 
-          yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
+          yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev 
           yarn lint
         working-directory: frontend
         
       - name: Lint backend
         run: |
+          yarn add eslint-config-airbnb-typescript --save-dev 
           yarn lint
         working-directory: backend
         
@@ -47,11 +48,12 @@ jobs:
           
       - name: Test frontend
         run: |
-          yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
+          yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev 
           yarn test
         working-directory: frontend
         
       - name: Test backend
-        run: | 
+        run: |
+          yarn
           yarn test
         working-directory: backend
