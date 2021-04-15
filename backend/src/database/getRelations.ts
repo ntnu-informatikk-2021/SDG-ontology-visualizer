@@ -30,7 +30,7 @@ export default async (classId: string): Promise<Array<Ontology>> => {
     .map((ont) => addEntityToNullFields(ont, node))
     .filter(isRelevantOntology)
     .filter(isNotLoopOntology);
-  removeDuplicatePredicates(ontologies);
+  removeDuplicatePredicates(ontologies, ontologies);
 
   return ontologies;
 };

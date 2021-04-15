@@ -53,8 +53,9 @@ export const mapIdToNode = (id: string, correlation?: number, type?: string): No
   };
 };
 
-export const mapIdToEdge = (id: string, correlation?: number): Edge | null => {
+export const mapIdToEdge = (id: string): Edge | null => {
   const ontologyEntity = mapIdToOntologyEntity(id);
+  let correlation = 0;
   if (!ontologyEntity) return null;
   if (ontologyEntity.name.includes('HøyK')) correlation = 3;
   if (ontologyEntity.name.includes('ModeratK')) correlation = 2;
@@ -66,7 +67,7 @@ export const mapIdToEdge = (id: string, correlation?: number): Edge | null => {
     prefix: ontologyEntity.prefix,
     name: ontologyEntity.name,
     id: ontologyEntity.id,
-    correlation: correlation || 0,
+    correlation: correlation,
   };
 };
 
@@ -119,15 +120,15 @@ export const addEntityToNullFields = (ontology: Ontology, entity: Node): Ontolog
   Predicate: ontology.Predicate,
   Object: ontology.Object || entity,
 });
-export const removeDuplicatePredicates = (ontology: any): any => {
+export const removeDuplicatePredicates = (ontology: any, sameOntology: any): any => {
   ontology.forEach((Ontology, index) => {
-    ontology.forEach((SameOntology, index) => {
+    sameOntology.forEach((SameOntology, index1) => {
       if (
         Ontology.Object.name === SameOntology.Object.name &&
         Ontology.Subject.name === SameOntology.Subject.name &&
         Ontology.Predicate.name !== SameOntology.Predicate.name
       )
-        if (SameOntology.Predicate.correlation === 0) ontology.splice(index, 1);
+        if (SameOntology.Predicate.correlation === 0) ontology.splice(index1, 1);
     });
     if (Ontology.Predicate.correlation === 0) ontology.splice(index, 1);
   });

@@ -131,6 +131,8 @@ export default class {
   redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.edges = this.unfilteredEdges.filter(this.edgeFilter);
+    console.log(this.nodes);
+    console.log(this.edges);
     this.removeDisconnectedNodes();
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
