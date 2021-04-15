@@ -121,15 +121,15 @@ export const addEntityToNullFields = (ontology: Ontology, entity: Node): Ontolog
 });
 export const removeDuplicatePredicates = (ontology: any): any => {
   ontology.forEach((Ontology, index) => {
-    ontology.forEach((SameOntology, indexx) => {
+    ontology.forEach((SameOntology, index) => {
       if (
-        Ontology.Object.name == SameOntology.Object.name &&
-        Ontology.Subject.name == SameOntology.Subject.name &&
-        Ontology.Predicate.name != SameOntology.Predicate.name
+        Ontology.Object.name === SameOntology.Object.name &&
+        Ontology.Subject.name === SameOntology.Subject.name &&
+        Ontology.Predicate.name !== SameOntology.Predicate.name
       )
-        if (SameOntology.Predicate.correlation == 0) ontology.splice(indexx, 1);
+        if (SameOntology.Predicate.correlation === 0) ontology.splice(index, 1);
     });
-    if (Ontology.Predicate.correlation == 0) ontology.splice(index, 1);
+    if (Ontology.Predicate.correlation === 0) ontology.splice(index, 1);
   });
   return {
     Subject: ontology.Subject,

@@ -108,8 +108,8 @@ export default class {
   };
 
   removeDisconnectedNodes = () => {
-    this.unfilteredNodes = this.unfilteredNodes.filter((node) =>
-      this.unfilteredEdges.some((edge) => {
+    this.nodes = this.nodes.filter((node) =>
+      this.edges.some((edge) => {
         const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
         const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
         return node.id === source || node.id === target;
@@ -118,7 +118,7 @@ export default class {
   };
 
   removeDisconnectedEdges = () => {
-    this.edges = this.unfilteredEdges.filter((edge) => {
+    this.edges = this.edges.filter((edge) => {
       const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
       const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
       return (
@@ -131,8 +131,7 @@ export default class {
   redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.edges = this.unfilteredEdges.filter(this.edgeFilter);
-    console.log(this.edges);
-    console.log(this.unfilteredEdges);
+    this.removeDisconnectedNodes();
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
     this.drawGraph();

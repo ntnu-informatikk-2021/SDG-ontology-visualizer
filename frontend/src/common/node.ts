@@ -80,11 +80,11 @@ export const mapIdToEdge = (id: string, correlation: number): Edge | null => {
 
 export const mapCorrelationToName = (correlation: number) => {
   switch (correlation) {
-    case 2:
+    case 3:
       return 'høy';
-    case 1:
+    case 2:
       return 'medium';
-    case 0:
+    case 1:
       return 'lav';
     default:
       return '';
@@ -93,20 +93,17 @@ export const mapCorrelationToName = (correlation: number) => {
 
 export const mapCorrelationToColor = (correlation: number) => {
   switch (correlation) {
-    case 2:
+    case 3:
       return '.600';
-    case 1:
+    case 2:
       return '.500';
-    case 0:
+    case 1:
       return '.400';
     default:
       return '.300';
   }
 };
-
-export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
-
-export const isPosetiveConnection = (edge: D3Edge | GraphEdge, value: number): boolean => {
+const isPosetiveConnection = (edge: D3Edge | GraphEdge, value: number): boolean => {
   if (value === 2 && edge.correlation === 1) {
     return true;
   }
@@ -116,5 +113,27 @@ export const isPosetiveConnection = (edge: D3Edge | GraphEdge, value: number): b
   if (value === 0 && (edge.correlation === 1 || edge.correlation === 2 || edge.correlation === 3)) {
     return true;
   }
+  return false;
+};
+const isNegativeConnection = (edge: D3Edge | GraphEdge, value: number): boolean => {
+  if (value === 2 && edge.correlation === -1) {
+    return true;
+  }
+  if (value === 1 && (edge.correlation === -1 || edge.correlation === -2)) {
+    return true;
+  }
+  if (
+    value === 0 &&
+    (edge.correlation === -1 || edge.correlation === -2 || edge.correlation === -3)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
+export const isConnection = (edge: D3Edge | GraphEdge, Pvalue: number, Nvalue: number): boolean => {
+  if (isPosetiveConnection(edge, Pvalue)) return true;
+  if (isNegativeConnection(edge, Nvalue)) return true;
   return false;
 };

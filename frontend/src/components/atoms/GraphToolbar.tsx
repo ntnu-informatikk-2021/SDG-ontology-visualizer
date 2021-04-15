@@ -13,15 +13,17 @@ import SearchBar from './SearchBar';
 type GraphToolBarProps = {
   onSubgoalFilter: () => void;
   onPosetiveConnectionFilter: (value: number) => void;
+  onNegativeConnectionFilter: (value: number) => void;
 };
 
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
   onPosetiveConnectionFilter,
+  onNegativeConnectionFilter,
 }: GraphToolBarProps) => (
   <HStack bg="cyan.500" borderRadius="lg" p="2" spacing="5">
     <SearchBar limit={5} />
-    <Checkbox color="white" size="lg" onChange={onSubgoalFilter}>
+    <Checkbox color="white" size="lg" checked onChange={onSubgoalFilter}>
       Vis delmål
     </Checkbox>
     <Slider
@@ -30,6 +32,19 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       max={3}
       step={1}
       onChangeEnd={(value) => onPosetiveConnectionFilter(value)}
+    >
+      <SliderTrack bg="green.100">
+        <Box position="relative" right={4} />
+        <SliderFilledTrack bg="green" />
+      </SliderTrack>
+      <SliderThumb boxSize={6} />
+    </Slider>
+    <Slider
+      defaultValue={3}
+      min={0}
+      max={3}
+      step={1}
+      onChangeEnd={(value) => onNegativeConnectionFilter(value)}
     >
       <SliderTrack bg="red.100">
         <Box position="relative" right={4} />
