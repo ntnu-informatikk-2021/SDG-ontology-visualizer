@@ -118,6 +118,13 @@ exports[`renders when there are no items 1`] = `
           Vis delmål
         </span>
       </label>
+      <button
+        className="chakra-button css-oqfhsh"
+        onClick={[Function]}
+        type="button"
+      >
+        Lås opp alle noder
+      </button>
     </div>
     <div
       className="css-1rdnlb3"
