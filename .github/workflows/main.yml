@@ -61,6 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       working-directory: frontend
+      REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
