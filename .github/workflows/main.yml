@@ -11,11 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: c-hive/gha-yarn-cache@v1
       
     - name: Install ESlint globally
       run: yarn add eslint -g
+      
+    - name: Build frontend
+      run: yarn build
+      working-directory: frontend
     
-    - uses: c-hive/gha-yarn-cache@v1
+    - name: Build backend
+      run: yarn build
+      working-directory: backend
+    
+
     
   lint:
     runs-on: ubuntu-latest
@@ -37,12 +46,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+          
       - name: Test frontend
         run: |
+          yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
           yarn test
         working-directory: frontend
         
       - name: Test backend
         run: | 
+          yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
           yarn test
         working-directory: backend
