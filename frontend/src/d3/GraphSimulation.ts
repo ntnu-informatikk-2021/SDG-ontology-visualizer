@@ -237,14 +237,14 @@ export default class {
         g.append('text')
           .text((edge) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
-          .attr('alignment-baseline', 'after-egde')
+          .attr('dominant-baseline', 'text-after-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
 
         g.append('text')
           .text((edge) => createEdgeLabelText(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
-          .attr('alignment-baseline', 'before-edge')
+          .attr('dominant-baseline', 'text-before-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
 
@@ -436,7 +436,7 @@ export default class {
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
           .attr('fill', nodeLabelColor)
-          .attr('alignment-baseline', 'middle')
+          .attr('dominant-baseline', 'middle')
           .each(function () {
             const text = d3.select(this).text();
             const words = text.split(' ');
@@ -449,13 +449,13 @@ export default class {
               if (!secondLine) return;
               d3.select(this)
                 .text(firstLine)
-                .attr('alignment-baseline', 'after-edge')
+                .attr('dominant-baseline', 'text-after-edge')
                 .append('tspan')
                 .text(secondLine)
                 .attr('x', 0)
                 .attr('y', 0)
                 .attr('text-anchor', 'middle')
-                .attr('alignment-baseline', 'mathematical');
+                .attr('dominant-baseline', 'mathematical');
             }
           });
 
