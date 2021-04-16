@@ -1,16 +1,8 @@
-import {
-  Box,
-  Checkbox,
-  HStack,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-  Button,
-} from '@chakra-ui/react';
+import { Button, Checkbox, HStack } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
+import CorrelationSlider from './CorrelationSlider';
 import SearchBar from './SearchBar';
 
 type GraphToolBarProps = {
@@ -44,32 +36,16 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         Vis kanttext
       </Checkbox>
       <Button onClick={() => onUnlockNodes((current) => !current)}>Lås opp alle noder</Button>
-      <Slider
-        defaultValue={3}
-        min={0}
-        max={3}
-        step={1}
-        onChangeEnd={(value) => onPositiveConnectionFilter(3 - value)}
-      >
-        <SliderTrack bg="green.100">
-          <Box position="relative" right={4} />
-          <SliderFilledTrack bg="green" />
-        </SliderTrack>
-        <SliderThumb boxSize={6} />
-      </Slider>
-      <Slider
-        defaultValue={3}
-        min={0}
-        max={3}
-        step={1}
-        onChangeEnd={(value) => onNegativeConnectionFilter(3 - value)}
-      >
-        <SliderTrack bg="red.100">
-          <Box position="relative" right={4} />
-          <SliderFilledTrack bg="tomato" />
-        </SliderTrack>
-        <SliderThumb boxSize={6} />
-      </Slider>
+      <CorrelationSlider
+        color="green"
+        bgColor="green.100"
+        onChange={(value) => onPositiveConnectionFilter(3 - value)}
+      />
+      <CorrelationSlider
+        color="tomato"
+        bgColor="red.100"
+        onChange={(value) => onNegativeConnectionFilter(3 - value)}
+      />
     </HStack>
   );
 };
