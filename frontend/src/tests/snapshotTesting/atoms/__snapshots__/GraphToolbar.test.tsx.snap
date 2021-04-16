@@ -112,7 +112,6 @@ exports[`renders when there are no items 1`] = `
       Vis delmål
     </span>
   </label>
-<<<<<<< HEAD
   <label
     className="chakra-checkbox css-1gefvdb"
   >
@@ -188,8 +187,6 @@ exports[`renders when there are no items 1`] = `
       Vis kanttext
     </span>
   </label>
-=======
->>>>>>> main
   <button
     className="chakra-button css-oqfhsh"
     onClick={[Function]}
