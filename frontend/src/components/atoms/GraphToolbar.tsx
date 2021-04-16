@@ -1,6 +1,7 @@
 import { Button, Checkbox, HStack } from '@chakra-ui/react';
-import React, { useContext } from 'react';
-import FullscreenContext from '../../context/FullscreenContext';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 import SearchBar from './SearchBar';
 
 type GraphToolBarProps = {
@@ -12,7 +13,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
   onUnlockNodes,
 }: GraphToolBarProps) => {
-  const { isFullscreen } = useContext(FullscreenContext);
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   return (
     <HStack bg="cyan.500" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="5">

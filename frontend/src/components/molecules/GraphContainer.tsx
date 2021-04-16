@@ -1,7 +1,8 @@
 import { Flex, Stack } from '@chakra-ui/react';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { isSubgoal } from '../../common/node';
-import FullscreenContext from '../../context/FullscreenContext';
+import { RootState } from '../../state/store';
 import { GraphNode } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
 import GraphToolBar from '../atoms/GraphToolbar';
@@ -10,7 +11,7 @@ import GraphDescriptions from './GraphDescriptions';
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
-  const { isFullscreen } = useContext(FullscreenContext);
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);

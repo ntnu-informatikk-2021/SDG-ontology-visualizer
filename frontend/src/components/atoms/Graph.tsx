@@ -1,12 +1,12 @@
 import { Box, Button } from '@chakra-ui/react';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BsFullscreen, BsFullscreenExit } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
-import FullscreenContext from '../../context/FullscreenContext';
 import GraphSimulation from '../../d3/GraphSimulation';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
+import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { GraphNodeFilter } from '../../types/d3/simulation';
@@ -23,7 +23,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps)
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
   const [simulation, setSimulation] = useState<GraphSimulation>();
-  const { isFullscreen, toggleFullscreen } = useContext(FullscreenContext);
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   const loadData = async () => {
     if (!simulation || !selectedNode) return;
@@ -88,7 +88,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps)
         right="0px"
         bottom="0px"
         bgColor="transparent"
-        onClick={toggleFullscreen}
+        onClick={() => dispatch(toggleFullscreen())}
         zIndex={1}
       >
         {isFullscreen ? <BsFullscreenExit fontSize="32px" /> : <BsFullscreen fontSize="32px" />}

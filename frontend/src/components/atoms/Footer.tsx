@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
 import { Center, Text } from '@chakra-ui/react';
-import FullscreenContext from '../../context/FullscreenContext';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 
 const Footer = () => {
-  const { isFullscreen } = useContext(FullscreenContext);
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   if (isFullscreen) return <></>;
 
