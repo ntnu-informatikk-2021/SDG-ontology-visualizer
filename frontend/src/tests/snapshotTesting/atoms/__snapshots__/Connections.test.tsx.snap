@@ -41,7 +41,7 @@ Array [
         he11i
       </button>
       <button
-        className="chakra-button css-19h3dke"
+        className="chakra-button css-ovkaj3"
         onClick={[Function]}
         style={
           Object {
@@ -71,7 +71,7 @@ Array [
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-19h3dke"
+        className="chakra-button css-ovkaj3"
         onClick={[Function]}
         style={
           Object {

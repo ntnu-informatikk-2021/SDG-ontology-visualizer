@@ -59,7 +59,7 @@ exports[`renders when there are one item 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-19h3dke"
+        className="chakra-button css-ovkaj3"
         onClick={[Function]}
         style={
           Object {
@@ -84,7 +84,7 @@ exports[`renders when there are one item 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-8o5w5l"
+        className="chakra-button css-phd69a"
         onClick={[Function]}
         style={
           Object {
@@ -109,7 +109,7 @@ exports[`renders when there are one item 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-1ot1ffv"
+        className="chakra-button css-1x5v44o"
         onClick={[Function]}
         style={
           Object {
@@ -141,7 +141,7 @@ exports[`renders when there are two items 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-19h3dke"
+        className="chakra-button css-ovkaj3"
         onClick={[Function]}
         style={
           Object {
@@ -153,7 +153,7 @@ exports[`renders when there are two items 1`] = `
         hei
       </button>
       <button
-        className="chakra-button css-ovkaj3"
+        className="chakra-button css-1kmjjob"
         onClick={[Function]}
         style={
           Object {
@@ -178,7 +178,7 @@ exports[`renders when there are two items 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-8o5w5l"
+        className="chakra-button css-phd69a"
         onClick={[Function]}
         style={
           Object {
@@ -190,7 +190,7 @@ exports[`renders when there are two items 1`] = `
         hei
       </button>
       <button
-        className="chakra-button css-phd69a"
+        className="chakra-button css-1qlsh4x"
         onClick={[Function]}
         style={
           Object {
@@ -215,7 +215,7 @@ exports[`renders when there are two items 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-1ot1ffv"
+        className="chakra-button css-1x5v44o"
         onClick={[Function]}
         style={
           Object {
@@ -227,7 +227,7 @@ exports[`renders when there are two items 1`] = `
         hei
       </button>
       <button
-        className="chakra-button css-1x5v44o"
+        className="chakra-button css-z9io21"
         onClick={[Function]}
         style={
           Object {

@@ -1,4 +1,12 @@
-import { Edge, GraphNode, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
+import {
+  Edge,
+  GraphNode,
+  GraphEdge,
+  Node,
+  Prefix,
+  SustainabilityGoal,
+} from '../types/ontologyTypes';
+import { D3Edge } from '../types/d3/simulation';
 
 export const mapPrefixNameToNode = (
   prefix: string,
@@ -58,7 +66,7 @@ export const mapSustainabilityGoalToNode = (sdg: SustainabilityGoal): Node | nul
   return node;
 };
 
-export const mapIdToEdge = (id: string): Edge | null => {
+export const mapIdToEdge = (id: string, correlation: number): Edge | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -66,16 +74,17 @@ export const mapIdToEdge = (id: string): Edge | null => {
     prefix,
     name,
     id,
+    correlation,
   };
 };
 
 export const mapCorrelationToName = (correlation: number) => {
   switch (correlation) {
-    case 2:
+    case 3:
       return 'høy';
+    case 2:
+      return 'moderat';
     case 1:
-      return 'medium';
-    case 0:
       return 'lav';
     default:
       return '';
@@ -84,11 +93,11 @@ export const mapCorrelationToName = (correlation: number) => {
 
 export const mapCorrelationToColor = (correlation: number) => {
   switch (correlation) {
-    case 2:
+    case 3:
       return '.600';
-    case 1:
+    case 2:
       return '.500';
-    case 0:
+    case 1:
       return '.400';
     default:
       return '.300';
@@ -96,3 +105,9 @@ export const mapCorrelationToColor = (correlation: number) => {
 };
 
 export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
+
+export const isWithinCorrelationLimit = (edge: D3Edge | GraphEdge, value: number): boolean => {
+  if (edge.correlation === 0) return true;
+  if (value === 3) return false;
+  return value < Math.abs(edge.correlation);
+};

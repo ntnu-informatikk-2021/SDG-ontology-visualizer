@@ -18,6 +18,7 @@ import {
   D3Edge,
   ForceSimulation,
   GraphNodeFilter,
+  GraphEdgeFilter,
   LinkForce,
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
@@ -59,6 +60,7 @@ export default class {
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
+  private edgeFilter: GraphEdgeFilter;
   private nodeMenu?: d3.Selection<SVGGElement, GraphNode, null, undefined>;
   private edgeLabelsVisible = true;
 
@@ -69,6 +71,7 @@ export default class {
     initialNode: GraphNode,
     onClickNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
+    edgeFilter: GraphEdgeFilter,
   ) {
     this.svg = d3.select(svg).on('click', this.removeNodeMenu);
     this.edgeSvg = this.svg.append('g');
@@ -81,6 +84,7 @@ export default class {
     this.unfilteredEdges = [];
     this.onExpandNode = onClickNode;
     this.nodeFilter = nodeFilter;
+    this.edgeFilter = edgeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
   }
@@ -105,8 +109,8 @@ export default class {
   };
 
   removeDisconnectedNodes = () => {
-    this.unfilteredNodes = this.unfilteredNodes.filter((node) =>
-      this.unfilteredEdges.some((edge) => {
+    this.nodes = this.nodes.filter((node) =>
+      this.edges.some((edge) => {
         const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
         const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
         return node.id === source || node.id === target;
@@ -115,7 +119,7 @@ export default class {
   };
 
   removeDisconnectedEdges = () => {
-    this.edges = this.unfilteredEdges.filter((edge) => {
+    this.edges = this.edges.filter((edge) => {
       const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
       const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
       return (
@@ -127,6 +131,8 @@ export default class {
 
   redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
+    this.edges = this.unfilteredEdges.filter(this.edgeFilter);
+    this.removeDisconnectedNodes();
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
     this.drawGraph();
@@ -134,6 +140,10 @@ export default class {
 
   setNodeFilter = (filter: GraphNodeFilter) => {
     this.nodeFilter = filter;
+    this.redrawGraphWithFilter();
+  };
+  setEdgeFilter = (filter: GraphEdgeFilter) => {
+    this.edgeFilter = filter;
     this.redrawGraphWithFilter();
   };
 

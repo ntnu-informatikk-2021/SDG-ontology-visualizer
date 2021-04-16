@@ -139,13 +139,14 @@ const testEdge = {
   },
   name: 'testName',
   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName',
+  correlation: 0,
 };
 
 test('Map ID to edge', () => {
   expect(
-    mapIdToEdge('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName'),
+    mapIdToEdge('http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName', 0),
   ).toStrictEqual(testEdge);
-  expect(mapIdToEdge('')).toBeNull();
+  expect(mapIdToEdge('', 0)).toBeNull();
 });
 
 /**
@@ -153,17 +154,17 @@ test('Map ID to edge', () => {
  */
 
 test('Map correlation to name', () => {
-  expect(mapCorrelationToName(2)).toBe('høy');
-  expect(mapCorrelationToName(1)).toBe('medium');
-  expect(mapCorrelationToName(0)).toBe('lav');
-  expect(mapCorrelationToName(-1)).toBe('');
+  expect(mapCorrelationToName(3)).toBe('høy');
+  expect(mapCorrelationToName(2)).toBe('moderat');
+  expect(mapCorrelationToName(1)).toBe('lav');
+  expect(mapCorrelationToName(0)).toBe('');
 });
 
 test('Map correlation to color', () => {
-  expect(mapCorrelationToColor(2)).toBe('.600');
-  expect(mapCorrelationToColor(1)).toBe('.500');
-  expect(mapCorrelationToColor(0)).toBe('.400');
-  expect(mapCorrelationToColor(-1)).toBe('.300');
+  expect(mapCorrelationToColor(3)).toBe('.600');
+  expect(mapCorrelationToColor(2)).toBe('.500');
+  expect(mapCorrelationToColor(1)).toBe('.400');
+  expect(mapCorrelationToColor(0)).toBe('.300');
 });
 
 /**

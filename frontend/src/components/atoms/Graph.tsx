@@ -9,17 +9,19 @@ import { setError } from '../../state/reducers/apiErrorReducer';
 import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { GraphNodeFilter } from '../../types/d3/simulation';
+import { GraphNodeFilter, GraphEdgeFilter } from '../../types/d3/simulation';
 import { GraphNode } from '../../types/ontologyTypes';
 
 type GraphProps = {
   nodeFilter: GraphNodeFilter;
+  edgeFilter: GraphEdgeFilter;
   unlockAllNodes: boolean;
   edgeLabelsVisible: boolean;
 };
 
 const Graph: React.FC<GraphProps> = ({
   nodeFilter,
+  edgeFilter,
   unlockAllNodes,
   edgeLabelsVisible,
 }: GraphProps) => {
@@ -32,7 +34,6 @@ const Graph: React.FC<GraphProps> = ({
 
   const loadData = async () => {
     if (!simulation || !selectedNode) return;
-
     const ontologies = await getRelations(selectedNode.id);
     simulation.addData(ontologies, selectedNode);
   };
@@ -64,6 +65,7 @@ const Graph: React.FC<GraphProps> = ({
           selectedNode,
           onExpandNode,
           nodeFilter,
+          edgeFilter,
         ),
       );
     } else {
@@ -72,8 +74,11 @@ const Graph: React.FC<GraphProps> = ({
   }, [selectedNode, svgRef, simulation]);
 
   useEffect(() => {
-    if (simulation) simulation.setNodeFilter(nodeFilter);
-  }, [nodeFilter]);
+    if (simulation) {
+      simulation.setNodeFilter(nodeFilter);
+      simulation.setEdgeFilter(edgeFilter);
+    }
+  }, [nodeFilter, edgeFilter]);
 
   useEffect(() => {
     if (simulation) simulation.unlockAllNodes();

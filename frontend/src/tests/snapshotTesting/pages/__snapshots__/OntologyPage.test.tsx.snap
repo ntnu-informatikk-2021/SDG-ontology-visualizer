@@ -8,7 +8,7 @@ exports[`renders when there are no items 1`] = `
     className="chakra-stack css-14ks65o"
   >
     <div
-      className="chakra-stack css-1x8wzsc"
+      className="chakra-stack css-1fntxsr"
     >
       <div
         className="css-gmuwbf"
@@ -77,6 +77,7 @@ exports[`renders when there are no items 1`] = `
         </div>
       </div>
       <label
+        checked={true}
         className="chakra-checkbox css-1gefvdb"
       >
         <input
@@ -193,8 +194,164 @@ exports[`renders when there are no items 1`] = `
           Vis kanttext
         </span>
       </label>
+      <div
+        className="chakra-stack css-eao00i"
+      >
+        <p
+          className="chakra-text css-gnzpcw"
+        >
+          Lav positiv påvirkning
+        </p>
+        <div
+          className="chakra-slider css-3tq43j"
+          style={
+            Object {
+              "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+              "outline": 0,
+              "paddingBottom": 0,
+              "paddingTop": 0,
+              "position": "relative",
+              "touchAction": "none",
+              "userSelect": "none",
+            }
+          }
+          tabIndex={-1}
+        >
+          <div
+            className="chakra-slider__track css-15pekm3"
+            id="slider-track-3"
+            style={
+              Object {
+                "position": "absolute",
+                "top": "50%",
+                "transform": "translateY(-50%)",
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className="css-1asu2ks"
+            />
+            <div
+              className="chakra-slider__filled-track css-1euwb4q"
+              style={
+                Object {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": "50%",
+                  "transform": "translateY(-50%)",
+                  "width": "100%",
+                }
+              }
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={3}
+            aria-valuemin={0}
+            aria-valuenow={3}
+            className="chakra-slider__thumb css-18xa7ja"
+            id="slider-thumb-3"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="slider"
+            style={
+              Object {
+                "left": "calc(100% - 0px)",
+                "position": "absolute",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
+            tabIndex={0}
+          />
+          <input
+            type="hidden"
+            value={3}
+          />
+        </div>
+      </div>
+      <div
+        className="chakra-stack css-eao00i"
+      >
+        <p
+          className="chakra-text css-gnzpcw"
+        >
+          Lav negativ påvirkning
+        </p>
+        <div
+          className="chakra-slider css-3tq43j"
+          style={
+            Object {
+              "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+              "outline": 0,
+              "paddingBottom": 0,
+              "paddingTop": 0,
+              "position": "relative",
+              "touchAction": "none",
+              "userSelect": "none",
+            }
+          }
+          tabIndex={-1}
+        >
+          <div
+            className="chakra-slider__track css-1d8jzoz"
+            id="slider-track-4"
+            style={
+              Object {
+                "position": "absolute",
+                "top": "50%",
+                "transform": "translateY(-50%)",
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className="css-1asu2ks"
+            />
+            <div
+              className="chakra-slider__filled-track css-lbpcfc"
+              style={
+                Object {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": "50%",
+                  "transform": "translateY(-50%)",
+                  "width": "100%",
+                }
+              }
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={3}
+            aria-valuemin={0}
+            aria-valuenow={3}
+            className="chakra-slider__thumb css-18xa7ja"
+            id="slider-thumb-4"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="slider"
+            style={
+              Object {
+                "left": "calc(100% - 0px)",
+                "position": "absolute",
+                "touchAction": "none",
+                "userSelect": "none",
+              }
+            }
+            tabIndex={0}
+          />
+          <input
+            type="hidden"
+            value={3}
+          />
+        </div>
+      </div>
       <button
-        className="chakra-button css-oqfhsh"
+        className="chakra-button css-1hfil3y"
         onClick={[Function]}
         type="button"
       >
