@@ -83,7 +83,7 @@ export const mapCorrelationToName = (correlation: number) => {
     case 3:
       return 'høy';
     case 2:
-      return 'medium';
+      return 'moderat';
     case 1:
       return 'lav';
     default:

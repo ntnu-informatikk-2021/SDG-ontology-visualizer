@@ -9,6 +9,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { mapCorrelationToName } from '../../common/node';
+import { capitalize } from '../../common/other';
 
 interface Props {
   onChange: (value: number) => void;
@@ -25,7 +26,7 @@ const CorrelationSlider: React.FC<Props> = ({ onChange, color, bgColor, text }: 
     onChange(newValue);
   };
 
-  const formattedText = `${mapCorrelationToName(3 - value)} ${text}`;
+  const formattedText = `${`${capitalize(mapCorrelationToName(4 - value))}` || 'Ingen'} ${text}`;
 
   return (
     <Stack>
@@ -34,7 +35,7 @@ const CorrelationSlider: React.FC<Props> = ({ onChange, color, bgColor, text }: 
       </Text>
       <Slider
         mt="0 !important"
-        w="160px"
+        w="200px"
         defaultValue={3}
         min={0}
         max={3}

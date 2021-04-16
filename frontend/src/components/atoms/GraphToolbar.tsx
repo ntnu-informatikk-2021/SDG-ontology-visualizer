@@ -36,13 +36,13 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         Vis kanttext
       </Checkbox>
       <CorrelationSlider
-        text="korrelasjon"
+        text="positiv påvirkning"
         color="green"
         bgColor="green.100"
         onChange={(value) => onPositiveConnectionFilter(3 - value)}
       />
       <CorrelationSlider
-        text="tradeoff"
+        text="negativ påvirkning"
         color="tomato"
         bgColor="red.100"
         onChange={(value) => onNegativeConnectionFilter(3 - value)}
