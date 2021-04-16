@@ -2,7 +2,7 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="chakra-stack css-kxjlia"
+  className="chakra-stack css-14ks65o"
 >
   <div
     className="chakra-stack css-1x8wzsc"
@@ -116,6 +116,7 @@ exports[`renders when there are no items 1`] = `
         Vis delmål
       </span>
     </label>
+<<<<<<< HEAD
     <div
       className="chakra-slider css-snk6g7"
       style={
@@ -254,6 +255,83 @@ exports[`renders when there are no items 1`] = `
         value={3}
       />
     </div>
+=======
+    <label
+      className="chakra-checkbox css-1gefvdb"
+    >
+      <input
+        checked={true}
+        className="chakra-checkbox__input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        style={
+          Object {
+            "border": "0px",
+            "clip": "rect(0px, 0px, 0px, 0px)",
+            "height": "1px",
+            "margin": "-1px",
+            "overflow": "hidden",
+            "padding": "0px",
+            "position": "absolute",
+            "whiteSpace": "nowrap",
+            "width": "1px",
+          }
+        }
+        type="checkbox"
+      />
+      <span
+        aria-hidden={true}
+        className="chakra-checkbox__control css-dnty2r"
+        data-checked=""
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "height": "100%",
+              "justifyContent": "center",
+              "transform": "none",
+            }
+          }
+        >
+          <svg
+            className="css-f5ntj6"
+            style={
+              Object {
+                "fill": "none",
+                "opacity": 1,
+                "stroke": "currentColor",
+                "strokeDasharray": 16,
+                "strokeDashoffset": 0,
+                "strokeWidth": 2,
+              }
+            }
+            viewBox="0 0 12 10"
+          >
+            <polyline
+              points="1.5 6 4.5 9 10.5 1"
+            />
+          </svg>
+        </div>
+      </span>
+      <span
+        className="chakra-checkbox__label css-1oeb2oe"
+        data-checked=""
+        onMouseDown={[Function]}
+        onTouchStart={[Function]}
+      >
+        Vis kanttext
+      </span>
+    </label>
+>>>>>>> main
     <button
       className="chakra-button css-oqfhsh"
       onClick={[Function]}
@@ -263,19 +341,46 @@ exports[`renders when there are no items 1`] = `
     </button>
   </div>
   <div
-    className="css-1rdnlb3"
+    className="css-ulmyhl"
   >
     <div
-      className="css-1pm9hwn"
+      className="css-odvvn8"
     >
       <svg
         height="100%"
         id="svgGraph"
         width="100%"
       />
+      <button
+        className="chakra-button css-1wlk0yj"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          fill="currentColor"
+          fontSize="32px"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clipRule="evenodd"
+            d="M1.5 1a.5.5 0 00-.5.5v4a.5.5 0 01-1 0v-4A1.5 1.5 0 011.5 0h4a.5.5 0 010 1h-4zM10 .5a.5.5 0 01.5-.5h4A1.5 1.5 0 0116 1.5v4a.5.5 0 01-1 0v-4a.5.5 0 00-.5-.5h-4a.5.5 0 01-.5-.5zM.5 10a.5.5 0 01.5.5v4a.5.5 0 00.5.5h4a.5.5 0 010 1h-4A1.5 1.5 0 010 14.5v-4a.5.5 0 01.5-.5zm15 0a.5.5 0 01.5.5v4a1.5 1.5 0 01-1.5 1.5h-4a.5.5 0 010-1h4a.5.5 0 00.5-.5v-4a.5.5 0 01.5-.5z"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
     </div>
     <div
-      className="chakra-stack css-mufr33"
+      className="chakra-stack css-4v0hnf"
     >
       <div
         className="css-70qvj9"
