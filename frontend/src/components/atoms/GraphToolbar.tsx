@@ -47,7 +47,9 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         bgColor="red.100"
         onChange={(value) => onNegativeConnectionFilter(3 - value)}
       />
-      <Button onClick={() => onUnlockNodes((current) => !current)}>Lås opp alle noder</Button>
+      <Button color="cyan.600" onClick={() => onUnlockNodes((current) => !current)}>
+        Lås opp alle noder
+      </Button>
     </HStack>
   );
 };
