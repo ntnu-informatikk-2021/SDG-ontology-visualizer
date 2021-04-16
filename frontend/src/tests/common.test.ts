@@ -155,7 +155,7 @@ test('Map ID to edge', () => {
 
 test('Map correlation to name', () => {
   expect(mapCorrelationToName(3)).toBe('høy');
-  expect(mapCorrelationToName(2)).toBe('medium');
+  expect(mapCorrelationToName(2)).toBe('moderat');
   expect(mapCorrelationToName(1)).toBe('lav');
   expect(mapCorrelationToName(0)).toBe('');
 });
