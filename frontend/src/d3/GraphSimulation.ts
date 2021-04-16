@@ -60,6 +60,7 @@ export default class {
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
   private nodeMenu?: d3.Selection<SVGGElement, GraphNode, null, undefined>;
+  private edgeLabelsVisible = true;
 
   constructor(
     svg: SVGSVGElement,
@@ -144,7 +145,7 @@ export default class {
           const newScale = event.transform.k;
           if (this.scale !== newScale) {
             this.scale = event.transform.k;
-            this.dynamicScaleManager();
+            this.scaleGraph();
           }
 
           this.scale = event.transform.k;
@@ -213,7 +214,7 @@ export default class {
   drawGraph = () => {
     this.drawEdges();
     this.drawNodes();
-    this.dynamicScaleManager();
+    this.scaleGraph();
 
     this.forceSimulation.on('tick', () => {
       this.updateEdgePositions();
@@ -349,6 +350,11 @@ export default class {
       'icons/goToDetailView.svg',
     );
     this.nodeMenu = menuG;
+  };
+
+  setEdgeLabelsVisible = () => {
+    this.edgeLabelsVisible = !this.edgeLabelsVisible;
+    this.scaleGraph();
   };
 
   unlockAllNodes = () => {
@@ -515,8 +521,10 @@ export default class {
   };
 
   getEdgeLabelOpacity = () => {
-    if (this.scale >= 1) return 1;
-    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
+    if (this.edgeLabelsVisible) {
+      if (this.scale >= 1) return 1;
+      if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
+    }
     return 0;
   };
 
@@ -529,7 +537,7 @@ export default class {
 
   getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
 
-  dynamicScaleManager = () => {
+  scaleGraph = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
     nodes.selectChild(this.selectNodeLabel).attr('font-size', this.getNodeLabelFontSize());
     nodes.selectChild(this.selectNodeOrEdge).attr('stroke-width', nodeStrokeWidth / this.scale);

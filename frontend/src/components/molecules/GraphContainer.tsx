@@ -11,6 +11,7 @@ import GraphDescriptions from './GraphDescriptions';
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
+  const [edgeLabelsVisible, setEdgeLabelsVisible] = useState<boolean>(true);
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   const filterSubgoals = () => {
@@ -30,10 +31,17 @@ const GraphContainer: React.FC = () => {
       top="0px"
       left="0px"
     >
-      <GraphToolBar onSubgoalFilter={filterSubgoals} onUnlockNodes={setUnlockNodes} />
-      {/* chakra adds implicit margin because it's a child of a stack, so we must use !important */}
+      <GraphToolBar
+        onSubgoalFilter={filterSubgoals}
+        onUnlockNodes={setUnlockNodes}
+        onEdgeLabelsVisible={setEdgeLabelsVisible}
+      />
       <Flex mt={isFullscreen ? '0 !important' : ''} h="100%" justify="space-between">
-        <Graph nodeFilter={nodeFilter} unlockAllNodes={unlockNodes} />
+        <Graph
+          nodeFilter={nodeFilter}
+          unlockAllNodes={unlockNodes}
+          edgeLabelsVisible={edgeLabelsVisible}
+        />
         <GraphDescriptions float={isFullscreen} />
       </Flex>
     </Stack>
