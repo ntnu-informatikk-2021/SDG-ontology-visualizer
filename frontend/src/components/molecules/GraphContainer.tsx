@@ -1,14 +1,17 @@
 import { Flex, Stack } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { isSubgoal } from '../../common/node';
+import { RootState } from '../../state/store';
 import { GraphNode } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
-import GraphDescriptions from './GraphDescriptions';
 import GraphToolBar from '../atoms/GraphToolbar';
+import GraphDescriptions from './GraphDescriptions';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
@@ -20,11 +23,18 @@ const GraphContainer: React.FC = () => {
   };
 
   return (
-    <Stack h="80vh">
+    <Stack
+      h={isFullscreen ? '100vh' : '65vh'}
+      w={isFullscreen ? '100vw' : ''}
+      position={isFullscreen ? 'absolute' : 'static'}
+      top="0px"
+      left="0px"
+    >
       <GraphToolBar onSubgoalFilter={filterSubgoals} onUnlockNodes={setUnlockNodes} />
-      <Flex h="100%" justify="space-between">
+      {/* chakra adds implicit margin because it's a child of a stack, so we must use !important */}
+      <Flex mt={isFullscreen ? '0 !important' : ''} h="100%" justify="space-between">
         <Graph nodeFilter={nodeFilter} unlockAllNodes={unlockNodes} />
-        <GraphDescriptions />
+        <GraphDescriptions float={isFullscreen} />
       </Flex>
     </Stack>
   );
