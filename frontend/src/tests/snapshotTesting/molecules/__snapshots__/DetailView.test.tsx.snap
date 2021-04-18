@@ -2,10 +2,10 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-iv98nd"
+  className="css-4yqzk"
 >
   <h2
-    className="chakra-heading css-1huxaib"
+    className="chakra-heading css-1drbkg9"
   >
     
   </h2>
@@ -27,7 +27,7 @@ exports[`renders when there are no items 1`] = `
           className="css-y502al"
         >
           <p
-            className="chakra-text css-16y9uqu"
+            className="chakra-text css-pg6u3z"
           >
             Dette konseptet er under utvikling 
           </p>
@@ -48,7 +48,7 @@ exports[`renders when there are no items 1`] = `
       className="chakra-stack css-1acfu01"
     >
       <b
-        className="chakra-text css-6dvxm2"
+        className="chakra-text css-1ezsviu"
       >
         Har ingen etablerte positive påvirkninger enda
       </b>
@@ -60,7 +60,7 @@ exports[`renders when there are no items 1`] = `
         />
       </div>
       <b
-        className="chakra-text css-6dvxm2"
+        className="chakra-text css-1ezsviu"
       >
         Har ingen etablerte negative påvirkninger enda
       </b>
@@ -72,7 +72,7 @@ exports[`renders when there are no items 1`] = `
         />
       </div>
       <b
-        className="chakra-text css-6dvxm2"
+        className="chakra-text css-1ezsviu"
       >
         Har ingen utviklingsområder
       </b>

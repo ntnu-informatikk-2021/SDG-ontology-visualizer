@@ -22,7 +22,7 @@ exports[`renders when there are no items 1`] = `
       className="css-17xejub"
     />
     <button
-      className="chakra-button css-1db41pc"
+      className="chakra-button css-zrk1tm"
       justify="center"
       onClick={[Function]}
       type="button"
@@ -59,75 +59,72 @@ exports[`renders when there are no items 1`] = `
           className="chakra-stack css-14hwfuk"
         >
           <h2
-            className="chakra-heading css-y5314g"
+            className="chakra-heading css-gb762p"
           >
             Bærekraftsontologien:
           </h2>
           <div
-            className="css-gmuwbf"
+            aria-controls="popover-content-3"
+            aria-expanded={false}
+            aria-haspopup="dialog"
+            className="chakra-input__group css-cdyrfz"
+            id="popover-trigger-3"
+            onClick={[Function]}
           >
             <div
-              aria-controls="popover-content-3"
-              aria-expanded={false}
-              aria-haspopup="dialog"
-              className="chakra-input__group css-4302v8"
-              id="popover-trigger-3"
-              onClick={[Function]}
+              className="chakra-input__left-addon css-liaxzq"
+              size="sm"
             >
-              <div
-                className="chakra-input__left-element css-16fnvti"
+              <svg
+                className="chakra-icon css-177yplm"
+                focusable={false}
+                viewBox="0 0 24 24"
               >
-                <svg
-                  className="chakra-icon css-177yplm"
-                  focusable={false}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <input
-                className="chakra-input css-hak4hc"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="Søk..."
-                value=""
-              />
+                <path
+                  d="M23.384,21.619,16.855,15.09a9.284,9.284,0,1,0-1.768,1.768l6.529,6.529a1.266,1.266,0,0,0,1.768,0A1.251,1.251,0,0,0,23.384,21.619ZM2.75,9.5a6.75,6.75,0,1,1,6.75,6.75A6.758,6.758,0,0,1,2.75,9.5Z"
+                  fill="currentColor"
+                />
+              </svg>
             </div>
-            <div
-              className="css-11r8ny"
+            <input
+              className="chakra-input css-12y3mkg"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Søk..."
+              value=""
+            />
+          </div>
+          <div
+            className="css-11r8ny"
+            style={
+              Object {
+                "--popper-arrow-shadow-color": "#E2E8F0",
+                "--popper-arrow-size": undefined,
+                "visibility": "hidden",
+              }
+            }
+          >
+            <section
+              className="chakra-popover__content css-zfzoez"
+              id="popover-content-3"
+              onBlur={[Function]}
+              onKeyDown={[Function]}
+              role="dialog"
               style={
                 Object {
-                  "--popper-arrow-shadow-color": "#E2E8F0",
-                  "--popper-arrow-size": undefined,
+                  "opacity": 0,
+                  "transform": "scale(0.95) translateZ(0)",
+                  "transformOrigin": "var(--popper-transform-origin)",
                   "visibility": "hidden",
                 }
               }
+              tabIndex={-1}
             >
-              <section
-                className="chakra-popover__content css-zfzoez"
-                id="popover-content-3"
-                onBlur={[Function]}
-                onKeyDown={[Function]}
-                role="dialog"
-                style={
-                  Object {
-                    "opacity": 0,
-                    "transform": "scale(0.95) translateZ(0)",
-                    "transformOrigin": "var(--popper-transform-origin)",
-                    "visibility": "hidden",
-                  }
-                }
-                tabIndex={-1}
-              >
-                <div
-                  className="chakra-stack css-1cpt12i"
-                />
-              </section>
-            </div>
+              <div
+                className="chakra-stack css-1cpt12i"
+              />
+            </section>
           </div>
         </div>
         <img
@@ -137,7 +134,7 @@ exports[`renders when there are no items 1`] = `
       </div>
       <h2
         align="center"
-        className="chakra-heading css-8tpg3x"
+        className="chakra-heading css-h50b34"
       >
         Bærekraftsmålene:
       </h2>
@@ -145,7 +142,7 @@ exports[`renders when there are no items 1`] = `
         className="chakra-stack css-38c8fs"
       >
         <div
-          className="css-19frufu"
+          className="css-16zah1r"
         />
       </div>
     </div>

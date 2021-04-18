@@ -32,13 +32,13 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
           color="white"
           _hover={{ opacity: '75%' }}
         >
-          <Heading as="h3" size="md">
+          <Heading as="h3" size="sm">
             {subGoalNode.SubjectLabel}
           </Heading>
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>
-          <Text>{subGoalNode.description}</Text>
+          <Text fontSize="sm">{subGoalNode.description}</Text>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

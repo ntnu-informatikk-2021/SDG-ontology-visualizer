@@ -1,9 +1,8 @@
 import { SearchIcon } from '@chakra-ui/icons';
 import {
-  Flex,
   Input,
   InputGroup,
-  InputLeftElement,
+  InputLeftAddon,
   Link,
   Popover,
   PopoverContent,
@@ -52,46 +51,43 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   }, [debouncedSearchQuery]);
 
   return (
-    <Flex justify="center" align="center">
-      <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
-        <PopoverTrigger>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <SearchIcon color="gray.400" />
-            </InputLeftElement>
-            <Input
-              value={searchQuery}
-              onChange={onChange}
-              variant="outline"
-              bg="white"
-              placeholder="Søk..."
-              minW="25em"
-            />
-          </InputGroup>
-        </PopoverTrigger>
-        <PopoverContent border="none" boxShadow="xl" borderBottomRadius="lg">
-          <Stack w="100%">
-            {results &&
-              results.map((res) => (
-                <Link
-                  padding={2}
-                  _hover={{
-                    backgroundColor: 'purple.800',
-                    color: 'white',
-                  }}
-                  key={res.id}
-                  onClick={() => {
-                    onClickNode(res);
-                    history.push('/ontology');
-                  }}
-                >
-                  {res.name}
-                </Link>
-              ))}
-          </Stack>
-        </PopoverContent>
-      </Popover>
-    </Flex>
+    <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
+      <PopoverTrigger>
+        <InputGroup size="sm" maxW="md">
+          <InputLeftAddon pointerEvents="none" bg="white">
+            <SearchIcon color="gray.400" />
+          </InputLeftAddon>
+          <Input
+            value={searchQuery}
+            onChange={onChange}
+            variant="outline"
+            bg="white"
+            placeholder="Søk..."
+          />
+        </InputGroup>
+      </PopoverTrigger>
+      <PopoverContent border="none" boxShadow="xl" borderBottomRadius="lg" matchWidth>
+        <Stack w="100%">
+          {results &&
+            results.map((res) => (
+              <Link
+                padding={2}
+                _hover={{
+                  backgroundColor: 'purple.800',
+                  color: 'white',
+                }}
+                key={res.id}
+                onClick={() => {
+                  onClickNode(res);
+                  history.push('/ontology');
+                }}
+              >
+                {res.name}
+              </Link>
+            ))}
+        </Stack>
+      </PopoverContent>
+    </Popover>
   );
 };
 

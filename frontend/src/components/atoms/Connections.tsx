@@ -19,7 +19,7 @@ const Connections: React.FC<ConnectionsProps> = ({
   handleOnClick,
 }: ConnectionsProps) => (
   <>
-    <Text as="b" fontSize="xl">
+    <Text as="b" fontSize="lg">
       {connections.length ? titles[0] : titles[1]}
     </Text>
     <Wrap>
@@ -28,6 +28,7 @@ const Connections: React.FC<ConnectionsProps> = ({
         .map((connection) => (
           <Button
             colorScheme="whiteAlpha"
+            size="sm"
             bg={color + mapCorrelationToColor(connection.correlation)}
             style={{ margin: 5 }}
             key={connection.id}

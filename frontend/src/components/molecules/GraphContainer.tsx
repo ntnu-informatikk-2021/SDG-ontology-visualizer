@@ -6,7 +6,7 @@ import { RootState } from '../../state/store';
 import { D3Edge } from '../../types/d3/simulation';
 import { GraphEdge, GraphNode } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
-import GraphToolBar from '../atoms/GraphToolbar';
+import GraphToolBar from './GraphToolbar';
 import GraphDescriptions from './GraphDescriptions';
 
 const GraphContainer: React.FC = () => {
