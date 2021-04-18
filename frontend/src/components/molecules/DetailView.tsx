@@ -75,7 +75,7 @@ const DetailView: React.FC = () => {
 
   return (
     <Box bg="cyan.700" p={8} color="white" rounded="lg">
-      <Heading size="lg" pb="2">
+      <Heading as="h2" size="lg" pb="2">
         {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || 'Mangler navn'}
       </Heading>
       <Flex justify="space-between">
@@ -111,7 +111,7 @@ const DetailView: React.FC = () => {
         <ContextDivider visible={expanded} />
         <SlideInDrawer expanded={expanded} width="40vw">
           <Stack spacing="5">
-            <Heading size="lg">
+            <Heading as="h2" size="lg">
               {annotations.label}
               <Heading size="lg" color="cyan.200">
                 {`har ${

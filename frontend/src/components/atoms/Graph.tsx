@@ -99,7 +99,7 @@ const Graph: React.FC<GraphProps> = ({
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <IconButton
         aria-label="Fullskjerm"
-        color="gray.600"
+        color="cyan.700"
         size="lg"
         position="absolute"
         right="4"
