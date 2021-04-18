@@ -8,13 +8,13 @@ exports[`renders when there are no items 1`] = `
     className="chakra-stack css-14ks65o"
   >
     <div
-      className="chakra-stack css-1fntxsr"
+      className="chakra-stack css-1odzq53"
     >
       <div
         aria-controls="popover-content-2"
         aria-expanded={false}
         aria-haspopup="dialog"
-        className="chakra-input__group css-z6q1ew"
+        className="chakra-input__group css-u2vt5l"
         id="popover-trigger-2"
         onClick={[Function]}
       >
@@ -34,6 +34,7 @@ exports[`renders when there are no items 1`] = `
           </svg>
         </div>
         <input
+          aria-label="Søk i bærekraftsontologien"
           className="chakra-input css-lslgl1"
           onBlur={[Function]}
           onChange={[Function]}
@@ -192,15 +193,15 @@ exports[`renders when there are no items 1`] = `
         </span>
       </label>
       <div
-        className="chakra-stack css-eao00i"
+        className="chakra-stack css-1gcyxme"
       >
         <p
           className="chakra-text css-kbn7if"
         >
-          Lav positiv påvirkning
+          Lav grad av positiv påvirkning
         </p>
         <div
-          className="chakra-slider css-3tq43j"
+          className="chakra-slider css-snk6g7"
           style={
             Object {
               "WebkitTapHighlightColor": "rgba(0,0,0,0)",
@@ -215,7 +216,7 @@ exports[`renders when there are no items 1`] = `
           tabIndex={-1}
         >
           <div
-            className="chakra-slider__track css-15pekm3"
+            className="chakra-slider__track css-i6bazn"
             id="slider-track-3"
             style={
               Object {
@@ -230,7 +231,7 @@ exports[`renders when there are no items 1`] = `
               className="css-1asu2ks"
             />
             <div
-              className="chakra-slider__filled-track css-1euwb4q"
+              className="chakra-slider__filled-track css-1e1pzrg"
               style={
                 Object {
                   "left": 0,
@@ -270,15 +271,15 @@ exports[`renders when there are no items 1`] = `
         </div>
       </div>
       <div
-        className="chakra-stack css-eao00i"
+        className="chakra-stack css-1gcyxme"
       >
         <p
           className="chakra-text css-kbn7if"
         >
-          Lav negativ påvirkning
+          Lav grad av negativ påvirkning
         </p>
         <div
-          className="chakra-slider css-3tq43j"
+          className="chakra-slider css-snk6g7"
           style={
             Object {
               "WebkitTapHighlightColor": "rgba(0,0,0,0)",
@@ -293,7 +294,7 @@ exports[`renders when there are no items 1`] = `
           tabIndex={-1}
         >
           <div
-            className="chakra-slider__track css-1d8jzoz"
+            className="chakra-slider__track css-i6bazn"
             id="slider-track-4"
             style={
               Object {
@@ -308,7 +309,7 @@ exports[`renders when there are no items 1`] = `
               className="css-1asu2ks"
             />
             <div
-              className="chakra-slider__filled-track css-lbpcfc"
+              className="chakra-slider__filled-track css-1e1pzrg"
               style={
                 Object {
                   "left": 0,
@@ -348,7 +349,7 @@ exports[`renders when there are no items 1`] = `
         </div>
       </div>
       <button
-        className="chakra-button css-16vzw67"
+        className="chakra-button css-3uk510"
         onClick={[Function]}
         type="button"
       >
@@ -367,14 +368,16 @@ exports[`renders when there are no items 1`] = `
           width="100%"
         />
         <button
-          className="chakra-button css-1wlk0yj"
+          aria-label="Fullskjerm"
+          className="chakra-button css-17ieupc"
           onClick={[Function]}
           type="button"
         >
           <svg
+            aria-hidden={true}
             fill="currentColor"
-            fontSize="32px"
-            height="1em"
+            focusable={false}
+            height="40"
             stroke="currentColor"
             strokeWidth="0"
             style={
@@ -382,20 +385,18 @@ exports[`renders when there are no items 1`] = `
                 "color": undefined,
               }
             }
-            viewBox="0 0 16 16"
-            width="1em"
+            viewBox="0 0 512 512"
+            width="40"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              clipRule="evenodd"
-              d="M1.5 1a.5.5 0 00-.5.5v4a.5.5 0 01-1 0v-4A1.5 1.5 0 011.5 0h4a.5.5 0 010 1h-4zM10 .5a.5.5 0 01.5-.5h4A1.5 1.5 0 0116 1.5v4a.5.5 0 01-1 0v-4a.5.5 0 00-.5-.5h-4a.5.5 0 01-.5-.5zM.5 10a.5.5 0 01.5.5v4a.5.5 0 00.5.5h4a.5.5 0 010 1h-4A1.5 1.5 0 010 14.5v-4a.5.5 0 01.5-.5zm15 0a.5.5 0 01.5.5v4a1.5 1.5 0 01-1.5 1.5h-4a.5.5 0 010-1h4a.5.5 0 00.5-.5v-4a.5.5 0 01.5-.5z"
-              fillRule="evenodd"
+              d="M64 64v128l48-48 48 48 32-32-48-48 48-48H64zm256 0l48 48-48 48 32 32 48-48 48 48V64H320zM64 320v128h128l-48-48 48-48-32-32-48 48-48-48zm288 0l-32 32 48 48-48 48h128V320l-48 48-48-48z"
             />
           </svg>
         </button>
       </div>
       <div
-        className="chakra-stack css-4v0hnf"
+        className="chakra-stack css-18n3kv9"
       >
         <div
           className="css-70qvj9"
@@ -551,12 +552,12 @@ exports[`renders when there are no items 1`] = `
     </div>
   </div>
   <div
-    className="css-4yqzk"
+    className="css-1gvlnuh"
   >
     <h2
       className="chakra-heading css-1drbkg9"
     >
-      
+      Mangler navn
     </h2>
     <div
       className="css-gg4vpm"

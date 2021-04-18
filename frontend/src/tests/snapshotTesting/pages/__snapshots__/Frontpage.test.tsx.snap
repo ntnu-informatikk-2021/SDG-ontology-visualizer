@@ -5,7 +5,7 @@ exports[`renders when there are no items 1`] = `
   className="chakra-stack css-efzghl"
 >
   <div
-    className="css-mnfeg7"
+    className="css-2gmzcc"
     spacing="10"
   >
     <div
@@ -20,7 +20,7 @@ exports[`renders when there are no items 1`] = `
         aria-controls="popover-content-2"
         aria-expanded={false}
         aria-haspopup="dialog"
-        className="chakra-input__group css-z6q1ew"
+        className="chakra-input__group css-u2vt5l"
         id="popover-trigger-2"
         onClick={[Function]}
       >
@@ -40,6 +40,7 @@ exports[`renders when there are no items 1`] = `
           </svg>
         </div>
         <input
+          aria-label="Søk i bærekraftsontologien"
           className="chakra-input css-lslgl1"
           onBlur={[Function]}
           onChange={[Function]}
@@ -87,7 +88,7 @@ exports[`renders when there are no items 1`] = `
   </div>
   <h2
     align="center"
-    className="chakra-heading css-lav2e5"
+    className="chakra-heading css-ownuki"
   >
     Bærekraftsmålene:
   </h2>

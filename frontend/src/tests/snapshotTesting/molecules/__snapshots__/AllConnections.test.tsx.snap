@@ -59,13 +59,8 @@ exports[`renders when there are one item 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-ovkaj3"
+        className="chakra-button css-12ybw9u"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         hei
@@ -84,13 +79,8 @@ exports[`renders when there are one item 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-phd69a"
+        className="chakra-button css-mmukis"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         hei
@@ -109,13 +99,8 @@ exports[`renders when there are one item 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-1x5v44o"
+        className="chakra-button css-17izuiz"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         hei
@@ -141,25 +126,15 @@ exports[`renders when there are two items 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-ovkaj3"
+        className="chakra-button css-12ybw9u"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         hei
       </button>
       <button
-        className="chakra-button css-1kmjjob"
+        className="chakra-button css-aqssaa"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         heihei
@@ -178,25 +153,15 @@ exports[`renders when there are two items 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-phd69a"
+        className="chakra-button css-mmukis"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         hei
       </button>
       <button
-        className="chakra-button css-1qlsh4x"
+        className="chakra-button css-yxu8t1"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         heihei
@@ -215,25 +180,15 @@ exports[`renders when there are two items 1`] = `
       className="chakra-wrap__list css-umyqv7"
     >
       <button
-        className="chakra-button css-1x5v44o"
+        className="chakra-button css-17izuiz"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         hei
       </button>
       <button
-        className="chakra-button css-z9io21"
+        className="chakra-button css-1qjqcqn"
         onClick={[Function]}
-        style={
-          Object {
-            "margin": 5,
-          }
-        }
         type="button"
       >
         heihei

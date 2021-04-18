@@ -2,10 +2,10 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-awrlxj"
+  className="css-1wo33bq"
 >
   <div
-    className="chakra-stack css-14nowqt"
+    className="chakra-stack css-jvq6w0"
   >
     <h2
       className="chakra-heading css-0"
@@ -13,7 +13,7 @@ exports[`renders when there are no items 1`] = `
       Om prosjektet
     </h2>
     <p
-      className="chakra-text css-1ezsviu"
+      className="chakra-text css-504jus"
     >
       Dette er en prototype laget for Trondheim kommune i forbindelse med bacheloroppgave i informatikk. Applikasjonen gir mulighet til å utforske bærekraftsmålene og finne sammenhenger og relasjoner til ulike perspektiver satt av Trondheim kommune. Dataen i applikasjonen er lagret og hentet fra en ontologi, som også definerer relasjonene mellom disse.
     </p>
