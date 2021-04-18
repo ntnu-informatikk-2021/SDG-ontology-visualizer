@@ -58,6 +58,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
             <SearchIcon color="gray.400" />
           </InputLeftAddon>
           <Input
+            aria-label="Søk i bærekraftsontologien"
             value={searchQuery}
             onChange={onChange}
             variant="outline"
