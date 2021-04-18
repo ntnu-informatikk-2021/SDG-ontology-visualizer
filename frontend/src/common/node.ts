@@ -94,13 +94,13 @@ export const mapCorrelationToName = (correlation: number) => {
 export const mapCorrelationToColor = (correlation: number) => {
   switch (correlation) {
     case 3:
-      return '.600';
+      return '.800';
     case 2:
-      return '.500';
+      return '.700';
     case 1:
-      return '.400';
+      return '.600';
     default:
-      return '.300';
+      return '.600';
   }
 };
 

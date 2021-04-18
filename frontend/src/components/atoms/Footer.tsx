@@ -9,9 +9,11 @@ const Footer = () => {
   if (isFullscreen) return <></>;
 
   return (
-    <Center as="footer" bg="cyan.700" w="100%" p={4} color="white" h="15vh" mt="20">
-      <Heading size="md">TRDK03-UN</Heading>
-    </Center>
+    <footer>
+      <Center bg="cyan.700" w="100%" p={4} color="white" h="15vh" mt="20">
+        <Heading size="md">TRDK03-UN</Heading>
+      </Center>
+    </footer>
   );
 };
 

@@ -11,8 +11,9 @@ const GraphDescriptions: React.FC<GraphDescriptionsProps> = ({ float }: GraphDes
     px="5"
     position={float ? 'absolute' : 'static'}
     right={0}
-    bgColor={float ? 'gray.100' : 'transparent'}
-    roundedBottomLeft="xl"
+    bgColor="white"
+    boxShadow="md"
+    rounded="lg"
   >
     <GraphNodeKey description="Standardfarge/Startnode" />
     <GraphNodeKey description="SDG (Bærekraftsmål)" />

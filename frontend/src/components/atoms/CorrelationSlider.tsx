@@ -13,12 +13,10 @@ import { capitalize } from '../../common/other';
 
 interface Props {
   onChange: (value: number) => void;
-  color: string;
-  bgColor: string;
   text: string;
 }
 
-const CorrelationSlider: React.FC<Props> = ({ onChange, color, bgColor, text }: Props) => {
+const CorrelationSlider: React.FC<Props> = ({ onChange, text }: Props) => {
   const [value, setValue] = useState<number>(3);
 
   const onChangeSlider = (newValue: number): void => {
@@ -29,22 +27,14 @@ const CorrelationSlider: React.FC<Props> = ({ onChange, color, bgColor, text }: 
   const formattedText = `${`${capitalize(mapCorrelationToName(4 - value))}` || 'Ingen'} ${text}`;
 
   return (
-    <Stack>
+    <Stack spacing="0.5" minWidth="65">
       <Text size="lg" color="white">
         {formattedText}
       </Text>
-      <Slider
-        mt="0 !important"
-        w="200px"
-        defaultValue={3}
-        min={0}
-        max={3}
-        step={1}
-        onChangeEnd={onChangeSlider}
-      >
-        <SliderTrack bg={bgColor}>
+      <Slider defaultValue={3} min={0} max={3} step={1} onChangeEnd={onChangeSlider}>
+        <SliderTrack>
           <Box position="relative" right={4} />
-          <SliderFilledTrack bg={color} />
+          <SliderFilledTrack bg="cyan.400" />
         </SliderTrack>
         <SliderThumb boxSize={4} />
       </Slider>
