@@ -106,8 +106,14 @@ export const mapCorrelationToColor = (correlation: number) => {
 
 export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
 
-export const isWithinCorrelationLimit = (edge: D3Edge | GraphEdge, value: number): boolean => {
+export const isWithinCorrelationLimit = (
+  edge: D3Edge | GraphEdge,
+  pvalue: number,
+  nvalue: number,
+): boolean => {
   if (edge.correlation === 0) return true;
-  if (value === 3) return false;
-  return value < Math.abs(edge.correlation);
+  if (pvalue + nvalue === 6) return false;
+  if (edge.correlation > 0 && edge.correlation <= pvalue) return false;
+  if (edge.correlation < 0 && -edge.correlation <= nvalue) return false;
+  return true;
 };

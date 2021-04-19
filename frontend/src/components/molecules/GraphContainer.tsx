@@ -26,8 +26,8 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (!isWithinCorrelationLimit(edge, positiveConnectionChoice)) return false;
-    if (!isWithinCorrelationLimit(edge, negativeConnectionChoice)) return false;
+    if (!isWithinCorrelationLimit(edge, positiveConnectionChoice, negativeConnectionChoice))
+      return false;
     return true;
   };
 
