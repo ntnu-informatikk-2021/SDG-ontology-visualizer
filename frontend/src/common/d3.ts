@@ -3,7 +3,7 @@ import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ont
 import { mapIdToEdge } from './node';
 
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
-  const edge = mapIdToEdge(ontology.Predicate.id);
+  const edge = mapIdToEdge(ontology.Predicate.id, ontology.Predicate.correlation);
   if (!edge) throw new Error('Could not map ontology to graph edge');
   return {
     ...edge,
@@ -57,10 +57,11 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
   },
 });
 export const changeColorBasedOnType = (type: string) => {
-  let nodeColor = '#4299e1';
-  if (type.includes('SDG')) nodeColor = '#EA5F41';
-  if (type.includes('Trippel bunnlinje')) nodeColor = '#85E664';
-  if (type.includes('Delmål')) nodeColor = '#E0E73F';
+  let nodeColor = '#63B3ED';
+  if (type.includes('SDG')) nodeColor = '#D6BCFA';
+  if (type.includes('Trippel bunnlinje')) nodeColor = '#68D391';
+  if (type.includes('Delmål')) nodeColor = '#FBD38D';
+  if (type.includes('Utviklingsområde')) nodeColor = '#FC8181';
   return nodeColor;
 };
 export const mapNodeToGraphNodeAtDefaultPosition = (x?: number, y?: number) => (

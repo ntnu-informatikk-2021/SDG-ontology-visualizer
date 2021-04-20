@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders when there are no items 1`] = `
+<div
+  className="chakra-stack css-1acfu01"
+>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har ingen etablerte positive påvirkninger enda
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    />
+  </div>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har ingen etablerte negative påvirkninger enda
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    />
+  </div>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har ingen utviklingsområder
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders when there are one item 1`] = `
+<div
+  className="chakra-stack css-1acfu01"
+>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har positiv virkning til:
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-ovkaj3"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+    </ul>
+  </div>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har negativ virkning til:
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-phd69a"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+    </ul>
+  </div>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har utviklingsområde til:
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-1x5v44o"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`renders when there are two items 1`] = `
+<div
+  className="chakra-stack css-1acfu01"
+>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har positiv virkning til:
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-ovkaj3"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+      <button
+        className="chakra-button css-1kmjjob"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        heihei
+      </button>
+    </ul>
+  </div>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har negativ virkning til:
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-phd69a"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+      <button
+        className="chakra-button css-1qlsh4x"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        heihei
+      </button>
+    </ul>
+  </div>
+  <b
+    className="chakra-text css-6dvxm2"
+  >
+    Har utviklingsområde til:
+  </b>
+  <div
+    className="chakra-wrap css-0"
+  >
+    <ul
+      className="chakra-wrap__list css-umyqv7"
+    >
+      <button
+        className="chakra-button css-1x5v44o"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        hei
+      </button>
+      <button
+        className="chakra-button css-z9io21"
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": 5,
+          }
+        }
+        type="button"
+      >
+        heihei
+      </button>
+    </ul>
+  </div>
+</div>
+`;

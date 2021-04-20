@@ -39,6 +39,7 @@ export interface GraphNode extends Node, SimulationNodeDatum {
 export interface Edge extends UniqueObject {
   name: string;
   prefix: Prefix;
+  correlation: number;
 }
 
 export interface GraphEdge extends Edge {

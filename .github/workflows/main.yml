@@ -14,27 +14,46 @@ jobs:
       
     - name: Install ESlint globally
       run: yarn add eslint -g
-    
+      
+    - name: Build frontend
+      run: |
+        yarn
+        yarn build
+      working-directory: frontend
+  
     - uses: c-hive/gha-yarn-cache@v1
+    
 
-    - name: Lint frontend
-      run: | 
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev 
-        yarn lint
-      working-directory: frontend
     
-    - name: Test frontend
-      run: |
-        yarn test
-      working-directory: frontend
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Lint frontend
+        run: | 
+          yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev 
+          yarn lint
+        working-directory: frontend
         
-    - name: Lint backend
-      run: |
-        yarn add eslint-plugin-react eslint-config-airbnb-typescript  --save-dev
-        yarn lint
-      working-directory: backend
-    
-    - name: Test backend
-      run: | 
-        yarn test
-      working-directory: backend
+      - name: Lint backend
+        run: |
+          yarn add eslint-config-airbnb-typescript --save-dev 
+          yarn lint
+        working-directory: backend
+        
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+          
+      - name: Test frontend
+        run: |
+          yarn add eslint-plugin-react eslint-config-airbnb-typescript --save-dev 
+          yarn test
+        working-directory: frontend
+        
+      - name: Test backend
+        run: |
+          yarn
+          yarn test
+        working-directory: backend

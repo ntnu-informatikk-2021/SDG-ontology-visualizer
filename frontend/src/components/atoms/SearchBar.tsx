@@ -20,10 +20,9 @@ import { Node } from '../../types/ontologyTypes';
 
 interface SearchBarProps {
   limit?: number;
-  margin?: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) => {
+const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 200);
   const [results, setResults] = useState<Array<Node>>();
@@ -53,7 +52,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) 
   }, [debouncedSearchQuery]);
 
   return (
-    <Flex justify="center" align="center" maxW="400px" marginLeft={margin}>
+    <Flex justify="center" align="center">
       <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
         <PopoverTrigger>
           <InputGroup>
@@ -66,16 +65,20 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) 
               variant="outline"
               bg="white"
               placeholder="Søk..."
+              minW="25em"
             />
           </InputGroup>
         </PopoverTrigger>
-        <PopoverContent border="none">
+        <PopoverContent border="none" boxShadow="xl" borderBottomRadius="lg">
           <Stack w="100%">
             {results &&
               results.map((res) => (
                 <Link
                   padding={2}
-                  _hover={{ backgroundColor: 'purple.800', color: 'white' }}
+                  _hover={{
+                    backgroundColor: 'purple.800',
+                    color: 'white',
+                  }}
                   key={res.id}
                   onClick={() => {
                     onClickNode(res);
@@ -94,7 +97,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit, margin }: SearchBarProps) 
 
 SearchBar.defaultProps = {
   limit: undefined,
-  margin: '',
 };
 
 export default SearchBar;

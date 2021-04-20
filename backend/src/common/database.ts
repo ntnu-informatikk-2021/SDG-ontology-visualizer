@@ -1,11 +1,11 @@
 import { Prefix } from '@innotrade/enapso-graphdb-client';
-import { Node, OntologyEntity, Record, Ontology } from '../types/ontologyTypes';
+import { Node, OntologyEntity, Record, Ontology, Edge } from '../types/ontologyTypes';
 
 const getCorrelationIndexFromRecord = (record: Record): number => {
-  if (record.High) return 2;
-  if (record.Moderate) return 1;
-  if (record.Low) return 0;
-  return -1;
+  if (record.High) return 3;
+  if (record.Moderate) return 2;
+  if (record.Low) return 1;
+  return 0;
 };
 
 export const parseNameFromClassId = (id: string): string => {
@@ -49,7 +49,25 @@ export const mapIdToNode = (id: string, correlation?: number, type?: string): No
     name: ontologyEntity.name,
     id: ontologyEntity.id,
     type: type || 'undefined',
-    correlation: correlation || -1,
+    correlation: correlation || 0,
+  };
+};
+
+export const mapIdToEdge = (id: string): Edge | null => {
+  const ontologyEntity = mapIdToOntologyEntity(id);
+  let correlation = 0;
+  if (!ontologyEntity) return null;
+  if (ontologyEntity.name.includes('HøyK')) correlation = 3;
+  if (ontologyEntity.name.includes('ModeratK')) correlation = 2;
+  if (ontologyEntity.name.includes('LavK')) correlation = 1;
+  if (ontologyEntity.name.includes('LavT')) correlation = -1;
+  if (ontologyEntity.name.includes('ModeratT')) correlation = -2;
+  if (ontologyEntity.name.includes('HøyT')) correlation = -3;
+  return {
+    prefix: ontologyEntity.prefix,
+    name: ontologyEntity.name,
+    id: ontologyEntity.id,
+    correlation,
   };
 };
 
@@ -68,7 +86,7 @@ export const mapRecordToOntology = (record: Record): Ontology => {
   return {
     Subject: subject,
     Object: object,
-    Predicate: mapIdToOntologyEntity(record.Predicate),
+    Predicate: mapIdToEdge(record.Predicate),
   };
 };
 
@@ -102,6 +120,21 @@ export const addEntityToNullFields = (ontology: Ontology, entity: Node): Ontolog
   Predicate: ontology.Predicate,
   Object: ontology.Object || entity,
 });
+
+export const filterDuplicatePredicates = (
+  ontology: Ontology,
+  _: number,
+  others: Array<Ontology>,
+): boolean => {
+  const hasDuplicate = others.some(
+    (ont) =>
+      ont.Subject?.name === ontology.Subject?.name &&
+      ont.Object?.name === ontology.Object?.name &&
+      ont.Predicate?.name !== ontology.Predicate?.name,
+  );
+  if (!hasDuplicate) return true;
+  return ontology.Predicate?.correlation !== 0;
+};
 
 export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;

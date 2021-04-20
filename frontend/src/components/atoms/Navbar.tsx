@@ -1,13 +1,18 @@
 import { InfoIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Spacer, Link } from '@chakra-ui/react';
+import { Box, Button, Flex, Link, Spacer } from '@chakra-ui/react';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link as RouteLink, useHistory } from 'react-router-dom';
+import { RootState } from '../../state/store';
 
 const Navbar = () => {
   const history = useHistory();
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+
+  if (isFullscreen) return <></>;
 
   return (
-    <Flex w="100%" bg="white" zIndex="999" align="center" h="70px" px="8" position="sticky" top="0">
+    <Flex align="center" px="10" py="4">
       <Box>
         <Link fontWeight="bold" color="cyan.600" fontSize="1.5em" as={RouteLink} to="/">
           Trondheim kommune SDG-Ontologi

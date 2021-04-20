@@ -6,14 +6,16 @@ import { Node } from '../../types/ontologyTypes';
 type ConnectionsProps = {
   connections: Array<Node>;
   titles: Array<string>;
+  predicate: Array<string>;
   color: string;
-  handleOnClick: (selectedConnection: Node) => void;
+  handleOnClick: (selectedConnection: Node, predicate: Array<string>) => void;
 };
 
 const Connections: React.FC<ConnectionsProps> = ({
   connections,
   titles,
   color,
+  predicate,
   handleOnClick,
 }: ConnectionsProps) => (
   <>
@@ -29,7 +31,7 @@ const Connections: React.FC<ConnectionsProps> = ({
             bg={color + mapCorrelationToColor(connection.correlation)}
             style={{ margin: 5 }}
             key={connection.id}
-            onClick={() => handleOnClick(connection)}
+            onClick={() => handleOnClick(connection, predicate)}
           >
             {connection.name}
           </Button>
