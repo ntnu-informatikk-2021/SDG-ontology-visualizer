@@ -14,7 +14,7 @@ class FpsCounter {
     const refreshLoop = () => {
       window.requestAnimationFrame(() => {
         const now = performance.now();
-        while (times.length() > 0 && times.peek() <= now - 1000) {
+        while (times.length() > 1 && times.peek() <= now - 1000) {
           times.dequeue();
         }
         times.enqueue(now);

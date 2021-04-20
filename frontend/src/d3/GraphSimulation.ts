@@ -702,7 +702,6 @@ export default class {
   };
 
   selectNodeOrEdge = (_: any, index: number) => index === 0;
-
   selectEdgeLabel1 = (_: any, index: number) => index === 1;
   selectEdgeLabel2 = (_: any, index: number) => index === 2;
 
