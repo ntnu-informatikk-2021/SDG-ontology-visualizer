@@ -74,14 +74,14 @@ const DetailView: React.FC = () => {
   }, [selectedPredicate]);
 
   return (
-    <Box bg="cyan.500" p={10} color="white" rounded="lg">
-      <Heading size="2xl" fontWeight="hairline" pb="5">
+    <Box bg="cyan.500" p={8} color="white" rounded="lg">
+      <Heading size="lg" pb="2">
         {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
       </Heading>
       <Flex justify="space-between">
         <SlideInDrawer expanded={!expanded} width="40vw">
           <>
-            <Text fontSize="xl" mt="2">
+            <Text fontSize="lg" mt="2">
               {annotations.description
                 ? annotations.description
                 : 'Dette konseptet er under utvikling '}
@@ -120,17 +120,22 @@ const DetailView: React.FC = () => {
               </Heading>
               {selectedConnection && selectedConnection.name}
             </Heading>
-            <Text fontSize="sm" mt="2">
+            <Text fontSize="md" mt="2">
               {`Relasjonen  ${objectAnnotations && objectAnnotations.label} er en
                 ${objectAnnotations && objectAnnotations.description} `}
             </Text>
             <ButtonGroup>
-              <Button colorScheme="blue" onClick={() => onClickConnections(selectedConnection!)}>
+              <Button
+                colorScheme="blue"
+                size="sm"
+                onClick={() => onClickConnections(selectedConnection!)}
+              >
                 {`Gå til 
               ${selectedConnection && selectedConnection.name}`}
               </Button>
               <Button
-                aria-label="Close connection view"
+                aria-label="Lukk korrelasjonsvisning"
+                size="sm"
                 onClick={() => setExpanded(false)}
                 colorScheme="blue"
                 rightIcon={<ArrowForwardIcon />}

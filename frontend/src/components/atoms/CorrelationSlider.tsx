@@ -30,7 +30,7 @@ const CorrelationSlider: React.FC<Props> = ({ onChange, color, bgColor, text }: 
 
   return (
     <Stack>
-      <Text size="lg" color="gray.200">
+      <Text size="lg" color="white">
         {formattedText}
       </Text>
       <Slider

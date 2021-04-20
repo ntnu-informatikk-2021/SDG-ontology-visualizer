@@ -2,8 +2,8 @@ import { Button, Checkbox, HStack } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
-import CorrelationSlider from './CorrelationSlider';
-import SearchBar from './SearchBar';
+import CorrelationSlider from '../atoms/CorrelationSlider';
+import SearchBar from '../atoms/SearchBar';
 
 type GraphToolBarProps = {
   onSubgoalFilter: () => void;
@@ -24,16 +24,16 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
   return (
     <HStack bg="cyan.500" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="10">
       <SearchBar limit={5} />
-      <Checkbox color="white" size="lg" checked onChange={onSubgoalFilter}>
+      <Checkbox color="white" size="md" checked onChange={onSubgoalFilter}>
         Vis delmål
       </Checkbox>
       <Checkbox
         defaultIsChecked
         color="white"
-        size="lg"
+        size="md"
         onChange={() => onEdgeLabelsVisible((current) => !current)}
       >
-        Vis kanttext
+        Vis kanttekst
       </Checkbox>
       <CorrelationSlider
         text="positiv påvirkning"
@@ -47,8 +47,13 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         bgColor="red.100"
         onChange={(value) => onNegativeConnectionFilter(3 - value)}
       />
-      <Button color="cyan.600" onClick={() => onUnlockNodes((current) => !current)}>
-        Lås opp alle noder
+      <Button
+        size="sm"
+        bg="white"
+        color="cyan.600"
+        onClick={() => onUnlockNodes((current) => !current)}
+      >
+        Lås opp noder
       </Button>
     </HStack>
   );
