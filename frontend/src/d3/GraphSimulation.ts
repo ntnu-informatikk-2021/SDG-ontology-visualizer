@@ -23,6 +23,7 @@ import {
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
+import FpsCounter from '../utils/FpsCounter';
 import { nextFrame, normalizeScale } from '../common/other';
 import setBrowserPosition from '../common/setBrowserPosition';
 
@@ -60,6 +61,8 @@ export default class {
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
+  private frameIndex = 0;
+  private readonly fpsCounter: FpsCounter;
   private edgeFilter: GraphEdgeFilter;
   private nodeMenu?: d3.Selection<SVGGElement, GraphNode, null, undefined>;
   private edgeLabelsVisible = true;
@@ -87,6 +90,7 @@ export default class {
     this.edgeFilter = edgeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
+    this.fpsCounter = new FpsCounter();
   }
 
   updateOnClickCallback = (callback: (node: GraphNode) => void) => {
@@ -227,6 +231,7 @@ export default class {
     this.scaleGraph();
 
     this.forceSimulation.on('tick', () => {
+      this.frameIndex += 1;
       this.updateEdgePositions();
       this.updateNodePositions();
     });
@@ -496,6 +501,8 @@ export default class {
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
 
+    if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return;
+
     g.selectChild(this.selectEdgeLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
@@ -668,7 +675,6 @@ export default class {
       .call(
         d3
           .drag()
-          // eslint-disable-next-line func-names
           .on('drag', (event, value) => {
             const node = value as GraphNode;
             this.lockNode(
@@ -696,9 +702,22 @@ export default class {
   };
 
   selectNodeOrEdge = (_: any, index: number) => index === 0;
+
   selectEdgeLabel1 = (_: any, index: number) => index === 1;
   selectEdgeLabel2 = (_: any, index: number) => index === 2;
 
   selectNodeLockIcon = (_: any, index: number) => index === 1;
   selectNodeLabel = (_: any, index: number) => index === 2;
+
+  shouldRenderEdgeLabel = (): boolean => {
+    const { fps } = this.fpsCounter;
+    let frameSkips = 1;
+    if (fps < 15) frameSkips = 10;
+    else if (fps < 20) frameSkips = 6;
+    else if (fps < 30) frameSkips = 4;
+    else if (fps < 40) frameSkips = 2;
+    if (this.frameIndex < frameSkips) return false;
+    this.frameIndex = 0;
+    return true;
+  };
 }
