@@ -2,7 +2,11 @@
 
 exports[`renders when there are no items 1`] = `
 <div
+<<<<<<< HEAD
   className="css-1gvlnuh"
+=======
+  className="css-4yqzk"
+>>>>>>> origin/main
 >
   <h2
     className="chakra-heading css-1drbkg9"
