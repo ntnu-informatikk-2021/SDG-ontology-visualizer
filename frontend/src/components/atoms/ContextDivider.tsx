@@ -8,7 +8,7 @@ type ContextDividerProps = {
 const ContextDivider: React.FC<ContextDividerProps> = ({ visible }: ContextDividerProps) => {
   if (!visible) return <></>;
   return (
-    <Center mx="20">
+    <Center mx={[10, null, null, 20]}>
       <Divider orientation="vertical" />
     </Center>
   );

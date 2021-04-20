@@ -8,7 +8,7 @@ interface GraphDescriptionsProps {
 
 const GraphDescriptions: React.FC<GraphDescriptionsProps> = ({ float }: GraphDescriptionsProps) => (
   <Stack
-    px="5"
+    width={[null, null, null, '20vw', '17vw']}
     position={float ? 'absolute' : 'static'}
     right={0}
     bgColor="white"

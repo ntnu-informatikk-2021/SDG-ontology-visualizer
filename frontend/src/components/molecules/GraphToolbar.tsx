@@ -48,6 +48,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         size="sm"
         bg="white"
         color="cyan.700"
+        minW="8em"
         onClick={() => onUnlockNodes((current) => !current)}
       >
         Lås opp noder

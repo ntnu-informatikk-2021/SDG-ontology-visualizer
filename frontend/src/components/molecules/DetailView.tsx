@@ -74,7 +74,7 @@ const DetailView: React.FC = () => {
   }, [selectedPredicate]);
 
   return (
-    <Box bg="cyan.700" p={8} color="white" rounded="lg">
+    <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
       <Heading as="h2" size="lg" pb="2">
         {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || 'Mangler navn'}
       </Heading>

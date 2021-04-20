@@ -10,14 +10,13 @@ const About = () => (
       bg="green.600"
       color="white"
       p="10"
-      h="20em"
       borderRadius="lg"
       boxShadow="xl"
     >
       <Heading as="h2" size="lg">
         Om prosjektet
       </Heading>
-      <Text fontSize="md">
+      <Text fontSize="md" align="center">
         Dette er en prototype laget for Trondheim kommune i forbindelse med bacheloroppgave i
         informatikk. Applikasjonen gir mulighet til å utforske bærekraftsmålene og finne
         sammenhenger og relasjoner til ulike perspektiver satt av Trondheim kommune. Dataen i

@@ -33,11 +33,10 @@ const GraphContainer: React.FC = () => {
 
   return (
     <Stack
+      spacing={isFullscreen ? 0 : 2}
       h={isFullscreen ? '100vh' : '65vh'}
       w={isFullscreen ? '100vw' : ''}
       position={isFullscreen ? 'absolute' : 'static'}
-      top="0px"
-      left="0px"
     >
       <GraphToolBar
         onSubgoalFilter={filterSubgoals}
@@ -46,7 +45,7 @@ const GraphContainer: React.FC = () => {
         onUnlockNodes={setUnlockNodes}
         onEdgeLabelsVisible={setEdgeLabelsVisible}
       />
-      <Flex mt={isFullscreen ? '0 !important' : ''} h="100%" justify="space-between">
+      <Flex h="100%" justify="space-between">
         <Graph
           nodeFilter={nodeFilter}
           edgeFilter={edgeFilter}

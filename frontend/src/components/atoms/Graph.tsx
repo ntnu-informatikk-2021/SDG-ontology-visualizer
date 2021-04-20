@@ -94,7 +94,7 @@ const Graph: React.FC<GraphProps> = ({
       bg="white"
       boxShadow="md"
       rounded="lg"
-      width={isFullscreen ? '100vw' : '80vw'}
+      width={isFullscreen ? '100vw' : ['70vw', '70vw', '75vw', '77vw', '75vw']}
     >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <IconButton
