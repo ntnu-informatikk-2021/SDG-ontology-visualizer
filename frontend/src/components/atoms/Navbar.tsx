@@ -20,11 +20,12 @@ const Navbar = () => {
       </Box>
       <Spacer />
       <Button
-        size="md"
+        size="sm"
+        color="white"
+        bg="cyan.600"
         justify="center"
         leftIcon={<InfoIcon />}
-        colorScheme="cyan"
-        variant="outline"
+        _hover={{ backgroundColor: 'cyan.700' }}
         onClick={() => {
           history.push('/about');
         }}

@@ -19,7 +19,7 @@ exports[`renders when there are no items 1`] = `
     className="css-17xejub"
   />
   <button
-    className="chakra-button css-oqfhsh"
+    className="chakra-button css-u5fdja"
     justify="center"
     onClick={[Function]}
     type="button"

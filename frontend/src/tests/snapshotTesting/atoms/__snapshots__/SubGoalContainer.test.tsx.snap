@@ -53,7 +53,7 @@ exports[`renders when there is one item 1`] = `
         role="region"
       >
         <p
-          className="chakra-text css-0"
+          className="chakra-text css-g5hezf"
         >
           meee
         </p>

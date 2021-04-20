@@ -53,7 +53,7 @@ const Graph: React.FC<GraphProps> = ({
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
     if (!selectedNode) {
-      dispatch(setError(new Error('No nodes selected in Graph')));
+      dispatch(setError(new Error('Du har ikke valgt en node i grafen')));
       return;
     }
     if (!simulation) {

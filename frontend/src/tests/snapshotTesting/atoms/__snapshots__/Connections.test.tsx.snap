@@ -3,7 +3,7 @@
 exports[`renders when there are no items 1`] = `
 Array [
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   />,
   <div
     className="chakra-wrap css-0"
@@ -18,7 +18,7 @@ Array [
 exports[`renders when there are two items 1`] = `
 Array [
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har positiv virkning til:
   </b>,
@@ -60,7 +60,7 @@ Array [
 exports[`renders when there is one item 1`] = `
 Array [
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har positiv virkning til:
   </b>,

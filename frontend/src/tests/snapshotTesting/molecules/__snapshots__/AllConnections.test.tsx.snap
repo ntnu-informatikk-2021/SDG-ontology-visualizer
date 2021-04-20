@@ -5,7 +5,7 @@ exports[`renders when there are no items 1`] = `
   className="chakra-stack css-1acfu01"
 >
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har ingen etablerte positive påvirkninger enda
   </b>
@@ -17,7 +17,7 @@ exports[`renders when there are no items 1`] = `
     />
   </div>
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har ingen etablerte negative påvirkninger enda
   </b>
@@ -29,7 +29,7 @@ exports[`renders when there are no items 1`] = `
     />
   </div>
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har ingen utviklingsområder
   </b>
@@ -48,7 +48,7 @@ exports[`renders when there are one item 1`] = `
   className="chakra-stack css-1acfu01"
 >
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har positiv virkning til:
   </b>
@@ -73,7 +73,7 @@ exports[`renders when there are one item 1`] = `
     </ul>
   </div>
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har negativ virkning til:
   </b>
@@ -98,7 +98,7 @@ exports[`renders when there are one item 1`] = `
     </ul>
   </div>
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har utviklingsområde til:
   </b>
@@ -130,7 +130,7 @@ exports[`renders when there are two items 1`] = `
   className="chakra-stack css-1acfu01"
 >
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har positiv virkning til:
   </b>
@@ -167,7 +167,7 @@ exports[`renders when there are two items 1`] = `
     </ul>
   </div>
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har negativ virkning til:
   </b>
@@ -204,7 +204,7 @@ exports[`renders when there are two items 1`] = `
     </ul>
   </div>
   <b
-    className="chakra-text css-6dvxm2"
+    className="chakra-text css-1ezsviu"
   >
     Har utviklingsområde til:
   </b>
