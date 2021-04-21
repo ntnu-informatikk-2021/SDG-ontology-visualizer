@@ -29,12 +29,15 @@ const SubGoalsGrid = () => {
         <Stack width="45%" spacing="5">
           {subGoals.map(
             (subGoal, i) =>
-              !(i % 2) && <SubGoalContainer key={subGoal.name} subGoalNode={subGoal} />,
+              !(i % 2) && (
+                <SubGoalContainer key={subGoal.name + i.toString()} subGoalNode={subGoal} />
+              ),
           )}
         </Stack>
         <Stack width="45%" spacing="5">
           {subGoals.map(
-            (subGoal, i) => i % 2 && <SubGoalContainer key={subGoal.name} subGoalNode={subGoal} />,
+            (subGoal, i) =>
+              i % 2 && <SubGoalContainer key={subGoal.name + i.toString()} subGoalNode={subGoal} />,
           )}
         </Stack>
       </Flex>
