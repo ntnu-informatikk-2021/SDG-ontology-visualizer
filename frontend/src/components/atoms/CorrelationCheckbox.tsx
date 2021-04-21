@@ -9,7 +9,7 @@ interface CheckboxProps {
 const CorrelationCheckbox: React.FC<CheckboxProps> = ({ text, index, onChange }: CheckboxProps) => (
   <MenuItem
     _hover={{
-      bg: '#A1E3F0',
+      bg: 'cyan.500',
     }}
   >
     <Checkbox
@@ -17,8 +17,9 @@ const CorrelationCheckbox: React.FC<CheckboxProps> = ({ text, index, onChange }:
       height="100%"
       type="checkbox"
       defaultIsChecked
+      colorScheme="cyan"
       color="white"
-      size="lg"
+      size="md"
       onChange={() => onChange(index)}
     >
       {text}

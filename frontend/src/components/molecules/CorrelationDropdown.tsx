@@ -29,7 +29,7 @@ const CorrelationDropdown: React.FC<Props> = ({ onChangeCorrelation, positive }:
         {positive ? 'Positiv ' : 'Negativ '}
         virkninger
       </MenuButton>
-      <MenuList bg="cyan.500">
+      <MenuList bg="cyan.700">
         <CorrelationCheckbox text="Lav" index={0} onChange={onChange} />
         <CorrelationCheckbox text="Moderat" index={1} onChange={onChange} />
         <CorrelationCheckbox text="Høy" index={2} onChange={onChange} />
