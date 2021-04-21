@@ -6,7 +6,7 @@ Array [
     aria-controls="popover-content-2"
     aria-expanded={false}
     aria-haspopup="dialog"
-    className="chakra-input__group css-z6q1ew"
+    className="chakra-input__group css-u2vt5l"
     id="popover-trigger-2"
     onClick={[Function]}
   >
@@ -26,6 +26,7 @@ Array [
       </svg>
     </div>
     <input
+      aria-label="Søk i bærekraftsontologien"
       className="chakra-input css-lslgl1"
       onBlur={[Function]}
       onChange={[Function]}

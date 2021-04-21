@@ -2,12 +2,12 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-4yqzk"
+  className="css-147u3m9"
 >
   <h2
     className="chakra-heading css-1drbkg9"
   >
-    
+    Mangler navn
   </h2>
   <div
     className="css-gg4vpm"
@@ -36,7 +36,7 @@ exports[`renders when there are no items 1`] = `
       </div>
     </div>
     <div
-      className="css-hae30d"
+      className="css-1fo6ot5"
     >
       <hr
         aria-orientation="vertical"

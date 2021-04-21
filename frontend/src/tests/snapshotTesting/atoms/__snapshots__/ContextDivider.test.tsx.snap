@@ -2,7 +2,7 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-hae30d"
+  className="css-1fo6ot5"
 >
   <hr
     aria-orientation="vertical"

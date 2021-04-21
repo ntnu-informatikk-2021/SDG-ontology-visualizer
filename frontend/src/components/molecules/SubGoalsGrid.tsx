@@ -22,7 +22,7 @@ const SubGoalsGrid = () => {
 
   return subGoals.length ? (
     <Box align="center" px="10">
-      <Heading size="lg" mb="10" color="gray.700">
+      <Heading size="lg" mb="10" color="cyan.900">
         DELMÅL:
       </Heading>
       <SimpleGrid columns={2} spacing={10}>

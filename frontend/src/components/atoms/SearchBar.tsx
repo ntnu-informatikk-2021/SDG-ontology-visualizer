@@ -53,11 +53,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   return (
     <Popover isOpen={searchQuery !== '' && results?.length !== 0} autoFocus={false}>
       <PopoverTrigger>
-        <InputGroup size="sm" maxW="md">
+        <InputGroup size="sm" maxW="sm">
           <InputLeftAddon pointerEvents="none" bg="white">
             <SearchIcon color="gray.400" />
           </InputLeftAddon>
           <Input
+            aria-label="Søk i bærekraftsontologien"
             value={searchQuery}
             onChange={onChange}
             variant="outline"
@@ -71,9 +72,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
           {results &&
             results.map((res) => (
               <Link
-                padding={2}
+                color="gray.800"
+                p={2}
+                fontSize="sm"
                 _hover={{
-                  backgroundColor: 'purple.800',
+                  backgroundColor: 'cyan.600',
                   color: 'white',
                 }}
                 key={res.id}

@@ -9,6 +9,7 @@ exports[`renders when there are no items 1`] = `
   <img
     alt="hei"
     className="chakra-image__placeholder css-1v14er2"
+    object-fit="cover"
   />
 </div>
 `;

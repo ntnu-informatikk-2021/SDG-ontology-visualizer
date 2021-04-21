@@ -22,13 +22,14 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
 }: GraphToolBarProps) => {
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   return (
-    <HStack bg="cyan.500" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="10">
+    <HStack bg="cyan.700" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="10">
       <SearchBar limit={5} />
-      <Checkbox color="white" size="md" checked onChange={onSubgoalFilter}>
+      <Checkbox colorScheme="cyan" color="white" size="md" checked onChange={onSubgoalFilter}>
         Vis delmål
       </Checkbox>
       <Checkbox
         defaultIsChecked
+        colorScheme="cyan"
         color="white"
         size="md"
         onChange={() => onEdgeLabelsVisible((current) => !current)}
@@ -36,21 +37,18 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         Vis kanttekst
       </Checkbox>
       <CorrelationSlider
-        text="positiv påvirkning"
-        color="green"
-        bgColor="green.100"
+        text="grad av positiv påvirkning"
         onChange={(value) => onPositiveConnectionFilter(3 - value)}
       />
       <CorrelationSlider
-        text="negativ påvirkning"
-        color="tomato"
-        bgColor="red.100"
+        text="grad av negativ påvirkning"
         onChange={(value) => onNegativeConnectionFilter(3 - value)}
       />
       <Button
         size="sm"
         bg="white"
-        color="cyan.600"
+        color="cyan.700"
+        minW="8em"
         onClick={() => onUnlockNodes((current) => !current)}
       >
         Lås opp noder

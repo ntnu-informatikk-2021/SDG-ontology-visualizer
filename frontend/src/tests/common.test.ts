@@ -161,10 +161,10 @@ test('Map correlation to name', () => {
 });
 
 test('Map correlation to color', () => {
-  expect(mapCorrelationToColor(3)).toBe('.600');
-  expect(mapCorrelationToColor(2)).toBe('.500');
-  expect(mapCorrelationToColor(1)).toBe('.400');
-  expect(mapCorrelationToColor(0)).toBe('.300');
+  expect(mapCorrelationToColor(3)).toBe('.800');
+  expect(mapCorrelationToColor(2)).toBe('.700');
+  expect(mapCorrelationToColor(1)).toBe('.600');
+  expect(mapCorrelationToColor(0)).toBe('.600');
 });
 
 /**

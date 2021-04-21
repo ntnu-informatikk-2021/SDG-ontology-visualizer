@@ -26,6 +26,7 @@ const IconContainer: React.FC<IconContainerProps> = ({
       overflow="hidden"
       alt={sustainabilityNode.label}
       boxSize="250"
+      object-fit="cover"
     />
   </MotionBox>
 );

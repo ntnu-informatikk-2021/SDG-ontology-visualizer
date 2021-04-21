@@ -30,7 +30,6 @@ const Connections: React.FC<ConnectionsProps> = ({
             colorScheme="whiteAlpha"
             size="sm"
             bg={color + mapCorrelationToColor(connection.correlation)}
-            style={{ margin: 5 }}
             key={connection.id}
             onClick={() => handleOnClick(connection, predicate)}
           >

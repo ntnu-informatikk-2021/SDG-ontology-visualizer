@@ -12,20 +12,22 @@ const Navbar = () => {
   if (isFullscreen) return <></>;
 
   return (
-    <Flex align="center" px="10" py="4">
+    <Flex as="nav" align="center" px="10" py="4">
       <Box>
-        <Link fontWeight="bold" color="cyan.600" fontSize="1.5em" as={RouteLink} to="/">
-          Trondheim kommune SDG-Ontologi
-        </Link>
+        <h1>
+          <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/">
+            Trondheim kommune SDG-Ontologi
+          </Link>
+        </h1>
       </Box>
       <Spacer />
       <Button
         size="sm"
         color="white"
-        bg="cyan.600"
+        bg="cyan.700"
         justify="center"
         leftIcon={<InfoIcon />}
-        _hover={{ backgroundColor: 'cyan.700' }}
+        _hover={{ backgroundColor: 'cyan.600' }}
         onClick={() => {
           history.push('/about');
         }}

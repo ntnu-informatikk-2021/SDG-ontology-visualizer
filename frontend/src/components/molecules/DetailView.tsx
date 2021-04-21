@@ -74,9 +74,9 @@ const DetailView: React.FC = () => {
   }, [selectedPredicate]);
 
   return (
-    <Box bg="cyan.500" p={8} color="white" rounded="lg">
-      <Heading size="lg" pb="2">
-        {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || ''}
+    <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
+      <Heading as="h2" size="lg" pb="2">
+        {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || 'Mangler navn'}
       </Heading>
       <Flex justify="space-between">
         <SlideInDrawer expanded={!expanded} width="40vw">
@@ -111,9 +111,9 @@ const DetailView: React.FC = () => {
         <ContextDivider visible={expanded} />
         <SlideInDrawer expanded={expanded} width="40vw">
           <Stack spacing="5">
-            <Heading size="lg">
+            <Heading as="h2" size="lg">
               {annotations.label}
-              <Heading size="lg" color="cyan.900">
+              <Heading size="lg" color="cyan.200">
                 {`har ${
                   selectedConnection && mapCorrelationToName(selectedConnection.correlation)
                 } ${selectedPredicate[0]} til`}
@@ -121,12 +121,13 @@ const DetailView: React.FC = () => {
               {selectedConnection && selectedConnection.name}
             </Heading>
             <Text fontSize="md" mt="2">
-              {`Relasjonen  ${objectAnnotations && objectAnnotations.label} er en
+              {`Relasjonen "${objectAnnotations && objectAnnotations.label}" er en
                 ${objectAnnotations && objectAnnotations.description} `}
             </Text>
             <ButtonGroup>
               <Button
-                colorScheme="blue"
+                bg="white"
+                color="cyan.700"
                 size="sm"
                 onClick={() => onClickConnections(selectedConnection!)}
               >
@@ -137,7 +138,8 @@ const DetailView: React.FC = () => {
                 aria-label="Lukk korrelasjonsvisning"
                 size="sm"
                 onClick={() => setExpanded(false)}
-                colorScheme="blue"
+                bg="white"
+                color="cyan.700"
                 rightIcon={<ArrowForwardIcon />}
               >
                 Lukk
