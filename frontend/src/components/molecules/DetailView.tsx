@@ -10,6 +10,7 @@ import {
 } from '../../api/ontologies';
 import { mapCorrelationToName } from '../../common/node';
 import { isUrl } from '../../common/regex';
+import setBrowserPosition from '../../common/setBrowserPositionToDetailView';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -34,6 +35,7 @@ const DetailView: React.FC = () => {
   const dispatch = useDispatch();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
 
   const setAnnotationsPromise = async (node: Node): Promise<void> => {
     setAnnotations(await getAnnotations(node.id));
@@ -60,6 +62,11 @@ const DetailView: React.FC = () => {
       setDevelopmentAreasPromise(selectedNode),
     ]);
     setIsLoading(false);
+    if (!hasInitialized) {
+      setHasInitialized(true);
+    } else {
+      setBrowserPosition();
+    }
   };
 
   const loadObjectPropertyAnnotations = async () => {
@@ -93,8 +100,12 @@ const DetailView: React.FC = () => {
     loadObjectPropertyAnnotations();
   }, [selectedPredicate]);
 
+  useEffect(() => {
+    setHasInitialized(false);
+  }, []);
+
   return (
-    <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
+    <Box id="detailView" bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
       <Heading as="h2" size="lg" pb="2">
         {isLoading
           ? 'Laster...'
