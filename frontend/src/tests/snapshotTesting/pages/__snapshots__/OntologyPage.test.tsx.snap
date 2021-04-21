@@ -1041,6 +1041,7 @@ exports[`renders when there are no items 1`] = `
   </div>
   <div
     className="css-147u3m9"
+    id="detailView"
   >
     <h2
       className="chakra-heading css-1drbkg9"
@@ -1124,5 +1125,8 @@ exports[`renders when there are no items 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="css-1gnsnpc"
+  />
 </div>
 `;
