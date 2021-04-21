@@ -1045,10 +1045,10 @@ exports[`renders when there are no items 1`] = `
     <h2
       className="chakra-heading css-1drbkg9"
     >
-      Mangler navn
+      Laster...
     </h2>
     <div
-      className="css-gg4vpm"
+      className="css-8v55bk"
     >
       <div
         className="css-0"
