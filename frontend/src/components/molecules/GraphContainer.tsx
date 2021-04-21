@@ -1,5 +1,5 @@
 import { Flex, Stack } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { isSubgoal, isWithinCorrelationLimit } from '../../common/node';
 import { RootState } from '../../state/store';
@@ -20,14 +20,20 @@ const GraphContainer: React.FC = () => {
     setShowSubgoals(!showSubgoals);
   };
 
-  const nodeFilter = (node: GraphNode): boolean => {
-    if (!showSubgoals && isSubgoal(node)) return false;
-    return true;
-  };
-  const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (!isWithinCorrelationLimit(edge, correlationFilter)) return false;
-    return true;
-  };
+  const nodeFilter = useCallback(
+    (node: GraphNode): boolean => {
+      if (!showSubgoals && isSubgoal(node)) return false;
+      return true;
+    },
+    [showSubgoals],
+  );
+  const edgeFilter = useCallback(
+    (edge: D3Edge | GraphEdge): boolean => {
+      if (!isWithinCorrelationLimit(edge, correlationFilter)) return false;
+      return true;
+    },
+    [correlationFilter],
+  );
 
   return (
     <Stack
