@@ -33,18 +33,7 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (
-      !isWithinCorrelationLimit(
-        edge,
-        correlationFilterValues.pLow,
-        correlationFilterValues.pMedium,
-        correlationFilterValues.pHigh,
-        correlationFilterValues.nLow,
-        correlationFilterValues.nMedium,
-        correlationFilterValues.nHigh,
-      )
-    )
-      return false;
+    if (!isWithinCorrelationLimit(edge, correlationFilterValues)) return false;
     return true;
   };
 

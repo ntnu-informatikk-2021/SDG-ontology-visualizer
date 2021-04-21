@@ -7,6 +7,7 @@ import {
   SustainabilityGoal,
 } from '../types/ontologyTypes';
 import { D3Edge } from '../types/d3/simulation';
+import { CorrelationFilter } from '../types/generalTypes';
 
 export const mapPrefixNameToNode = (
   prefix: string,
@@ -108,19 +109,14 @@ export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
 
 export const isWithinCorrelationLimit = (
   edge: D3Edge | GraphEdge,
-  pLow: boolean,
-  pMedium: boolean,
-  pHigh: boolean,
-  nLow: boolean,
-  nMedium: boolean,
-  nHigh: boolean,
+  filter: CorrelationFilter,
 ): boolean => {
-  if (edge.correlation === 3 && pLow) return true;
-  if (edge.correlation === 2 && pMedium) return true;
-  if (edge.correlation === 1 && pHigh) return true;
-  if (edge.correlation === -1 && nLow) return true;
-  if (edge.correlation === -2 && nMedium) return true;
-  if (edge.correlation === -3 && nHigh) return true;
+  if (edge.correlation === 3 && filter.pLow) return true;
+  if (edge.correlation === 2 && filter.pMedium) return true;
+  if (edge.correlation === 1 && filter.pHigh) return true;
+  if (edge.correlation === -1 && filter.nLow) return true;
+  if (edge.correlation === -2 && filter.nMedium) return true;
+  if (edge.correlation === -3 && filter.nHigh) return true;
   if (edge.correlation === 0) {
     return true;
   }
