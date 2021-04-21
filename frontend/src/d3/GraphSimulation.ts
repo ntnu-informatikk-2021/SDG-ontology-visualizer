@@ -371,9 +371,25 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  setEdgeLabelsVisible = () => {
+  toggleEdgeLabelsVisibility = () => {
     this.edgeLabelsVisible = !this.edgeLabelsVisible;
-    this.scaleGraph();
+
+    const edges = this.edgeSvg.selectAll(edgeClassName);
+
+    const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
+    const edgeLabel2 = edges.selectChild(this.selectEdgeLabel2);
+
+    if (!this.edgeLabelsVisible) {
+      edgeLabel1.style('opacity', 0);
+      edgeLabel2.style('opacity', 0);
+      return;
+    }
+
+    const edgeLabelFontSize = this.getEdgeLabelFontSize();
+    const edgeLabelOpacity = this.getEdgeLabelOpacity();
+
+    edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+    edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
   unlockAllNodes = () => {
@@ -542,10 +558,8 @@ export default class {
   };
 
   getEdgeLabelOpacity = () => {
-    if (this.edgeLabelsVisible) {
-      if (this.scale >= 1) return 1;
-      if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
-    }
+    if (this.scale >= 1) return 1;
+    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
     return 0;
   };
 

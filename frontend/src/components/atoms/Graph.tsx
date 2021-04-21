@@ -88,7 +88,7 @@ const Graph: React.FC<GraphProps> = ({
   }, [unlockAllNodes]);
 
   useEffect(() => {
-    if (simulation) simulation.setEdgeLabelsVisible();
+    if (simulation) simulation.toggleEdgeLabelsVisibility();
   }, [edgeLabelsVisible]);
 
   return (
