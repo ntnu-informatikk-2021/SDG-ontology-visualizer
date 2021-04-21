@@ -38,23 +38,31 @@ const DetailView: React.FC = () => {
     setDevelopmentAreas([]);
   };
 
+  const setAnnotationsPromise = async (node: Node): Promise<void> => {
+    setAnnotations(await getAnnotations(node.id));
+  };
+
+  const setContributionsPromise = async (node: Node): Promise<void> => {
+    setContributions(await getContributions(node.id));
+  };
+
+  const setTradeOffsPromise = async (node: Node): Promise<void> => {
+    setTradeOffs(await getTradeOff(node.id));
+  };
+
+  const setDevelopmentAreasPromise = async (node: Node): Promise<void> => {
+    setDevelopmentAreas(await getDevelopmentArea(node.id));
+  };
+
   const loadData = async () => {
     if (!selectedNode) return;
     clearData();
-    let newAnnotations;
-    let newContributions = [];
-    let newTradeOffs = [];
-    let newDevelopmentAreas = [];
     await Promise.allSettled([
-      (newAnnotations = await getAnnotations(selectedNode.id)),
-      (newContributions = await getContributions(selectedNode.id)),
-      (newTradeOffs = await getTradeOff(selectedNode.id)),
-      (newDevelopmentAreas = await getDevelopmentArea(selectedNode.id)),
+      setAnnotationsPromise(selectedNode),
+      setContributionsPromise(selectedNode),
+      setTradeOffsPromise(selectedNode),
+      setDevelopmentAreasPromise(selectedNode),
     ]);
-    setAnnotations(newAnnotations);
-    setContributions(newContributions);
-    setTradeOffs(newTradeOffs);
-    setDevelopmentAreas(newDevelopmentAreas);
   };
 
   const loadObjectPropertyAnnotations = async () => {
