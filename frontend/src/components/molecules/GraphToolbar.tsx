@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import { CorrelationFilter } from '../../types/generalTypes';
-import CorrelationDropdown from '../atoms/CorrelationDropdown';
+import CorrelationDropdown from './CorrelationDropdown';
 import SearchBar from '../atoms/SearchBar';
 
 type GraphToolBarProps = {

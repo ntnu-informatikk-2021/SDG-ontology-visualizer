@@ -2,7 +2,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Button, Menu, MenuButton, MenuList } from '@chakra-ui/react';
 import React from 'react';
 import { CorrelationFilter } from '../../types/generalTypes';
-import CorrelationCheckbox from './CorrelationCheckbox';
+import CorrelationCheckbox from '../atoms/CorrelationCheckbox';
 
 interface Props {
   onChangeCorrelation: React.Dispatch<React.SetStateAction<CorrelationFilter>>;
