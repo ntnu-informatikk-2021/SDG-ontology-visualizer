@@ -28,7 +28,7 @@ import { nextFrame, normalizeScale } from '../common/other';
 import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
-const nodeRadius = 30;
+const nodeRadius = 25;
 const nodeHighlightRadiusMultiplier = 1.2;
 const nodeLabelColor = '#2D3748';
 const nodeStrokeWidth = 0;
@@ -43,7 +43,7 @@ const edgeColor = '#A0AEC0';
 const edgeLabelColor = '#222';
 const edgeHighlightColor = '#00A3C4';
 
-const fontSize = 18;
+const fontSize = 16;
 const minScale = 0.4;
 const maxScale = 5;
 

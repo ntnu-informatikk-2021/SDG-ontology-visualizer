@@ -8,13 +8,14 @@ interface GraphDescriptionsProps {
 
 const GraphDescriptions: React.FC<GraphDescriptionsProps> = ({ float }: GraphDescriptionsProps) => (
   <Stack
-    px="5"
+    width={[null, null, null, '20vw', '17vw']}
     position={float ? 'absolute' : 'static'}
     right={0}
-    bgColor={float ? 'gray.100' : 'transparent'}
-    roundedBottomLeft="xl"
+    bgColor="white"
+    boxShadow="md"
+    rounded="lg"
   >
-    <GraphNodeKey description="Standardfarge/StartNode" />
+    <GraphNodeKey description="Standardfarge/Startnode" />
     <GraphNodeKey description="SDG (Bærekraftsmål)" />
     <GraphNodeKey description="Delmål til bærekraftsmål" />
     <GraphNodeKey description="Trippel bunnlinje" />

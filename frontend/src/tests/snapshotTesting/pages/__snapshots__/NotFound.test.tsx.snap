@@ -2,32 +2,29 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-gmuwbf"
+  className="chakra-stack css-19g0xa"
 >
-  <div
-    className="css-1mu9o2e"
+  <h2
+    className="chakra-heading css-0"
   >
-    <div
-      className="css-j7qwjs"
-    >
-      <h2
-        className="chakra-heading css-1fhgjcy"
-      >
-        404 Not Found
-      </h2>
-      <p
-        className="chakra-text css-0"
-      >
-        This page does not exist
-      </p>
-    </div>
-    <button
-      className="chakra-button css-1qhy7bt"
-      onClick={[Function]}
-      type="button"
+    404
+  </h2>
+  <p
+    className="chakra-text css-6dvxm2"
+  >
+    Denne siden eksisterer ikke
+  </p>
+  <button
+    className="chakra-button css-1c5reui"
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="chakra-button__icon css-ktvjz1"
     >
       <svg
-        className="chakra-icon css-l5wtxs"
+        aria-hidden={true}
+        className="chakra-icon css-onkibi"
         focusable={false}
         viewBox="0 0 24 24"
       >
@@ -42,8 +39,8 @@ exports[`renders when there are no items 1`] = `
           />
         </g>
       </svg>
-      Back to Home Page
-    </button>
-  </div>
+    </span>
+    Tilbake til forsiden
+  </button>
 </div>
 `;

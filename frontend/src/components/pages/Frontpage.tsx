@@ -11,10 +11,10 @@ const Frontpage: React.FC = () => (
       justifyContent="space-evenly"
       h="350px"
       spacing="10"
-      bg="cyan.600"
+      bg="cyan.700"
     >
       <Stack spacing="10">
-        <Heading size="xl" color="white">
+        <Heading size="lg" color="white">
           Bærekraftsontologien:
         </Heading>
         <SearchBar limit={5} />
@@ -22,7 +22,7 @@ const Frontpage: React.FC = () => (
 
       <Image src="SDG.png" alt="SDG" w="250px" />
     </Flex>
-    <Heading size="xl" align="center" color="cyan.600">
+    <Heading size="lg" align="center" color="cyan.700">
       Bærekraftsmålene:
     </Heading>
     <SustainabilityGoals />

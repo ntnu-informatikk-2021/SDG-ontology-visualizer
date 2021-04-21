@@ -1,6 +1,6 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { BsFullscreen, BsFullscreenExit } from 'react-icons/bs';
+import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
 import GraphSimulation from '../../d3/GraphSimulation';
@@ -9,7 +9,7 @@ import { setError } from '../../state/reducers/apiErrorReducer';
 import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { GraphNodeFilter, GraphEdgeFilter } from '../../types/d3/simulation';
+import { GraphEdgeFilter, GraphNodeFilter } from '../../types/d3/simulation';
 import { GraphNode } from '../../types/ontologyTypes';
 
 type GraphProps = {
@@ -53,7 +53,7 @@ const Graph: React.FC<GraphProps> = ({
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
     if (!selectedNode) {
-      dispatch(setError(new Error('No nodes selected in Graph')));
+      dispatch(setError(new Error('Du har ikke valgt en node i grafen')));
       return;
     }
     if (!simulation) {
@@ -94,19 +94,21 @@ const Graph: React.FC<GraphProps> = ({
       bg="white"
       boxShadow="md"
       rounded="lg"
-      width={isFullscreen ? '100vw' : '80vw'}
+      width={isFullscreen ? '100vw' : ['70vw', '70vw', '75vw', '77vw', '75vw']}
     >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
-      <Button
+      <IconButton
+        aria-label="Fullskjerm"
+        color="cyan.700"
+        size="lg"
         position="absolute"
-        right="0px"
-        bottom="0px"
-        bgColor="transparent"
+        right="4"
+        bottom="4"
+        colorScheme="gray"
         onClick={() => dispatch(toggleFullscreen())}
         zIndex={1}
-      >
-        {isFullscreen ? <BsFullscreenExit fontSize="32px" /> : <BsFullscreen fontSize="32px" />}
-      </Button>
+        icon={isFullscreen ? <GiContract size="40" /> : <GiExpand size="40" />}
+      />
     </Box>
   );
 };

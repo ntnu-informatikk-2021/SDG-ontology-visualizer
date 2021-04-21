@@ -22,18 +22,19 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
   return (
-    <HStack bg="cyan.500" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="10">
+    <HStack bg="cyan.700" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="10">
       <SearchBar limit={5} />
-      <Checkbox color="white" size="lg" checked onChange={onSubgoalFilter}>
+      <Checkbox colorScheme="cyan" color="white" size="md" checked onChange={onSubgoalFilter}>
         Vis delmål
       </Checkbox>
       <Checkbox
         defaultIsChecked
+        colorScheme="cyan"
         color="white"
-        size="lg"
+        size="md"
         onChange={() => onEdgeLabelsVisible((current) => !current)}
       >
-        Vis kanttext
+        Vis kanttekst
       </Checkbox>
       <CorrelationDropdown positive onChangeCorrelation={correlationFilterValues} />
       <CorrelationDropdown positive={false} onChangeCorrelation={correlationFilterValues} />
