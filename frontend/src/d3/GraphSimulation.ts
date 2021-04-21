@@ -305,6 +305,7 @@ export default class {
     g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
   ) => {
     await nextFrame();
+    if (!g) return;
     this.removeNodeMenu();
     const menuPos = this.getNodeMenuPosition();
     const menuG = g
