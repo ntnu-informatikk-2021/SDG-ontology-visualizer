@@ -6,16 +6,23 @@ import { RootState } from '../../state/store';
 import { D3Edge } from '../../types/d3/simulation';
 import { GraphEdge, GraphNode } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
-import GraphToolBar from '../atoms/GraphToolbar';
+import GraphToolBar from './GraphToolbar';
 import GraphDescriptions from './GraphDescriptions';
+import { CorrelationFilter } from '../../types/generalTypes';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
-  const [positiveConnectionChoice, setPositiveConnectionChoice] = useState<number>(0);
-  const [negativeConnectionChoice, setNegativeConnectionChoice] = useState<number>(0);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
   const [edgeLabelsVisible, setEdgeLabelsVisible] = useState<boolean>(true);
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+  const [correlationFilterValues, setCorrelationFilterValues] = useState<CorrelationFilter>({
+    pLow: true,
+    pMedium: true,
+    pHigh: true,
+    nLow: true,
+    nMedium: true,
+    nHigh: true,
+  });
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
@@ -26,7 +33,17 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (!isWithinCorrelationLimit(edge, positiveConnectionChoice, negativeConnectionChoice))
+    if (
+      !isWithinCorrelationLimit(
+        edge,
+        correlationFilterValues.pLow,
+        correlationFilterValues.pMedium,
+        correlationFilterValues.pHigh,
+        correlationFilterValues.nLow,
+        correlationFilterValues.nMedium,
+        correlationFilterValues.nHigh,
+      )
+    )
       return false;
     return true;
   };
@@ -41,8 +58,7 @@ const GraphContainer: React.FC = () => {
     >
       <GraphToolBar
         onSubgoalFilter={filterSubgoals}
-        onPositiveConnectionFilter={setPositiveConnectionChoice}
-        onNegativeConnectionFilter={setNegativeConnectionChoice}
+        correlationFilterValues={setCorrelationFilterValues}
         onUnlockNodes={setUnlockNodes}
         onEdgeLabelsVisible={setEdgeLabelsVisible}
       />

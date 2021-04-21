@@ -2,25 +2,25 @@ import { Button, Checkbox, HStack } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
-import CorrelationSlider from './CorrelationSlider';
-import SearchBar from './SearchBar';
+import { CorrelationFilter } from '../../types/generalTypes';
+import CorrelationDropdown from '../atoms/CorrelationDropdown';
+import SearchBar from '../atoms/SearchBar';
 
 type GraphToolBarProps = {
   onSubgoalFilter: () => void;
-  onPositiveConnectionFilter: React.Dispatch<React.SetStateAction<number>>;
-  onNegativeConnectionFilter: React.Dispatch<React.SetStateAction<number>>;
+  correlationFilterValues: React.Dispatch<React.SetStateAction<CorrelationFilter>>;
   onUnlockNodes: React.Dispatch<React.SetStateAction<boolean>>;
   onEdgeLabelsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
-  onPositiveConnectionFilter,
-  onNegativeConnectionFilter,
+  correlationFilterValues,
   onUnlockNodes,
   onEdgeLabelsVisible,
 }: GraphToolBarProps) => {
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+
   return (
     <HStack bg="cyan.500" borderRadius={isFullscreen ? 'none' : 'lg'} p="2" spacing="10">
       <SearchBar limit={5} />
@@ -35,18 +35,8 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       >
         Vis kanttext
       </Checkbox>
-      <CorrelationSlider
-        text="positiv påvirkning"
-        color="green"
-        bgColor="green.100"
-        onChange={(value) => onPositiveConnectionFilter(3 - value)}
-      />
-      <CorrelationSlider
-        text="negativ påvirkning"
-        color="tomato"
-        bgColor="red.100"
-        onChange={(value) => onNegativeConnectionFilter(3 - value)}
-      />
+      <CorrelationDropdown positive onChangeCorrelation={correlationFilterValues} />
+      <CorrelationDropdown positive={false} onChangeCorrelation={correlationFilterValues} />
       <Button color="cyan.600" onClick={() => onUnlockNodes((current) => !current)}>
         Lås opp alle noder
       </Button>

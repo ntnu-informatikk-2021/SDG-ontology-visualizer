@@ -108,12 +108,21 @@ export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
 
 export const isWithinCorrelationLimit = (
   edge: D3Edge | GraphEdge,
-  pvalue: number,
-  nvalue: number,
+  pLow: boolean,
+  pMedium: boolean,
+  pHigh: boolean,
+  nLow: boolean,
+  nMedium: boolean,
+  nHigh: boolean,
 ): boolean => {
-  if (edge.correlation === 0) return true;
-  if (pvalue + nvalue === 6) return false;
-  if (edge.correlation > 0 && edge.correlation <= pvalue) return false;
-  if (edge.correlation < 0 && -edge.correlation <= nvalue) return false;
-  return true;
+  if (edge.correlation === 3 && pLow) return true;
+  if (edge.correlation === 2 && pMedium) return true;
+  if (edge.correlation === 1 && pHigh) return true;
+  if (edge.correlation === -1 && nLow) return true;
+  if (edge.correlation === -2 && nMedium) return true;
+  if (edge.correlation === -3 && nHigh) return true;
+  if (edge.correlation === 0) {
+    return true;
+  }
+  return false;
 };
