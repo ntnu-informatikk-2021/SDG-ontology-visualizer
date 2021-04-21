@@ -53,6 +53,7 @@ export default class {
   private readonly nodeSvg: SubSvgSelection;
   private readonly edgeSvg: SubSvgSelection;
   private onExpandNode: (node: GraphNode) => void;
+  private onSelectNode: (node: GraphNode) => void;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
@@ -72,7 +73,8 @@ export default class {
     width: number,
     height: number,
     initialNode: GraphNode,
-    onClickNode: (node: GraphNode) => void,
+    onExpandNode: (node: GraphNode) => void,
+    onSelectNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
     edgeFilter: GraphEdgeFilter,
   ) {
@@ -85,7 +87,8 @@ export default class {
     this.unfilteredNodes = [initialNode];
     this.edges = [];
     this.unfilteredEdges = [];
-    this.onExpandNode = onClickNode;
+    this.onExpandNode = onExpandNode;
+    this.onSelectNode = onSelectNode;
     this.nodeFilter = nodeFilter;
     this.edgeFilter = edgeFilter;
     this.initZoom();
@@ -360,7 +363,7 @@ export default class {
       menuG,
       -nodeMenuBtnRadius * 3.75,
       () => {
-        this.onExpandNode(node);
+        this.onSelectNode(node);
         setBrowserPosition();
       },
       'icons/goToDetailView.svg',
@@ -368,34 +371,70 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  setEdgeLabelsVisible = () => {
+  toggleEdgeLabelsVisibility = () => {
     this.edgeLabelsVisible = !this.edgeLabelsVisible;
-    this.scaleGraph();
+
+    const edges = this.edgeSvg.selectAll(edgeClassName);
+
+    const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
+    const edgeLabel2 = edges.selectChild(this.selectEdgeLabel2);
+
+    if (!this.edgeLabelsVisible) {
+      edgeLabel1.style('opacity', 0);
+      edgeLabel2.style('opacity', 0);
+      return;
+    }
+
+    const edgeLabelFontSize = this.getEdgeLabelFontSize();
+    const edgeLabelOpacity = this.getEdgeLabelOpacity();
+
+    edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+    edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
   unlockAllNodes = () => {
     this.localUnlockAllNodes(this.unlockNode);
   };
 
-  localUnlockAllNodes = (unlockNode: (nodeContainer: SVGGElement, node: GraphNode) => void) => {
+  localUnlockAllNodes = (
+    unlockNode: (
+      nodeContainer: SVGGElement,
+      node: GraphNode,
+      shouldRenderEdgeLabel: boolean,
+    ) => void,
+  ) => {
+    let hasUpdatedNode = false;
     this.removeNodeMenu();
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
       .each(function (node) {
         const nodeContainer = d3.select(this).node() as SVGGElement;
-        unlockNode(nodeContainer, node);
+        unlockNode(nodeContainer, node, false);
+        if (node.isLocked) {
+          hasUpdatedNode = true;
+        }
       });
+    if (hasUpdatedNode) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
   };
 
-  unlockNode = (nodeContainer: SVGGElement, node: GraphNode): void => {
+  unlockNode = (
+    nodeContainer: SVGGElement,
+    node: GraphNode,
+    shouldReRenderGraph: boolean = true,
+  ): void => {
     const n = node;
     n.fx = undefined;
     n.fy = undefined;
     n.isLocked = false;
-    this.forceSimulation.alpha(0.5);
-    this.forceSimulation.restart();
     d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0);
+    if (shouldReRenderGraph) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
   };
 
   lockNode = (
@@ -539,10 +578,8 @@ export default class {
   };
 
   getEdgeLabelOpacity = () => {
-    if (this.edgeLabelsVisible) {
-      if (this.scale >= 1) return 1;
-      if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
-    }
+    if (this.scale >= 1) return 1;
+    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
     return 0;
   };
 

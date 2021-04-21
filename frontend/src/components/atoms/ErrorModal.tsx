@@ -37,7 +37,7 @@ const ErrorModal: React.FC = () => {
         <ModalHeader>{errorHeader}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
-        <ModalFooter isCentered>
+        <ModalFooter>
           <Button
             size="sm"
             colorScheme="blue"

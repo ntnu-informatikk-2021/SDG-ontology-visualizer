@@ -31,19 +31,20 @@ const Graph: React.FC<GraphProps> = ({
   const dispatch = useDispatch();
   const [simulation, setSimulation] = useState<GraphSimulation>();
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+  const [hasInitialized, setHasInitialized] = useState(false);
 
-  const loadData = async () => {
-    if (!simulation || !selectedNode) return;
-    const ontologies = await getRelations(selectedNode.id);
-    simulation.addData(ontologies, selectedNode);
+  const loadData = async (node: GraphNode) => {
+    if (!simulation) return;
+    const ontologies = await getRelations(node.id);
+    simulation.addData(ontologies, node);
   };
 
   const onExpandNode = (node: GraphNode): void => {
-    if (selectedNode && selectedNode.id === node.id) {
-      loadData();
-    } else {
-      dispatch(selectNode(node));
-    }
+    loadData(node);
+  };
+
+  const onSelectNode = (node: GraphNode): void => {
+    dispatch(selectNode(node));
   };
 
   useEffect(() => {
@@ -64,12 +65,14 @@ const Graph: React.FC<GraphProps> = ({
           0.4 * height,
           selectedNode,
           onExpandNode,
+          onSelectNode,
           nodeFilter,
           edgeFilter,
         ),
       );
-    } else {
-      loadData();
+    } else if (!hasInitialized) {
+      setHasInitialized(true);
+      loadData(selectedNode);
     }
   }, [selectedNode, svgRef, simulation]);
 
@@ -85,7 +88,7 @@ const Graph: React.FC<GraphProps> = ({
   }, [unlockAllNodes]);
 
   useEffect(() => {
-    if (simulation) simulation.setEdgeLabelsVisible();
+    if (simulation) simulation.toggleEdgeLabelsVisibility();
   }, [edgeLabelsVisible]);
 
   return (
