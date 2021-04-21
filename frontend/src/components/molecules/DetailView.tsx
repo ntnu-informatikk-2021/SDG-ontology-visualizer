@@ -18,7 +18,11 @@ import SlideInDrawer from '../atoms/SlideInDrawer';
 import AllConnections from './AllConnections';
 
 const DetailView: React.FC = () => {
-  const [annotations, setAnnotations] = useState<Annotation>();
+  const [annotations, setAnnotations] = useState<Annotation>({
+    label: '',
+    moreInformation: '',
+    description: '',
+  });
   const [objectAnnotations, setObjectAnnotations] = useState<Annotation>();
 
   const [contributions, setContributions] = useState<Array<Node>>([]);
@@ -29,14 +33,7 @@ const DetailView: React.FC = () => {
   const [selectedPredicate, setSelectedPredicate] = useState<Array<string>>();
   const dispatch = useDispatch();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
-
-  const clearData = () => {
-    setAnnotations(undefined);
-    setObjectAnnotations(undefined);
-    setContributions([]);
-    setTradeOffs([]);
-    setDevelopmentAreas([]);
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   const setAnnotationsPromise = async (node: Node): Promise<void> => {
     setAnnotations(await getAnnotations(node.id));
@@ -56,28 +53,31 @@ const DetailView: React.FC = () => {
 
   const loadData = async () => {
     if (!selectedNode) return;
-    clearData();
     await Promise.allSettled([
       setAnnotationsPromise(selectedNode),
       setContributionsPromise(selectedNode),
       setTradeOffsPromise(selectedNode),
       setDevelopmentAreasPromise(selectedNode),
     ]);
+    setIsLoading(false);
   };
 
   const loadObjectPropertyAnnotations = async () => {
     if (!selectedPredicate) return;
     setObjectAnnotations(undefined);
     setObjectAnnotations(await getAnnotations(selectedPredicate[1]));
+    setIsLoading(false);
   };
 
   const expandConnection = async (connection: Node, predicate: Array<string>) => {
+    setIsLoading(true);
     setSelectedConnection(connection);
     setSelectedPredicate(predicate);
     setExpanded(true);
   };
 
   const onClickConnections = (node: Node) => {
+    setIsLoading(true);
     setExpanded(false);
     if (selectedNode && selectedNode.id !== node.id) {
       dispatch(selectNode(node));
@@ -93,28 +93,16 @@ const DetailView: React.FC = () => {
     loadObjectPropertyAnnotations();
   }, [selectedPredicate]);
 
-  if (!annotations)
-    return (
-      <Box
-        bg="cyan.700"
-        py={8}
-        px={[4, null, null, 8]}
-        color="white"
-        rounded="lg"
-        minHeight="400px"
-      >
-        <Heading as="h2" size="lg" pb="2">
-          Laster detaljer...
-        </Heading>
-      </Box>
-    );
-
   return (
     <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
       <Heading as="h2" size="lg" pb="2">
-        {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || 'Mangler navn'}
+        {isLoading
+          ? 'Laster...'
+          : annotations.label.toUpperCase() ||
+            (selectedNode && selectedNode.name) ||
+            'Mangler navn'}
       </Heading>
-      <Flex justify="space-between">
+      <Flex visibility={isLoading ? 'hidden' : 'visible'} justify="space-between">
         <SlideInDrawer expanded={!expanded} width="40vw">
           <>
             <Text fontSize="lg" mt="2">
