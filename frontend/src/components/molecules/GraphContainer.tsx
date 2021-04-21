@@ -32,7 +32,14 @@ const GraphContainer: React.FC = () => {
       if (!isWithinCorrelationLimit(edge, correlationFilter)) return false;
       return true;
     },
-    [correlationFilter],
+    [
+      correlationFilter.pLow,
+      correlationFilter.pMedium,
+      correlationFilter.pHigh,
+      correlationFilter.nLow,
+      correlationFilter.nMedium,
+      correlationFilter.nHigh,
+    ],
   );
 
   return (
