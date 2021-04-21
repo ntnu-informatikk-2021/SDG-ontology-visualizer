@@ -725,12 +725,6 @@ export default class {
             this.forceSimulation.alpha(0.5);
             this.forceSimulation.restart();
           })
-          // eslint-disable-next-line func-names
-          /*
-          .on('start', (event) => {
-            d3.select(event.sourceEvent.target);
-          })
-          */
           .on('end', (event, d) => {
             if (!event.sourceEvent.target) return;
             const menu = (event.sourceEvent.target as SVGElement).parentNode as SVGGElement;
