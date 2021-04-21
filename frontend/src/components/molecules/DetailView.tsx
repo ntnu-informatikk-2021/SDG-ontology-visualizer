@@ -18,16 +18,8 @@ import SlideInDrawer from '../atoms/SlideInDrawer';
 import AllConnections from './AllConnections';
 
 const DetailView: React.FC = () => {
-  const [annotations, setAnnotations] = useState<Annotation>({
-    label: '',
-    description: '',
-    moreInformation: '',
-  });
-  const [objectAnnotations, setObjectAnnotations] = useState<Annotation>({
-    label: '',
-    description: '',
-    moreInformation: '',
-  });
+  const [annotations, setAnnotations] = useState<Annotation>();
+  const [objectAnnotations, setObjectAnnotations] = useState<Annotation>();
 
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
@@ -67,6 +59,7 @@ const DetailView: React.FC = () => {
 
   const loadObjectPropertyAnnotations = async () => {
     if (!selectedPredicate) return;
+    setObjectAnnotations(undefined);
     setObjectAnnotations(await getAnnotations(selectedPredicate[1]));
   };
 
@@ -91,6 +84,15 @@ const DetailView: React.FC = () => {
   useEffect(() => {
     loadObjectPropertyAnnotations();
   }, [selectedPredicate]);
+
+  if (!annotations)
+    return (
+      <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
+        <Heading as="h2" size="lg" pb="2">
+          Laster detaljer...
+        </Heading>
+      </Box>
+    );
 
   return (
     <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
@@ -142,8 +144,10 @@ const DetailView: React.FC = () => {
               {selectedConnection && selectedConnection.name}
             </Heading>
             <Text fontSize="md" mt="2">
-              {`Relasjonen "${objectAnnotations && objectAnnotations.label}" er en
-                ${objectAnnotations && objectAnnotations.description} `}
+              {objectAnnotations && objectAnnotations.description
+                ? `Relasjonen "${objectAnnotations && objectAnnotations.label}" er en
+                ${objectAnnotations && objectAnnotations.description} `
+                : 'Laster...'}
             </Text>
             <ButtonGroup>
               <Button
