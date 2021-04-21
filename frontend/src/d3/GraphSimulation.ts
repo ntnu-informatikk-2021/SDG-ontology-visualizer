@@ -410,10 +410,10 @@ export default class {
       .data(this.nodes)
       .each(function (node) {
         const nodeContainer = d3.select(this).node() as SVGGElement;
-        unlockNode(nodeContainer, node, false);
         if (node.isLocked) {
           hasUpdatedNode = true;
         }
+        unlockNode(nodeContainer, node, false);
       });
     if (hasUpdatedNode) {
       this.forceSimulation.alpha(0.5);
