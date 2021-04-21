@@ -148,13 +148,12 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erIndikatorAv">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
         <SDG:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Et predikament som beskriver sammenhenge(n/r) mellom SSB&apos;s taxonomi: Indikatorer/framgangsmetoder:</SDG:description>
         <rdfs:isDefinedBy rdf:resource="https://www.ssb.no/natur-og-miljo/artikler-og-publikasjoner/_attachment/445213?_ts=17780d5d790"/>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erIndikatorAv</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erIndikatorTil</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -295,10 +294,9 @@
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Et predikament som beskriver sammenhenge(n/r) mellom Indikatorer/framgangsmetoder og konsepter i SSB&apos;s taxonomi:</SDG:description>
         <rdfs:isDefinedBy rdf:resource="https://www.ssb.no/natur-og-miljo/artikler-og-publikasjoner/_attachment/445213?_ts=17780d5d790"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">harIndikator</rdfs:label>
@@ -8847,6 +8845,16 @@ English: (For inital development, expansion of this class along with possible co
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Vannkvalitet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Vannkvalitet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En klasse som omhandler vannkvalitet. Hvor metoder, målinger og andre konsepter direkte relatert til vannkvalitet plasseres her.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vannkvalitet</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Wuppertal_Sustainability_Indicators -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Wuppertal_Sustainability_Indicators">
@@ -11227,8 +11235,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L">
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet"/>
         <SDG:description>Dette er en standarisert luftkvalitetsmåling</SDG:description>
         <SDG:location>Plassering</SDG:location>
         <rdfs:label>Standarisert luftkvalitets måling</rdfs:label>
@@ -13438,6 +13444,17 @@ Trondheim Kommune har utviklet en nettside for å vise luftkvalitetsverdier.</SD
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke vitenskapelig forskning og oppgradere teknologien i næringslivssektorene i alle land, særlig i utviklingsland,  blant annet ved &amp;ndash;innen 2030 – å stimulere til innovasjon, betydelig øke antallet ansatte (per million innbyggere) innenfor forsknings- og utviklingsvirksomhet og betydelig øke bevilgningene til offentlig og privat forskning og utvikling</SDG:description>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator:_6.3.1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator:_6.3.1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Vannkvalitet"/>
+        <SDG:erIndikatorAv rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.3"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.3.1 Andel av befolkningen som er tilknyttet kommunal avløpstjeneste. Dette har vært en SSB-tilpasset versjon av FNs «Proportion of domestic and industrial wastewater flows safely treated» (IAEG-SDGs, 2020, side 12)</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avløpstjeneste</rdfs:label>
     </owl:NamedIndividual>
     
 
