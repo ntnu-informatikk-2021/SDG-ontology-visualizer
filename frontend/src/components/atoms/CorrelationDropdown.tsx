@@ -30,13 +30,13 @@ const CorrelationDropdown = ({ onChangeCorrelation, positive }: Props) => (
           onChange={() => {
             if (positive) {
               onChangeCorrelation((current) => ({
-                ...current!,
-                pLow: !current?.pLow,
+                ...current,
+                pLow: !current.pLow,
               }));
             } else {
               onChangeCorrelation((current) => ({
-                ...current!,
-                nLow: !current?.nLow,
+                ...current,
+                nLow: !current.nLow,
               }));
             }
           }}
@@ -59,13 +59,13 @@ const CorrelationDropdown = ({ onChangeCorrelation, positive }: Props) => (
           onChange={() => {
             if (positive) {
               onChangeCorrelation((current) => ({
-                ...current!,
-                pMedium: !current?.pMedium,
+                ...current,
+                pMedium: !current.pMedium,
               }));
             } else {
               onChangeCorrelation((current) => ({
-                ...current!,
-                nMedium: !current?.nMedium,
+                ...current,
+                nMedium: !current.nMedium,
               }));
             }
           }}
@@ -88,13 +88,13 @@ const CorrelationDropdown = ({ onChangeCorrelation, positive }: Props) => (
           onChange={() => {
             if (positive) {
               onChangeCorrelation((current) => ({
-                ...current!,
-                pHigh: !current?.pHigh,
+                ...current,
+                pHigh: !current.pHigh,
               }));
             } else {
               onChangeCorrelation((current) => ({
-                ...current!,
-                nHigh: !current?.nHigh,
+                ...current,
+                nHigh: !current.nHigh,
               }));
             }
           }}

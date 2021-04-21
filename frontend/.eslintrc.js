@@ -26,7 +26,5 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
-    'react/jsx-curly-newline': 'off',
-    'object-curly-newline': 'off',
   },
 };
