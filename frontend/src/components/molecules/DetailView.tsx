@@ -34,7 +34,7 @@ const DetailView: React.FC = () => {
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
   const [expanded, setExpanded] = useState<boolean>(false);
   const [selectedConnection, setSelectedConnection] = useState<Node>();
-  const [selectedPredicate, setSelectedPredicate] = useState<Array<string>>(['Loading', 'Loading']);
+  const [selectedPredicate, setSelectedPredicate] = useState<Array<string>>();
   const dispatch = useDispatch();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
@@ -114,9 +114,11 @@ const DetailView: React.FC = () => {
             <Heading as="h2" size="lg">
               {annotations.label}
               <Heading size="lg" color="cyan.200">
-                {`har ${
-                  selectedConnection && mapCorrelationToName(selectedConnection.correlation)
-                } ${selectedPredicate[0]} til`}
+                {selectedPredicate &&
+                  selectedPredicate[0] &&
+                  `har ${
+                    selectedConnection && mapCorrelationToName(selectedConnection.correlation)
+                  } ${selectedPredicate[0]} til`}
               </Heading>
               {selectedConnection && selectedConnection.name}
             </Heading>
