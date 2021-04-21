@@ -11,11 +11,10 @@ import GraphDescriptions from './GraphDescriptions';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
-  const [positiveConnectionChoice, setPositiveConnectionChoice] = useState<number>(0);
-  const [negativeConnectionChoice, setNegativeConnectionChoice] = useState<number>(0);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
   const [edgeLabelsVisible, setEdgeLabelsVisible] = useState<boolean>(true);
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+  const { correlationFilter } = useSelector((state: RootState) => state.ontology);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
@@ -26,8 +25,7 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (!isWithinCorrelationLimit(edge, positiveConnectionChoice, negativeConnectionChoice))
-      return false;
+    if (!isWithinCorrelationLimit(edge, correlationFilter)) return false;
     return true;
   };
 
@@ -40,8 +38,6 @@ const GraphContainer: React.FC = () => {
     >
       <GraphToolBar
         onSubgoalFilter={filterSubgoals}
-        onPositiveConnectionFilter={setPositiveConnectionChoice}
-        onNegativeConnectionFilter={setNegativeConnectionChoice}
         onUnlockNodes={setUnlockNodes}
         onEdgeLabelsVisible={setEdgeLabelsVisible}
       />

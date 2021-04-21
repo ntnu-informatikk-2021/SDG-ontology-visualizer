@@ -16,6 +16,7 @@ import {
   parseNameFromClassId,
   parsePrefixFromClassId,
 } from '../common/node';
+import { camelCaseToText } from '../common/other';
 import { isUrl } from '../common/regex';
 
 /**
@@ -218,8 +219,9 @@ test('Make predicate unique', () => {
 });
 
 test('Create edge label text', () => {
-  expect(createEdgeLabelText([testEdge], true)).toBe(`<-- ${testEdge.name}`);
-  expect(createEdgeLabelText([testEdge], false)).toBe(`${testEdge.name} -->`);
+  const name = camelCaseToText(testEdge.name);
+  expect(createEdgeLabelText([testEdge], true)).toBe(`<-- ${name}`);
+  expect(createEdgeLabelText([testEdge], false)).toBe(`${name} -->`);
   expect(createEdgeLabelText([], false)).toBe('');
   expect(createEdgeLabelText([], true)).toBe('');
   expect(createEdgeLabelText([testEdge, testEdge], false)).toBe('2 Predicates -->');
