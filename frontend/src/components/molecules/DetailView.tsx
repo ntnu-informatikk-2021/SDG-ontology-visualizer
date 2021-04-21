@@ -95,7 +95,14 @@ const DetailView: React.FC = () => {
 
   if (!annotations)
     return (
-      <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
+      <Box
+        bg="cyan.700"
+        py={8}
+        px={[4, null, null, 8]}
+        color="white"
+        rounded="lg"
+        minHeight="400px"
+      >
         <Heading as="h2" size="lg" pb="2">
           Laster detaljer...
         </Heading>
