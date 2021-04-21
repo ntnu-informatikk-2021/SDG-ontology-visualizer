@@ -111,9 +111,9 @@ export const isWithinCorrelationLimit = (
   edge: D3Edge | GraphEdge,
   filter: CorrelationFilter,
 ): boolean => {
-  if (edge.correlation === 3 && filter.pLow) return true;
+  if (edge.correlation === 1 && filter.pLow) return true;
   if (edge.correlation === 2 && filter.pMedium) return true;
-  if (edge.correlation === 1 && filter.pHigh) return true;
+  if (edge.correlation === 3 && filter.pHigh) return true;
   if (edge.correlation === -1 && filter.nLow) return true;
   if (edge.correlation === -2 && filter.nMedium) return true;
   if (edge.correlation === -3 && filter.nHigh) return true;
