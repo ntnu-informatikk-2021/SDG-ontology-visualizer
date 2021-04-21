@@ -8,21 +8,13 @@ import { GraphEdge, GraphNode } from '../../types/ontologyTypes';
 import Graph from '../atoms/Graph';
 import GraphToolBar from './GraphToolbar';
 import GraphDescriptions from './GraphDescriptions';
-import { CorrelationFilter } from '../../types/generalTypes';
 
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
   const [edgeLabelsVisible, setEdgeLabelsVisible] = useState<boolean>(true);
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
-  const [correlationFilterValues, setCorrelationFilterValues] = useState<CorrelationFilter>({
-    pLow: true,
-    pMedium: true,
-    pHigh: true,
-    nLow: true,
-    nMedium: true,
-    nHigh: true,
-  });
+  const { correlationFilter } = useSelector((state: RootState) => state.ontology);
 
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
@@ -33,7 +25,7 @@ const GraphContainer: React.FC = () => {
     return true;
   };
   const edgeFilter = (edge: D3Edge | GraphEdge): boolean => {
-    if (!isWithinCorrelationLimit(edge, correlationFilterValues)) return false;
+    if (!isWithinCorrelationLimit(edge, correlationFilter)) return false;
     return true;
   };
 
@@ -46,7 +38,6 @@ const GraphContainer: React.FC = () => {
     >
       <GraphToolBar
         onSubgoalFilter={filterSubgoals}
-        correlationFilterValues={setCorrelationFilterValues}
         onUnlockNodes={setUnlockNodes}
         onEdgeLabelsVisible={setEdgeLabelsVisible}
       />

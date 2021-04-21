@@ -2,20 +2,17 @@ import { Button, Checkbox, HStack } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
-import { CorrelationFilter } from '../../types/generalTypes';
-import CorrelationDropdown from './CorrelationDropdown';
 import SearchBar from '../atoms/SearchBar';
+import CorrelationDropdown from './CorrelationDropdown';
 
 type GraphToolBarProps = {
   onSubgoalFilter: () => void;
-  correlationFilterValues: React.Dispatch<React.SetStateAction<CorrelationFilter>>;
   onUnlockNodes: React.Dispatch<React.SetStateAction<boolean>>;
   onEdgeLabelsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
-  correlationFilterValues,
   onUnlockNodes,
   onEdgeLabelsVisible,
 }: GraphToolBarProps) => {
@@ -36,8 +33,8 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       >
         Vis kanttekst
       </Checkbox>
-      <CorrelationDropdown positive onChangeCorrelation={correlationFilterValues} />
-      <CorrelationDropdown positive={false} onChangeCorrelation={correlationFilterValues} />
+      <CorrelationDropdown isPositive />
+      <CorrelationDropdown isPositive={false} />
       <Button color="cyan.600" onClick={() => onUnlockNodes((current) => !current)}>
         Lås opp alle noder
       </Button>

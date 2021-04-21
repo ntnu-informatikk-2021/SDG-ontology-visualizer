@@ -5,9 +5,9 @@ import {
   Node,
   Prefix,
   SustainabilityGoal,
+  CorrelationFilter,
 } from '../types/ontologyTypes';
 import { D3Edge } from '../types/d3/simulation';
-import { CorrelationFilter } from '../types/generalTypes';
 
 export const mapPrefixNameToNode = (
   prefix: string,
