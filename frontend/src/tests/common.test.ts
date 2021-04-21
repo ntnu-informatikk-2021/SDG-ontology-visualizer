@@ -243,3 +243,12 @@ test('Is URL', () => {
   expect(isUrl('http://')).toBe(false);
   expect(isUrl('http://asdfjh')).toBe(false);
 });
+
+/**
+ * Other tests
+ */
+
+test('Camel case to text', () => {
+  expect(camelCaseToText('hello')).toBe('Hello');
+  expect(camelCaseToText('helloWorld')).toBe('Hello world');
+});
