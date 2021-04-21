@@ -53,6 +53,7 @@ export default class {
   private readonly nodeSvg: SubSvgSelection;
   private readonly edgeSvg: SubSvgSelection;
   private onExpandNode: (node: GraphNode) => void;
+  private onSelectNode: (node: GraphNode) => void;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
@@ -72,7 +73,8 @@ export default class {
     width: number,
     height: number,
     initialNode: GraphNode,
-    onClickNode: (node: GraphNode) => void,
+    onExpandNode: (node: GraphNode) => void,
+    onSelectNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
     edgeFilter: GraphEdgeFilter,
   ) {
@@ -85,7 +87,8 @@ export default class {
     this.unfilteredNodes = [initialNode];
     this.edges = [];
     this.unfilteredEdges = [];
-    this.onExpandNode = onClickNode;
+    this.onExpandNode = onExpandNode;
+    this.onSelectNode = onSelectNode;
     this.nodeFilter = nodeFilter;
     this.edgeFilter = edgeFilter;
     this.initZoom();
@@ -360,7 +363,7 @@ export default class {
       menuG,
       -nodeMenuBtnRadius * 3.75,
       () => {
-        this.onExpandNode(node);
+        this.onSelectNode(node);
         setBrowserPosition();
       },
       'icons/goToDetailView.svg',
