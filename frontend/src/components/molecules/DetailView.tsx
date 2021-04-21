@@ -38,12 +38,31 @@ const DetailView: React.FC = () => {
   const dispatch = useDispatch();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
 
+  const clearData = () => {
+    setAnnotations(undefined);
+    setObjectAnnotations(undefined);
+    setContributions([]);
+    setTradeOffs([]);
+    setDevelopmentAreas([]);
+  };
+
   const loadData = async () => {
     if (!selectedNode) return;
-    setAnnotations(await getAnnotations(selectedNode.id));
-    setContributions(await getContributions(selectedNode.id));
-    setTradeOffs(await getTradeOff(selectedNode.id));
-    setDevelopmentAreas(await getDevelopmentArea(selectedNode.id));
+    clearData();
+    let newAnnotations;
+    let newContributions = [];
+    let newTradeOffs = [];
+    let newDevelopmentAreas = [];
+    await Promise.allSettled([
+      (newAnnotations = await getAnnotations(selectedNode.id)),
+      (newContributions = await getContributions(selectedNode.id)),
+      (newTradeOffs = await getTradeOff(selectedNode.id)),
+      (newDevelopmentAreas = await getDevelopmentArea(selectedNode.id)),
+    ]);
+    setAnnotations(newAnnotations);
+    setContributions(newContributions);
+    setTradeOffs(newTradeOffs);
+    setDevelopmentAreas(newDevelopmentAreas);
   };
 
   const loadObjectPropertyAnnotations = async () => {
