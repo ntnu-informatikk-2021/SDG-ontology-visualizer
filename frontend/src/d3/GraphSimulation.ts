@@ -396,25 +396,45 @@ export default class {
     this.localUnlockAllNodes(this.unlockNode);
   };
 
-  localUnlockAllNodes = (unlockNode: (nodeContainer: SVGGElement, node: GraphNode) => void) => {
+  localUnlockAllNodes = (
+    unlockNode: (
+      nodeContainer: SVGGElement,
+      node: GraphNode,
+      shouldRenderEdgeLabel: boolean,
+    ) => void,
+  ) => {
+    let hasUpdatedNode = false;
     this.removeNodeMenu();
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
       .each(function (node) {
         const nodeContainer = d3.select(this).node() as SVGGElement;
-        unlockNode(nodeContainer, node);
+        unlockNode(nodeContainer, node, false);
+        if (node.isLocked) {
+          hasUpdatedNode = true;
+        }
       });
+    if (hasUpdatedNode) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
   };
 
-  unlockNode = (nodeContainer: SVGGElement, node: GraphNode): void => {
+  unlockNode = (
+    nodeContainer: SVGGElement,
+    node: GraphNode,
+    shouldReRenderGraph: boolean = true,
+  ): void => {
     const n = node;
     n.fx = undefined;
     n.fy = undefined;
     n.isLocked = false;
-    this.forceSimulation.alpha(0.5);
-    this.forceSimulation.restart();
     d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0);
+    if (shouldReRenderGraph) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
   };
 
   lockNode = (
