@@ -11,21 +11,20 @@ import {
   removeDuplicates,
   removingNodeWillMakeGraphEmpty,
 } from '../common/d3';
+import { nextFrame, normalizeScale } from '../common/other';
 import { setError } from '../state/reducers/apiErrorReducer';
 import reduxStore from '../state/store';
 import {
   CenterForce,
   D3Edge,
   ForceSimulation,
-  GraphNodeFilter,
   GraphEdgeFilter,
+  GraphNodeFilter,
   LinkForce,
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 import FpsCounter from '../utils/FpsCounter';
-import { nextFrame, normalizeScale } from '../common/other';
-import setBrowserPosition from '../common/setBrowserPosition';
 
 const nodeClassName = '.node';
 const nodeRadius = 25;
@@ -364,7 +363,6 @@ export default class {
       -nodeMenuBtnRadius * 3.75,
       () => {
         this.onSelectNode(node);
-        setBrowserPosition();
       },
       'icons/goToDetailView.svg',
     );
@@ -725,12 +723,6 @@ export default class {
             this.forceSimulation.alpha(0.5);
             this.forceSimulation.restart();
           })
-          // eslint-disable-next-line func-names
-          /*
-          .on('start', (event) => {
-            d3.select(event.sourceEvent.target);
-          })
-          */
           .on('end', (event, d) => {
             if (!event.sourceEvent.target) return;
             const menu = (event.sourceEvent.target as SVGElement).parentNode as SVGGElement;

@@ -10,6 +10,7 @@ import {
 } from '../../api/ontologies';
 import { mapCorrelationToName } from '../../common/node';
 import { isUrl } from '../../common/regex';
+import setBrowserPosition from '../../common/setBrowserPositionToDetailView';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -20,14 +21,10 @@ import AllConnections from './AllConnections';
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
-    description: '',
     moreInformation: '',
-  });
-  const [objectAnnotations, setObjectAnnotations] = useState<Annotation>({
-    label: '',
     description: '',
-    moreInformation: '',
   });
+  const [objectAnnotations, setObjectAnnotations] = useState<Annotation>();
 
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
@@ -37,27 +34,57 @@ const DetailView: React.FC = () => {
   const [selectedPredicate, setSelectedPredicate] = useState<Array<string>>();
   const dispatch = useDispatch();
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
+
+  const setAnnotationsPromise = async (node: Node): Promise<void> => {
+    setAnnotations(await getAnnotations(node.id));
+  };
+
+  const setContributionsPromise = async (node: Node): Promise<void> => {
+    setContributions(await getContributions(node.id));
+  };
+
+  const setTradeOffsPromise = async (node: Node): Promise<void> => {
+    setTradeOffs(await getTradeOff(node.id));
+  };
+
+  const setDevelopmentAreasPromise = async (node: Node): Promise<void> => {
+    setDevelopmentAreas(await getDevelopmentArea(node.id));
+  };
 
   const loadData = async () => {
     if (!selectedNode) return;
-    setAnnotations(await getAnnotations(selectedNode.id));
-    setContributions(await getContributions(selectedNode.id));
-    setTradeOffs(await getTradeOff(selectedNode.id));
-    setDevelopmentAreas(await getDevelopmentArea(selectedNode.id));
+    await Promise.allSettled([
+      setAnnotationsPromise(selectedNode),
+      setContributionsPromise(selectedNode),
+      setTradeOffsPromise(selectedNode),
+      setDevelopmentAreasPromise(selectedNode),
+    ]);
+    setIsLoading(false);
+    if (!hasInitialized) {
+      setHasInitialized(true);
+    } else {
+      setBrowserPosition();
+    }
   };
 
   const loadObjectPropertyAnnotations = async () => {
     if (!selectedPredicate) return;
+    setObjectAnnotations(undefined);
     setObjectAnnotations(await getAnnotations(selectedPredicate[1]));
+    setIsLoading(false);
   };
 
   const expandConnection = async (connection: Node, predicate: Array<string>) => {
+    setIsLoading(true);
     setSelectedConnection(connection);
     setSelectedPredicate(predicate);
     setExpanded(true);
   };
 
   const onClickConnections = (node: Node) => {
+    setIsLoading(true);
     setExpanded(false);
     if (selectedNode && selectedNode.id !== node.id) {
       dispatch(selectNode(node));
@@ -73,12 +100,20 @@ const DetailView: React.FC = () => {
     loadObjectPropertyAnnotations();
   }, [selectedPredicate]);
 
+  useEffect(() => {
+    setHasInitialized(false);
+  }, []);
+
   return (
-    <Box bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
+    <Box id="detailView" bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
       <Heading as="h2" size="lg" pb="2">
-        {annotations.label.toUpperCase() || (selectedNode && selectedNode.name) || 'Mangler navn'}
+        {isLoading
+          ? 'Laster...'
+          : annotations.label.toUpperCase() ||
+            (selectedNode && selectedNode.name) ||
+            'Mangler navn'}
       </Heading>
-      <Flex justify="space-between">
+      <Flex visibility={isLoading ? 'hidden' : 'visible'} justify="space-between">
         <SlideInDrawer expanded={!expanded} width="40vw">
           <>
             <Text fontSize="lg" mt="2">
@@ -123,8 +158,10 @@ const DetailView: React.FC = () => {
               {selectedConnection && selectedConnection.name}
             </Heading>
             <Text fontSize="md" mt="2">
-              {`Relasjonen "${objectAnnotations && objectAnnotations.label}" er en
-                ${objectAnnotations && objectAnnotations.description} `}
+              {objectAnnotations && objectAnnotations.description
+                ? `Relasjonen "${objectAnnotations && objectAnnotations.label}" er en
+                ${objectAnnotations && objectAnnotations.description} `
+                : 'Laster...'}
             </Text>
             <ButtonGroup>
               <Button

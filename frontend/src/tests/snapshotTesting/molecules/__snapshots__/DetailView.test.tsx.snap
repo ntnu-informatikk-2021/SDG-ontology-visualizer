@@ -3,6 +3,7 @@
 exports[`renders when there are no items 1`] = `
 <div
   className="css-147u3m9"
+  id="detailView"
 >
   <h2
     className="chakra-heading css-1drbkg9"
@@ -10,7 +11,7 @@ exports[`renders when there are no items 1`] = `
     Mangler navn
   </h2>
   <div
-    className="css-gg4vpm"
+    className="css-1yedjnd"
   >
     <div
       className="css-0"

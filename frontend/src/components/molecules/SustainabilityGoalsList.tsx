@@ -41,6 +41,7 @@ const SustainabilityGoalsList: React.FC = () => {
               key={sdg.instancesOf}
               onClick={() => {
                 onClickSDG(sdg);
+                window.scrollTo(0, 0);
                 history.push('/ontology');
               }}
               sustainabilityNode={sdg}

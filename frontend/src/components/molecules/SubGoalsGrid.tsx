@@ -20,7 +20,11 @@ const SubGoalsGrid = () => {
     loadSubGoal();
   }, [selectedNode]);
 
-  return subGoals.length ? (
+  if (!subGoals || subGoals.length === 0) {
+    return <Box height="200px" />;
+  }
+
+  return (
     <Box align="center" px="10">
       <Heading size="lg" mb="10" color="cyan.900">
         DELMÅL:
@@ -42,8 +46,6 @@ const SubGoalsGrid = () => {
         </Stack>
       </Flex>
     </Box>
-  ) : (
-    <></>
   );
 };
 
