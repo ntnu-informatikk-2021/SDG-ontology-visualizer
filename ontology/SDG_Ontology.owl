@@ -10974,6 +10974,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
+        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
@@ -11554,7 +11555,7 @@ Trondheim Kommune har utviklet en nettside for å vise luftkvalitetsverdier.</SD
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
         <SDG:description>Den økonomiske bunnlinjen representerer den økoomiske framgangen i samfunnet.</SDG:description>
-        <rdfs:label>Økonomi</rdfs:label>
+        <rdfs:label>Velstand</rdfs:label>
     </owl:NamedIndividual>
     
 
