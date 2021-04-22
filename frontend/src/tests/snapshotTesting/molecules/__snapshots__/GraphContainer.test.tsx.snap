@@ -5,7 +5,7 @@ exports[`renders when there are no items 1`] = `
   className="chakra-stack css-19pwagy"
 >
   <div
-    className="chakra-stack css-1odzq53"
+    className="chakra-stack css-1pyzomu"
   >
     <div
       aria-controls="popover-content-2"
@@ -71,130 +71,337 @@ exports[`renders when there are no items 1`] = `
         />
       </section>
     </div>
-    <label
-      checked={true}
-      className="chakra-checkbox css-1gefvdb"
+    <div
+      className="css-tu7qm9"
     >
-      <input
-        checked={false}
-        className="chakra-checkbox__input"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
+      <button
+        aria-controls="menu-list-6"
+        aria-expanded={false}
+        aria-haspopup="menu"
+        className="chakra-button chakra-menu__menu-button css-1o9wlf7"
+        id="menu-button-6"
+        onClick={[Function]}
         onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        style={
-          Object {
-            "border": "0px",
-            "clip": "rect(0px, 0px, 0px, 0px)",
-            "height": "1px",
-            "margin": "-1px",
-            "overflow": "hidden",
-            "padding": "0px",
-            "position": "absolute",
-            "whiteSpace": "nowrap",
-            "width": "1px",
-          }
-        }
-        type="checkbox"
-      />
-      <span
-        aria-hidden={true}
-        className="chakra-checkbox__control css-dnty2r"
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-      />
-      <span
-        className="chakra-checkbox__label css-1oeb2oe"
-        onMouseDown={[Function]}
-        onTouchStart={[Function]}
+        type="button"
       >
-        Vis delmål
-      </span>
-    </label>
-    <label
-      className="chakra-checkbox css-1gefvdb"
-    >
-      <input
-        checked={true}
-        className="chakra-checkbox__input"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        style={
-          Object {
-            "border": "0px",
-            "clip": "rect(0px, 0px, 0px, 0px)",
-            "height": "1px",
-            "margin": "-1px",
-            "overflow": "hidden",
-            "padding": "0px",
-            "position": "absolute",
-            "whiteSpace": "nowrap",
-            "width": "1px",
-          }
-        }
-        type="checkbox"
-      />
-      <span
-        aria-hidden={true}
-        className="chakra-checkbox__control css-dnty2r"
-        data-checked=""
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-      >
-        <div
-          style={
-            Object {
-              "alignItems": "center",
-              "display": "flex",
-              "height": "100%",
-              "justifyContent": "center",
-              "transform": "none",
-            }
-          }
+        <span
+          className="css-a9hmjk"
+        >
+          Vis
+        </span>
+        <span
+          className="chakra-button__icon css-1oeb2oe"
         >
           <svg
-            className="css-f5ntj6"
-            style={
-              Object {
-                "fill": "none",
-                "opacity": 1,
-                "stroke": "currentColor",
-                "strokeDasharray": 16,
-                "strokeDashoffset": 0,
-                "strokeWidth": 2,
-              }
-            }
-            viewBox="0 0 12 10"
+            aria-hidden={true}
+            className="chakra-icon css-onkibi"
+            focusable={false}
+            viewBox="0 0 24 24"
           >
-            <polyline
-              points="1.5 6 4.5 9 10.5 1"
+            <path
+              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              fill="currentColor"
             />
           </svg>
-        </div>
-      </span>
-      <span
-        className="chakra-checkbox__label css-1oeb2oe"
-        data-checked=""
-        onMouseDown={[Function]}
-        onTouchStart={[Function]}
+        </span>
+      </button>
+      <div
+        className="css-0"
+        style={
+          Object {
+            "visibility": "hidden",
+          }
+        }
       >
-        Vis kanttekst
-      </span>
-    </label>
+        <div
+          aria-orientation="vertical"
+          className="chakra-menu__menu-list css-11v8hjs"
+          id="menu-list-6"
+          onKeyDown={[Function]}
+          role="menu"
+          style={
+            Object {
+              "opacity": 0,
+              "transform": "scale(0.8) translateZ(0)",
+              "transformOrigin": "var(--popper-transform-origin)",
+              "visibility": "hidden",
+            }
+          }
+          tabIndex={-1}
+        >
+          <button
+            className="chakra-menu__menuitem css-wihc8h"
+            id="menuitem-3"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            role="menuitem"
+            tabIndex={0}
+            type="button"
+          >
+            <label
+              checked={true}
+              className="chakra-checkbox css-q49uxz"
+            >
+              <input
+                checked={false}
+                className="chakra-checkbox__input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                style={
+                  Object {
+                    "border": "0px",
+                    "clip": "rect(0px, 0px, 0px, 0px)",
+                    "height": "1px",
+                    "margin": "-1px",
+                    "overflow": "hidden",
+                    "padding": "0px",
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": "1px",
+                  }
+                }
+                type="checkbox"
+              />
+              <span
+                aria-hidden={true}
+                className="chakra-checkbox__control css-dnty2r"
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+              />
+              <span
+                className="chakra-checkbox__label css-1oeb2oe"
+                onMouseDown={[Function]}
+                onTouchStart={[Function]}
+              >
+                Vis delmål
+              </span>
+            </label>
+          </button>
+          <button
+            className="chakra-menu__menuitem css-wihc8h"
+            id="menuitem-4"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            role="menuitem"
+            tabIndex={0}
+            type="button"
+          >
+            <label
+              className="chakra-checkbox css-q49uxz"
+            >
+              <input
+                checked={true}
+                className="chakra-checkbox__input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                style={
+                  Object {
+                    "border": "0px",
+                    "clip": "rect(0px, 0px, 0px, 0px)",
+                    "height": "1px",
+                    "margin": "-1px",
+                    "overflow": "hidden",
+                    "padding": "0px",
+                    "position": "absolute",
+                    "whiteSpace": "nowrap",
+                    "width": "1px",
+                  }
+                }
+                type="checkbox"
+              />
+              <span
+                aria-hidden={true}
+                className="chakra-checkbox__control css-dnty2r"
+                data-checked=""
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+              >
+                <div
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "height": "100%",
+                      "justifyContent": "center",
+                      "transform": "none",
+                    }
+                  }
+                >
+                  <svg
+                    className="css-f5ntj6"
+                    style={
+                      Object {
+                        "fill": "none",
+                        "opacity": 1,
+                        "stroke": "currentColor",
+                        "strokeDasharray": 16,
+                        "strokeDashoffset": 0,
+                        "strokeWidth": 2,
+                      }
+                    }
+                    viewBox="0 0 12 10"
+                  >
+                    <polyline
+                      points="1.5 6 4.5 9 10.5 1"
+                    />
+                  </svg>
+                </div>
+              </span>
+              <span
+                className="chakra-checkbox__label css-1oeb2oe"
+                data-checked=""
+                onMouseDown={[Function]}
+                onTouchStart={[Function]}
+              >
+                Vis kanttekst
+              </span>
+            </label>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="chakra-stack css-1xvl5m5"
+    >
+      <label
+        checked={true}
+        className="chakra-checkbox css-1gefvdb"
+      >
+        <input
+          checked={false}
+          className="chakra-checkbox__input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          style={
+            Object {
+              "border": "0px",
+              "clip": "rect(0px, 0px, 0px, 0px)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0px",
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": "1px",
+            }
+          }
+          type="checkbox"
+        />
+        <span
+          aria-hidden={true}
+          className="chakra-checkbox__control css-dnty2r"
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+        />
+        <span
+          className="chakra-checkbox__label css-1oeb2oe"
+          onMouseDown={[Function]}
+          onTouchStart={[Function]}
+        >
+          Vis delmål
+        </span>
+      </label>
+      <label
+        className="chakra-checkbox css-1gefvdb"
+      >
+        <input
+          checked={true}
+          className="chakra-checkbox__input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          style={
+            Object {
+              "border": "0px",
+              "clip": "rect(0px, 0px, 0px, 0px)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0px",
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": "1px",
+            }
+          }
+          type="checkbox"
+        />
+        <span
+          aria-hidden={true}
+          className="chakra-checkbox__control css-dnty2r"
+          data-checked=""
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+        >
+          <div
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "height": "100%",
+                "justifyContent": "center",
+                "transform": "none",
+              }
+            }
+          >
+            <svg
+              className="css-f5ntj6"
+              style={
+                Object {
+                  "fill": "none",
+                  "opacity": 1,
+                  "stroke": "currentColor",
+                  "strokeDasharray": 16,
+                  "strokeDashoffset": 0,
+                  "strokeWidth": 2,
+                }
+              }
+              viewBox="0 0 12 10"
+            >
+              <polyline
+                points="1.5 6 4.5 9 10.5 1"
+              />
+            </svg>
+          </div>
+        </span>
+        <span
+          className="chakra-checkbox__label css-1oeb2oe"
+          data-checked=""
+          onMouseDown={[Function]}
+          onTouchStart={[Function]}
+        >
+          Vis kanttekst
+        </span>
+      </label>
+    </div>
     <button
-      aria-controls="menu-list-7"
+      aria-controls="menu-list-11"
       aria-expanded={false}
       aria-haspopup="menu"
-      className="chakra-button chakra-menu__menu-button css-1hfil3y"
-      id="menu-button-7"
+      className="chakra-button chakra-menu__menu-button css-rxlm1z"
+      id="menu-button-11"
       onClick={[Function]}
       onKeyDown={[Function]}
       type="button"
@@ -232,7 +439,7 @@ exports[`renders when there are no items 1`] = `
       <div
         aria-orientation="vertical"
         className="chakra-menu__menu-list css-11v8hjs"
-        id="menu-list-7"
+        id="menu-list-11"
         onKeyDown={[Function]}
         role="menu"
         style={
@@ -247,7 +454,7 @@ exports[`renders when there are no items 1`] = `
       >
         <button
           className="chakra-menu__menuitem css-wihc8h"
-          id="menuitem-3"
+          id="menuitem-7"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -333,240 +540,6 @@ exports[`renders when there are no items 1`] = `
             </span>
           </label>
         </button>
-        <button
-          className="chakra-menu__menuitem css-wihc8h"
-          id="menuitem-4"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          role="menuitem"
-          tabIndex={0}
-          type="button"
-        >
-          <label
-            className="chakra-checkbox css-q49uxz"
-            type="checkbox"
-          >
-            <input
-              checked={true}
-              className="chakra-checkbox__input"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              style={
-                Object {
-                  "border": "0px",
-                  "clip": "rect(0px, 0px, 0px, 0px)",
-                  "height": "1px",
-                  "margin": "-1px",
-                  "overflow": "hidden",
-                  "padding": "0px",
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": "1px",
-                }
-              }
-              type="checkbox"
-            />
-            <span
-              aria-hidden={true}
-              className="chakra-checkbox__control css-dnty2r"
-              data-checked=""
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-            >
-              <div
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "height": "100%",
-                    "justifyContent": "center",
-                    "transform": "none",
-                  }
-                }
-              >
-                <svg
-                  className="css-f5ntj6"
-                  style={
-                    Object {
-                      "fill": "none",
-                      "opacity": 1,
-                      "stroke": "currentColor",
-                      "strokeDasharray": 16,
-                      "strokeDashoffset": 0,
-                      "strokeWidth": 2,
-                    }
-                  }
-                  viewBox="0 0 12 10"
-                >
-                  <polyline
-                    points="1.5 6 4.5 9 10.5 1"
-                  />
-                </svg>
-              </div>
-            </span>
-            <span
-              className="chakra-checkbox__label css-1oeb2oe"
-              data-checked=""
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
-            >
-              Moderat
-            </span>
-          </label>
-        </button>
-        <button
-          className="chakra-menu__menuitem css-wihc8h"
-          id="menuitem-5"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          role="menuitem"
-          tabIndex={0}
-          type="button"
-        >
-          <label
-            className="chakra-checkbox css-q49uxz"
-            type="checkbox"
-          >
-            <input
-              checked={true}
-              className="chakra-checkbox__input"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              style={
-                Object {
-                  "border": "0px",
-                  "clip": "rect(0px, 0px, 0px, 0px)",
-                  "height": "1px",
-                  "margin": "-1px",
-                  "overflow": "hidden",
-                  "padding": "0px",
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": "1px",
-                }
-              }
-              type="checkbox"
-            />
-            <span
-              aria-hidden={true}
-              className="chakra-checkbox__control css-dnty2r"
-              data-checked=""
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-            >
-              <div
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "height": "100%",
-                    "justifyContent": "center",
-                    "transform": "none",
-                  }
-                }
-              >
-                <svg
-                  className="css-f5ntj6"
-                  style={
-                    Object {
-                      "fill": "none",
-                      "opacity": 1,
-                      "stroke": "currentColor",
-                      "strokeDasharray": 16,
-                      "strokeDashoffset": 0,
-                      "strokeWidth": 2,
-                    }
-                  }
-                  viewBox="0 0 12 10"
-                >
-                  <polyline
-                    points="1.5 6 4.5 9 10.5 1"
-                  />
-                </svg>
-              </div>
-            </span>
-            <span
-              className="chakra-checkbox__label css-1oeb2oe"
-              data-checked=""
-              onMouseDown={[Function]}
-              onTouchStart={[Function]}
-            >
-              Høy
-            </span>
-          </label>
-        </button>
-      </div>
-    </div>
-    <button
-      aria-controls="menu-list-12"
-      aria-expanded={false}
-      aria-haspopup="menu"
-      className="chakra-button chakra-menu__menu-button css-1hfil3y"
-      id="menu-button-12"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      type="button"
-    >
-      <span
-        className="css-a9hmjk"
-      >
-        Negative 
-        korrelasjoner
-      </span>
-      <span
-        className="chakra-button__icon css-1oeb2oe"
-      >
-        <svg
-          aria-hidden={true}
-          className="chakra-icon css-onkibi"
-          focusable={false}
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-    </button>
-    <div
-      className="css-0"
-      style={
-        Object {
-          "visibility": "hidden",
-        }
-      }
-    >
-      <div
-        aria-orientation="vertical"
-        className="chakra-menu__menu-list css-11v8hjs"
-        id="menu-list-12"
-        onKeyDown={[Function]}
-        role="menu"
-        style={
-          Object {
-            "opacity": 0,
-            "transform": "scale(0.8) translateZ(0)",
-            "transformOrigin": "var(--popper-transform-origin)",
-            "visibility": "hidden",
-          }
-        }
-        tabIndex={-1}
-      >
         <button
           className="chakra-menu__menuitem css-wihc8h"
           id="menuitem-8"
@@ -651,7 +624,7 @@ exports[`renders when there are no items 1`] = `
               onMouseDown={[Function]}
               onTouchStart={[Function]}
             >
-              Lav
+              Moderat
             </span>
           </label>
         </button>
@@ -739,13 +712,247 @@ exports[`renders when there are no items 1`] = `
               onMouseDown={[Function]}
               onTouchStart={[Function]}
             >
+              Høy
+            </span>
+          </label>
+        </button>
+      </div>
+    </div>
+    <button
+      aria-controls="menu-list-16"
+      aria-expanded={false}
+      aria-haspopup="menu"
+      className="chakra-button chakra-menu__menu-button css-rxlm1z"
+      id="menu-button-16"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      type="button"
+    >
+      <span
+        className="css-a9hmjk"
+      >
+        Negative 
+        korrelasjoner
+      </span>
+      <span
+        className="chakra-button__icon css-1oeb2oe"
+      >
+        <svg
+          aria-hidden={true}
+          className="chakra-icon css-onkibi"
+          focusable={false}
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      className="css-0"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        aria-orientation="vertical"
+        className="chakra-menu__menu-list css-11v8hjs"
+        id="menu-list-16"
+        onKeyDown={[Function]}
+        role="menu"
+        style={
+          Object {
+            "opacity": 0,
+            "transform": "scale(0.8) translateZ(0)",
+            "transformOrigin": "var(--popper-transform-origin)",
+            "visibility": "hidden",
+          }
+        }
+        tabIndex={-1}
+      >
+        <button
+          className="chakra-menu__menuitem css-wihc8h"
+          id="menuitem-12"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseMove={[Function]}
+          role="menuitem"
+          tabIndex={0}
+          type="button"
+        >
+          <label
+            className="chakra-checkbox css-q49uxz"
+            type="checkbox"
+          >
+            <input
+              checked={true}
+              className="chakra-checkbox__input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": "1px",
+                }
+              }
+              type="checkbox"
+            />
+            <span
+              aria-hidden={true}
+              className="chakra-checkbox__control css-dnty2r"
+              data-checked=""
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+            >
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "transform": "none",
+                  }
+                }
+              >
+                <svg
+                  className="css-f5ntj6"
+                  style={
+                    Object {
+                      "fill": "none",
+                      "opacity": 1,
+                      "stroke": "currentColor",
+                      "strokeDasharray": 16,
+                      "strokeDashoffset": 0,
+                      "strokeWidth": 2,
+                    }
+                  }
+                  viewBox="0 0 12 10"
+                >
+                  <polyline
+                    points="1.5 6 4.5 9 10.5 1"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span
+              className="chakra-checkbox__label css-1oeb2oe"
+              data-checked=""
+              onMouseDown={[Function]}
+              onTouchStart={[Function]}
+            >
+              Lav
+            </span>
+          </label>
+        </button>
+        <button
+          className="chakra-menu__menuitem css-wihc8h"
+          id="menuitem-13"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseMove={[Function]}
+          role="menuitem"
+          tabIndex={0}
+          type="button"
+        >
+          <label
+            className="chakra-checkbox css-q49uxz"
+            type="checkbox"
+          >
+            <input
+              checked={true}
+              className="chakra-checkbox__input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "border": "0px",
+                  "clip": "rect(0px, 0px, 0px, 0px)",
+                  "height": "1px",
+                  "margin": "-1px",
+                  "overflow": "hidden",
+                  "padding": "0px",
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": "1px",
+                }
+              }
+              type="checkbox"
+            />
+            <span
+              aria-hidden={true}
+              className="chakra-checkbox__control css-dnty2r"
+              data-checked=""
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+            >
+              <div
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "transform": "none",
+                  }
+                }
+              >
+                <svg
+                  className="css-f5ntj6"
+                  style={
+                    Object {
+                      "fill": "none",
+                      "opacity": 1,
+                      "stroke": "currentColor",
+                      "strokeDasharray": 16,
+                      "strokeDashoffset": 0,
+                      "strokeWidth": 2,
+                    }
+                  }
+                  viewBox="0 0 12 10"
+                >
+                  <polyline
+                    points="1.5 6 4.5 9 10.5 1"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span
+              className="chakra-checkbox__label css-1oeb2oe"
+              data-checked=""
+              onMouseDown={[Function]}
+              onTouchStart={[Function]}
+            >
               Moderat
             </span>
           </label>
         </button>
         <button
           className="chakra-menu__menuitem css-wihc8h"
-          id="menuitem-10"
+          id="menuitem-14"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -834,11 +1041,11 @@ exports[`renders when there are no items 1`] = `
       </div>
     </div>
     <button
-      className="chakra-button css-1hfil3y"
+      className="chakra-button css-1xkasj5"
       onClick={[Function]}
       type="button"
     >
-      Lås opp alle noder
+      Lås opp noder
     </button>
   </div>
   <div
