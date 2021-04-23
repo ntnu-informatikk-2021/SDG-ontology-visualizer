@@ -10,11 +10,12 @@ describe('Graph tests', () => {
   it('Check if sosialt exits', () => {
     cy.contains('text', 'Sosialt').parent().children('circle');
   });
-  it('Click sosialt and check for menu', () => {
-    cy.contains('text', 'Sosialt').parent().children('circle').click().parent().children('g');
+  it('Click livet på land and check for menu', () => {
+    cy.get('#svgGraph').scrollIntoView();
+    cy.contains('text', 'Livet på land').parent().children('circle').click().parent().children('g');
   });
-  it('Expand sosialt', () => {
-    cy.contains('text', 'Sosialt')
+  it('Expand livet på land', () => {
+    cy.contains('text', 'Livet på land')
       .parent()
       .children('circle')
       .click()
@@ -26,16 +27,16 @@ describe('Graph tests', () => {
       .next()
       .click();
   });
-  it('Check for digitalisering after expand', () => {
-    cy.contains('text', 'Digitalisering');
+  it('Check for utrydde fattigdom after expand', () => {
+    cy.contains('text', 'Utrydde fattigdom');
   });
-  it('Check for digitalisering button after expand', () => {
-    cy.contains('button', 'Digitalisering');
+  it('Check for trygghet og beredskap button after expand', () => {
+    cy.contains('button', 'Trygghet og beredskap');
   });
-  it('Check for digitalisering header after button click', () => {
-    cy.contains('button', 'Digitalisering').click();
-    cy.contains('button', 'Gå til Digitalisering').click();
-    cy.contains('h2', 'Digitalisering');
+  it('Check for trygghet og beredskap header after button click', () => {
+    cy.contains('button', 'Trygghet og beredskap').click();
+    cy.contains('button', 'Gå til Trygghet og beredskap').click();
+    cy.contains('h2', 'Trygghet og beredskap');
   });
   it('Click show subgoals and check for subgoal nodes', () => {
     cy.contains('span', 'Vis delmål').parent().click();

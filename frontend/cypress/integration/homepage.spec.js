@@ -4,11 +4,11 @@ describe('Home page tests', () => {
   });
   it('Tests /ontology creates modal without a selectedNode', () => {
     cy.visit('http://localhost:3000/ontology');
-    cy.contains('No nodes selected in Graph');
+    cy.contains('Du har ikke valgt en node i grafen');
   });
   it('Tests modal returns to home page', () => {
     cy.visit('http://localhost:3000/ontology');
-    cy.contains('Back to Home Page').click();
+    cy.contains('Tilbake til forsiden').click();
     cy.url().should('eq', 'http://localhost:3000/');
   });
 
