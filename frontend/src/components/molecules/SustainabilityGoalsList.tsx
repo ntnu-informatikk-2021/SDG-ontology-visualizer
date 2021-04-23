@@ -34,13 +34,14 @@ const SustainabilityGoalsList: React.FC = () => {
 
   return (
     <Stack align="center" spacing="20">
-      <SimpleGrid columns={3} spacing={10}>
+      <SimpleGrid columns={[2, 2, 3, null, 4]} spacing={10}>
         {sustainabilityGoals &&
           sustainabilityGoals.map((sdg) => (
             <IconContainer
               key={sdg.instancesOf}
               onClick={() => {
                 onClickSDG(sdg);
+                window.scrollTo(0, 0);
                 history.push('/ontology');
               }}
               sustainabilityNode={sdg}

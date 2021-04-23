@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, CloseIcon } from '@chakra-ui/icons';
+import { ArrowLeftIcon } from '@chakra-ui/icons';
 import {
   Button,
   Modal,
@@ -28,7 +28,7 @@ const ErrorModal: React.FC = () => {
     setOpen(apiError != null && apiError.message != null && apiError.message.length > 0);
   }, [apiError]);
 
-  const errorHeader = apiError instanceof ApiError ? `API Error ${apiError.status}` : 'Error';
+  const errorHeader = apiError instanceof ApiError ? `API Error ${apiError.status}` : 'Feil';
 
   return (
     <Modal isOpen={open} onClose={onClose}>
@@ -39,19 +39,15 @@ const ErrorModal: React.FC = () => {
         <ModalBody>{apiError && <p>{apiError.message}</p>}</ModalBody>
         <ModalFooter>
           <Button
+            size="sm"
             colorScheme="blue"
-            mr={3}
+            leftIcon={<ArrowLeftIcon />}
             onClick={() => {
               onClose();
               history.push('/');
             }}
           >
-            <ArrowLeftIcon mr="2" />
-            Back to Home Page
-          </Button>
-          <Button colorScheme="red" mr={3} onClick={onClose}>
-            <CloseIcon mr="2" />
-            Close
+            Tilbake til forsiden
           </Button>
         </ModalFooter>
       </ModalContent>

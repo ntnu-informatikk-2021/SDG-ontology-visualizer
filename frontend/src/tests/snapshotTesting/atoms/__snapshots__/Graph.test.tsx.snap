@@ -2,12 +2,39 @@
 
 exports[`renders when there are no items 1`] = `
 <div
-  className="css-1pm9hwn"
+  className="css-dxhm2"
 >
   <svg
     height="100%"
     id="svgGraph"
     width="100%"
   />
+  <button
+    aria-label="Fullskjerm"
+    className="chakra-button css-17ieupc"
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      aria-hidden={true}
+      fill="currentColor"
+      focusable={false}
+      height="40"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 512 512"
+      width="40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M64 64v128l48-48 48 48 32-32-48-48 48-48H64zm256 0l48 48-48 48 32 32 48-48 48 48V64H320zM64 320v128h128l-48-48 48-48-32-32-48 48-48-48zm288 0l-32 32 48 48-48 48h128V320l-48 48-48-48z"
+      />
+    </svg>
+  </button>
 </div>
 `;

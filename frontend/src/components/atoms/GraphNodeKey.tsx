@@ -10,7 +10,7 @@ type GraphNodeKeyProps = {
 const GraphNodeKey = ({ description }: GraphNodeKeyProps) => (
   <Flex align="center">
     <Icon as={GoPrimitiveDot} w={12} h={12} color={changeColorBasedOnType(description)} />
-    <Text>{description}</Text>
+    <Text fontSize="sm">{description}</Text>
   </Flex>
 );
 

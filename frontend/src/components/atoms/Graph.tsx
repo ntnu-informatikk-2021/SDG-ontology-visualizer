@@ -1,40 +1,50 @@
-import { Box } from '@chakra-ui/react';
+import { Box, IconButton } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
+import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
 import GraphSimulation from '../../d3/GraphSimulation';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
+import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
-import { GraphNodeFilter } from '../../types/d3/simulation';
+import { GraphEdgeFilter, GraphNodeFilter } from '../../types/d3/simulation';
 import { GraphNode } from '../../types/ontologyTypes';
 
 type GraphProps = {
   nodeFilter: GraphNodeFilter;
+  edgeFilter: GraphEdgeFilter;
   unlockAllNodes: boolean;
+  edgeLabelsVisible: boolean;
 };
 
-const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps) => {
+const Graph: React.FC<GraphProps> = ({
+  nodeFilter,
+  edgeFilter,
+  unlockAllNodes,
+  edgeLabelsVisible,
+}: GraphProps) => {
   const { height, width } = useWindowDimensions();
   const svgRef = useRef<SVGSVGElement>(null);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const dispatch = useDispatch();
   const [simulation, setSimulation] = useState<GraphSimulation>();
+  const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+  const [hasInitialized, setHasInitialized] = useState(false);
 
-  const loadData = async () => {
-    if (!simulation || !selectedNode) return;
-
-    const ontologies = await getRelations(selectedNode.id);
-    simulation.addData(ontologies, selectedNode);
+  const loadData = async (node: GraphNode) => {
+    if (!simulation) return;
+    const ontologies = await getRelations(node.id);
+    simulation.addData(ontologies, node);
   };
 
   const onExpandNode = (node: GraphNode): void => {
-    if (selectedNode && selectedNode.id === node.id) {
-      loadData();
-    } else {
-      dispatch(selectNode(node));
-    }
+    loadData(node);
+  };
+
+  const onSelectNode = (node: GraphNode): void => {
+    dispatch(selectNode(node));
   };
 
   useEffect(() => {
@@ -44,7 +54,7 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps)
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
     if (!selectedNode) {
-      dispatch(setError(new Error('No nodes selected in Graph')));
+      dispatch(setError(new Error('Du har ikke valgt en node i grafen')));
       return;
     }
     if (!simulation) {
@@ -55,25 +65,53 @@ const Graph: React.FC<GraphProps> = ({ nodeFilter, unlockAllNodes }: GraphProps)
           0.4 * height,
           selectedNode,
           onExpandNode,
+          onSelectNode,
           nodeFilter,
+          edgeFilter,
         ),
       );
-    } else {
-      loadData();
+    } else if (!hasInitialized) {
+      setHasInitialized(true);
+      loadData(selectedNode);
     }
   }, [selectedNode, svgRef, simulation]);
 
   useEffect(() => {
-    if (simulation) simulation.setNodeFilter(nodeFilter);
-  }, [nodeFilter]);
+    if (simulation) {
+      simulation.setNodeFilter(nodeFilter);
+      simulation.setEdgeFilter(edgeFilter);
+    }
+  }, [nodeFilter, edgeFilter]);
 
   useEffect(() => {
     if (simulation) simulation.unlockAllNodes();
   }, [unlockAllNodes]);
 
+  useEffect(() => {
+    if (simulation) simulation.toggleEdgeLabelsVisibility();
+  }, [edgeLabelsVisible]);
+
   return (
-    <Box bg="white" boxShadow="xl" rounded="lg" width="80vw">
+    <Box
+      position="relative"
+      bg="white"
+      boxShadow="md"
+      rounded="lg"
+      width={isFullscreen ? '100vw' : ['70vw', '70vw', '75vw', '77vw', '75vw']}
+    >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
+      <IconButton
+        aria-label="Fullskjerm"
+        color="cyan.700"
+        size="lg"
+        position="absolute"
+        right="4"
+        bottom="4"
+        colorScheme="gray"
+        onClick={() => dispatch(toggleFullscreen())}
+        zIndex={1}
+        icon={isFullscreen ? <GiContract size="40" /> : <GiExpand size="40" />}
+      />
     </Box>
   );
 };

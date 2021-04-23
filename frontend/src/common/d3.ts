@@ -1,9 +1,10 @@
 import { D3Edge, LabelTransform } from '../types/d3/simulation';
 import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
 import { mapIdToEdge } from './node';
+import { camelCaseToText } from './other';
 
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
-  const edge = mapIdToEdge(ontology.Predicate.id);
+  const edge = mapIdToEdge(ontology.Predicate.id, ontology.Predicate.correlation);
   if (!edge) throw new Error('Could not map ontology to graph edge');
   return {
     ...edge,
@@ -121,7 +122,7 @@ export const createEdgeLabelText = (edge: Edge[], flipDirection: boolean): strin
     case 0:
       return '';
     case 1:
-      return addDirectionArrowToEdgeLabelText(edge[0].name, flipDirection);
+      return addDirectionArrowToEdgeLabelText(camelCaseToText(edge[0].name), flipDirection);
     default:
       return addDirectionArrowToEdgeLabelText(`${edge.length} Predicates`, flipDirection);
   }

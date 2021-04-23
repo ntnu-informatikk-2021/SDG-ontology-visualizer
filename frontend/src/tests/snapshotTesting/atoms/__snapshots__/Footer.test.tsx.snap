@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders when there are no items 1`] = `
-<div
-  className="css-ghiivm"
->
-  <em
-    className="chakra-text css-1ezsviu"
+<footer>
+  <div
+    className="css-zs5lze"
   >
-    TRDK03-UN
-  </em>
-</div>
+    <h2
+      className="chakra-heading css-0"
+    >
+      TRDK03-UN
+    </h2>
+  </div>
+</footer>
 `;

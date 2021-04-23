@@ -1,4 +1,4 @@
-import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getSubGoals } from '../../api/ontologies';
@@ -20,19 +20,32 @@ const SubGoalsGrid = () => {
     loadSubGoal();
   }, [selectedNode]);
 
-  return subGoals.length ? (
+  if (!subGoals || subGoals.length === 0) {
+    return <Box height="200px" />;
+  }
+
+  return (
     <Box align="center" px="10">
-      <Heading size="2xl" mb="10" fontWeight="hairline" color="gray.800">
+      <Heading size="lg" mb="10" color="cyan.900">
         DELMÅL:
       </Heading>
-      <SimpleGrid columns={2} spacing={10}>
-        {subGoals.map((subGoal) => (
-          <SubGoalContainer key={subGoal.id} subGoalNode={subGoal} />
-        ))}
-      </SimpleGrid>
+      <Flex justify="space-evenly">
+        <Stack width="45%" spacing="5">
+          {subGoals.map(
+            (subGoal, i) =>
+              !(i % 2) && (
+                <SubGoalContainer key={subGoal.name + i.toString()} subGoalNode={subGoal} />
+              ),
+          )}
+        </Stack>
+        <Stack width="45%" spacing="5">
+          {subGoals.map(
+            (subGoal, i) =>
+              i % 2 && <SubGoalContainer key={subGoal.name + i.toString()} subGoalNode={subGoal} />,
+          )}
+        </Stack>
+      </Flex>
     </Box>
-  ) : (
-    <></>
   );
 };
 

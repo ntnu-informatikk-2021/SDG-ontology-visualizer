@@ -11,22 +11,23 @@ import {
   removeDuplicates,
   removingNodeWillMakeGraphEmpty,
 } from '../common/d3';
+import { nextFrame, normalizeScale } from '../common/other';
 import { setError } from '../state/reducers/apiErrorReducer';
 import reduxStore from '../state/store';
 import {
   CenterForce,
   D3Edge,
   ForceSimulation,
+  GraphEdgeFilter,
   GraphNodeFilter,
   LinkForce,
 } from '../types/d3/simulation';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
 import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
-import { nextFrame, normalizeScale } from '../common/other';
-import setBrowserPosition from '../common/setBrowserPosition';
+import FpsCounter from '../utils/FpsCounter';
 
 const nodeClassName = '.node';
-const nodeRadius = 30;
+const nodeRadius = 25;
 const nodeHighlightRadiusMultiplier = 1.2;
 const nodeLabelColor = '#2D3748';
 const nodeStrokeWidth = 0;
@@ -41,7 +42,7 @@ const edgeColor = '#A0AEC0';
 const edgeLabelColor = '#222';
 const edgeHighlightColor = '#00A3C4';
 
-const fontSize = 18;
+const fontSize = 16;
 const minScale = 0.4;
 const maxScale = 5;
 
@@ -51,6 +52,7 @@ export default class {
   private readonly nodeSvg: SubSvgSelection;
   private readonly edgeSvg: SubSvgSelection;
   private onExpandNode: (node: GraphNode) => void;
+  private onSelectNode: (node: GraphNode) => void;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
@@ -59,15 +61,21 @@ export default class {
   private unfilteredEdges: Array<D3Edge | GraphEdge>;
   private scale: number = 1;
   private nodeFilter: GraphNodeFilter;
+  private frameIndex = 0;
+  private readonly fpsCounter: FpsCounter;
+  private edgeFilter: GraphEdgeFilter;
   private nodeMenu?: d3.Selection<SVGGElement, GraphNode, null, undefined>;
+  private edgeLabelsVisible = true;
 
   constructor(
     svg: SVGSVGElement,
     width: number,
     height: number,
     initialNode: GraphNode,
-    onClickNode: (node: GraphNode) => void,
+    onExpandNode: (node: GraphNode) => void,
+    onSelectNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
+    edgeFilter: GraphEdgeFilter,
   ) {
     this.svg = d3.select(svg).on('click', this.removeNodeMenu);
     this.edgeSvg = this.svg.append('g');
@@ -78,10 +86,13 @@ export default class {
     this.unfilteredNodes = [initialNode];
     this.edges = [];
     this.unfilteredEdges = [];
-    this.onExpandNode = onClickNode;
+    this.onExpandNode = onExpandNode;
+    this.onSelectNode = onSelectNode;
     this.nodeFilter = nodeFilter;
+    this.edgeFilter = edgeFilter;
     this.initZoom();
     this.forceSimulation = this.initForceSimulation();
+    this.fpsCounter = new FpsCounter();
   }
 
   updateOnClickCallback = (callback: (node: GraphNode) => void) => {
@@ -104,8 +115,8 @@ export default class {
   };
 
   removeDisconnectedNodes = () => {
-    this.unfilteredNodes = this.unfilteredNodes.filter((node) =>
-      this.unfilteredEdges.some((edge) => {
+    this.nodes = this.nodes.filter((node) =>
+      this.edges.some((edge) => {
         const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
         const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
         return node.id === source || node.id === target;
@@ -114,7 +125,7 @@ export default class {
   };
 
   removeDisconnectedEdges = () => {
-    this.edges = this.unfilteredEdges.filter((edge) => {
+    this.edges = this.edges.filter((edge) => {
       const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
       const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
       return (
@@ -126,6 +137,8 @@ export default class {
 
   redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
+    this.edges = this.unfilteredEdges.filter(this.edgeFilter);
+    this.removeDisconnectedNodes();
     this.removeDisconnectedEdges();
     this.resetForceSimulation();
     this.drawGraph();
@@ -133,6 +146,10 @@ export default class {
 
   setNodeFilter = (filter: GraphNodeFilter) => {
     this.nodeFilter = filter;
+    this.redrawGraphWithFilter();
+  };
+  setEdgeFilter = (filter: GraphEdgeFilter) => {
+    this.edgeFilter = filter;
     this.redrawGraphWithFilter();
   };
 
@@ -144,7 +161,7 @@ export default class {
           const newScale = event.transform.k;
           if (this.scale !== newScale) {
             this.scale = event.transform.k;
-            this.dynamicScaleManager();
+            this.scaleGraph();
           }
 
           this.scale = event.transform.k;
@@ -213,9 +230,10 @@ export default class {
   drawGraph = () => {
     this.drawEdges();
     this.drawNodes();
-    this.dynamicScaleManager();
+    this.scaleGraph();
 
     this.forceSimulation.on('tick', () => {
+      this.frameIndex += 1;
       this.updateEdgePositions();
       this.updateNodePositions();
     });
@@ -236,14 +254,14 @@ export default class {
         g.append('text')
           .text((edge) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
-          .attr('alignment-baseline', 'after-egde')
+          .attr('dominant-baseline', 'text-after-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
 
         g.append('text')
           .text((edge) => createEdgeLabelText(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
-          .attr('alignment-baseline', 'before-edge')
+          .attr('dominant-baseline', 'text-before-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
 
@@ -289,6 +307,7 @@ export default class {
     g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
   ) => {
     await nextFrame();
+    if (!g) return;
     this.removeNodeMenu();
     const menuPos = this.getNodeMenuPosition();
     const menuG = g
@@ -343,37 +362,77 @@ export default class {
       menuG,
       -nodeMenuBtnRadius * 3.75,
       () => {
-        this.onExpandNode(node);
-        setBrowserPosition();
+        this.onSelectNode(node);
       },
       'icons/goToDetailView.svg',
     );
     this.nodeMenu = menuG;
   };
 
+  toggleEdgeLabelsVisibility = () => {
+    this.edgeLabelsVisible = !this.edgeLabelsVisible;
+
+    const edges = this.edgeSvg.selectAll(edgeClassName);
+
+    const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
+    const edgeLabel2 = edges.selectChild(this.selectEdgeLabel2);
+
+    if (!this.edgeLabelsVisible) {
+      edgeLabel1.style('opacity', 0);
+      edgeLabel2.style('opacity', 0);
+      return;
+    }
+
+    const edgeLabelFontSize = this.getEdgeLabelFontSize();
+    const edgeLabelOpacity = this.getEdgeLabelOpacity();
+
+    edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+    edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+  };
+
   unlockAllNodes = () => {
     this.localUnlockAllNodes(this.unlockNode);
   };
 
-  localUnlockAllNodes = (unlockNode: (nodeContainer: SVGGElement, node: GraphNode) => void) => {
+  localUnlockAllNodes = (
+    unlockNode: (
+      nodeContainer: SVGGElement,
+      node: GraphNode,
+      shouldRenderEdgeLabel: boolean,
+    ) => void,
+  ) => {
+    let hasUpdatedNode = false;
     this.removeNodeMenu();
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
       .each(function (node) {
         const nodeContainer = d3.select(this).node() as SVGGElement;
-        unlockNode(nodeContainer, node);
+        if (node.isLocked) {
+          hasUpdatedNode = true;
+        }
+        unlockNode(nodeContainer, node, false);
       });
+    if (hasUpdatedNode) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
   };
 
-  unlockNode = (nodeContainer: SVGGElement, node: GraphNode): void => {
+  unlockNode = (
+    nodeContainer: SVGGElement,
+    node: GraphNode,
+    shouldReRenderGraph: boolean = true,
+  ): void => {
     const n = node;
     n.fx = undefined;
     n.fy = undefined;
     n.isLocked = false;
-    this.forceSimulation.alpha(0.5);
-    this.forceSimulation.restart();
     d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0);
+    if (shouldReRenderGraph) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
   };
 
   lockNode = (
@@ -430,7 +489,7 @@ export default class {
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
           .attr('fill', nodeLabelColor)
-          .attr('alignment-baseline', 'middle')
+          .attr('dominant-baseline', 'middle')
           .each(function () {
             const text = d3.select(this).text();
             const words = text.split(' ');
@@ -443,13 +502,13 @@ export default class {
               if (!secondLine) return;
               d3.select(this)
                 .text(firstLine)
-                .attr('alignment-baseline', 'after-edge')
+                .attr('dominant-baseline', 'text-after-edge')
                 .append('tspan')
                 .text(secondLine)
                 .attr('x', 0)
                 .attr('y', 0)
                 .attr('text-anchor', 'middle')
-                .attr('alignment-baseline', 'mathematical');
+                .attr('dominant-baseline', 'mathematical');
             }
           });
 
@@ -479,6 +538,8 @@ export default class {
       .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
+
+    if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return;
 
     g.selectChild(this.selectEdgeLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
@@ -529,7 +590,7 @@ export default class {
 
   getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
 
-  dynamicScaleManager = () => {
+  scaleGraph = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
     nodes.selectChild(this.selectNodeLabel).attr('font-size', this.getNodeLabelFontSize());
     nodes.selectChild(this.selectNodeOrEdge).attr('stroke-width', nodeStrokeWidth / this.scale);
@@ -650,7 +711,6 @@ export default class {
       .call(
         d3
           .drag()
-          // eslint-disable-next-line func-names
           .on('drag', (event, value) => {
             const node = value as GraphNode;
             this.lockNode(
@@ -663,12 +723,6 @@ export default class {
             this.forceSimulation.alpha(0.5);
             this.forceSimulation.restart();
           })
-          // eslint-disable-next-line func-names
-          /*
-          .on('start', (event) => {
-            d3.select(event.sourceEvent.target);
-          })
-          */
           .on('end', (event, d) => {
             if (!event.sourceEvent.target) return;
             const menu = (event.sourceEvent.target as SVGElement).parentNode as SVGGElement;
@@ -678,9 +732,22 @@ export default class {
   };
 
   selectNodeOrEdge = (_: any, index: number) => index === 0;
+
   selectEdgeLabel1 = (_: any, index: number) => index === 1;
   selectEdgeLabel2 = (_: any, index: number) => index === 2;
 
   selectNodeLockIcon = (_: any, index: number) => index === 1;
   selectNodeLabel = (_: any, index: number) => index === 2;
+
+  shouldRenderEdgeLabel = (): boolean => {
+    const { fps } = this.fpsCounter;
+    let frameSkips = 1;
+    if (fps < 15) frameSkips = 10;
+    else if (fps < 20) frameSkips = 6;
+    else if (fps < 30) frameSkips = 4;
+    else if (fps < 40) frameSkips = 2;
+    if (this.frameIndex < frameSkips) return false;
+    this.frameIndex = 0;
+    return true;
+  };
 }

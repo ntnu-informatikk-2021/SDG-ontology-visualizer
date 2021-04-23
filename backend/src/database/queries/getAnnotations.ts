@@ -18,7 +18,9 @@ export default (classId: string): string => {
     where { 
     { 
          ${fullClassName} rdfs:label ?label.
+    Optional {
          ${fullClassName} SDG:description ?description.
+    }
     Optional {
          ${fullClassName} SDG:moreInformation ?moreInformation.
     }

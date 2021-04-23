@@ -1,25 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders when there are no items 1`] = `
-<div
+<nav
   className="css-1fdn394"
 >
   <div
     className="css-0"
   >
-    <a
-      className="chakra-link css-682nci"
-      href="/"
-      onClick={[Function]}
-    >
-      Trondheim kommune SDG-Ontologi
-    </a>
+    <h1>
+      <a
+        className="chakra-link css-12dxqd"
+        href="/"
+        onClick={[Function]}
+      >
+        Trondheim kommune SDG-Ontologi
+      </a>
+    </h1>
   </div>
   <div
     className="css-17xejub"
   />
   <button
-    className="chakra-button css-oqfhsh"
+    className="chakra-button css-6jz0hj"
     justify="center"
     onClick={[Function]}
     type="button"
@@ -41,5 +43,5 @@ exports[`renders when there are no items 1`] = `
     </span>
     Om
   </button>
-</div>
+</nav>
 `;

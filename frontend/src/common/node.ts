@@ -1,4 +1,13 @@
-import { Edge, GraphNode, Node, Prefix, SustainabilityGoal } from '../types/ontologyTypes';
+import {
+  Edge,
+  GraphNode,
+  GraphEdge,
+  Node,
+  Prefix,
+  SustainabilityGoal,
+  CorrelationFilter,
+} from '../types/ontologyTypes';
+import { D3Edge } from '../types/d3/simulation';
 
 export const mapPrefixNameToNode = (
   prefix: string,
@@ -58,7 +67,7 @@ export const mapSustainabilityGoalToNode = (sdg: SustainabilityGoal): Node | nul
   return node;
 };
 
-export const mapIdToEdge = (id: string): Edge | null => {
+export const mapIdToEdge = (id: string, correlation: number): Edge | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
   if (!prefix || !name) return null;
@@ -66,16 +75,17 @@ export const mapIdToEdge = (id: string): Edge | null => {
     prefix,
     name,
     id,
+    correlation,
   };
 };
 
 export const mapCorrelationToName = (correlation: number) => {
   switch (correlation) {
-    case 2:
+    case 3:
       return 'høy';
+    case 2:
+      return 'moderat';
     case 1:
-      return 'medium';
-    case 0:
       return 'lav';
     default:
       return '';
@@ -84,15 +94,31 @@ export const mapCorrelationToName = (correlation: number) => {
 
 export const mapCorrelationToColor = (correlation: number) => {
   switch (correlation) {
+    case 3:
+      return '.800';
     case 2:
-      return '.600';
+      return '.700';
     case 1:
-      return '.500';
-    case 0:
-      return '.400';
+      return '.600';
     default:
-      return '.300';
+      return '.600';
   }
 };
 
 export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
+
+export const isWithinCorrelationLimit = (
+  edge: D3Edge | GraphEdge,
+  filter: CorrelationFilter,
+): boolean => {
+  if (edge.correlation === 1 && filter.pLow) return true;
+  if (edge.correlation === 2 && filter.pMedium) return true;
+  if (edge.correlation === 3 && filter.pHigh) return true;
+  if (edge.correlation === -1 && filter.nLow) return true;
+  if (edge.correlation === -2 && filter.nMedium) return true;
+  if (edge.correlation === -3 && filter.nHigh) return true;
+  if (edge.correlation === 0) {
+    return true;
+  }
+  return false;
+};
