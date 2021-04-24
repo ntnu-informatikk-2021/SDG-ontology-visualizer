@@ -11,7 +11,7 @@ const CorrelationDropdown: React.FC<Props> = ({ isPositive }: Props) => (
   <Menu closeOnSelect={false} closeOnBlur autoSelect={false}>
     <MenuButton as={Button} color="cyan.600" rightIcon={<ChevronDownIcon />}>
       {isPositive ? 'Positive ' : 'Negative '}
-      korrelasjoner
+      virkninger
     </MenuButton>
     <MenuList bg="cyan.700">
       <CorrelationCheckbox text="Lav" isPositive={isPositive} index={0} />
