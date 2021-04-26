@@ -9,7 +9,13 @@ interface Props {
 
 const CorrelationDropdown: React.FC<Props> = ({ isPositive }: Props) => (
   <Menu closeOnSelect={false} closeOnBlur autoSelect={false}>
-    <MenuButton as={Button} color="cyan.600" rightIcon={<ChevronDownIcon />}>
+    <MenuButton
+      as={Button}
+      size="sm"
+      color="cyan.700"
+      minW="13.5em"
+      rightIcon={<ChevronDownIcon />}
+    >
       {isPositive ? 'Positive ' : 'Negative '}
       korrelasjoner
     </MenuButton>
