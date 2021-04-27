@@ -413,7 +413,7 @@ exports[`renders when there are no items 1`] = `
           className="css-a9hmjk"
         >
           Positive 
-          korrelasjoner
+          virkninger
         </span>
         <span
           className="chakra-button__icon css-1oeb2oe"
@@ -735,7 +735,7 @@ exports[`renders when there are no items 1`] = `
           className="css-a9hmjk"
         >
           Negative 
-          korrelasjoner
+          virkninger
         </span>
         <span
           className="chakra-button__icon css-1oeb2oe"
