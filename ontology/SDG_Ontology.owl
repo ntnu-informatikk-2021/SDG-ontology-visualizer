@@ -148,13 +148,12 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#erIndikatorAv">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
         <SDG:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Et predikament som beskriver sammenhenge(n/r) mellom SSB&apos;s taxonomi: Indikatorer/framgangsmetoder:</SDG:description>
         <rdfs:isDefinedBy rdf:resource="https://www.ssb.no/natur-og-miljo/artikler-og-publikasjoner/_attachment/445213?_ts=17780d5d790"/>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erIndikatorAv</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">erIndikatorTil</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -295,10 +294,9 @@
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#harIndikator">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Approaches"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Et predikament som beskriver sammenhenge(n/r) mellom Indikatorer/framgangsmetoder og konsepter i SSB&apos;s taxonomi:</SDG:description>
         <rdfs:isDefinedBy rdf:resource="https://www.ssb.no/natur-og-miljo/artikler-og-publikasjoner/_attachment/445213?_ts=17780d5d790"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">harIndikator</rdfs:label>
@@ -8847,6 +8845,16 @@ English: (For inital development, expansion of this class along with possible co
     
 
 
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Vannkvalitet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Vannkvalitet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Metoder"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">En klasse som omhandler vannkvalitet. Hvor metoder, målinger og andre konsepter direkte relatert til vannkvalitet plasseres her.</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vannkvalitet</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Wuppertal_Sustainability_Indicators -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Wuppertal_Sustainability_Indicators">
@@ -10779,10 +10787,10 @@ English: (For inital development, expansion of this class along with possible co
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
-        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
         <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
         <SDG:harModeratKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
         <SDG:harModeratTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
+        <SDG:harTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi1"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/9/8/8/1/831889-22-nor-NO/M%C3%A5l%2012%20RGB.png"/>
         <SDG:description>Sikre bærekraftig forbruks- og produksjonsmønstre. Bærekraftig livsstil - For å sikre gode levekår for nåværende og fremtidige generasjoner må også hver enkelt forbruker endre livsstil. Det innebærer å minske ressursbruken, miljøødeleggelsen og klimautslippene som et samfunn og som enkeltperson. På sikt vil dette føre til økonomisk vekst, begrense klimaendringer og øke livskvaliteten til mennesker på jorda.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 12</SDG:hasExactSynonym>
@@ -10966,6 +10974,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#SDG"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Miljø"/>
         <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
+        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B16"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B17"/>
@@ -11037,6 +11046,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B10"/>
         <SDG:harLavKorrelasjon rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B14"/>
         <SDG:harLavTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B13"/>
+        <SDG:harTradeOffTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B12"/>
         <schema:icon rdf:resource="https://www.fn.no/var/globalis/storage/images/_aliases/medium/8/3/8/1/831838-32-nor-NO/M%C3%A5l%209%20RGB@4x.png"/>
         <SDG:description>Bygge solid infrastruktur og fremme inkluderende og bærekraftig industrialisering og innovasjon. Hvorfor infrastruktur? Investeringer i infrastruktur som transport, vanningssystemer, energi og informasjonsteknologi er avgjørende for å skape en bærekraftig utvikling. Infrastruktur er den underliggende strukturen som må være på plass for at et samfunn skal fungere.</SDG:description>
         <SDG:hasExactSynonym>Bærekraftsmål 9</SDG:hasExactSynonym>
@@ -11105,7 +11115,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering1">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Utviklingsområde"/>
-        <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering1"/>
+        <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering2"/>
         <SDG:erUtviklingsområdeFor rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Sosialt"/>
         <rdfs:label>Digitalisering</rdfs:label>
     </owl:NamedIndividual>
@@ -11116,7 +11126,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Digitalisering2">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Perspektiver_i_Trondheim"/>
-        <rdfs:label>Digitalisering</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Digitaliser</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -11226,8 +11236,6 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
     <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#L">
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B3"/>
-        <SDG:harIndikator rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Nøyaktighet"/>
         <SDG:description>Dette er en standarisert luftkvalitetsmåling</SDG:description>
         <SDG:location>Plassering</SDG:location>
         <rdfs:label>Standarisert luftkvalitets måling</rdfs:label>
@@ -11245,7 +11253,7 @@ Utdanning er en grunnleggende menneskerettighet, og  veldig mange flere går i d
 
 Ettersom små barn og eldre vanligvis er mer følsomme for dårlig luftkvalitet, prioriterte vi å montere sensorene på steder som skoler, barnehager og sykehjem / eldreinstitusjoner for å kartlegge luftkvaliteten på disse stedene. Vi er imidlertid ikke garantert riktige data fra disse sensorene, ettersom vi vet at lavprissensorene for eksempel gir feil avlesning under veldig tåkete forhold. Sensorene logger GPS-posisjon, temperatur, fuktighet og luftkvalitetsdata. Selvfølgelig er det ikke installert kamera, mikrofon eller annen type overvåking.
 
-Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som du finner på linken under:</SDG:description>
+Trondheim Kommune har utviklet en nettside for å vise luftkvalitetsverdier.</SDG:description>
         <SDG:moreInformation rdf:resource="https://tipqa.trondheim.kommune.no/luftkvalitet-frontend/17dh0cf43jg889"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Luftkvalitetsmålinger i Trondheim</rdfs:label>
     </owl:NamedIndividual>
@@ -11544,8 +11552,10 @@ Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Økonomi">
         <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#TrippelBunnlinje"/>
+        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B8"/>
+        <SDG:harBidragTil rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
         <SDG:description>Den økonomiske bunnlinjen representerer den økoomiske framgangen i samfunnet.</SDG:description>
-        <rdfs:label>Økonomi</rdfs:label>
+        <rdfs:label>Velstand</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -13435,6 +13445,17 @@ Trondheim Kommune har utviklet en frontend for å vise luftkvalitetsverdier, som
         <SDG:harBærekraftsmål rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#B9"/>
         <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Styrke vitenskapelig forskning og oppgradere teknologien i næringslivssektorene i alle land, særlig i utviklingsland,  blant annet ved &amp;ndash;innen 2030 – å stimulere til innovasjon, betydelig øke antallet ansatte (per million innbyggere) innenfor forsknings- og utviklingsvirksomhet og betydelig øke bevilgningene til offentlig og privat forskning og utvikling</SDG:description>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9.5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator:_6.3.1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Indikator:_6.3.1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#Vannkvalitet"/>
+        <SDG:erIndikatorAv rdf:resource="http://www.semanticweb.org/aga/ontologies/2017/9/SDG#6.3"/>
+        <SDG:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6.3.1 Andel av befolkningen som er tilknyttet kommunal avløpstjeneste. Dette har vært en SSB-tilpasset versjon av FNs «Proportion of domestic and industrial wastewater flows safely treated» (IAEG-SDGs, 2020, side 12)</SDG:description>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avløpstjeneste</rdfs:label>
     </owl:NamedIndividual>
     
 
