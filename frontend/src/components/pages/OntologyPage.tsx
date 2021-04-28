@@ -6,6 +6,7 @@ import DetailView from '../molecules/DetailView';
 import GraphContainer from '../molecules/GraphContainer';
 import SubGoalsGrid from '../molecules/SubGoalsGrid';
 
+// Ontologypage
 const OntologyPage: React.FC = () => {
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 
