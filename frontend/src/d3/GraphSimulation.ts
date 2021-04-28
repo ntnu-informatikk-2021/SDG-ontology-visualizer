@@ -369,10 +369,12 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  edgeLabelsVisibility = (toggle?: boolean) => {
-    if (toggle !== undefined) {
-      this.edgeLabelsVisible = toggle;
-    }
+  toggleEdgeLabelVisibility = (toggle: boolean) => {
+    this.edgeLabelsVisible = toggle;
+    this.drawEdgeLabels();
+  };
+
+  drawEdgeLabels = () => {
     const edges = this.edgeSvg.selectAll(edgeClassName);
 
     const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
@@ -606,7 +608,7 @@ export default class {
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
     const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
     edgeSVGLine.attr('stroke-width', edgeWidth / this.scale);
-    this.edgeLabelsVisibility();
+    this.drawEdgeLabels();
   };
 
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
