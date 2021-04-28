@@ -12,6 +12,7 @@ type GraphToolBarProps = {
   onEdgeLabelsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+// component contaning SearchBar, ShowDropDown and CorrelationDropDown
 const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onSubgoalFilter,
   onUnlockNodes,

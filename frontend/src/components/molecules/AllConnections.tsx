@@ -9,7 +9,7 @@ type AllConnectionsProps = {
   developmentAreas: Array<Node>;
   onClick: (connection: Node, predicate: Array<string>) => void;
 };
-
+// component for all connections between nodes
 const AllConnections: React.FC<AllConnectionsProps> = ({
   contributions,
   tradeOffs,

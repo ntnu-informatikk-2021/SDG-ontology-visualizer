@@ -9,6 +9,7 @@ import Graph from '../atoms/Graph';
 import GraphToolBar from './GraphToolbar';
 import GraphDescriptions from './GraphDescriptions';
 
+// component containing Graph, Graphtoolbar and GraphDescriptions
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
@@ -16,6 +17,7 @@ const GraphContainer: React.FC = () => {
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const { correlationFilter } = useSelector((state: RootState) => state.ontology);
 
+  // function for filtering subgoals
   const filterSubgoals = () => {
     setShowSubgoals(!showSubgoals);
   };

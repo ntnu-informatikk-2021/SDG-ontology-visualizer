@@ -9,11 +9,13 @@ import { selectNode } from '../../state/reducers/ontologyReducer';
 import { SustainabilityGoal } from '../../types/ontologyTypes';
 import IconContainer from '../atoms/IconContainer';
 
+// compoenent containing Iconcontainer
 const SustainabilityGoalsList: React.FC = () => {
   const [sustainabilityGoals, setSustainabilityGoals] = useState<Array<SustainabilityGoal>>();
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // function for loading all SDG
   const loadSustainabilityGoals = async () => {
     const data = await getSustainabilityGoals();
     setSustainabilityGoals(data);
@@ -23,6 +25,7 @@ const SustainabilityGoalsList: React.FC = () => {
     loadSustainabilityGoals();
   }, []);
 
+  // function on clicking a SDG
   const onClickSDG = (sdg: SustainabilityGoal) => {
     const node = mapSustainabilityGoalToNode(sdg);
     if (!node) {

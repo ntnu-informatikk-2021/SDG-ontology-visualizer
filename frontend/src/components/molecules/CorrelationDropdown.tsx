@@ -6,7 +6,7 @@ import CorrelationCheckbox from '../atoms/CorrelationCheckbox';
 interface Props {
   isPositive: boolean;
 }
-
+// dropdown compoenent for correlation checkboxes
 const CorrelationDropdown: React.FC<Props> = ({ isPositive }: Props) => (
   <Menu closeOnSelect={false} closeOnBlur autoSelect={false}>
     <MenuButton

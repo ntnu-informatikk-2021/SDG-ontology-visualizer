@@ -8,7 +8,7 @@ type IconContainerProps = {
   onClick: (sdg: SustainabilityGoal) => void;
 };
 
-// component contaning all sustainabiliy nodes
+// component contaning all sustainabiliy icons
 const IconContainer: React.FC<IconContainerProps> = ({
   sustainabilityNode,
   onClick,
