@@ -19,6 +19,7 @@ type GraphProps = {
   edgeLabelsVisible: boolean;
 };
 
+// Graph component
 const Graph: React.FC<GraphProps> = ({
   nodeFilter,
   edgeFilter,
@@ -33,16 +34,19 @@ const Graph: React.FC<GraphProps> = ({
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const [hasInitialized, setHasInitialized] = useState(false);
 
+  // function for loading data
   const loadData = async (node: GraphNode) => {
     if (!simulation) return;
     const ontologies = await getRelations(node.id);
     simulation.addData(ontologies, node);
   };
 
+  // function for exanding node
   const onExpandNode = (node: GraphNode): void => {
     loadData(node);
   };
 
+  // function for selecing node
   const onSelectNode = (node: GraphNode): void => {
     dispatch(selectNode(node));
   };

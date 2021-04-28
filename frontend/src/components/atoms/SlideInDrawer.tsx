@@ -8,7 +8,7 @@ interface SlideInDrawerProps {
   width: string;
   children: JSX.Element;
 }
-
+// slideinfo component when clicking a button in detailview component
 const SlideInDrawer = ({ expanded, width, children }: SlideInDrawerProps) => (
   <AnimatePresence initial={false}>
     {expanded && (

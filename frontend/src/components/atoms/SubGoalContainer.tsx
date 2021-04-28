@@ -16,7 +16,7 @@ import { SubGoal } from '../../types/ontologyTypes';
 type SubGoalContainerProps = {
   subGoalNode: SubGoal;
 };
-
+// container component for subgoal
 const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
   subGoalNode,
 }: SubGoalContainerProps) => {

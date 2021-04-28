@@ -6,6 +6,7 @@ type ShowDropdownProps = {
   onSubgoalFilter: () => void;
   onEdgeLabelsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
+// dropdown component for subgoal- and edgelabel filter
 const ShowDropdown = ({ onSubgoalFilter, onEdgeLabelsVisible }: ShowDropdownProps) => (
   <Box d={[null, null, null, 'flex', 'none']}>
     <Menu closeOnSelect={false} closeOnBlur autoSelect={false}>

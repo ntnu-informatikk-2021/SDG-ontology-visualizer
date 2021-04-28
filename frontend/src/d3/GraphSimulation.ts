@@ -543,11 +543,13 @@ export default class {
       })
       .attr('class', nodeClassName.substring(1)); // remove . from class name
 
+    // highligting on hover
     this.registerMouseoverNodeEvent(this.edgeSvg, this.edges);
     this.registerMouseoutNodeEvent(this.edgeSvg, this.edges);
     this.registerDragNodeEvent();
   };
 
+  // function for updating edge positions
   updateEdgePositions = () => {
     const g = this.edgeSvg
       .selectAll(edgeClassName)
@@ -559,7 +561,7 @@ export default class {
             (edge.source.y + edge.target.y) / 2
           })`,
       );
-
+    // child for selected node in graph??
     g.selectChild(this.selectNodeOrEdge)
       .attr('x1', (edge: any) => edge.source.x - (edge.source.x + edge.target.x) / 2)
       .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
@@ -567,7 +569,7 @@ export default class {
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
 
     if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return; // fps on graph animaiton?
-
+    // childs first edge
     g.selectChild(this.selectEdgeLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
@@ -580,7 +582,7 @@ export default class {
         thisEdge.text(text);
       }
     });
-
+    // childs second edge
     g.selectChild(this.selectEdgeLabel2).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
@@ -595,6 +597,7 @@ export default class {
     });
   };
 
+  // function for updating node positions
   updateNodePositions = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -602,21 +605,24 @@ export default class {
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
   };
 
+  // function for getting opacity on edgelabel
   getEdgeLabelOpacity = () => {
     if (this.scale >= 1) return 1;
     if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
     return 0;
   };
 
+  // function for getting node menu position
   getNodeMenuPosition = () => {
     const yPos = -nodeRadius * nodeHighlightRadiusMultiplier - 15 / this.scale;
     return { x: 0, y: yPos, scale: 1 / this.scale };
   };
-
+  // functions for getting node and edge label font size
   getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
 
   getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
 
+  // Don't understand what exacly this function do?? // function used when zooming and drawing the graph
   scaleGraph = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
     nodes.selectChild(this.selectNodeLabel).attr('font-size', this.getNodeLabelFontSize());
@@ -641,6 +647,7 @@ export default class {
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
+  // function for highlighting when hovering a node??
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -667,17 +674,20 @@ export default class {
                 : edge.target === node.id),
           );
         graphEdges
+          // graphedge on node or edge
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', (edgeWidth * 1.5) / this.scale)
           .attr('stroke', edgeHighlightColor);
         graphEdges
+          // graphedge on source edge
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
           )
           .selectChild(this.selectEdgeLabel1)
           .attr('font-weight', 'bold');
         graphEdges
+          // grapedge on targe edge
           .filter((edge) =>
             typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
           )
@@ -686,6 +696,7 @@ export default class {
       });
   };
 
+  // function for un-highligthing when leaving hovered node
   registerMouseoutNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -711,17 +722,20 @@ export default class {
                 : edge.target === node.id),
           );
         graphEdges
+          // graphedge on node or edge
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', edgeWidth / this.scale)
           .attr('stroke', edgeColor);
         graphEdges
+          // graphedge on source edge
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
           )
           .selectChild(this.selectEdgeLabel1)
           .attr('font-weight', 'normal');
         graphEdges
+          // graphnode on targe edge
           .filter((edge) =>
             typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
           )
@@ -730,6 +744,7 @@ export default class {
       });
   };
 
+  // function for register when dragging a node
   registerDragNodeEvent = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -757,7 +772,7 @@ export default class {
           }) as any,
       );
   };
-
+  // what are these used for??
   selectNodeOrEdge = (_: any, index: number) => index === 0;
 
   selectEdgeLabel1 = (_: any, index: number) => index === 1;
@@ -766,6 +781,7 @@ export default class {
   selectNodeLockIcon = (_: any, index: number) => index === 1;
   selectNodeLabel = (_: any, index: number) => index === 2;
 
+  // function for skipping frames (performance)??
   shouldRenderEdgeLabel = (): boolean => {
     const { fps } = this.fpsCounter;
     let frameSkips = 1;

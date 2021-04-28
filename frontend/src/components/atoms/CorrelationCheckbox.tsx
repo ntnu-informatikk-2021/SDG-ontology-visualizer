@@ -10,7 +10,7 @@ interface CheckboxProps {
   isPositive: boolean;
   index: number;
 }
-
+// component for correlation checkboxes, can filter on positive and negative correlation
 const CorrelationCheckbox: React.FC<CheckboxProps> = ({
   text,
   isPositive,
@@ -19,6 +19,7 @@ const CorrelationCheckbox: React.FC<CheckboxProps> = ({
   const dispatch = useDispatch();
   const { correlationFilter } = useSelector((state: RootState) => state.ontology);
 
+  // function for getting correlation index value, used to define strength
   const getCorrectFilterValue = (filter: CorrelationFilter): boolean => {
     if (isPositive && index === 0) return filter.pLow;
     if (isPositive && index === 1) return filter.pMedium;
