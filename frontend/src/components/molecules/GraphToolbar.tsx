@@ -46,6 +46,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       <CorrelationDropdown isPositive={false} />
       <Button
         color="cyan.700"
+        bg="white"
         size="sm"
         minW="8em"
         onClick={() => onUnlockNodes((current) => !current)}
