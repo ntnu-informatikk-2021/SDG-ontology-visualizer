@@ -14,7 +14,7 @@ This taxonomy has been used as the core for the developed ontology. Without this
  
  "Mapping the Sustainable Development Goals Relationships" Written by: Luis Miguel Fonseca, José Pedro Domingues og Alina Mihaela Dima. Publisher: MDPI. Publised: 20.04.2020
   ###  An Ontology-Based Knowledge Modelling for a Sustainability Assessment Domain.
-  This ontology is present in our developed ontology, however not connected. A similar class hierarchy expressed in `Approaches` within this ontology, has been used to express `Metoder` in our current developed ontology. Furthermore, this ontology has provide a better insight during the structural expansion of our ontology.
+  This ontology is present in our developed ontology, however not connected. A similar class hierarchy expressed in `Approaches` within this ontology, has been used to express `Metoder` in our current developed ontology. Furthermore, this ontology has provided a better insight during the structural expansion of our ontology.
   
   "An Ontology-Based Knowledge Modelling for a Sustainability Assessment Domain" Written by: Agnieszka Konys. Journal: Sustainability 10(2). Publised: January 2018 DOI:10.3390/su10020300
 ## Furter work.
