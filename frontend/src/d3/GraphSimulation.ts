@@ -369,9 +369,12 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  toggleEdgeLabelsVisibility = () => {
-    this.edgeLabelsVisible = !this.edgeLabelsVisible;
+  toggleEdgeLabelVisibility = (toggle: boolean) => {
+    this.edgeLabelsVisible = toggle;
+    this.drawEdgeLabels();
+  };
 
+  drawEdgeLabels = () => {
     const edges = this.edgeSvg.selectAll(edgeClassName);
 
     const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
@@ -605,13 +608,7 @@ export default class {
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
     const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
     edgeSVGLine.attr('stroke-width', edgeWidth / this.scale);
-
-    const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
-    const edgeLabel2 = edges.selectChild(this.selectEdgeLabel2);
-    const edgeLabelFontSize = this.getEdgeLabelFontSize();
-    const edgeLabelOpacity = this.getEdgeLabelOpacity();
-    edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
-    edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+    this.drawEdgeLabels();
   };
 
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
