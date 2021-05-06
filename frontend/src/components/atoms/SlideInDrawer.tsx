@@ -1,6 +1,6 @@
+import React from 'react';
 import { Box } from '@chakra-ui/react';
 import { AnimatePresence } from 'framer-motion';
-import React from 'react';
 import { MotionBox } from '../../types/react/componentTypes';
 
 interface SlideInDrawerProps {
@@ -8,8 +8,12 @@ interface SlideInDrawerProps {
   width: string;
   children: JSX.Element;
 }
-// slideinfo component when clicking a button in detailview component
-const SlideInDrawer = ({ expanded, width, children }: SlideInDrawerProps) => (
+
+const SlideInDrawer: React.FC<SlideInDrawerProps> = ({
+  expanded,
+  width,
+  children,
+}: SlideInDrawerProps) => (
   <AnimatePresence initial={false}>
     {expanded && (
       <MotionBox

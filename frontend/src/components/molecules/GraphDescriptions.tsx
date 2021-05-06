@@ -5,7 +5,7 @@ import GraphNodeKey from '../atoms/GraphNodeKey';
 interface GraphDescriptionsProps {
   float: boolean;
 }
-// component for node description related to the graph
+
 const GraphDescriptions: React.FC<GraphDescriptionsProps> = ({ float }: GraphDescriptionsProps) => (
   <Stack
     width={[null, null, null, '20vw', '17vw']}

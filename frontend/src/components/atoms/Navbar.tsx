@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { Link as RouteLink, useHistory } from 'react-router-dom';
 import { RootState } from '../../state/store';
 
-// Navbar component
 const Navbar = () => {
   const history = useHistory();
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);

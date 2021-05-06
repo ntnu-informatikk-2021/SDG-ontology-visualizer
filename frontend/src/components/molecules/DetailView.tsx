@@ -18,7 +18,6 @@ import ContextDivider from '../atoms/ContextDivider';
 import SlideInDrawer from '../atoms/SlideInDrawer';
 import AllConnections from './AllConnections';
 
-// detailview compoenent containing SlideinDrawer, ContextDivier and AllConnections
 const DetailView: React.FC = () => {
   const [annotations, setAnnotations] = useState<Annotation>({
     label: '',
@@ -26,7 +25,6 @@ const DetailView: React.FC = () => {
     description: '',
   });
   const [objectAnnotations, setObjectAnnotations] = useState<Annotation>();
-
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
@@ -38,23 +36,22 @@ const DetailView: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasInitialized, setHasInitialized] = useState(false);
 
-  // function for setting annotation
+  /*
+    Promise wrappers for API calls. To use Promise.allSettled (in order to get parallel API calls) in promises with function parameters, the function calls had to be wrapped in an async function. While this clutters the code a bit, the alternative would be to make sequential API calls, effectively quadrupling the time API delay for the DetailView. 
+  */
   const setAnnotationsPromise = async (node: Node): Promise<void> => {
     setAnnotations(await getAnnotations(node.id));
   };
-  // function for setting contribution
   const setContributionsPromise = async (node: Node): Promise<void> => {
     setContributions(await getContributions(node.id));
   };
-  // function for setting tradeoff
   const setTradeOffsPromise = async (node: Node): Promise<void> => {
     setTradeOffs(await getTradeOff(node.id));
   };
-  // function for setting developmentarea
   const setDevelopmentAreasPromise = async (node: Node): Promise<void> => {
     setDevelopmentAreas(await getDevelopmentArea(node.id));
   };
-  // function for loading data
+
   const loadData = async () => {
     if (!selectedNode) return;
     await Promise.allSettled([
@@ -63,7 +60,6 @@ const DetailView: React.FC = () => {
       setTradeOffsPromise(selectedNode),
       setDevelopmentAreasPromise(selectedNode),
     ]);
-    // set is loading to false
     setIsLoading(false);
     if (!hasInitialized) {
       setHasInitialized(true);
@@ -71,21 +67,21 @@ const DetailView: React.FC = () => {
       setBrowserPosition();
     }
   };
-  // function for loading objectproperty annotations
+
   const loadObjectPropertyAnnotations = async () => {
     if (!selectedPredicate) return;
     setObjectAnnotations(undefined);
     setObjectAnnotations(await getAnnotations(selectedPredicate[1]));
     setIsLoading(false);
   };
-  // expanding number off connections or distance between connections??
+
   const expandConnection = async (connection: Node, predicate: Array<string>) => {
     setIsLoading(true);
     setSelectedConnection(connection);
     setSelectedPredicate(predicate);
     setExpanded(true);
   };
-  // function on clicking a connection.
+
   const onClickConnections = (node: Node) => {
     setIsLoading(true);
     setExpanded(false);

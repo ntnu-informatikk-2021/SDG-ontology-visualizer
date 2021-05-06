@@ -2,7 +2,6 @@ import { Box, Heading, Link, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import { GoMarkGithub } from 'react-icons/go';
 
-// About page
 const About = () => (
   <Box py="10%" px="20%">
     <Stack

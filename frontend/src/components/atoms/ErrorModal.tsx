@@ -16,14 +16,12 @@ import { clearError } from '../../state/reducers/apiErrorReducer';
 import { RootState } from '../../state/store';
 import { ApiError } from '../../types/redux/errorTypes';
 
-// component displayed when no node is displayed in the graph. Used for error handling.
 const ErrorModal: React.FC = () => {
   const [open, setOpen] = useState(false);
   const apiError = useSelector((state: RootState) => state.apiError.error);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // updating state for cleaning error
   const onClose = () => dispatch(clearError());
 
   useEffect(() => {

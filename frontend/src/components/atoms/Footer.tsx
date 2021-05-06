@@ -3,7 +3,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 
-// Footer component
 const Footer = () => {
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
 

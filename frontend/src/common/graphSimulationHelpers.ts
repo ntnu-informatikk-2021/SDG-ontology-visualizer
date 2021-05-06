@@ -29,7 +29,6 @@ export const shouldRenderEdgeLabel = (fps: number, frameIndex: number): boolean 
   else if (fps < 30) frameSkips = 4;
   else if (fps < 40) frameSkips = 2;
   if (frameIndex < frameSkips) return false;
-  // this.frameIndex = 0;
   return true;
 };
 

@@ -20,7 +20,7 @@ import { Node } from '../../types/ontologyTypes';
 interface SearchBarProps {
   limit?: number;
 }
-// Searchbar component used in Frontpage and Ontologypage
+
 const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 200);
@@ -28,7 +28,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // function for loading result on search
   const loadResults = async (query: string) => {
     if (!query || query.length === 0) {
       setResults([]);
@@ -37,12 +36,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
     const newRes = await search(debouncedSearchQuery, limit);
     setResults(newRes);
   };
-  // function on change
+
   const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchQuery = ev.target.value;
     setSearchQuery(newSearchQuery);
   };
-  // function on clicking a node
+
   const onClickNode = (node: Node) => {
     dispatch(selectNode(node));
   };

@@ -19,7 +19,6 @@ type GraphProps = {
   edgeLabelsVisible: boolean;
 };
 
-// Graph component
 const Graph: React.FC<GraphProps> = ({
   nodeFilter,
   edgeFilter,
@@ -34,27 +33,43 @@ const Graph: React.FC<GraphProps> = ({
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const [hasInitialized, setHasInitialized] = useState(false);
 
-  // function for loading data
   const loadData = async (node: GraphNode) => {
     if (!simulation) return;
     const ontologies = await getRelations(node.id);
     simulation.addData(ontologies, node);
   };
 
-  // function for exanding node
+  // callback triggered when expand button is clicked in node menu
   const onExpandNode = (node: GraphNode): void => {
     loadData(node);
   };
 
-  // function for selecing node
+  // callback triggered when information button is clicked in node menu
   const onSelectNode = (node: GraphNode): void => {
     dispatch(selectNode(node));
+  };
+
+  const createNewGraphSimulation = () => {
+    if (!svgRef || !svgRef.current || !selectedNode) return;
+    setSimulation(
+      new GraphSimulation(
+        svgRef.current,
+        0.4 * width,
+        0.4 * height,
+        selectedNode,
+        onExpandNode,
+        onSelectNode,
+        nodeFilter,
+        edgeFilter,
+      ),
+    );
   };
 
   useEffect(() => {
     if (simulation) simulation.updateOnExpandCallback(onExpandNode);
   }, [onExpandNode]);
 
+  // Useeffect to initialize the graph simulation and to add more data as it is received from the API
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
     if (!selectedNode) {
@@ -62,18 +77,7 @@ const Graph: React.FC<GraphProps> = ({
       return;
     }
     if (!simulation) {
-      setSimulation(
-        new GraphSimulation(
-          svgRef.current,
-          0.4 * width,
-          0.4 * height,
-          selectedNode,
-          onExpandNode,
-          onSelectNode,
-          nodeFilter,
-          edgeFilter,
-        ),
-      );
+      createNewGraphSimulation();
     } else if (!hasInitialized) {
       setHasInitialized(true);
       loadData(selectedNode);

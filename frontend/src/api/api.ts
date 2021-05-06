@@ -4,6 +4,7 @@ import { ApiError } from '../types/redux/errorTypes';
 
 const API_BASE = process.env.REACT_APP_BACKEND_URL;
 
+// JSON resolver. Throws ApiError if response is not a 2xx response.
 const responseHandler = async (res: Response): Promise<any> => {
   if (!res.ok) {
     let body;

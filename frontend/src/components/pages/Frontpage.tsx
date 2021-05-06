@@ -3,7 +3,6 @@ import React from 'react';
 import SearchBar from '../atoms/SearchBar';
 import SustainabilityGoals from '../molecules/SustainabilityGoalsList';
 
-// Frontpage
 const Frontpage: React.FC = () => (
   <Stack spacing="10">
     <Flex
