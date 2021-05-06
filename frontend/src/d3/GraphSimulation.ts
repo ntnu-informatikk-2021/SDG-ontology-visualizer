@@ -66,7 +66,7 @@ export default class {
     nodeFilter: GraphNodeFilter,
     edgeFilter: GraphEdgeFilter,
   ) {
-    this.svg = d3.select(svg).on('click', this.removeNodeMenu);
+    this.svg = d3.select(svg).on('click', this.hideNodeMenu);
     this.edgeSvg = this.svg.append('g');
     this.nodeSvg = this.svg.append('g');
     this.width = width;
@@ -84,86 +84,9 @@ export default class {
     this.fpsCounter = new FpsCounter();
   }
 
-  // Called by the Graph component to change the callback called when a node is expanded
-  updateOnExpandCallback = (callback: (node: GraphNode) => void) => {
-    this.onExpandNode = callback;
-  };
-
-  removeNode = (node: GraphNode) => {
-    // throw an error if removing this node would make the graph empty
-    if (common.removingNodeWillMakeGraphEmpty(node, this.edges)) {
-      reduxStore.dispatch(setError(new Error('Oops, this would remove all nodes from the graph')));
-      return;
-    }
-    this.unfilteredNodes = this.unfilteredNodes.filter((n) => n.id !== node.id);
-    this.unfilteredEdges = this.unfilteredEdges.filter((edge) => {
-      const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
-      const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
-      return node.id !== source && node.id !== target;
-    });
-    this.removeDisconnectedNodes();
-    this.redrawGraphWithFilter();
-  };
-
-  removeDisconnectedNodes = () => {
-    this.nodes = this.nodes.filter((node) =>
-      this.edges.some((edge) => {
-        const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
-        const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
-        return node.id === source || node.id === target;
-      }),
-    );
-  };
-
-  removeDisconnectedEdges = () => {
-    this.edges = this.edges.filter((edge) => {
-      const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
-      const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
-      return (
-        this.nodes.some((node) => node.id === source) &&
-        this.nodes.some((node) => node.id === target)
-      );
-    });
-  };
-
-  redrawGraphWithFilter = () => {
-    this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
-    this.edges = this.unfilteredEdges.filter(this.edgeFilter);
-    this.removeDisconnectedNodes();
-    this.removeDisconnectedEdges();
-    this.resetForceSimulation();
-    this.drawGraph();
-  };
-
-  setNodeFilter = (filter: GraphNodeFilter) => {
-    this.nodeFilter = filter;
-    this.redrawGraphWithFilter();
-  };
-
-  setEdgeFilter = (filter: GraphEdgeFilter) => {
-    this.edgeFilter = filter;
-    this.redrawGraphWithFilter();
-  };
-
-  initZoom = () => {
-    this.svg.call(
-      d3
-        .zoom()
-        .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, any>) => {
-          const newScale = event.transform.k;
-          if (this.scale !== newScale) {
-            this.scale = event.transform.k;
-            this.scaleGraph();
-          }
-
-          this.scale = event.transform.k;
-          const translate = [event.transform.x, event.transform.y];
-          this.nodeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
-          this.edgeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
-        })
-        .scaleExtent([minScale, maxScale]) as any,
-    );
-  };
+  // ############################################
+  // Force Simulation
+  // ############################################
 
   // Repulsive forces between nodes. High strength to prevent cluttered nodes.
   chargeForce = () => d3.forceManyBody().strength(-100);
@@ -213,6 +136,10 @@ export default class {
     this.forceSimulation.restart();
   };
 
+  // ############################################
+  // State Management
+  // ############################################
+
   addData = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
     if (ontologies.length === 0 || !clickedNode) return;
 
@@ -228,6 +155,57 @@ export default class {
 
     this.redrawGraphWithFilter();
   };
+
+  removeNode = (node: GraphNode) => {
+    // throw an error if removing this node would make the graph empty
+    if (common.removingNodeWillMakeGraphEmpty(node, this.edges)) {
+      reduxStore.dispatch(setError(new Error('Oops, this would remove all nodes from the graph')));
+      return;
+    }
+    this.unfilteredNodes = this.unfilteredNodes.filter((n) => n.id !== node.id);
+    this.unfilteredEdges = this.unfilteredEdges.filter((edge) => {
+      const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+      const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+      return node.id !== source && node.id !== target;
+    });
+    this.removeDisconnectedNodes();
+    this.redrawGraphWithFilter();
+  };
+
+  removeDisconnectedNodes = () => {
+    this.nodes = this.nodes.filter((node) =>
+      this.edges.some((edge) => {
+        const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+        const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+        return node.id === source || node.id === target;
+      }),
+    );
+  };
+
+  removeDisconnectedEdges = () => {
+    this.edges = this.edges.filter((edge) => {
+      const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
+      const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
+      return (
+        this.nodes.some((node) => node.id === source) &&
+        this.nodes.some((node) => node.id === target)
+      );
+    });
+  };
+
+  setNodeFilter = (filter: GraphNodeFilter) => {
+    this.nodeFilter = filter;
+    this.redrawGraphWithFilter();
+  };
+
+  setEdgeFilter = (filter: GraphEdgeFilter) => {
+    this.edgeFilter = filter;
+    this.redrawGraphWithFilter();
+  };
+
+  // ############################################
+  // Rendering
+  // ############################################
 
   drawGraph = () => {
     this.drawEdges();
@@ -271,45 +249,13 @@ export default class {
       .attr('class', edgeClassName.substring(1)); // remove . before class name
   };
 
-  makeNodeMenuButton = (
-    menu: d3.Selection<SVGGElement, GraphNode, any, any>,
-    x: number,
-    onClick: (event: any) => void,
-    icon: string,
-  ): void => {
-    const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
-    button
-      .append('circle')
-      .on('click', onClick)
-      .on('mouseover', function highlightMenu() {
-        d3.select(this).style('cursor', 'pointer').style('stroke', edgeHighlightColor);
-      })
-      .on('mouseout', function resetHighlightMenu() {
-        d3.select(this).style('stroke', edgeColor);
-      })
-      .transition('200')
-      .attr('r', nodeMenuBtnRadius)
-      .attr('fill', '#eee')
-      .attr('stroke', edgeColor)
-      .style('stroke-width', 2);
-
-    button
-      .append('image')
-      .transition('200')
-      .attr('width', nodeMenuBtnRadius * 2)
-      .attr('height', nodeMenuBtnRadius * 2)
-      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
-      .attr('xlink:href', icon)
-      .attr('pointer-events', 'none');
-  };
-
-  showMenuAtNode = async (
+  showNodeMenu = async (
     node: GraphNode,
     g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
   ) => {
     await nextFrame();
     if (!g) return;
-    this.removeNodeMenu();
+    this.hideNodeMenu();
     const menuPos = this.getNodeMenuPosition();
     const menuG = g
       .append('g')
@@ -319,7 +265,7 @@ export default class {
     // expand button
     setTimeout(
       () =>
-        this.makeNodeMenuButton(
+        this.drawNodeMenuButton(
           menuG,
           nodeMenuBtnRadius * 3.75,
           () => {
@@ -333,7 +279,7 @@ export default class {
     // remove button
     setTimeout(
       () =>
-        this.makeNodeMenuButton(
+        this.drawNodeMenuButton(
           menuG,
           nodeMenuBtnRadius * 1.25,
           () => this.removeNode(node),
@@ -345,7 +291,7 @@ export default class {
     // unlock button
     setTimeout(
       () =>
-        this.makeNodeMenuButton(
+        this.drawNodeMenuButton(
           menuG,
           -nodeMenuBtnRadius * 1.25,
           (event) => {
@@ -359,7 +305,7 @@ export default class {
     );
 
     // information button
-    this.makeNodeMenuButton(
+    this.drawNodeMenuButton(
       menuG,
       -nodeMenuBtnRadius * 3.75,
       () => {
@@ -368,6 +314,13 @@ export default class {
       'icons/goToDetailView.svg',
     );
     this.nodeMenu = menuG;
+  };
+
+  hideNodeMenu = () => {
+    if (this.nodeMenu) {
+      this.nodeMenu.remove();
+      this.nodeMenu = undefined;
+    }
   };
 
   toggleEdgeLabelsVisibility = () => {
@@ -391,84 +344,6 @@ export default class {
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
-  /*
-    Wrapper function for localUnlockAllNodes. This is necessary because the function is called from Graph component,
-    which does not have access to the parameters required.
-    It was necessary to pass the unlockNode callback because localUnlockAllNodes calls a function on each node which
-    uses 'this' to select the current DOM element. This is possible because the 'function' keyword, unlike arrow
-    functions, rebind 'this' from the GraphSimulation object to the caller of the function, i.e. the DOM element.
-    However, as 'this' no longer represents the GraphSimulation object, we cannot use 'this.unlockNode'.
-  */
-  unlockAllNodes = () => {
-    this.localUnlockAllNodes(this.unlockNodePosition);
-  };
-
-  localUnlockAllNodes = (
-    unlockNode: (
-      nodeContainer: SVGGElement,
-      node: GraphNode,
-      shouldRenderEdgeLabel: boolean,
-    ) => void,
-  ) => {
-    let hasUpdatedNode = false;
-    this.removeNodeMenu();
-    this.nodeSvg
-      .selectAll(nodeClassName)
-      .data(this.nodes)
-      .each(function (node) {
-        const nodeContainer = d3.select(this).node() as SVGGElement;
-        if (node.isLocked) {
-          hasUpdatedNode = true;
-        }
-        unlockNode(nodeContainer, node, false);
-      });
-
-    // Only restart the force simulation if a change has actually been made to the nodes or edges.
-    if (hasUpdatedNode) {
-      this.forceSimulation.alpha(0.5);
-      this.forceSimulation.restart();
-    }
-  };
-
-  unlockNodePosition = (
-    nodeContainer: SVGGElement,
-    node: GraphNode,
-    shouldReRenderGraph: boolean = true,
-  ): void => {
-    const n = node;
-    n.fx = undefined;
-    n.fy = undefined;
-    n.isLocked = false;
-    d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0);
-    if (shouldReRenderGraph) {
-      this.forceSimulation.alpha(0.5);
-      this.forceSimulation.restart();
-    }
-  };
-
-  lockNodePosition = (
-    nodeContainer: SVGGElement,
-    node: GraphNode,
-    x: number,
-    y: number,
-    updateOpcity: boolean,
-  ) => {
-    const n = node;
-    n.fx = x;
-    n.fy = y;
-    n.isLocked = true;
-    if (updateOpcity) {
-      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.7);
-    }
-  };
-
-  removeNodeMenu = () => {
-    if (this.nodeMenu) {
-      this.nodeMenu.remove();
-      this.nodeMenu = undefined;
-    }
-  };
-
   drawNodes = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -482,7 +357,7 @@ export default class {
           .on('click', (event: PointerEvent, node) => {
             if (!event.target) return;
             const menu = (event.target as SVGElement).parentNode as SVGGElement;
-            this.showMenuAtNode(node, d3.select(menu));
+            this.showNodeMenu(node, d3.select(menu));
           });
         // Lock icon. The icon is always in the DOM, just with 0 opacity when hidden, to prevent unnecessary loading
         // of files and because otherwise the whole DOM would be scanned when toggling a single node's position.
@@ -585,20 +460,144 @@ export default class {
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
   };
 
-  getEdgeLabelOpacity = () => {
-    if (this.scale >= 1) return 1;
-    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
-    return 0;
+  drawNodeMenuButton = (
+    menu: d3.Selection<SVGGElement, GraphNode, any, any>,
+    x: number,
+    onClick: (event: any) => void,
+    icon: string,
+  ): void => {
+    const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
+    button
+      .append('circle')
+      .on('click', onClick)
+      .on('mouseover', function highlightMenu() {
+        d3.select(this).style('cursor', 'pointer').style('stroke', edgeHighlightColor);
+      })
+      .on('mouseout', function resetHighlightMenu() {
+        d3.select(this).style('stroke', edgeColor);
+      })
+      .transition('200')
+      .attr('r', nodeMenuBtnRadius)
+      .attr('fill', '#eee')
+      .attr('stroke', edgeColor)
+      .style('stroke-width', 2);
+
+    button
+      .append('image')
+      .transition('200')
+      .attr('width', nodeMenuBtnRadius * 2)
+      .attr('height', nodeMenuBtnRadius * 2)
+      .attr('transform', `translate(${-nodeMenuBtnRadius},${-nodeMenuBtnRadius})`)
+      .attr('xlink:href', icon)
+      .attr('pointer-events', 'none');
   };
 
-  getNodeMenuPosition = () => {
-    const yPos = -nodeRadius * nodeHighlightRadiusMultiplier - 15 / this.scale;
-    return { x: 0, y: yPos, scale: 1 / this.scale };
+  redrawGraphWithFilter = () => {
+    this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
+    this.edges = this.unfilteredEdges.filter(this.edgeFilter);
+    this.removeDisconnectedNodes();
+    this.removeDisconnectedEdges();
+    this.resetForceSimulation();
+    this.drawGraph();
   };
 
-  getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
+  // ############################################
+  // Locking and Unlocking Node Positions
+  // ############################################
 
-  getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
+  /*
+    Wrapper function for localUnlockAllNodes. This is necessary because the function is called from Graph component,
+    which does not have access to the parameters required.
+    It was necessary to pass the unlockNode callback because localUnlockAllNodes calls a function on each node which
+    uses 'this' to select the current DOM element. This is possible because the 'function' keyword, unlike arrow
+    functions, rebind 'this' from the GraphSimulation object to the caller of the function, i.e. the DOM element.
+    However, as 'this' no longer represents the GraphSimulation object, we cannot use 'this.unlockNode'.
+  */
+  unlockAllNodes = () => {
+    this.localUnlockAllNodes(this.unlockNodePosition);
+  };
+
+  localUnlockAllNodes = (
+    unlockNode: (
+      nodeContainer: SVGGElement,
+      node: GraphNode,
+      shouldRenderEdgeLabel: boolean,
+    ) => void,
+  ) => {
+    let hasUpdatedNode = false;
+    this.hideNodeMenu();
+    this.nodeSvg
+      .selectAll(nodeClassName)
+      .data(this.nodes)
+      .each(function (node) {
+        const nodeContainer = d3.select(this).node() as SVGGElement;
+        if (node.isLocked) {
+          hasUpdatedNode = true;
+        }
+        unlockNode(nodeContainer, node, false);
+      });
+
+    // Only restart the force simulation if a change has actually been made to the nodes or edges.
+    if (hasUpdatedNode) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
+  };
+
+  unlockNodePosition = (
+    nodeContainer: SVGGElement,
+    node: GraphNode,
+    shouldReRenderGraph: boolean = true,
+  ): void => {
+    const n = node;
+    n.fx = undefined;
+    n.fy = undefined;
+    n.isLocked = false;
+    d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0);
+    if (shouldReRenderGraph) {
+      this.forceSimulation.alpha(0.5);
+      this.forceSimulation.restart();
+    }
+  };
+
+  lockNodePosition = (
+    nodeContainer: SVGGElement,
+    node: GraphNode,
+    x: number,
+    y: number,
+    updateOpcity: boolean,
+  ) => {
+    const n = node;
+    n.fx = x;
+    n.fy = y;
+    n.isLocked = true;
+    if (updateOpcity) {
+      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.7);
+    }
+  };
+
+  // ############################################
+  // Scale & Zoom
+  // ############################################
+  initZoom = () => {
+    this.svg.call(
+      d3
+        .zoom()
+        .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, any>) => {
+          const newScale = event.transform.k;
+          if (this.scale !== newScale) {
+            this.scale = event.transform.k;
+            this.scaleGraph();
+          }
+
+          this.scale = event.transform.k;
+          const translate = [event.transform.x, event.transform.y];
+          this.nodeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
+          this.edgeSvg.attr('transform', `translate(${translate}) scale(${this.scale})`);
+        })
+        .scaleExtent([minScale, maxScale]) as any,
+    );
+  };
 
   // Applies zoom to all the elements of the graph
   scaleGraph = () => {
@@ -623,6 +622,38 @@ export default class {
     const edgeLabelOpacity = this.getEdgeLabelOpacity();
     edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+  };
+
+  // ############################################
+  // Event Listeners
+  // ############################################
+
+  registerDragNodeEvent = () => {
+    this.nodeSvg
+      .selectAll(nodeClassName)
+      .data(this.nodes)
+
+      .call(
+        d3
+          .drag()
+          .on('drag', (event, value) => {
+            const node = value as GraphNode;
+            this.lockNodePosition(
+              event.sourceEvent.target.parentNode,
+              node,
+              event.x,
+              event.y,
+              !node.isLocked!,
+            );
+            this.forceSimulation.alpha(0.5);
+            this.forceSimulation.restart();
+          })
+          .on('end', (event, d) => {
+            if (!event.sourceEvent.target) return;
+            const menu = (event.sourceEvent.target as SVGElement).parentNode as SVGGElement;
+            this.showNodeMenu(d as GraphNode, d3.select(menu));
+          }) as any,
+      );
   };
 
   // Adds an event listener to mouseover node callback
@@ -720,32 +751,33 @@ export default class {
       });
   };
 
-  registerDragNodeEvent = () => {
-    this.nodeSvg
-      .selectAll(nodeClassName)
-      .data(this.nodes)
+  // ############################################
+  // Other
+  // ############################################
 
-      .call(
-        d3
-          .drag()
-          .on('drag', (event, value) => {
-            const node = value as GraphNode;
-            this.lockNodePosition(
-              event.sourceEvent.target.parentNode,
-              node,
-              event.x,
-              event.y,
-              !node.isLocked!,
-            );
-            this.forceSimulation.alpha(0.5);
-            this.forceSimulation.restart();
-          })
-          .on('end', (event, d) => {
-            if (!event.sourceEvent.target) return;
-            const menu = (event.sourceEvent.target as SVGElement).parentNode as SVGGElement;
-            this.showMenuAtNode(d as GraphNode, d3.select(menu));
-          }) as any,
-      );
+  // Called by the Graph component to change the callback called when a node is expanded
+  updateOnExpandCallback = (callback: (node: GraphNode) => void) => {
+    this.onExpandNode = callback;
+  };
+
+  getNodeMenuPosition = () => {
+    const yPos = -nodeRadius * nodeHighlightRadiusMultiplier - 15 / this.scale;
+    return { x: 0, y: yPos, scale: 1 / this.scale };
+  };
+
+  getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
+
+  getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
+
+  // ############################################
+  // Maybe move to external file
+  // ############################################
+
+  // can be moved if scale is paramenter
+  getEdgeLabelOpacity = () => {
+    if (this.scale >= 1) return 1;
+    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
+    return 0;
   };
 
   /*
