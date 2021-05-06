@@ -1,3 +1,17 @@
+/*
+  This file handles the entire simulation and rendering of the ontology graph.
+  The entire state is managed by an ordinary JavaScript class, i.e. not a React component, as the only DOM element
+  is an SVG, and updates to the state of a React component takes a full frame to update which does not suffice for such
+  a complex set of data.
+
+  However, an issue with such a design is that the code cannot be easily modularized into separate files, because we 
+  rely on private variables stored on an instance of the GraphSimulation class. Throughout the project, this has
+  resulted in a rather large file with around 700 lines of code. This file may be difficult to grasp. We have added
+  explanatory comments where necessary, and moved functions to external files whenever possible. Additionally, the 
+  methods have been ordered and grouped, with a 3-line header comment above each category. Hopefully, this simplifies
+  the code!
+*/
+
 import * as d3 from 'd3';
 import * as common from '../common/d3';
 import * as helper from '../common/graphSimulationHelpers';
