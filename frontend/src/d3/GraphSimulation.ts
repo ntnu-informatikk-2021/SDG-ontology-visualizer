@@ -1,19 +1,11 @@
 import * as d3 from 'd3';
-import {
-  changeColorBasedOnType,
-  createEdgeLabelText,
-  getRotationAndPosition,
-  makePredicateUnique,
-  mapNodeToGraphNodeAtDefaultPosition,
-  mapOntologyToGraphEdge,
-  mapOntologyToNonClickedGraphNode,
-  mergeParallelEdges,
-  removeDuplicates,
-  removingNodeWillMakeGraphEmpty,
-} from '../common/d3';
+import * as common from '../common/d3';
 import { nextFrame, normalizeScale } from '../common/other';
 import { setError } from '../state/reducers/apiErrorReducer';
 import reduxStore from '../state/store';
+import FpsCounter from '../utils/FpsCounter';
+import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
+import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 import {
   CenterForce,
   D3Edge,
@@ -22,9 +14,6 @@ import {
   GraphNodeFilter,
   LinkForce,
 } from '../types/d3/simulation';
-import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
-import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
-import FpsCounter from '../utils/FpsCounter';
 
 const nodeClassName = '.node';
 const nodeRadius = 25;
@@ -47,7 +36,7 @@ const minScale = 0.4;
 const maxScale = 5;
 
 export default class {
-  private readonly forceSimulation: ForceSimulation; // force between nodes
+  private readonly forceSimulation: ForceSimulation;
   private readonly svg: MainSvgSelection;
   private readonly nodeSvg: SubSvgSelection;
   private readonly edgeSvg: SubSvgSelection;
@@ -102,7 +91,7 @@ export default class {
 
   removeNode = (node: GraphNode) => {
     // throw an error if removing this node would make the graph empty
-    if (removingNodeWillMakeGraphEmpty(node, this.edges)) {
+    if (common.removingNodeWillMakeGraphEmpty(node, this.edges)) {
       reduxStore.dispatch(setError(new Error('Oops, this would remove all nodes from the graph')));
       return;
     }
@@ -228,14 +217,14 @@ export default class {
     if (ontologies.length === 0 || !clickedNode) return;
 
     this.unfilteredNodes = this.unfilteredNodes
-      .concat(ontologies.map(mapOntologyToNonClickedGraphNode(clickedNode)))
-      .filter(removeDuplicates)
-      .map(mapNodeToGraphNodeAtDefaultPosition(clickedNode.x, clickedNode.y));
+      .concat(ontologies.map(common.mapOntologyToNonClickedGraphNode(clickedNode)))
+      .filter(common.removeDuplicates)
+      .map(common.mapNodeToGraphNodeAtDefaultPosition(clickedNode.x, clickedNode.y));
 
     this.unfilteredEdges = this.unfilteredEdges
-      .concat(ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge))
-      .filter(removeDuplicates)
-      .filter(mergeParallelEdges);
+      .concat(ontologies.map(common.makePredicateUnique).map(common.mapOntologyToGraphEdge))
+      .filter(common.removeDuplicates)
+      .filter(common.mergeParallelEdges);
 
     this.redrawGraphWithFilter();
   };
@@ -264,14 +253,14 @@ export default class {
           .attr('stroke-width', edgeWidth);
         // Label from node A to node B
         g.append('text')
-          .text((edge) => createEdgeLabelText(edge.sourceToTarget, false))
+          .text((edge) => common.createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('dominant-baseline', 'text-after-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
         // Label from node B to node A
         g.append('text')
-          .text((edge) => createEdgeLabelText(edge.targetToSource, true))
+          .text((edge) => common.createEdgeLabelText(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
           .attr('dominant-baseline', 'text-before-edge')
           .attr('pointer-events', 'none')
@@ -488,7 +477,7 @@ export default class {
         const g = enter.append('g');
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) => changeColorBasedOnType(node.type))
+          .attr('fill', (node) => common.changeColorBasedOnType(node.type))
           .attr('stroke', '#aaa')
           .on('click', (event: PointerEvent, node) => {
             if (!event.target) return;
@@ -564,25 +553,25 @@ export default class {
     // If FPS is low, skip some frames for edge label translations, as these are by far the most demanding
     if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return;
     g.selectChild(this.selectEdgeLabel1).each(function (edge) {
-      const position = getRotationAndPosition(edge);
+      const position = common.getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
       thisEdge.attr(
         'transform',
         `translate(${[position.x, position.y]}), rotate(${position.degree})`,
       );
-      const text = createEdgeLabelText(edge.sourceToTarget, position.flip);
+      const text = common.createEdgeLabelText(edge.sourceToTarget, position.flip);
       if (thisEdge.text() !== text) {
         thisEdge.text(text);
       }
     });
     g.selectChild(this.selectEdgeLabel2).each(function (edge) {
-      const position = getRotationAndPosition(edge);
+      const position = common.getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
       thisEdge.attr(
         'transform',
         `translate(${[position.x, position.y]}), rotate(${position.degree})`,
       );
-      const text = createEdgeLabelText(edge.targetToSource, !position.flip);
+      const text = common.createEdgeLabelText(edge.targetToSource, !position.flip);
       if (thisEdge.text() !== text) {
         thisEdge.text(text);
       }
