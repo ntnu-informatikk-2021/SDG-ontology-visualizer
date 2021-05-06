@@ -52,7 +52,7 @@ const Graph: React.FC<GraphProps> = ({
   };
 
   useEffect(() => {
-    if (simulation) simulation.updateOnClickCallback(onExpandNode);
+    if (simulation) simulation.updateOnExpandCallback(onExpandNode);
   }, [onExpandNode]);
 
   useEffect(() => {

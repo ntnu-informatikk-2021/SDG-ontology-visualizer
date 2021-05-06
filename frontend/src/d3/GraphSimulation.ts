@@ -95,14 +95,13 @@ export default class {
     this.fpsCounter = new FpsCounter();
   }
 
-  // function for updating when expaning graph?
-  updateOnClickCallback = (callback: (node: GraphNode) => void) => {
+  // Called by the Graph component to change the callback called when a node is expanded
+  updateOnExpandCallback = (callback: (node: GraphNode) => void) => {
     this.onExpandNode = callback;
   };
 
-  // function for close a node
   removeNode = (node: GraphNode) => {
-    // make sure the graph's not empty
+    // throw an error if removing this node would make the graph empty
     if (removingNodeWillMakeGraphEmpty(node, this.edges)) {
       reduxStore.dispatch(setError(new Error('Oops, this would remove all nodes from the graph')));
       return;
@@ -117,7 +116,6 @@ export default class {
     this.redrawGraphWithFilter();
   };
 
-  // remove all nodes no longer connected
   removeDisconnectedNodes = () => {
     this.nodes = this.nodes.filter((node) =>
       this.edges.some((edge) => {
@@ -127,7 +125,7 @@ export default class {
       }),
     );
   };
-  // closes all edges no longer connected
+
   removeDisconnectedEdges = () => {
     this.edges = this.edges.filter((edge) => {
       const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
@@ -139,7 +137,6 @@ export default class {
     });
   };
 
-  // This is for updating the graph when applying filter??
   redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.edges = this.unfilteredEdges.filter(this.edgeFilter);
@@ -149,18 +146,16 @@ export default class {
     this.drawGraph();
   };
 
-  // function for setting a node filter
   setNodeFilter = (filter: GraphNodeFilter) => {
     this.nodeFilter = filter;
     this.redrawGraphWithFilter();
   };
-  // function for setting an edge filter
+
   setEdgeFilter = (filter: GraphEdgeFilter) => {
     this.edgeFilter = filter;
     this.redrawGraphWithFilter();
   };
 
-  // Make zooming available in the grapgh
   initZoom = () => {
     this.svg.call(
       d3
@@ -180,13 +175,17 @@ export default class {
         .scaleExtent([minScale, maxScale]) as any,
     );
   };
-  // These functions makes the grapgh more userfiendly. // Or should we say something else??
+
+  // Repulsive forces between nodes. High strength to prevent cluttered nodes.
   chargeForce = () => d3.forceManyBody().strength(-100);
 
+  // Force to make sure the initial graph spawns in the middle of the screen.
   centerForce = () => d3.forceCenter(this.width / 2, this.height / 2);
 
+  // A hard collider to prevent overlapping nodes.
   collisionForce = () => d3.forceCollide().radius(nodeRadius * 2);
 
+  // Repulsion force between connected nodes.
   linkForce = () =>
     d3
       .forceLink()
@@ -194,7 +193,6 @@ export default class {
       .links(this.edges)
       .distance(edgeDistance);
 
-  // function for initiating the force simulation
   initForceSimulation = () =>
     d3
       .forceSimulation(this.nodes)
@@ -206,22 +204,26 @@ export default class {
       .alpha(0.9)
       .velocityDecay(0.75);
 
-  // function for resetting force simulation
+  // Called whenever nodes and/or edges are added or removed. Applies the new state to the force simulation
   resetForceSimulation = () => {
     this.forceSimulation.nodes(this.nodes);
+
+    // Disable center force after graph has been initialized, to prevent drifting.
     const centerForce = this.forceSimulation.force<CenterForce>('center');
     if (centerForce) {
       centerForce.strength(0);
     }
+
+    // update the link force with the new edges.
     const linkForce = this.forceSimulation.force<LinkForce>('link');
     if (linkForce) {
       linkForce.links(this.edges);
     }
+
     this.forceSimulation.alpha(0.9);
     this.forceSimulation.restart();
   };
 
-  // adds data from the database to the graph or fill the graph with nodes based on data relation??
   addData = (ontologies: Array<Ontology>, clickedNode: GraphNode) => {
     if (ontologies.length === 0 || !clickedNode) return;
 
@@ -231,7 +233,6 @@ export default class {
       .map(mapNodeToGraphNodeAtDefaultPosition(clickedNode.x, clickedNode.y));
 
     this.unfilteredEdges = this.unfilteredEdges
-      // What does the line below do? (makePredicate Unique) what is it used for??
       .concat(ontologies.map(makePredicateUnique).map(mapOntologyToGraphEdge))
       .filter(removeDuplicates)
       .filter(mergeParallelEdges);
@@ -239,7 +240,6 @@ export default class {
     this.redrawGraphWithFilter();
   };
 
-  // function for drawing the graph
   drawGraph = () => {
     this.drawEdges();
     this.drawNodes();
@@ -252,26 +252,24 @@ export default class {
     });
   };
 
-  // function for drawing edges
   drawEdges = () => {
     this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
       .join((enter) => {
         const g = enter.append('g');
-        // line
         g.append('line')
           .attr('fill', 'none')
           .attr('stroke', edgeColor)
           .attr('stroke-width', edgeWidth);
-        // text from one node to the other
+        // Label from node A to node B
         g.append('text')
           .text((edge) => createEdgeLabelText(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('dominant-baseline', 'text-after-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
-        // text the other way
+        // Label from node B to node A
         g.append('text')
           .text((edge) => createEdgeLabelText(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
@@ -284,9 +282,7 @@ export default class {
       .attr('class', edgeClassName.substring(1)); // remove . before class name
   };
 
-  // function for making node menu button
   makeNodeMenuButton = (
-    // should maybe replace type any??
     menu: d3.Selection<SVGGElement, GraphNode, any, any>,
     x: number,
     onClick: (event: any) => void,
@@ -294,10 +290,8 @@ export default class {
   ): void => {
     const button = menu.append('g').attr('transform', `translate(${x}, 0)`);
     button
-      // circle button
       .append('circle')
       .on('click', onClick)
-      // highlights button on hover
       .on('mouseover', function highlightMenu() {
         d3.select(this).style('cursor', 'pointer').style('stroke', edgeHighlightColor);
       })
@@ -311,7 +305,6 @@ export default class {
       .style('stroke-width', 2);
 
     button
-      // button image
       .append('image')
       .transition('200')
       .attr('width', nodeMenuBtnRadius * 2)
@@ -321,7 +314,6 @@ export default class {
       .attr('pointer-events', 'none');
   };
 
-  // function for displaying the node menu when clicking a node
   showMenuAtNode = async (
     node: GraphNode,
     g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
@@ -349,7 +341,7 @@ export default class {
       150,
     );
 
-    // remove
+    // remove button
     setTimeout(
       () =>
         this.makeNodeMenuButton(
@@ -361,7 +353,7 @@ export default class {
       100,
     );
 
-    // unlock
+    // unlock button
     setTimeout(
       () =>
         this.makeNodeMenuButton(
@@ -369,15 +361,15 @@ export default class {
           -nodeMenuBtnRadius * 1.25,
           (event) => {
             const nodeContainer = event.target.parentNode.parentNode.parentNode;
-            if (node.isLocked) this.unlockNode(nodeContainer, node);
-            else this.lockNode(nodeContainer, node, node.x!, node.y!, true);
+            if (node.isLocked) this.unlockNodePosition(nodeContainer, node);
+            else this.lockNodePosition(nodeContainer, node, node.x!, node.y!, true);
           },
           `icons/${node.isLocked ? 'unlockNode' : 'lockNode'}.svg`,
         ),
       50,
     );
 
-    // detail
+    // information button
     this.makeNodeMenuButton(
       menuG,
       -nodeMenuBtnRadius * 3.75,
@@ -389,7 +381,6 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  // function for toggle labels on edges withing the graph
   toggleEdgeLabelsVisibility = () => {
     this.edgeLabelsVisible = !this.edgeLabelsVisible;
 
@@ -411,12 +402,18 @@ export default class {
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
-  // function for unlocking all locked nodes
+  /*
+    Wrapper function for localUnlockAllNodes. This is necessary because the function is called from Graph component,
+    which does not have access to the parameters required.
+    It was necessary to pass the unlockNode callback because localUnlockAllNodes calls a function on each node which
+    uses 'this' to select the current DOM element. This is possible because the 'function' keyword, unlike arrow
+    functions, rebind 'this' from the GraphSimulation object to the caller of the function, i.e. the DOM element.
+    However, as 'this' no longer represents the GraphSimulation object, we cannot use 'this.unlockNode'.
+  */
   unlockAllNodes = () => {
-    this.localUnlockAllNodes(this.unlockNode);
+    this.localUnlockAllNodes(this.unlockNodePosition);
   };
 
-  // What does it mean this is local??
   localUnlockAllNodes = (
     unlockNode: (
       nodeContainer: SVGGElement,
@@ -436,14 +433,15 @@ export default class {
         }
         unlockNode(nodeContainer, node, false);
       });
+
+    // Only restart the force simulation if a change has actually been made to the nodes or edges.
     if (hasUpdatedNode) {
       this.forceSimulation.alpha(0.5);
       this.forceSimulation.restart();
     }
   };
 
-  // function for unlocking a node with the menubar?
-  unlockNode = (
+  unlockNodePosition = (
     nodeContainer: SVGGElement,
     node: GraphNode,
     shouldReRenderGraph: boolean = true,
@@ -459,8 +457,7 @@ export default class {
     }
   };
 
-  // to my understanding this only locks a node with the node menu and not when you drag a node??
-  lockNode = (
+  lockNodePosition = (
     nodeContainer: SVGGElement,
     node: GraphNode,
     x: number,
@@ -476,7 +473,6 @@ export default class {
     }
   };
 
-  // function removes the node menu
   removeNodeMenu = () => {
     if (this.nodeMenu) {
       this.nodeMenu.remove();
@@ -484,14 +480,12 @@ export default class {
     }
   };
 
-  // function for drawing nodes
   drawNodes = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes, (node) => (node as GraphNode).id)
       .join((enter) => {
         const g = enter.append('g');
-        // node circle
         g.append('circle')
           .attr('r', nodeRadius)
           .attr('fill', (node) => changeColorBasedOnType(node.type))
@@ -501,7 +495,8 @@ export default class {
             const menu = (event.target as SVGElement).parentNode as SVGGElement;
             this.showMenuAtNode(node, d3.select(menu));
           });
-        // image
+        // Lock icon. The icon is always in the DOM, just with 0 opacity when hidden, to prevent unnecessary loading
+        // of files and because otherwise the whole DOM would be scanned when toggling a single node's position.
         g.append('image')
           .attr('width', nodeRadius * 0.8)
           .attr('height', nodeRadius * 0.8)
@@ -510,7 +505,6 @@ export default class {
           .attr('pointer-events', 'none')
           .style('opacity', (node) => (node.isLocked ? 0.7 : 0))
           .attr('fill', '#f00');
-        // text
         g.append('text')
           .text((node) => node.name)
           .attr('text-anchor', 'middle')
@@ -520,7 +514,7 @@ export default class {
           .each(function () {
             const text = d3.select(this).text();
             const words = text.split(' ');
-            // text on newline if too long
+            // split the text into two lines if it's more than 20 characters
             if (text.length > 20 && words.length > 2) {
               const firstLine = words.reduce((acc, curr) =>
                 acc.length + curr.length > 20 ? acc : `${acc} ${curr}`,
@@ -543,14 +537,13 @@ export default class {
       })
       .attr('class', nodeClassName.substring(1)); // remove . from class name
 
-    // highligting on hover
     this.registerMouseoverNodeEvent(this.edgeSvg, this.edges);
     this.registerMouseoutNodeEvent(this.edgeSvg, this.edges);
     this.registerDragNodeEvent();
   };
 
-  // function for updating edge positions
   updateEdgePositions = () => {
+    // Translate the DOM element
     const g = this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
@@ -561,15 +554,15 @@ export default class {
             (edge.source.y + edge.target.y) / 2
           })`,
       );
-    // child for selected node in graph??
+    // Update the positions in the simulation
     g.selectChild(this.selectNodeOrEdge)
       .attr('x1', (edge: any) => edge.source.x - (edge.source.x + edge.target.x) / 2)
       .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
 
-    if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return; // fps on graph animaiton?
-    // childs first edge
+    // If FPS is low, skip some frames for edge label translations, as these are by far the most demanding
+    if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return;
     g.selectChild(this.selectEdgeLabel1).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
@@ -582,7 +575,6 @@ export default class {
         thisEdge.text(text);
       }
     });
-    // childs second edge
     g.selectChild(this.selectEdgeLabel2).each(function (edge) {
       const position = getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
@@ -597,7 +589,6 @@ export default class {
     });
   };
 
-  // function for updating node positions
   updateNodePositions = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -605,24 +596,22 @@ export default class {
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
   };
 
-  // function for getting opacity on edgelabel
   getEdgeLabelOpacity = () => {
     if (this.scale >= 1) return 1;
     if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
     return 0;
   };
 
-  // function for getting node menu position
   getNodeMenuPosition = () => {
     const yPos = -nodeRadius * nodeHighlightRadiusMultiplier - 15 / this.scale;
     return { x: 0, y: yPos, scale: 1 / this.scale };
   };
-  // functions for getting node and edge label font size
+
   getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
 
   getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
 
-  // Don't understand what exacly this function do?? // function used when zooming and drawing the graph
+  // Applies zoom to all the elements of the graph
   scaleGraph = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
     nodes.selectChild(this.selectNodeLabel).attr('font-size', this.getNodeLabelFontSize());
@@ -647,7 +636,7 @@ export default class {
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
-  // function for highlighting when hovering a node??
+  // Adds an event listener to mouseover node callback
   registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -655,12 +644,14 @@ export default class {
       .selectChild(this.selectNodeOrEdge)
       .on('mouseover', (event: MouseEvent, node) => {
         if (!event.target) return;
+        // increase node radius
         d3.select(event.target as SVGCircleElement)
           .transition('500')
           .attr('r', nodeRadius * nodeHighlightRadiusMultiplier)
           .attr('stroke-width', 3 / this.scale)
           .attr('stroke', edgeHighlightColor);
 
+        // make ingoing and outgoing edges and edge labels bold
         const graphEdges = edgeSvg
           .selectAll(edgeClassName)
           .data(edges)
@@ -674,20 +665,17 @@ export default class {
                 : edge.target === node.id),
           );
         graphEdges
-          // graphedge on node or edge
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', (edgeWidth * 1.5) / this.scale)
           .attr('stroke', edgeHighlightColor);
         graphEdges
-          // graphedge on source edge
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
           )
           .selectChild(this.selectEdgeLabel1)
           .attr('font-weight', 'bold');
         graphEdges
-          // grapedge on targe edge
           .filter((edge) =>
             typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
           )
@@ -696,7 +684,7 @@ export default class {
       });
   };
 
-  // function for un-highligthing when leaving hovered node
+  // Adds an event listener to mouseout node callback
   registerMouseoutNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -704,11 +692,13 @@ export default class {
       .selectChild(this.selectNodeOrEdge)
       .on('mouseout', (event: MouseEvent, node) => {
         if (!event.target) return;
+        // reset radius
         d3.select(event.target as SVGCircleElement)
           .transition('500')
           .attr('r', nodeRadius)
           .attr('stroke-width', 0);
 
+        // reset edge and edge labels boldness
         const graphEdges = edgeSvg
           .selectAll(edgeClassName)
           .data(edges)
@@ -722,20 +712,17 @@ export default class {
                 : edge.target === node.id),
           );
         graphEdges
-          // graphedge on node or edge
           .selectChild(this.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', edgeWidth / this.scale)
           .attr('stroke', edgeColor);
         graphEdges
-          // graphedge on source edge
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
           )
           .selectChild(this.selectEdgeLabel1)
           .attr('font-weight', 'normal');
         graphEdges
-          // graphnode on targe edge
           .filter((edge) =>
             typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
           )
@@ -744,7 +731,6 @@ export default class {
       });
   };
 
-  // function for register when dragging a node
   registerDragNodeEvent = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
@@ -755,7 +741,7 @@ export default class {
           .drag()
           .on('drag', (event, value) => {
             const node = value as GraphNode;
-            this.lockNode(
+            this.lockNodePosition(
               event.sourceEvent.target.parentNode,
               node,
               event.x,
@@ -772,16 +758,22 @@ export default class {
           }) as any,
       );
   };
-  // what are these used for??
-  selectNodeOrEdge = (_: any, index: number) => index === 0;
 
+  /*
+    Simple functions to select specific elements in the DOM. For example, a node contains a circle, label and lock icon.
+    Because these are just selected from the DOM, they must be selected based on their sibling index in the DOM. To
+    avoid having to remember all the indices, these functions were made.
+  */
+  selectNodeOrEdge = (_: any, index: number) => index === 0;
   selectEdgeLabel1 = (_: any, index: number) => index === 1;
   selectEdgeLabel2 = (_: any, index: number) => index === 2;
-
   selectNodeLockIcon = (_: any, index: number) => index === 1;
   selectNodeLabel = (_: any, index: number) => index === 2;
 
-  // function for skipping frames (performance)??
+  /*
+    Determines whether edge labels should be rendered. As edge labels are by far the most demanding part of the render
+    cycle, the labels skip frames if the user's FPS is low.
+  */
   shouldRenderEdgeLabel = (): boolean => {
     const { fps } = this.fpsCounter;
     let frameSkips = 1;
