@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import * as common from '../common/d3';
-import { nextFrame, normalizeScale } from '../common/other';
+import * as helper from '../common/graphSimulationHelpers';
+import { nextFrame } from '../common/other';
 import { setError } from '../state/reducers/apiErrorReducer';
 import reduxStore from '../state/store';
 import FpsCounter from '../utils/FpsCounter';
@@ -256,7 +257,11 @@ export default class {
     await nextFrame();
     if (!g) return;
     this.hideNodeMenu();
-    const menuPos = this.getNodeMenuPosition();
+    const menuPos = helper.getNodeMenuPosition(
+      nodeRadius,
+      nodeHighlightRadiusMultiplier,
+      this.scale,
+    );
     const menuG = g
       .append('g')
       .attr('class', 'menu')
@@ -328,8 +333,8 @@ export default class {
 
     const edges = this.edgeSvg.selectAll(edgeClassName);
 
-    const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
-    const edgeLabel2 = edges.selectChild(this.selectEdgeLabel2);
+    const edgeLabel1 = edges.selectChild(helper.selectEdgeLabel1);
+    const edgeLabel2 = edges.selectChild(helper.selectEdgeLabel2);
 
     if (!this.edgeLabelsVisible) {
       edgeLabel1.style('opacity', 0);
@@ -337,8 +342,8 @@ export default class {
       return;
     }
 
-    const edgeLabelFontSize = this.getEdgeLabelFontSize();
-    const edgeLabelOpacity = this.getEdgeLabelOpacity();
+    const edgeLabelOpacity = helper.getEdgeLabelOpacity(this.scale);
+    const edgeLabelFontSize = helper.getEdgeLabelFontSize(fontSize, maxEdgeFontSize, this.scale);
 
     edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
@@ -419,15 +424,17 @@ export default class {
           })`,
       );
     // Update the positions in the simulation
-    g.selectChild(this.selectNodeOrEdge)
+    g.selectChild(helper.selectNodeOrEdge)
       .attr('x1', (edge: any) => edge.source.x - (edge.source.x + edge.target.x) / 2)
       .attr('y1', (edge: any) => edge.source.y - (edge.source.y + edge.target.y) / 2)
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
 
     // If FPS is low, skip some frames for edge label translations, as these are by far the most demanding
-    if (this.fpsCounter.fps < 60 && !this.shouldRenderEdgeLabel()) return;
-    g.selectChild(this.selectEdgeLabel1).each(function (edge) {
+    const { fps } = this.fpsCounter;
+    if (fps < 60 && !helper.shouldRenderEdgeLabel(fps, this.frameIndex)) return;
+    this.frameIndex = 0;
+    g.selectChild(helper.selectEdgeLabel1).each(function (edge) {
       const position = common.getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
       thisEdge.attr(
@@ -439,7 +446,7 @@ export default class {
         thisEdge.text(text);
       }
     });
-    g.selectChild(this.selectEdgeLabel2).each(function (edge) {
+    g.selectChild(helper.selectEdgeLabel2).each(function (edge) {
       const position = common.getRotationAndPosition(edge);
       const thisEdge = d3.select(this);
       thisEdge.attr(
@@ -553,7 +560,7 @@ export default class {
     n.fx = undefined;
     n.fy = undefined;
     n.isLocked = false;
-    d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0);
+    d3.select(nodeContainer).selectChild(helper.selectNodeLockIcon).style('opacity', 0);
     if (shouldReRenderGraph) {
       this.forceSimulation.alpha(0.5);
       this.forceSimulation.restart();
@@ -572,7 +579,7 @@ export default class {
     n.fy = y;
     n.isLocked = true;
     if (updateOpcity) {
-      d3.select(nodeContainer).selectChild(this.selectNodeLockIcon).style('opacity', 0.7);
+      d3.select(nodeContainer).selectChild(helper.selectNodeLockIcon).style('opacity', 0.7);
     }
   };
 
@@ -602,24 +609,30 @@ export default class {
   // Applies zoom to all the elements of the graph
   scaleGraph = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
-    nodes.selectChild(this.selectNodeLabel).attr('font-size', this.getNodeLabelFontSize());
-    nodes.selectChild(this.selectNodeOrEdge).attr('stroke-width', nodeStrokeWidth / this.scale);
+    nodes
+      .selectChild(helper.selectNodeLabel)
+      .attr('font-size', helper.getNodeLabelFontSize(this.scale, fontSize));
+    nodes.selectChild(helper.selectNodeOrEdge).attr('stroke-width', nodeStrokeWidth / this.scale);
 
     if (this.nodeMenu) {
-      const position = this.getNodeMenuPosition();
+      const position = helper.getNodeMenuPosition(
+        nodeRadius,
+        nodeHighlightRadiusMultiplier,
+        this.scale,
+      );
       this.nodeMenu.attr(
         'transform',
         `translate(${[position.x, position.y]}) scale(${position.scale})`,
       );
     }
     const edges = this.edgeSvg.selectAll(edgeClassName).data(this.edges);
-    const edgeSVGLine = edges.selectChild(this.selectNodeOrEdge);
+    const edgeSVGLine = edges.selectChild(helper.selectNodeOrEdge);
     edgeSVGLine.attr('stroke-width', edgeWidth / this.scale);
 
-    const edgeLabel1 = edges.selectChild(this.selectEdgeLabel1);
-    const edgeLabel2 = edges.selectChild(this.selectEdgeLabel2);
-    const edgeLabelFontSize = this.getEdgeLabelFontSize();
-    const edgeLabelOpacity = this.getEdgeLabelOpacity();
+    const edgeLabel1 = edges.selectChild(helper.selectEdgeLabel1);
+    const edgeLabel2 = edges.selectChild(helper.selectEdgeLabel2);
+    const edgeLabelOpacity = helper.getEdgeLabelOpacity(this.scale);
+    const edgeLabelFontSize = helper.getEdgeLabelFontSize(fontSize, maxEdgeFontSize, this.scale);
     edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
@@ -661,7 +674,7 @@ export default class {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .selectChild(this.selectNodeOrEdge)
+      .selectChild(helper.selectNodeOrEdge)
       .on('mouseover', (event: MouseEvent, node) => {
         if (!event.target) return;
         // increase node radius
@@ -685,7 +698,7 @@ export default class {
                 : edge.target === node.id),
           );
         graphEdges
-          .selectChild(this.selectNodeOrEdge)
+          .selectChild(helper.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', (edgeWidth * 1.5) / this.scale)
           .attr('stroke', edgeHighlightColor);
@@ -693,13 +706,13 @@ export default class {
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
           )
-          .selectChild(this.selectEdgeLabel1)
+          .selectChild(helper.selectEdgeLabel1)
           .attr('font-weight', 'bold');
         graphEdges
           .filter((edge) =>
             typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
           )
-          .selectChild(this.selectEdgeLabel2)
+          .selectChild(helper.selectEdgeLabel2)
           .attr('font-weight', 'bold');
       });
   };
@@ -709,7 +722,7 @@ export default class {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
-      .selectChild(this.selectNodeOrEdge)
+      .selectChild(helper.selectNodeOrEdge)
       .on('mouseout', (event: MouseEvent, node) => {
         if (!event.target) return;
         // reset radius
@@ -732,7 +745,7 @@ export default class {
                 : edge.target === node.id),
           );
         graphEdges
-          .selectChild(this.selectNodeOrEdge)
+          .selectChild(helper.selectNodeOrEdge)
           .transition('500')
           .attr('stroke-width', edgeWidth / this.scale)
           .attr('stroke', edgeColor);
@@ -740,13 +753,13 @@ export default class {
           .filter((edge) =>
             typeof edge.source === 'object' ? edge.source.id === node.id : edge.source === node.id,
           )
-          .selectChild(this.selectEdgeLabel1)
+          .selectChild(helper.selectEdgeLabel1)
           .attr('font-weight', 'normal');
         graphEdges
           .filter((edge) =>
             typeof edge.target === 'object' ? edge.target.id === node.id : edge.target === node.id,
           )
-          .selectChild(this.selectEdgeLabel2)
+          .selectChild(helper.selectEdgeLabel2)
           .attr('font-weight', 'normal');
       });
   };
@@ -758,52 +771,5 @@ export default class {
   // Called by the Graph component to change the callback called when a node is expanded
   updateOnExpandCallback = (callback: (node: GraphNode) => void) => {
     this.onExpandNode = callback;
-  };
-
-  getNodeMenuPosition = () => {
-    const yPos = -nodeRadius * nodeHighlightRadiusMultiplier - 15 / this.scale;
-    return { x: 0, y: yPos, scale: 1 / this.scale };
-  };
-
-  getEdgeLabelFontSize = () => Math.min(fontSize / this.scale, maxEdgeFontSize);
-
-  getNodeLabelFontSize = () => (this.scale <= 0.6 ? fontSize / 0.6 : fontSize / this.scale);
-
-  // ############################################
-  // Maybe move to external file
-  // ############################################
-
-  // can be moved if scale is paramenter
-  getEdgeLabelOpacity = () => {
-    if (this.scale >= 1) return 1;
-    if (this.scale > 0.9) return normalizeScale(this.scale, 0.9, 1);
-    return 0;
-  };
-
-  /*
-    Simple functions to select specific elements in the DOM. For example, a node contains a circle, label and lock icon.
-    Because these are just selected from the DOM, they must be selected based on their sibling index in the DOM. To
-    avoid having to remember all the indices, these functions were made.
-  */
-  selectNodeOrEdge = (_: any, index: number) => index === 0;
-  selectEdgeLabel1 = (_: any, index: number) => index === 1;
-  selectEdgeLabel2 = (_: any, index: number) => index === 2;
-  selectNodeLockIcon = (_: any, index: number) => index === 1;
-  selectNodeLabel = (_: any, index: number) => index === 2;
-
-  /*
-    Determines whether edge labels should be rendered. As edge labels are by far the most demanding part of the render
-    cycle, the labels skip frames if the user's FPS is low.
-  */
-  shouldRenderEdgeLabel = (): boolean => {
-    const { fps } = this.fpsCounter;
-    let frameSkips = 1;
-    if (fps < 15) frameSkips = 10;
-    else if (fps < 20) frameSkips = 6;
-    else if (fps < 30) frameSkips = 4;
-    else if (fps < 40) frameSkips = 2;
-    if (this.frameIndex < frameSkips) return false;
-    this.frameIndex = 0;
-    return true;
   };
 }
