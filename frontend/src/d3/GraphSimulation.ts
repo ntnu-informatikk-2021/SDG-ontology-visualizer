@@ -30,6 +30,10 @@ import {
   LinkForce,
 } from '../types/d3/simulation';
 
+// ############################################
+// Global Variables
+// ############################################
+
 const nodeClassName = '.node';
 const nodeRadius = 25;
 const nodeHighlightRadiusMultiplier = 1.2;
@@ -51,6 +55,9 @@ const minScale = 0.4;
 const maxScale = 5;
 
 export default class {
+  // ############################################
+  // Private Variables
+  // ############################################
   private readonly forceSimulation: ForceSimulation;
   private readonly svg: MainSvgSelection;
   private readonly nodeSvg: SubSvgSelection;
