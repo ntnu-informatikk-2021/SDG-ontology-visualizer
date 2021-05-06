@@ -1,5 +1,7 @@
 import Queue from './Queue';
 
+// Keeps track of the browser FPS by storing time stamps every animationFrame.
+// This is used to skip frames for specific parts of the graph if there are performance issues
 class FpsCounter {
   public fps: number;
 

@@ -1,3 +1,6 @@
+/* 
+  A simple Queue data structure, used for FpsCounter. Although a regular array would probably suffice, it just feels wrong to use arrays when we remove the elements from the start up to 60 times per second. Of course, JavaScript doesn't have support for Queues, so we made our own. 
+*/
 class Queue<T> {
   private queue: Array<T>;
   private maxLength: number;
