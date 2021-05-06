@@ -111,23 +111,23 @@ export default class {
   // ############################################
 
   // Repulsive forces between nodes. High strength to prevent cluttered nodes.
-  chargeForce = () => d3.forceManyBody().strength(-100);
+  private chargeForce = () => d3.forceManyBody().strength(-100);
 
   // Force to make sure the initial graph spawns in the middle of the screen.
-  centerForce = () => d3.forceCenter(this.width / 2, this.height / 2);
+  private centerForce = () => d3.forceCenter(this.width / 2, this.height / 2);
 
   // A hard collider to prevent overlapping nodes.
-  collisionForce = () => d3.forceCollide().radius(nodeRadius * 2);
+  private collisionForce = () => d3.forceCollide().radius(nodeRadius * 2);
 
   // Repulsion force between connected nodes.
-  linkForce = () =>
+  private linkForce = () =>
     d3
       .forceLink()
       .id((node) => (node as GraphNode).id)
       .links(this.edges)
       .distance(edgeDistance);
 
-  initForceSimulation = () =>
+  private initForceSimulation = () =>
     d3
       .forceSimulation(this.nodes)
       .force('charge', this.chargeForce())
@@ -139,7 +139,7 @@ export default class {
       .velocityDecay(0.75);
 
   // Called whenever nodes and/or edges are added or removed. Applies the new state to the force simulation
-  resetForceSimulation = () => {
+  private resetForceSimulation = () => {
     this.forceSimulation.nodes(this.nodes);
 
     // Disable center force after graph has been initialized, to prevent drifting.
@@ -178,7 +178,7 @@ export default class {
     this.redrawGraphWithFilter();
   };
 
-  removeNode = (node: GraphNode) => {
+  private removeNode = (node: GraphNode) => {
     // throw an error if removing this node would make the graph empty
     if (common.removingNodeWillMakeGraphEmpty(node, this.edges)) {
       reduxStore.dispatch(setError(new Error('Oops, this would remove all nodes from the graph')));
@@ -194,7 +194,7 @@ export default class {
     this.redrawGraphWithFilter();
   };
 
-  removeDisconnectedNodes = () => {
+  private removeDisconnectedNodes = () => {
     this.nodes = this.nodes.filter((node) =>
       this.edges.some((edge) => {
         const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
@@ -204,7 +204,7 @@ export default class {
     );
   };
 
-  removeDisconnectedEdges = () => {
+  private removeDisconnectedEdges = () => {
     this.edges = this.edges.filter((edge) => {
       const source = typeof edge.source === 'string' ? edge.source : edge.source.id;
       const target = typeof edge.target === 'string' ? edge.target : edge.target.id;
@@ -229,7 +229,7 @@ export default class {
   // Rendering
   // ############################################
 
-  drawGraph = () => {
+  private drawGraph = () => {
     this.drawEdges();
     this.drawNodes();
     this.scaleGraph();
@@ -241,7 +241,7 @@ export default class {
     });
   };
 
-  drawEdges = () => {
+  private drawEdges = () => {
     this.edgeSvg
       .selectAll(edgeClassName)
       .data(this.edges)
@@ -271,7 +271,7 @@ export default class {
       .attr('class', edgeClassName.substring(1)); // remove . before class name
   };
 
-  showNodeMenu = async (
+  private showNodeMenu = async (
     node: GraphNode,
     g: d3.Selection<SVGGElement, GraphNode, null, undefined>,
   ) => {
@@ -342,7 +342,7 @@ export default class {
     this.nodeMenu = menuG;
   };
 
-  hideNodeMenu = () => {
+  private hideNodeMenu = () => {
     if (this.nodeMenu) {
       this.nodeMenu.remove();
       this.nodeMenu = undefined;
@@ -370,7 +370,7 @@ export default class {
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
   };
 
-  drawNodes = () => {
+  private drawNodes = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes, (node) => (node as GraphNode).id)
@@ -432,7 +432,7 @@ export default class {
     this.registerDragNodeEvent();
   };
 
-  updateEdgePositions = () => {
+  private updateEdgePositions = () => {
     // Translate the DOM element
     const g = this.edgeSvg
       .selectAll(edgeClassName)
@@ -481,14 +481,14 @@ export default class {
     });
   };
 
-  updateNodePositions = () => {
+  private updateNodePositions = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
       .attr('transform', (node) => `translate(${node.x!},${node.y!})`);
   };
 
-  drawNodeMenuButton = (
+  private drawNodeMenuButton = (
     menu: d3.Selection<SVGGElement, GraphNode, any, any>,
     x: number,
     onClick: (event: any) => void,
@@ -520,7 +520,7 @@ export default class {
       .attr('pointer-events', 'none');
   };
 
-  redrawGraphWithFilter = () => {
+  private redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.edges = this.unfilteredEdges.filter(this.edgeFilter);
     this.removeDisconnectedNodes();
@@ -545,7 +545,7 @@ export default class {
     this.localUnlockAllNodes(this.unlockNodePosition);
   };
 
-  localUnlockAllNodes = (
+  private localUnlockAllNodes = (
     unlockNode: (
       nodeContainer: SVGGElement,
       node: GraphNode,
@@ -572,7 +572,7 @@ export default class {
     }
   };
 
-  unlockNodePosition = (
+  private unlockNodePosition = (
     nodeContainer: SVGGElement,
     node: GraphNode,
     shouldReRenderGraph: boolean = true,
@@ -588,7 +588,7 @@ export default class {
     }
   };
 
-  lockNodePosition = (
+  private lockNodePosition = (
     nodeContainer: SVGGElement,
     node: GraphNode,
     x: number,
@@ -607,7 +607,7 @@ export default class {
   // ############################################
   // Scale & Zoom
   // ############################################
-  initZoom = () => {
+  private initZoom = () => {
     this.svg.call(
       d3
         .zoom()
@@ -628,7 +628,7 @@ export default class {
   };
 
   // Applies zoom to all the elements of the graph
-  scaleGraph = () => {
+  private scaleGraph = () => {
     const nodes = this.nodeSvg.selectAll(nodeClassName).data(this.nodes);
     nodes
       .selectChild(helper.selectNodeLabel)
@@ -662,7 +662,7 @@ export default class {
   // Event Listeners
   // ############################################
 
-  registerDragNodeEvent = () => {
+  private registerDragNodeEvent = () => {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
@@ -691,7 +691,10 @@ export default class {
   };
 
   // Adds an event listener to mouseover node callback
-  registerMouseoverNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
+  private registerMouseoverNodeEvent = (
+    edgeSvg: SubSvgSelection,
+    edges: Array<D3Edge | GraphEdge>,
+  ) => {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
@@ -739,7 +742,10 @@ export default class {
   };
 
   // Adds an event listener to mouseout node callback
-  registerMouseoutNodeEvent = (edgeSvg: SubSvgSelection, edges: Array<D3Edge | GraphEdge>) => {
+  private registerMouseoutNodeEvent = (
+    edgeSvg: SubSvgSelection,
+    edges: Array<D3Edge | GraphEdge>,
+  ) => {
     this.nodeSvg
       .selectAll(nodeClassName)
       .data(this.nodes)
