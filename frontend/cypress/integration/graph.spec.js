@@ -39,6 +39,7 @@ describe('Graph tests', () => {
     cy.contains('h2', 'Trygghet og beredskap');
   });
   it('Click show subgoals and check for subgoal nodes', () => {
+    cy.contains('button', 'Vis').click();
     cy.contains('span', 'Vis delmål').parent().click();
     cy.contains('text', '1.b');
   });
