@@ -13,7 +13,14 @@ const ShowDropdown: React.FC<ShowDropdownProps> = ({
 }: ShowDropdownProps) => (
   <Box d={[null, null, null, 'flex', 'none']}>
     <Menu closeOnSelect={false} closeOnBlur autoSelect={false}>
-      <MenuButton as={Button} size="sm" color="cyan.700" minW="4em" rightIcon={<ChevronDownIcon />}>
+      <MenuButton
+        as={Button}
+        size="sm"
+        bg="white"
+        color="cyan.700"
+        minW="4em"
+        rightIcon={<ChevronDownIcon />}
+      >
         Vis
       </MenuButton>
       <MenuList bg="cyan.700">

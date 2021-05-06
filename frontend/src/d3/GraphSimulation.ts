@@ -349,9 +349,12 @@ export default class {
     }
   };
 
-  toggleEdgeLabelsVisibility = () => {
-    this.edgeLabelsVisible = !this.edgeLabelsVisible;
+  toggleEdgeLabelsVisibility = (toggle: boolean) => {
+    this.edgeLabelsVisible = toggle;
+    this.drawEdgeLabels();
+  };
 
+  drawEdgeLabels = () => {
     const edges = this.edgeSvg.selectAll(edgeClassName);
 
     const edgeLabel1 = edges.selectChild(helper.selectEdgeLabel1);
@@ -656,6 +659,7 @@ export default class {
     const edgeLabelFontSize = helper.getEdgeLabelFontSize(fontSize, maxEdgeFontSize, this.scale);
     edgeLabel1.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
     edgeLabel2.attr('font-size', edgeLabelFontSize).style('opacity', edgeLabelOpacity);
+    this.drawEdgeLabels();
   };
 
   // ############################################

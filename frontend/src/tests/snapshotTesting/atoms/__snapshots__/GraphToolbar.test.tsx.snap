@@ -75,7 +75,7 @@ exports[`renders when there are no items 1`] = `
       aria-controls="menu-list-6"
       aria-expanded={false}
       aria-haspopup="menu"
-      className="chakra-button chakra-menu__menu-button css-1o9wlf7"
+      className="chakra-button chakra-menu__menu-button css-4jegua"
       id="menu-button-6"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -397,7 +397,7 @@ exports[`renders when there are no items 1`] = `
     aria-controls="menu-list-11"
     aria-expanded={false}
     aria-haspopup="menu"
-    className="chakra-button chakra-menu__menu-button css-rxlm1z"
+    className="chakra-button chakra-menu__menu-button css-1li9p89"
     id="menu-button-11"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -407,7 +407,7 @@ exports[`renders when there are no items 1`] = `
       className="css-a9hmjk"
     >
       Positive 
-      korrelasjoner
+      virkninger
     </span>
     <span
       className="chakra-button__icon css-1oeb2oe"
@@ -719,7 +719,7 @@ exports[`renders when there are no items 1`] = `
     aria-controls="menu-list-16"
     aria-expanded={false}
     aria-haspopup="menu"
-    className="chakra-button chakra-menu__menu-button css-rxlm1z"
+    className="chakra-button chakra-menu__menu-button css-1li9p89"
     id="menu-button-16"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -729,7 +729,7 @@ exports[`renders when there are no items 1`] = `
       className="css-a9hmjk"
     >
       Negative 
-      korrelasjoner
+      virkninger
     </span>
     <span
       className="chakra-button__icon css-1oeb2oe"
@@ -1038,7 +1038,7 @@ exports[`renders when there are no items 1`] = `
     </div>
   </div>
   <button
-    className="chakra-button css-1xkasj5"
+    className="chakra-button css-12ne2ai"
     onClick={[Function]}
     type="button"
   >
