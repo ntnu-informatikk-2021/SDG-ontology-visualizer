@@ -10,6 +10,7 @@ type AllConnectionsProps = {
   onClick: (connection: Node, predicate: Array<string>) => void;
 };
 
+// Wrapper component to render contrbutions, tradeoffs and development areas, which reduces the lines required in DetailView
 const AllConnections: React.FC<AllConnectionsProps> = ({
   contributions,
   tradeOffs,

@@ -39,18 +39,37 @@ const Graph: React.FC<GraphProps> = ({
     simulation.addData(ontologies, node);
   };
 
+  // callback triggered when expand button is clicked in node menu
   const onExpandNode = (node: GraphNode): void => {
     loadData(node);
   };
 
+  // callback triggered when information button is clicked in node menu
   const onSelectNode = (node: GraphNode): void => {
     dispatch(selectNode(node));
   };
 
+  const createNewGraphSimulation = () => {
+    if (!svgRef || !svgRef.current || !selectedNode) return;
+    setSimulation(
+      new GraphSimulation(
+        svgRef.current,
+        0.4 * width,
+        0.4 * height,
+        selectedNode,
+        onExpandNode,
+        onSelectNode,
+        nodeFilter,
+        edgeFilter,
+      ),
+    );
+  };
+
   useEffect(() => {
-    if (simulation) simulation.updateOnClickCallback(onExpandNode);
+    if (simulation) simulation.updateOnExpandCallback(onExpandNode);
   }, [onExpandNode]);
 
+  // Useeffect to initialize the graph simulation and to add more data as it is received from the API
   useEffect(() => {
     if (!svgRef || !svgRef.current) return;
     if (!selectedNode) {
@@ -58,18 +77,7 @@ const Graph: React.FC<GraphProps> = ({
       return;
     }
     if (!simulation) {
-      setSimulation(
-        new GraphSimulation(
-          svgRef.current,
-          0.4 * width,
-          0.4 * height,
-          selectedNode,
-          onExpandNode,
-          onSelectNode,
-          nodeFilter,
-          edgeFilter,
-        ),
-      );
+      createNewGraphSimulation();
     } else if (!hasInitialized) {
       setHasInitialized(true);
       loadData(selectedNode);
@@ -88,7 +96,7 @@ const Graph: React.FC<GraphProps> = ({
   }, [unlockAllNodes]);
 
   useEffect(() => {
-    if (simulation) simulation.toggleEdgeLabelVisibility(edgeLabelsVisible);
+    if (simulation) simulation.toggleEdgeLabelsVisibility(edgeLabelsVisible);
   }, [edgeLabelsVisible]);
 
   return (

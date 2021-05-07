@@ -10,7 +10,6 @@ type ConnectionsProps = {
   color: string;
   handleOnClick: (selectedConnection: Node, predicate: Array<string>) => void;
 };
-
 const Connections: React.FC<ConnectionsProps> = ({
   connections,
   titles,

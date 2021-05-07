@@ -6,6 +6,7 @@ import { RootState } from '../../state/store';
 import { SubGoal } from '../../types/ontologyTypes';
 import SubGoalContainer from '../atoms/SubGoalContainer';
 
+// component containing all subgoal and its information, can be found below DetailView if selected node is a SDG
 const SubGoalsGrid = () => {
   const [subGoals, setSubGoals] = useState<Array<SubGoal>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);

@@ -1,12 +1,16 @@
+import React from 'react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Box, Button, Checkbox, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import React from 'react';
 
 type ShowDropdownProps = {
   onSubgoalFilter: () => void;
   onEdgeLabelsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const ShowDropdown = ({ onSubgoalFilter, onEdgeLabelsVisible }: ShowDropdownProps) => (
+
+const ShowDropdown: React.FC<ShowDropdownProps> = ({
+  onSubgoalFilter,
+  onEdgeLabelsVisible,
+}: ShowDropdownProps) => (
   <Box d={[null, null, null, 'flex', 'none']}>
     <Menu closeOnSelect={false} closeOnBlur autoSelect={false}>
       <MenuButton

@@ -25,7 +25,6 @@ const DetailView: React.FC = () => {
     description: '',
   });
   const [objectAnnotations, setObjectAnnotations] = useState<Annotation>();
-
   const [contributions, setContributions] = useState<Array<Node>>([]);
   const [tradeOffs, setTradeOffs] = useState<Array<Node>>([]);
   const [developmentAreas, setDevelopmentAreas] = useState<Array<Node>>([]);
@@ -37,18 +36,18 @@ const DetailView: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasInitialized, setHasInitialized] = useState(false);
 
+  /*
+    Promise wrappers for API calls. To use Promise.allSettled (in order to get parallel API calls) in promises with function parameters, the function calls had to be wrapped in an async function. While this clutters the code a bit, the alternative would be to make sequential API calls, effectively quadrupling the time API delay for the DetailView. 
+  */
   const setAnnotationsPromise = async (node: Node): Promise<void> => {
     setAnnotations(await getAnnotations(node.id));
   };
-
   const setContributionsPromise = async (node: Node): Promise<void> => {
     setContributions(await getContributions(node.id));
   };
-
   const setTradeOffsPromise = async (node: Node): Promise<void> => {
     setTradeOffs(await getTradeOff(node.id));
   };
-
   const setDevelopmentAreasPromise = async (node: Node): Promise<void> => {
     setDevelopmentAreas(await getDevelopmentArea(node.id));
   };

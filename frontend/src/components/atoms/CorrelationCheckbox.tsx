@@ -10,7 +10,6 @@ interface CheckboxProps {
   isPositive: boolean;
   index: number;
 }
-
 const CorrelationCheckbox: React.FC<CheckboxProps> = ({
   text,
   isPositive,

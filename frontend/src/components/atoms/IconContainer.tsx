@@ -1,5 +1,5 @@
-import { Image } from '@chakra-ui/react';
 import React from 'react';
+import { Image } from '@chakra-ui/react';
 import { SustainabilityGoal } from '../../types/ontologyTypes';
 import { MotionBox } from '../../types/react/componentTypes';
 

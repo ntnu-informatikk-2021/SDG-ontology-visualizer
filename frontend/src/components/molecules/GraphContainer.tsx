@@ -9,6 +9,7 @@ import Graph from '../atoms/Graph';
 import GraphToolBar from './GraphToolbar';
 import GraphDescriptions from './GraphDescriptions';
 
+// component wrapping the Graph, Graphtoolbar and GraphDescriptions. Also creates nodeFilter and edgeFilter callbacks
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);
   const [unlockNodes, setUnlockNodes] = useState<boolean>(false);
@@ -27,6 +28,7 @@ const GraphContainer: React.FC = () => {
     },
     [showSubgoals],
   );
+
   const edgeFilter = useCallback(
     (edge: D3Edge | GraphEdge): boolean => {
       if (!isWithinCorrelationLimit(edge, correlationFilter)) return false;
