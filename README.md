@@ -6,7 +6,7 @@ A tool for visualizing ontologies related to UN's sustainable development goals
 
 [![CI](https://github.com/ntnu-informatikk-2021/SDG-ontology-visualizer/actions/workflows/main.yml/badge.svg)](https://github.com/ntnu-informatikk-2021/SDG-ontology-visualizer/actions/workflows/main.yml)
 
-[Deployed project](https://epic-ardinghelli-d1ee4d.netlify.app/)
+[Deployed project](https://bachelor.winthermoen.no/)
 
 
 
